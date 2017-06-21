@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>digipost-data-types</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <description>Data types for Digipost Messages</description>
 
