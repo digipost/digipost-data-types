@@ -172,7 +172,7 @@
                         <id>datatypes-documentation</id>
                         <phase>package</phase>
                         <configuration>
-                            <mainClass>no.posten.dpost.datatypes.documentation.DocumentationGenerator</mainClass>
+                            <mainClass>no.digipost.api.datatypes.documentation.DocumentationGenerator</mainClass>
                             <commandlineArgs>${basedir}/readme.md</commandlineArgs>
                         </configuration>
                         <goals><goal>java</goal></goals>
