@@ -9,10 +9,10 @@
         <version>1</version>
     </parent>
 
-    <artifactId>digipost-metadata</artifactId>
+    <artifactId>digipost-data-types</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>${project.artifactId}</name>
-    <description>Metadata types for Digipost Messages</description>
+    <description>Data types for Digipost Messages</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
