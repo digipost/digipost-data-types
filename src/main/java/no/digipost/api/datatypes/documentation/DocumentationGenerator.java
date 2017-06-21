@@ -20,11 +20,11 @@ public class DocumentationGenerator {
 
     public static void main(String[] args) throws IOException, JAXBException {
         final Path outputPath = Paths.get(args[0]);
-        DocumentationGenerator.<DataType>generate(outputPath, DataTypeIdentifier.getAllClasses(), DocumentationGenerator::getMetadataExample);
+        DocumentationGenerator.<DataType>generate(outputPath, DataTypeIdentifier.getAllClasses(), DocumentationGenerator::getDataTypeExample);
     }
 
-    public static DataType getMetadataExample(Class<? extends DataType> metadataType) {
-        return DataTypeIdentifier.fromRepresentationType(metadataType).getExample();
+    public static DataType getDataTypeExample(Class<? extends DataType> dataType) {
+        return DataTypeIdentifier.fromRepresentationType(dataType).getExample();
     }
 
     private static <T> void generate(Path outputPath, Set<Class<? extends T>> typesToDocument, Function<Class<? extends T>, T> getExample) throws IOException, JAXBException {

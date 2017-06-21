@@ -27,8 +27,8 @@ public class DocumentationStructureBuilder {
         };
     }
 
-    private static List<FieldInfo> getFieldInfos(Class<?> metadataType) {
-        return Stream.of(metadataType.getDeclaredFields()).filter(f -> !isStatic(f.getModifiers())).map(getFieldInfo(metadataType)).collect(toList());
+    private static List<FieldInfo> getFieldInfos(Class<?> dataType) {
+        return Stream.of(dataType.getDeclaredFields()).filter(f -> !isStatic(f.getModifiers())).map(getFieldInfo(dataType)).collect(toList());
     }
 
     private static Function<Field, FieldInfo> getFieldInfo(final Class<?> parentType) {

@@ -1,4 +1,4 @@
-## Metadata types
+## Data types
 
 |Type|Description|
 |----|-----------|

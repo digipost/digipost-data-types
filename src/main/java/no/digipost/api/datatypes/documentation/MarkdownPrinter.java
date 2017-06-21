@@ -36,11 +36,11 @@ public class MarkdownPrinter {
         return typeInfos.stream().map(this::printTypeOverview).collect(joining(LLF));
     }
 
-    private String printHeader(List<ComplexType> metadataTypeInfos) {
-        return     heading(2, "Metadata types") + LLF +
+    private String printHeader(List<ComplexType> typeInfos) {
+        return     heading(2, "Data types") + LLF +
                 "|Type|Description|" + LF +
                 "|----|-----------|" + LF +
-                metadataTypeInfos.stream().map(t ->
+                typeInfos.stream().map(t ->
                 "|" + printLink(t) + "|" + t.getDescription() + "|"
                 ).collect(joining(LF));
     }

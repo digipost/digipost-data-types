@@ -12,17 +12,17 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 
 /**
- * HOWTO: Add new metadata type
+ * HOWTO: Add new data type
  *
- * 1. Create new metadata type enum in this class
- * 2. Create the metadata class, annotate, implement MetadataType interface (see Appointment.class for example)
+ * 1. Create new data type enum in this class
+ * 2. Create the class, annotate, implement the DataType interface (see Appointment.class for example)
  * 3. Add class with relative package name to jaxb.index
  * 4. profit!
  */
 public enum DataTypeIdentifier {
     APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE);
 
-    private final Class<? extends DataType> metadataType;
+    private final Class<? extends DataType> dataType;
     private final String shortName;
     private final DataType example;
 
@@ -30,18 +30,18 @@ public enum DataTypeIdentifier {
     private static final Map<String, DataTypeIdentifier> byShortName;
 
     static {
-        byType = Stream.of(values()).collect(toMap(DataTypeIdentifier::getMetadataType, identity()));
+        byType = Stream.of(values()).collect(toMap(DataTypeIdentifier::getDataType, identity()));
         byShortName = Stream.of(values()).collect(toMap(DataTypeIdentifier::getShortName, identity()));
     }
 
-    DataTypeIdentifier(final Class<? extends DataType> metadataType, final String shortName, final DataType example) {
-        this.metadataType = metadataType;
+    DataTypeIdentifier(final Class<? extends DataType> dataType, final String shortName, final DataType example) {
+        this.dataType = dataType;
         this.shortName = shortName;
         this.example = example;
     }
 
-    public Class<? extends DataType> getMetadataType() {
-        return metadataType;
+    public Class<? extends DataType> getDataType() {
+        return dataType;
     }
 
     public String getShortName() {
