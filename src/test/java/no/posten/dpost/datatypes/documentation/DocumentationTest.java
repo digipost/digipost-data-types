@@ -1,7 +1,7 @@
 package no.posten.dpost.datatypes.documentation;
 
-import no.posten.dpost.datatypes.MetadataType;
-import no.posten.dpost.datatypes.marshalling.MetadataJAXBContext;
+import no.posten.dpost.datatypes.DataType;
+import no.posten.dpost.datatypes.marshalling.DataTypesJAXBContext;
 import no.posten.dpost.datatypes.types.ShortTextMessage;
 import org.junit.Test;
 
@@ -24,7 +24,7 @@ public class DocumentationTest {
 
     @Test
     public void should_build_type_structure_for_test_metadata() {
-        final Stream<ComplexType> types = DocumentationStructureBuilder.<MetadataType>buildTypeStructure(
+        final Stream<ComplexType> types = DocumentationStructureBuilder.<DataType>buildTypeStructure(
             singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE);
         assertThat(types.collect(toSet()), contains(
             new ComplexType(ShortTextMessage.class, "150 character short message",
@@ -34,7 +34,7 @@ public class DocumentationTest {
 
     @Test
     public void should_print_docs_for_test_metadata() throws IOException, JAXBException {
-        final String docs = new MarkdownPrinter(new MetadataJAXBContext(JAXBContext.newInstance(ShortTextMessage.class))).print(DocumentationStructureBuilder.<MetadataType>buildTypeStructure(
+        final String docs = new MarkdownPrinter(new DataTypesJAXBContext(JAXBContext.newInstance(ShortTextMessage.class))).print(DocumentationStructureBuilder.<DataType>buildTypeStructure(
             singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE).collect(toList()));
 
         assertThat(docs, is(new String(toByteArray(getClass().getResource("testdoc.md")), UTF_8)));

@@ -21,7 +21,7 @@ public class MarshallingTest {
 
     @Test
     public void testJaxbMarshalling() throws JAXBException {
-        final JAXBContext jaxbContext = new MetadataJAXBContext().getContext();
+        final JAXBContext jaxbContext = new DataTypesJAXBContext().getContext();
         final Marshaller marshaller = jaxbContext.createMarshaller();
         final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
@@ -33,7 +33,7 @@ public class MarshallingTest {
 
     @Test
     public void testJacksonJsonMarshalling() throws IOException {
-        ObjectMapper mapper = MetadataJsonMapper.getMapper();
+        ObjectMapper mapper = DataTypesJsonMapper.getMapper();
         final String json = mapper.writer().writeValueAsString(appointment);
         final Appointment unmarshalled = mapper.reader().forType(Appointment.class).readValue(json);
         assertThat(unmarshalled, equalTo(appointment));

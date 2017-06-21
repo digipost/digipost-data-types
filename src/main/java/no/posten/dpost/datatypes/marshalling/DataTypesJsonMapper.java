@@ -7,7 +7,7 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MetadataJsonMapper {
+public class DataTypesJsonMapper {
 
     private static final ObjectMapper mapper = initMapper();
 

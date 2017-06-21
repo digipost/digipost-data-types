@@ -1,6 +1,6 @@
 package no.posten.dpost.datatypes.types;
 
-import no.posten.dpost.datatypes.MetadataTypeIdentifier;
+import no.posten.dpost.datatypes.DataTypeIdentifier;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class JAXBIndexTest {
     @Test
     public void check_all_metatdata_in_jaxb_index() throws IOException {
         final List<String> classNames = readLines(getClass().getResource("jaxb.index"), UTF_8);
-        final List<String> allMetadataTypes = Stream.of(MetadataTypeIdentifier.values()).map(MetadataTypeIdentifier::getMetadataType).map(Class::getSimpleName).collect(toList());
+        final List<String> allMetadataTypes = Stream.of(DataTypeIdentifier.values()).map(DataTypeIdentifier::getMetadataType).map(Class::getSimpleName).collect(toList());
         assertThat("Alle metadatatyper må ligge i jaxb.index for at de skal fungere med JAXB", classNames, containsInAnyOrder(allMetadataTypes.toArray()));
     }
 }

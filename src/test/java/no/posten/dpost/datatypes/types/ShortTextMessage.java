@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
-import no.posten.dpost.datatypes.MetadataType;
+import no.posten.dpost.datatypes.DataType;
 import no.posten.dpost.datatypes.documentation.Description;
 
 import javax.validation.constraints.Max;
@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-public class ShortTextMessage implements MetadataType {
+public class ShortTextMessage implements DataType {
 
     @XmlElement(required = true)
     @NotNull

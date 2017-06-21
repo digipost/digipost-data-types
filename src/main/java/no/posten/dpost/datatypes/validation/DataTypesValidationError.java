@@ -5,7 +5,7 @@ import lombok.Value;
 import javax.validation.ConstraintViolation;
 
 @Value
-public class MetadataValidationError<T> {
+public class DataTypesValidationError<T> {
     ConstraintViolation<T> constraintViolation;
 
     public String getPrettyMessage() {

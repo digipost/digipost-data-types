@@ -10,4 +10,4 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchema;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import static no.posten.dpost.datatypes.marshalling.MetadataJAXBContext.DIGIPOST_DATATYPES_NAMESPACE;
+import static no.posten.dpost.datatypes.marshalling.DataTypesJAXBContext.DIGIPOST_DATATYPES_NAMESPACE;

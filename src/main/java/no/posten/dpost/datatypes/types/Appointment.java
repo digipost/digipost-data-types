@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
-import no.posten.dpost.datatypes.MetadataType;
+import no.posten.dpost.datatypes.DataType;
 import no.posten.dpost.datatypes.documentation.Description;
 
 import javax.validation.Valid;
@@ -20,7 +20,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Description("Appointment represents a meeting set for a specific place and time")
-public class Appointment implements MetadataType {
+public class Appointment implements DataType {
 
     @XmlElement(required = true)
     @NotNull

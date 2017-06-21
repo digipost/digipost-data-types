@@ -3,7 +3,7 @@ package no.posten.dpost.datatypes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public interface MetadataType {
+public interface DataType {
 
     @JsonProperty("type")
     default String getType() {
@@ -11,7 +11,7 @@ public interface MetadataType {
     }
 
     @JsonIgnore
-    default MetadataTypeIdentifier getTypeIdentifier() {
-        return MetadataTypeIdentifier.fromRepresentationType(getClass());
+    default DataTypeIdentifier getTypeIdentifier() {
+        return DataTypeIdentifier.fromRepresentationType(getClass());
     }
 }

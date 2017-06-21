@@ -3,7 +3,7 @@ package no.posten.dpost.datatypes.marshalling;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
-public class MetadataJAXBContext {
+public class DataTypesJAXBContext {
 
     public static final String DIGIPOST_DATATYPES_NAMESPACE = "http://api.digipost.no/schema/datatypes";
     public static final String DATATYPES_XSD_FILENAME = "datatypes.xsd";
@@ -11,11 +11,11 @@ public class MetadataJAXBContext {
 
     private final JAXBContext context;
 
-    public MetadataJAXBContext(final JAXBContext context) {
+    public DataTypesJAXBContext(final JAXBContext context) {
         this.context = context;
     }
 
-    public MetadataJAXBContext() throws JAXBException {
+    public DataTypesJAXBContext() throws JAXBException {
         this(JAXBContext.newInstance(DATATYPES_JAXB_CONTEXT_PATH));
     }
 

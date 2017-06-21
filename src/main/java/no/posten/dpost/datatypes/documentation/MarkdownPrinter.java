@@ -2,8 +2,8 @@ package no.posten.dpost.datatypes.documentation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import no.posten.dpost.datatypes.marshalling.MetadataJAXBContext;
-import no.posten.dpost.datatypes.marshalling.MetadataJsonMapper;
+import no.posten.dpost.datatypes.marshalling.DataTypesJAXBContext;
+import no.posten.dpost.datatypes.marshalling.DataTypesJsonMapper;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -20,9 +20,9 @@ public class MarkdownPrinter {
     private static String LLF = LF + LF;
 
 
-    private final MetadataJAXBContext jaxb;
+    private final DataTypesJAXBContext jaxb;
 
-    public MarkdownPrinter(MetadataJAXBContext jaxb) {
+    public MarkdownPrinter(DataTypesJAXBContext jaxb) {
         this.jaxb = jaxb;
     }
 
@@ -75,7 +75,7 @@ public class MarkdownPrinter {
         try {
             return     heading(3, "JSON") + LLF +
                     code("json",
-                    MetadataJsonMapper.getMapper()
+                    DataTypesJsonMapper.getMapper()
                         .configure(SerializationFeature.INDENT_OUTPUT, true)
                         .writeValueAsString(example).trim());
         } catch (JsonProcessingException e) {
