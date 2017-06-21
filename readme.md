@@ -47,7 +47,7 @@ Appointment represents a meeting set for a specific place and time
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:appointment xmlns:ns2="http://api.digipost.no/schema/metadata">
+<ns2:appointment xmlns:ns2="http://api.digipost.no/schema/datatypes">
     <title>Time hos Dr. Legesen</title>
     <time>2017-06-27T10:00:00+02:00</time>
     <place>

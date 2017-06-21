@@ -5,9 +5,9 @@ import javax.xml.bind.JAXBException;
 
 public class MetadataJAXBContext {
 
-    public static final String DIGIPOST_METADATA_NAMESPACE = "http://api.digipost.no/schema/metadata";
-    public static final String METADATA_XSD_FILENAME = "metadata.xsd";
-    public static final String METADATA_JAXB_CONTEXT_PATH = "no.posten.dpost.metadata.types";
+    public static final String DIGIPOST_DATATYPES_NAMESPACE = "http://api.digipost.no/schema/datatypes";
+    public static final String DATATYPES_XSD_FILENAME = "datatypes.xsd";
+    public static final String DATATYPES_JAXB_CONTEXT_PATH = "no.posten.dpost.datatypes.types";
 
     private final JAXBContext context;
 
@@ -16,7 +16,7 @@ public class MetadataJAXBContext {
     }
 
     public MetadataJAXBContext() throws JAXBException {
-        this(JAXBContext.newInstance(METADATA_JAXB_CONTEXT_PATH));
+        this(JAXBContext.newInstance(DATATYPES_JAXB_CONTEXT_PATH));
     }
 
     public JAXBContext getContext() {

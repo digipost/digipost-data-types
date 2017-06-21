@@ -1,4 +1,4 @@
-@XmlSchema(namespace = DIGIPOST_METADATA_NAMESPACE)
+@XmlSchema(namespace = DIGIPOST_DATATYPES_NAMESPACE)
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 package no.posten.dpost.datatypes.types;
@@ -10,4 +10,4 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchema;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import static no.posten.dpost.datatypes.marshalling.MetadataJAXBContext.DIGIPOST_METADATA_NAMESPACE;
+import static no.posten.dpost.datatypes.marshalling.MetadataJAXBContext.DIGIPOST_DATATYPES_NAMESPACE;

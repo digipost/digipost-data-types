@@ -157,8 +157,8 @@
                     </schemaSourceExcludeFilters>
                     <transformSchemas>
                         <transformSchema>
-                            <uri>http://api.digipost.no/schema/metadata</uri>
-                            <toFile>metadata.xsd</toFile>
+                            <uri>http://api.digipost.no/schema/datatypes</uri>
+                            <toFile>datatypes.xsd</toFile>
                         </transformSchema>
                     </transformSchemas>
                 </configuration>
@@ -169,7 +169,7 @@
                 <version>1.6.0</version>
                 <executions>
                     <execution>
-                        <id>metadata-documentation</id>
+                        <id>datatypes-documentation</id>
                         <phase>package</phase>
                         <configuration>
                             <mainClass>no.posten.dpost.datatypes.documentation.DocumentationGenerator</mainClass>

@@ -16,7 +16,7 @@ This project includes:
   Apache Commons Logging under The Apache Software License, Version 2.0
   Bean Validation API under The Apache Software License, Version 2.0
   ClassMate under The Apache Software License, Version 2.0
-  digipost-metadata under The Apache Software License, Version 2.0
+  digipost-data-types under The Apache Software License, Version 2.0
   error-prone annotations under Apache 2.0
   Expression Language 3.0 under CDDL + GPLv2 with classpath exception
   FindBugs-jsr305 under The Apache Software License, Version 2.0
