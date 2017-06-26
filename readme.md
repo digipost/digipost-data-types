@@ -3,6 +3,7 @@
 |Type|Description|
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
+|[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 
 ## Appointment
 
@@ -58,4 +59,52 @@ Appointment represents a meeting set for a specific place and time
     <description>Undersøke smerter i ryggen</description>
     <timeInformation>Oppmøte senest 10 minutter før timen</timeInformation>
 </ns2:appointment>
+```
+
+## Residence
+
+Residence is a way of linking separate data for the same residence
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|address|[Address](#address)|true||
+|source|String|false||
+|externalId|String|false||
+
+### Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|false||
+|postalCode|String|false||
+|city|String|true||
+
+### JSON
+
+```json
+{
+  "address" : {
+    "streetAddress" : "Storgata 23",
+    "postalCode" : "0011",
+    "city" : "Oslo"
+  },
+  "source" : null,
+  "externalId" : null,
+  "type" : "Residence"
+}
+```
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:residence xmlns:ns2="http://api.digipost.no/schema/datatypes">
+    <address>
+        <streetAddress>Storgata 23</streetAddress>
+        <postalCode>0011</postalCode>
+        <city>Oslo</city>
+    </address>
+</ns2:residence>
 ```

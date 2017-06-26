@@ -13,7 +13,6 @@ under the License.
 
 This project includes:
   Animal Sniffer Annotations under MIT license
-  Apache Commons Logging under The Apache Software License, Version 2.0
   Bean Validation API under The Apache Software License, Version 2.0
   ClassMate under The Apache Software License, Version 2.0
   digipost-data-types under The Apache Software License, Version 2.0
@@ -34,9 +33,4 @@ This project includes:
   JBoss Logging 3 under Apache License, version 2.0
   JUnit under Eclipse Public License 1.0
   Project Lombok under The MIT License
-  Spring AOP under Apache License, Version 2.0
-  Spring Beans under Apache License, Version 2.0
-  Spring Context under Apache License, Version 2.0
-  Spring Core under Apache License, Version 2.0
-  Spring Expression Language (SpEL) under Apache License, Version 2.0
 
