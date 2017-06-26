@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.UUID;
 
 @XmlRootElement
 @Value
@@ -36,5 +37,5 @@ public class Residence implements DataType {
     String externalId;
 
     public static  Residence EXAMPLE = new Residence(
-            new Address("Storgata 23", "0011", "Oslo"), null, null);
+            new Address("Storgata 23", "0011", "Oslo"), "boligmappa", UUID.randomUUID().toString());
 }
