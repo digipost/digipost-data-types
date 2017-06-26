@@ -1,6 +1,7 @@
 package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.Appointment;
+import no.digipost.api.datatypes.types.Residence;
 
 import java.util.Map;
 import java.util.Optional;
@@ -20,7 +21,8 @@ import static java.util.stream.Collectors.toMap;
  * 4. profit!
  */
 public enum DataTypeIdentifier {
-    APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE);
+    APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
+    RESIDENCE(Residence.class, "RNCE", Residence.EXAMPLE);
 
     private final Class<? extends DataType> dataType;
     private final String shortName;

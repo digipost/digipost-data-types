@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Description("Residence is a way of linking separate data for the same residence")
-public class Residence implements DataType{
+public class Residence implements DataType {
 
     @XmlElement(required = true)
     @NotNull
