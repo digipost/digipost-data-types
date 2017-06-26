@@ -1,8 +1,5 @@
 package no.digipost.api.datatypes.validation;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import javax.validation.Validation;
 import javax.validation.Validator;
 import java.util.Collection;
@@ -13,12 +10,10 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toSet;
 
-@Component
 public class DataTypesValidator {
 
     private final Validator validator;
 
-    @Autowired
     public DataTypesValidator(final Validator validator) {
         this.validator = validator;
     }

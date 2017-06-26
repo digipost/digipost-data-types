@@ -82,16 +82,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
@@ -209,4 +199,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <scm>
+        <connection>scm:git:git@github.com:digipost/digipost-data-types.git</connection>
+        <developerConnection>scm:git:git@github.com:digipost/digipost-data-types.git</developerConnection>
+        <url>scm:git:git@github.com:digipost/digipost-data-types</url>
+        <tag>HEAD</tag>
+    </scm>
 </project>
