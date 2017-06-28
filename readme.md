@@ -90,8 +90,8 @@ Residence is a way of linking separate data for the same residence
     "postalCode" : "0011",
     "city" : "Oslo"
   },
-  "source" : null,
-  "externalId" : null,
+  "source" : "boligmappa",
+  "externalId" : "externalId",
   "type" : "Residence"
 }
 ```
@@ -106,5 +106,7 @@ Residence is a way of linking separate data for the same residence
         <postalCode>0011</postalCode>
         <city>Oslo</city>
     </address>
+    <source>boligmappa</source>
+    <externalId>externalId</externalId>
 </ns2:residence>
 ```
