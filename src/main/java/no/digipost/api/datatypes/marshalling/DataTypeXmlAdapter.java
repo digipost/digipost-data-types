@@ -4,47 +4,31 @@ import no.digipost.api.datatypes.DataType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import javax.xml.bind.*;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.dom.DOMSource;
 
-public class DataTypeXmlAdapter extends XmlAdapter<Element, DataType> {
-    private JAXBContext jaxbContext;
-    private DocumentBuilder documentBuilder;
+public class DataTypeXmlAdapter extends XmlAdapter<Object, DataType> {
+    private static DocumentBuilderFactory documentBuilderFactory;
 
-    public DataTypeXmlAdapter() {}
-
-    public DataTypeXmlAdapter(JAXBContext jaxbContext) {
-        this.jaxbContext = jaxbContext;
-    }
-
-    private JAXBContext getJAXBContext() throws JAXBException {
-        if (jaxbContext == null) {
-            jaxbContext = JAXBContext.newInstance("no.digipost.api.datatypes.types");
+    private DocumentBuilderFactory getDocumentBuilderFactory() throws ParserConfigurationException {
+        if(documentBuilderFactory == null) {
+            documentBuilderFactory = DocumentBuilderFactory.newInstance();
         }
-        return jaxbContext;
-    }
-
-    private DocumentBuilder getDocumentBuilder() throws ParserConfigurationException {
-        if(documentBuilder == null) {
-            documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        }
-        return documentBuilder;
+        return documentBuilderFactory;
     }
 
     @Override
-    public DataType unmarshal(Element e) throws Exception {
+    public DataType unmarshal(Object e) throws Exception {
         if(e == null) {
             return null;
         }
 
-        DOMSource source = new DOMSource(e);
-        Unmarshaller unmarshaller = getJAXBContext().createUnmarshaller();
-
+        DOMSource source = new DOMSource((Element) e);
+        Unmarshaller unmarshaller = DataTypesJAXBContext.getSingleton().createUnmarshaller();
         return (DataType) unmarshaller.unmarshal(source);
     }
 
@@ -53,15 +37,9 @@ public class DataTypeXmlAdapter extends XmlAdapter<Element, DataType> {
         if (dt == null){
             return null;
         }
-
-        QName qname = new QName(DataTypesJAXBContext.DIGIPOST_DATATYPES_NAMESPACE, dt.getType().toLowerCase());
-        Class<?> type = dt.getClass();
-        JAXBElement jaxbElement = new JAXBElement(qname, type, dt);
-
-        Document document = getDocumentBuilder().newDocument();
-        Marshaller marshaller = getJAXBContext().createMarshaller();
-        marshaller.marshal(jaxbElement, document);
-
+        Document document = getDocumentBuilderFactory().newDocumentBuilder().newDocument();
+        Marshaller marshaller = DataTypesJAXBContext.getSingleton().createMarshaller();
+        marshaller.marshal(dt, document);
         return document.getDocumentElement();
     }
 }

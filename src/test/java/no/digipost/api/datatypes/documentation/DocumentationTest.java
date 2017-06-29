@@ -1,7 +1,6 @@
 package no.digipost.api.datatypes.documentation;
 
 import no.digipost.api.datatypes.DataType;
-import no.digipost.api.datatypes.marshalling.DataTypesJAXBContext;
 import no.digipost.api.datatypes.types.ShortTextMessage;
 import org.junit.Test;
 
@@ -34,7 +33,7 @@ public class DocumentationTest {
 
     @Test
     public void should_print_docs_for_test_data_type() throws IOException, JAXBException {
-        final String docs = new MarkdownPrinter(new DataTypesJAXBContext(JAXBContext.newInstance(ShortTextMessage.class))).print(DocumentationStructureBuilder.<DataType>buildTypeStructure(
+        final String docs = new MarkdownPrinter(JAXBContext.newInstance(ShortTextMessage.class)).print(DocumentationStructureBuilder.<DataType>buildTypeStructure(
             singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE).collect(toList()));
 
         assertThat(docs, is(new String(toByteArray(getClass().getResource("testdoc.md")), UTF_8)));
