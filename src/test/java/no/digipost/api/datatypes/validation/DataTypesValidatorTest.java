@@ -5,8 +5,6 @@ import no.digipost.api.datatypes.types.Appointment;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -23,14 +21,13 @@ public class DataTypesValidatorTest {
 
     private static DataTypesValidator validator = new DataTypesValidator();
 
-    final Appointment appointment = new Appointment("What what", ZonedDateTime.now(ZoneId.of("GMT+02:00")).minusDays(5), new Address("Testgate 3", "0022", null),
-        "Hey Macklemore. Let's go to a place we've never been before. The city? My memory doesn't point to any allocated address.", null);
+    final Appointment appointment = Appointment.EXAMPLE.withAddress(new Address("Storgata 2", "0001", null));
 
     @Test
     public void testValidate() {
         final Set<DataTypesValidationError<Appointment>> constraintViolations = validator.validate(appointment).collect(toSet());
         assertThat(constraintViolations, hasSize(1));
-        assertThat(constraintViolations, Matchers.<DataTypesValidationError<Appointment>>hasItem(where(DataTypesValidationError::getPrettyMessage, is("The value for field 'Appointment.place.city' may not be null"))));
+        assertThat(constraintViolations, Matchers.<DataTypesValidationError<Appointment>>hasItem(where(DataTypesValidationError::getPrettyMessage, is("The value for field 'Appointment.address.city' may not be null"))));
     }
 
     @Test
@@ -38,7 +35,7 @@ public class DataTypesValidatorTest {
         try {
             validator.validateOrThrow(appointment, errors -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
         } catch (RuntimeException e) {
-            assertEquals(e.getMessage(), "The value for field 'Appointment.place.city' may not be null");
+            assertEquals(e.getMessage(), "The value for field 'Appointment.address.city' may not be null");
         }
     }
 
@@ -47,7 +44,7 @@ public class DataTypesValidatorTest {
         try {
             validator.validateOrThrow(Collections.singleton(appointment), (Set<DataTypesValidationError<Appointment>> errors) -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
         } catch (RuntimeException e) {
-            assertEquals(e.getMessage(), "The value for field 'Appointment.place.city' may not be null");
+            assertEquals(e.getMessage(), "The value for field 'Appointment.address.city' may not be null");
         }
     }
 

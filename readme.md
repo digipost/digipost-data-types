@@ -13,33 +13,40 @@ Appointment represents a meeting set for a specific place and time
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|title|String|true||
-|time|ZonedDateTime|true|Date and time for the appointment|
-|place|[Address](#address)|true||
-|description|String|false|Additional information about the appointment|
-|timeInformation|String|false|Additional information about the appointment time. Example: Please arrive 10 minutes ahead of scheduled time|
+|startTime|ZonedDateTime|true|ISO8601 full DateTime|
+|endTime|ZonedDateTime|false|ISO8601 full DateTime. Default value 1 hour after startTime|
+|arrivalTime|String|false|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
+|place|String|false|The name of the place. Example: Oslo City Røntgen|
+|address|[Address](#address)|false||
+|subTitle|String|false|Example: MR-undersøkelse av høyre kne|
+|info|List|false|Additional sections of information (max 2) with a title and text|
 
 ### Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|false||
-|postalCode|String|false||
+|postalCode|String|true||
 |city|String|true||
 
 ### JSON
 
 ```json
 {
-  "title" : "Time hos Dr. Legesen",
-  "time" : "2017-06-27T10:00:00+02:00",
-  "place" : {
+  "startTime" : "2017-06-27T10:00:00+02:00",
+  "endTime" : "2017-06-27T11:00:00+02:00",
+  "arrivalTime" : "Oppmøte senest 15 minutter før timen",
+  "place" : "Oslo City Røntgen",
+  "address" : {
     "streetAddress" : "Storgata 23",
     "postalCode" : "0011",
     "city" : "Oslo"
   },
-  "description" : "Undersøke smerter i ryggen",
-  "timeInformation" : "Oppmøte senest 10 minutter før timen",
+  "subTitle" : "Undersøke smerter i ryggen",
+  "info" : [ {
+    "title" : "Informasjon om Oslo City Røntgen",
+    "text" : "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."
+  } ],
   "type" : "Appointment"
 }
 ```
@@ -49,15 +56,20 @@ Appointment represents a meeting set for a specific place and time
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:appointment xmlns:ns2="http://api.digipost.no/schema/datatypes">
-    <title>Time hos Dr. Legesen</title>
-    <time>2017-06-27T10:00:00+02:00</time>
-    <place>
+    <startTime>2017-06-27T10:00:00+02:00</startTime>
+    <endTime>2017-06-27T11:00:00+02:00</endTime>
+    <arrivalTime>Oppmøte senest 15 minutter før timen</arrivalTime>
+    <place>Oslo City Røntgen</place>
+    <address>
         <streetAddress>Storgata 23</streetAddress>
         <postalCode>0011</postalCode>
         <city>Oslo</city>
-    </place>
-    <description>Undersøke smerter i ryggen</description>
-    <timeInformation>Oppmøte senest 10 minutter før timen</timeInformation>
+    </address>
+    <subTitle>Undersøke smerter i ryggen</subTitle>
+    <info>
+        <title>Informasjon om Oslo City Røntgen</title>
+        <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
+    </info>
 </ns2:appointment>
 ```
 
@@ -78,7 +90,7 @@ Residence is a way of linking separate data for the same residence
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|false||
-|postalCode|String|false||
+|postalCode|String|true||
 |city|String|true||
 
 ### JSON
