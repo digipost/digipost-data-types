@@ -13,21 +13,21 @@ Appointment represents a meeting set for a specific place and time
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|startTime|ZonedDateTime|true|ISO8601 full DateTime|
-|endTime|ZonedDateTime|false|ISO8601 full DateTime. Default value 1 hour after startTime|
-|arrivalTime|String|false|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
-|place|String|false|The name of the place. Example: Oslo City Røntgen|
-|address|[Address](#address)|false||
-|subTitle|String|false|Example: MR-undersøkelse av høyre kne|
-|info|List|false|Additional sections of information (max 2) with a title and text|
+|startTime|ZonedDateTime|yes|ISO8601 full DateTime|
+|endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 1 hour after startTime|
+|arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
+|place|String|no|The name of the place. Example: Oslo City Røntgen|
+|address|[Address](#address)|no||
+|subTitle|String|no|Example: MR-undersøkelse av høyre kne|
+|info|List|no|Additional sections of information (max 2) with a title and text|
 
 ### Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|streetAddress|String|false||
-|postalCode|String|true||
-|city|String|true||
+|streetAddress|String|no||
+|postalCode|String|yes||
+|city|String|yes||
 
 ### JSON
 
@@ -81,17 +81,17 @@ Residence is a way of linking separate data for the same residence
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|address|[Address](#address)|true||
-|source|String|false||
-|externalId|String|false||
+|address|[Address](#address)|yes||
+|source|String|no||
+|externalId|String|no||
 
 ### Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|streetAddress|String|false||
-|postalCode|String|true||
-|city|String|true||
+|streetAddress|String|no||
+|postalCode|String|yes||
+|city|String|yes||
 
 ### JSON
 
