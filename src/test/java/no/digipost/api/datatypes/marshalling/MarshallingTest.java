@@ -21,7 +21,7 @@ public class MarshallingTest {
 
     @Test
     public void testJaxbMarshalling() throws JAXBException {
-        final JAXBContext jaxbContext = new DataTypesJAXBContext().getContext();
+        final JAXBContext jaxbContext = DataTypesJAXBContext.getSingleton();
         final Marshaller marshaller = jaxbContext.createMarshaller();
         final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 

@@ -9,18 +9,19 @@ public class DataTypesJAXBContext {
     public static final String DATATYPES_XSD_FILENAME = "datatypes.xsd";
     public static final String DATATYPES_JAXB_CONTEXT_PATH = "no.digipost.api.datatypes.types";
 
-    private final JAXBContext context;
+    private static class Singleton {
+        private static final JAXBContext jaxbContext;
 
-    public DataTypesJAXBContext(final JAXBContext context) {
-        this.context = context;
+        static {
+            try {
+                jaxbContext = JAXBContext.newInstance(DATATYPES_JAXB_CONTEXT_PATH);
+            } catch (JAXBException e) {
+                throw new RuntimeException("Unable to instationate jaxb context for Digipost DataTypes", e);
+            }
+        }
     }
 
-    public DataTypesJAXBContext() throws JAXBException {
-        this(JAXBContext.newInstance(DATATYPES_JAXB_CONTEXT_PATH));
+    public static JAXBContext getSingleton() {
+        return Singleton.jaxbContext;
     }
-
-    public JAXBContext getContext() {
-        return context;
-    }
-
 }

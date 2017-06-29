@@ -2,9 +2,9 @@ package no.digipost.api.datatypes.documentation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import no.digipost.api.datatypes.marshalling.DataTypesJAXBContext;
 import no.digipost.api.datatypes.marshalling.DataTypesJsonMapper;
 
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
@@ -20,15 +20,15 @@ public class MarkdownPrinter {
     private static String LLF = LF + LF;
 
 
-    private final DataTypesJAXBContext jaxb;
+    private final JAXBContext jaxb;
 
-    public MarkdownPrinter(DataTypesJAXBContext jaxb) {
-        this.jaxb = jaxb;
+    public MarkdownPrinter(JAXBContext jaxbContext) {
+        this.jaxb = jaxbContext;
     }
 
 
     public String print(List<ComplexType> typeInfos) {
-        return     printHeader(typeInfos) + LLF +
+        return  printHeader(typeInfos) + LLF +
                 printTypes(typeInfos) + LF;
     }
 
@@ -57,7 +57,7 @@ public class MarkdownPrinter {
     private String printXmlExample(Object example) {
         try {
             final StringWriter writer = new StringWriter();
-            final Marshaller marshaller = jaxb.getContext().createMarshaller();
+            final Marshaller marshaller = jaxb.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(example, writer);
             return    heading(3, "XML") + LLF +
