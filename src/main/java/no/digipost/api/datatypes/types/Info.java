@@ -5,24 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-public class Address {
+public class Info {
 
-    @Size(max = 100)
-    String streetAddress;
+    @XmlElement
+    @Size(max = 140)
+    String title;
 
-    @NotNull
-    @Size(max = 10)
-    String postalCode;
-
-    @NotNull
-    @Size(max = 100)
-    String city;
+    @XmlElement
+    String text;
 }

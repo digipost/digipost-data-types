@@ -98,7 +98,7 @@ public class MarkdownPrinter {
 
     private String printField(FieldInfo f) {
         final String type = f.getType().isComplex() ? printLink(f.getType()) : f.getType().getTypeName();
-        return "|" + f.getName() + "|" + type + "|" + f.isMandatory() + "|" + f.getDescription() + "|";
+        return "|" + f.getName() + "|" + type + "|" + (f.isMandatory() ? "yes" : "no") + "|" + f.getDescription() + "|";
     }
 
     private String printLink(FieldType f) {
