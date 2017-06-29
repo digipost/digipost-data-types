@@ -12,7 +12,7 @@
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|message|String|true|Your short message goes here|
+|message|String|yes|Your short message goes here|
 
 ### JSON
 
