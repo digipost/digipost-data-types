@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 public class Address {
 
-    @Size(max = 200)
+    @Size(max = 100)
     String streetAddress;
 
     @NotNull
@@ -23,6 +23,6 @@ public class Address {
     String postalCode;
 
     @NotNull
-    @Size(max = 200)
+    @Size(max = 100)
     String city;
 }
