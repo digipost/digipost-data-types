@@ -8,25 +8,17 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.dom.DOMSource;
 
 public class DataTypeXmlAdapter extends XmlAdapter<Object, DataType> {
-    private static DocumentBuilderFactory documentBuilderFactory;
 
-    private DocumentBuilderFactory getDocumentBuilderFactory() throws ParserConfigurationException {
-        if(documentBuilderFactory == null) {
-            documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        }
-        return documentBuilderFactory;
-    }
+    private static DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 
     @Override
     public DataType unmarshal(Object e) throws Exception {
         if(e == null) {
             return null;
         }
-
         DOMSource source = new DOMSource((Element) e);
         Unmarshaller unmarshaller = DataTypesJAXBContext.getSingleton().createUnmarshaller();
         return (DataType) unmarshaller.unmarshal(source);
@@ -37,7 +29,7 @@ public class DataTypeXmlAdapter extends XmlAdapter<Object, DataType> {
         if (dt == null){
             return null;
         }
-        Document document = getDocumentBuilderFactory().newDocumentBuilder().newDocument();
+        Document document = documentBuilderFactory.newDocumentBuilder().newDocument();
         Marshaller marshaller = DataTypesJAXBContext.getSingleton().createMarshaller();
         marshaller.marshal(dt, document);
         return document.getDocumentElement();
