@@ -29,7 +29,7 @@ public class DocumentationGenerator {
 
     private static <T> void generate(Path outputPath, Set<Class<? extends T>> typesToDocument, Function<Class<? extends T>, T> getExample) throws IOException, JAXBException {
         final Stream<ComplexType> types = DocumentationStructureBuilder.buildTypeStructure(typesToDocument, getExample);
-        final String markdown = new MarkdownPrinter(DataTypesJAXBContext.getSingleton()).print(types.collect(toList()));
+        final String markdown = new MarkdownPrinter(DataTypesJAXBContext.getSingleton(), false).print(types.collect(toList()));
         Files.write(outputPath, markdown.getBytes(StandardCharsets.UTF_8));
     }
 }

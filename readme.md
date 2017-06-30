@@ -29,28 +29,6 @@ Appointment represents a meeting set for a specific place and time
 |postalCode|String|yes||
 |city|String|yes||
 
-### JSON
-
-```json
-{
-  "startTime" : "2017-06-27T10:00:00+02:00",
-  "endTime" : "2017-06-27T11:00:00+02:00",
-  "arrivalTime" : "Oppmøte senest 15 minutter før timen",
-  "place" : "Oslo City Røntgen",
-  "address" : {
-    "streetAddress" : "Storgata 23",
-    "postalCode" : "0011",
-    "city" : "Oslo"
-  },
-  "subTitle" : "Undersøke smerter i ryggen",
-  "info" : [ {
-    "title" : "Informasjon om Oslo City Røntgen",
-    "text" : "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."
-  } ],
-  "type" : "Appointment"
-}
-```
-
 ### XML
 
 ```xml
@@ -92,21 +70,6 @@ Residence is a way of linking separate data for the same residence
 |streetAddress|String|no||
 |postalCode|String|yes||
 |city|String|yes||
-
-### JSON
-
-```json
-{
-  "address" : {
-    "streetAddress" : "Storgata 23",
-    "postalCode" : "0011",
-    "city" : "Oslo"
-  },
-  "source" : "boligmappa",
-  "externalId" : "externalId",
-  "type" : "Residence"
-}
-```
 
 ### XML
 

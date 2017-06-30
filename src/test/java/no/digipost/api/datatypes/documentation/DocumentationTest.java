@@ -33,7 +33,7 @@ public class DocumentationTest {
 
     @Test
     public void should_print_docs_for_test_data_type() throws IOException, JAXBException {
-        final String docs = new MarkdownPrinter(JAXBContext.newInstance(ShortTextMessage.class)).print(DocumentationStructureBuilder.<DataType>buildTypeStructure(
+        final String docs = new MarkdownPrinter(JAXBContext.newInstance(ShortTextMessage.class), true).print(DocumentationStructureBuilder.<DataType>buildTypeStructure(
             singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE).collect(toList()));
 
         assertThat(docs, is(new String(toByteArray(getClass().getResource("testdoc.md")), UTF_8)));

@@ -21,9 +21,11 @@ public class MarkdownPrinter {
 
 
     private final JAXBContext jaxb;
+    private final boolean printJsonExamples;
 
-    public MarkdownPrinter(JAXBContext jaxbContext) {
+    public MarkdownPrinter(JAXBContext jaxbContext, boolean printJsonExamples) {
         this.jaxb = jaxbContext;
+        this.printJsonExamples = printJsonExamples;
     }
 
 
@@ -50,7 +52,7 @@ public class MarkdownPrinter {
                 typeInfo.getDescription() + LLF +
                 heading(3, "Fields") + LLF +
                 printFields(typeInfo.getFields()) + LLF +
-                printJsonExample(typeInfo.getExample()) + LLF +
+                (this.printJsonExamples ? printJsonExample(typeInfo.getExample()) + LLF : "") +
                 printXmlExample(typeInfo.getExample());
     }
 
