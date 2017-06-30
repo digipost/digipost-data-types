@@ -62,8 +62,8 @@ public class Appointment implements DataType {
     List<Info> info;
 
     public static Appointment EXAMPLE = new Appointment(
-        ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.of("GMT+02:00")),
-            ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.of("GMT+02:00")),
+        ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
+            ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault()),
         "Oppmøte senest 15 minutter før timen",
         "Oslo City Røntgen",
          new Address("Storgata 23", "0011", "Oslo"),

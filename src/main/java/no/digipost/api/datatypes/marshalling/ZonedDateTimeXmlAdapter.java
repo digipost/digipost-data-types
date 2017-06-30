@@ -2,8 +2,9 @@ package no.digipost.api.datatypes.marshalling;
 
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Calendar;
+import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
 
 public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
@@ -20,8 +21,7 @@ public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
         if (s == null) {
             return null;
         }
-        Calendar parsed = DatatypeConverter.parseDate(s);
-        return ZonedDateTime.ofInstant(parsed.toInstant(), parsed.getTimeZone().toZoneId());
+        return ZonedDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(s)).withZoneSameInstant(ZoneId.systemDefault());
     }
 
 }

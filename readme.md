@@ -33,16 +33,16 @@ Appointment represents a meeting set for a specific place and time
 
 ```json
 {
-  "start-time" : "2017-06-27T10:00:00+02:00",
-  "end-time" : "2017-06-27T11:00:00+02:00",
-  "arrival-time" : "Oppmøte senest 15 minutter før timen",
+  "startTime" : "2017-06-27T10:00:00+02:00",
+  "endTime" : "2017-06-27T11:00:00+02:00",
+  "arrivalTime" : "Oppmøte senest 15 minutter før timen",
   "place" : "Oslo City Røntgen",
   "address" : {
-    "street-address" : "Storgata 23",
-    "postal-code" : "0011",
+    "streetAddress" : "Storgata 23",
+    "postalCode" : "0011",
     "city" : "Oslo"
   },
-  "sub-title" : "Undersøke smerter i ryggen",
+  "subTitle" : "Undersøke smerter i ryggen",
   "info" : [ {
     "title" : "Informasjon om Oslo City Røntgen",
     "text" : "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."
@@ -98,12 +98,12 @@ Residence is a way of linking separate data for the same residence
 ```json
 {
   "address" : {
-    "street-address" : "Storgata 23",
-    "postal-code" : "0011",
+    "streetAddress" : "Storgata 23",
+    "postalCode" : "0011",
     "city" : "Oslo"
   },
   "source" : "boligmappa",
-  "external-id" : "externalId",
+  "externalId" : "externalId",
   "type" : "Residence"
 }
 ```
