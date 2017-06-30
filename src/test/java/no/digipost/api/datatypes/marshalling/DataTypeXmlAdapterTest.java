@@ -31,8 +31,8 @@ public class DataTypeXmlAdapterTest {
     public void check_expected_marshalled_xmlstructure() throws Exception {
         DataType dt = Residence.EXAMPLE;
         String expectedXml = "<ns2:residence xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">" +
-                "<address><streetAddress>Storgata 23</streetAddress><postalCode>0011</postalCode><city>Oslo</city></address>" +
-                "<source>boligmappa</source><externalId>externalId</externalId></ns2:residence>";
+                "<address><street-address>Storgata 23</street-address><postal-code>0011</postal-code><city>Oslo</city></address>" +
+                "<source>boligmappa</source><external-id>externalId</external-id></ns2:residence>";
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");

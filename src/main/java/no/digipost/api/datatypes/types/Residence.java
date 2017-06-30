@@ -30,7 +30,7 @@ public class Residence implements DataType {
     @Size(max = 50)
     String source;
 
-    @XmlElement
+    @XmlElement(name = "external-id")
     @Valid
     @Size(max = 50)
     String externalId;

@@ -33,16 +33,16 @@ Appointment represents a meeting set for a specific place and time
 
 ```json
 {
-  "startTime" : "2017-06-27T10:00:00+02:00",
-  "endTime" : "2017-06-27T11:00:00+02:00",
-  "arrivalTime" : "Oppmøte senest 15 minutter før timen",
+  "start-time" : "2017-06-27T10:00:00+02:00",
+  "end-time" : "2017-06-27T11:00:00+02:00",
+  "arrival-time" : "Oppmøte senest 15 minutter før timen",
   "place" : "Oslo City Røntgen",
   "address" : {
-    "streetAddress" : "Storgata 23",
-    "postalCode" : "0011",
+    "street-address" : "Storgata 23",
+    "postal-code" : "0011",
     "city" : "Oslo"
   },
-  "subTitle" : "Undersøke smerter i ryggen",
+  "sub-title" : "Undersøke smerter i ryggen",
   "info" : [ {
     "title" : "Informasjon om Oslo City Røntgen",
     "text" : "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."
@@ -56,16 +56,16 @@ Appointment represents a meeting set for a specific place and time
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:appointment xmlns:ns2="http://api.digipost.no/schema/datatypes">
-    <startTime>2017-06-27T10:00:00+02:00</startTime>
-    <endTime>2017-06-27T11:00:00+02:00</endTime>
-    <arrivalTime>Oppmøte senest 15 minutter før timen</arrivalTime>
+    <start-time>2017-06-27T10:00:00+02:00</start-time>
+    <end-time>2017-06-27T11:00:00+02:00</end-time>
+    <arrival-time>Oppmøte senest 15 minutter før timen</arrival-time>
     <place>Oslo City Røntgen</place>
     <address>
-        <streetAddress>Storgata 23</streetAddress>
-        <postalCode>0011</postalCode>
+        <street-address>Storgata 23</street-address>
+        <postal-code>0011</postal-code>
         <city>Oslo</city>
     </address>
-    <subTitle>Undersøke smerter i ryggen</subTitle>
+    <sub-title>Undersøke smerter i ryggen</sub-title>
     <info>
         <title>Informasjon om Oslo City Røntgen</title>
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
@@ -98,12 +98,12 @@ Residence is a way of linking separate data for the same residence
 ```json
 {
   "address" : {
-    "streetAddress" : "Storgata 23",
-    "postalCode" : "0011",
+    "street-address" : "Storgata 23",
+    "postal-code" : "0011",
     "city" : "Oslo"
   },
   "source" : "boligmappa",
-  "externalId" : "externalId",
+  "external-id" : "externalId",
   "type" : "Residence"
 }
 ```
@@ -114,11 +114,11 @@ Residence is a way of linking separate data for the same residence
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:residence xmlns:ns2="http://api.digipost.no/schema/datatypes">
     <address>
-        <streetAddress>Storgata 23</streetAddress>
-        <postalCode>0011</postalCode>
+        <street-address>Storgata 23</street-address>
+        <postal-code>0011</postal-code>
         <city>Oslo</city>
     </address>
     <source>boligmappa</source>
-    <externalId>externalId</externalId>
+    <external-id>externalId</external-id>
 </ns2:residence>
 ```

@@ -27,16 +27,16 @@ import java.util.List;
 public class Appointment implements DataType {
 
 
-    @XmlElement(required = true)
+    @XmlElement(name = "start-time", required = true)
     @NotNull
     @Description("ISO8601 full DateTime")
     ZonedDateTime startTime;
 
-    @XmlElement
+    @XmlElement(name = "end-time")
     @Description("ISO8601 full DateTime. Default value 1 hour after startTime")
     ZonedDateTime endTime;
 
-    @XmlElement
+    @XmlElement(name = "arrival-time")
     @Description("Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early")
     @Size(max = 150)
     String arrivalTime;
@@ -50,7 +50,7 @@ public class Appointment implements DataType {
     @Valid
     Address address;
 
-    @XmlElement
+    @XmlElement(name = "sub-title")
     @Size(max = 140)
     @Description("Example: MR-undersøkelse av høyre kne")
     String subTitle;
