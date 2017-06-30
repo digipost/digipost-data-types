@@ -33,7 +33,7 @@ public class Appointment implements DataType {
     ZonedDateTime startTime;
 
     @XmlElement(name = "end-time")
-    @Description("ISO8601 full DateTime. Default value 1 hour after startTime")
+    @Description("ISO8601 full DateTime. Default value 30 minutes after startTime")
     ZonedDateTime endTime;
 
     @XmlElement(name = "arrival-time")

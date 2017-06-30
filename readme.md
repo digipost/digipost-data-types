@@ -14,7 +14,7 @@ Appointment represents a meeting set for a specific place and time
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |startTime|ZonedDateTime|yes|ISO8601 full DateTime|
-|endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 1 hour after startTime|
+|endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
 |address|[Address](#address)|no||
