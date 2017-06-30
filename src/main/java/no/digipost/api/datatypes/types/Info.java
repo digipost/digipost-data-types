@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Info {
 
     @XmlElement
-    @Size(max = 140)
+    @Size(max = 150)
     String title;
 
     @XmlElement

@@ -43,7 +43,7 @@ public class Appointment implements DataType {
 
     @XmlElement
     @Description("The name of the place. Example: Oslo City Røntgen")
-    @Size(max = 100)
+    @Size(max = 150)
     String place;
 
     @XmlElement
@@ -51,7 +51,7 @@ public class Appointment implements DataType {
     Address address;
 
     @XmlElement(name = "sub-title")
-    @Size(max = 140)
+    @Size(max = 150)
     @Description("Example: MR-undersøkelse av høyre kne")
     String subTitle;
 
