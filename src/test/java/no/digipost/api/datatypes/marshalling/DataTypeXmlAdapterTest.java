@@ -2,6 +2,7 @@ package no.digipost.api.datatypes.marshalling;
 
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.types.Appointment;
+import no.digipost.api.datatypes.types.DocumentType;
 import no.digipost.api.datatypes.types.Residence;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -43,6 +44,19 @@ public class DataTypeXmlAdapterTest {
     }
 
     @Test
+    public void check_expected_marshalled_xmlstructureForEnum() throws Exception {
+        DataType dt = DocumentType.EXAMPLE;
+        String expectedXml = "<ns2:documentType xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</ns2:documentType>";
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+        StringWriter writer = new StringWriter();
+        transformer.transform(new DOMSource(adapter.marshal(dt)), new StreamResult(writer));
+        String newXml = writer.toString();
+        Assert.assertEquals(expectedXml, newXml);
+    }
+
+    @Test
     public void check_expected_unmarshalled_javaobject() throws Exception {
         DataType originalDt = Residence.EXAMPLE;
         Element newElement = adapter.marshal(originalDt);
@@ -55,6 +69,12 @@ public class DataTypeXmlAdapterTest {
         DataType resultDt2 = adapter.unmarshal(newElement2);
 
         Assert.assertEquals(originalDt2, resultDt2);
+
+        DataType originalDt3 = DocumentType.EXAMPLE;
+        Element newElement3 = adapter.marshal(originalDt3);
+        DataType resultDt3 = adapter.unmarshal(newElement3);
+
+        Assert.assertEquals(originalDt3, resultDt3);
     }
 
     @Test

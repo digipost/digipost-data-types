@@ -3,6 +3,7 @@
 |Type|Description|
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
+|[DocumentType](#documenttype)|DocumentType is a way to specify which kind of data a document is related to.|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 
 ## Appointment
@@ -49,6 +50,23 @@ Appointment represents a meeting set for a specific place and time
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
     </info>
 </ns2:appointment>
+```
+
+## DocumentType
+
+DocumentType is a way to specify which kind of data a document is related to.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:documentType xmlns:ns2="http://api.digipost.no/schema/datatypes">RESIDENCE</ns2:documentType>
 ```
 
 ## Residence

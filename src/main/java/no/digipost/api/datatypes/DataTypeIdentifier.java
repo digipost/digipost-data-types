@@ -1,6 +1,7 @@
 package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.Appointment;
+import no.digipost.api.datatypes.types.DocumentType;
 import no.digipost.api.datatypes.types.Residence;
 
 import java.util.Map;
@@ -14,7 +15,7 @@ import static java.util.stream.Collectors.toMap;
 
 /**
  * HOWTO: Add new data type
- *
+ * <p>
  * 1. Create new data type enum in this class
  * 2. Create the class, annotate, implement the DataType interface (see Appointment.class for example)
  * 3. Add class with relative package name to jaxb.index
@@ -22,7 +23,8 @@ import static java.util.stream.Collectors.toMap;
  */
 public enum DataTypeIdentifier {
     APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
-    RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE);
+    RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
+    DOCUMENTTYPE(DocumentType.class, "DOCT", DocumentType.EXAMPLE);
 
     private final Class<? extends DataType> dataType;
     private final String shortName;
@@ -52,15 +54,15 @@ public enum DataTypeIdentifier {
 
     public static DataTypeIdentifier fromRepresentationType(final Class<? extends DataType> representation) {
         return ofNullable(byType.get(representation))
-            .orElseThrow(() -> new IllegalStateException(String.format(
-                "Could not find %s for type %s. All subtypes of %s must have a unique %s.",
-                DataTypeIdentifier.class.getSimpleName(), representation,
-                DataType.class.getSimpleName(), DataTypeIdentifier.class.getSimpleName())));
+                .orElseThrow(() -> new IllegalStateException(String.format(
+                        "Could not find %s for type %s. All subtypes of %s must have a unique %s.",
+                        DataTypeIdentifier.class.getSimpleName(), representation,
+                        DataType.class.getSimpleName(), DataTypeIdentifier.class.getSimpleName())));
     }
 
     public static DataTypeIdentifier fromShortName(final String shortName) {
         return Optional.ofNullable(byShortName.get(shortName))
-            .orElseThrow(() -> new IllegalArgumentException("No value for " + DataTypeIdentifier.class.getSimpleName() + " found for shortName " + shortName));
+                .orElseThrow(() -> new IllegalArgumentException("No value for " + DataTypeIdentifier.class.getSimpleName() + " found for shortName " + shortName));
     }
 
     public DataType getExample() {
