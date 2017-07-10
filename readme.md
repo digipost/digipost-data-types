@@ -60,6 +60,7 @@ Residence is a way of linking separate data for the same residence
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |address|[Address](#address)|yes||
+|matrikkel|[Matrikkel](#matrikkel)|yes||
 |source|String|no||
 |externalId|String|no||
 
@@ -69,7 +70,15 @@ Residence is a way of linking separate data for the same residence
 |----|----|--------|-----------|
 |streetAddress|String|no||
 |postalCode|String|yes||
-|city|String|yes||
+|city|String|yes||### Matrikkel
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|kommunenummer|String|yes||
+|gaardsnummer|String|yes||
+|bruksnummer|String|yes||
+|festenummer|String|no||
+|seksjonsnummer|String|no||
 
 ### XML
 
@@ -81,6 +90,13 @@ Residence is a way of linking separate data for the same residence
         <postal-code>0011</postal-code>
         <city>Oslo</city>
     </address>
+    <matrikkel>
+        <kommunenummer>0301</kommunenummer>
+        <gaardsnummer>208</gaardsnummer>
+        <bruksnummer>630</bruksnummer>
+        <festenummer>0</festenummer>
+        <seksjonsnummer>0</seksjonsnummer>
+    </matrikkel>
     <source>boligmappa</source>
     <external-id>externalId</external-id>
 </ns2:residence>
