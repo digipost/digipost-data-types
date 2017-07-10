@@ -24,7 +24,7 @@ import static java.util.stream.Collectors.toMap;
 public enum DataTypeIdentifier {
     APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
     RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
-    CATEGORY(Category.class, "CAT", Category.EXAMPLE);
+    CATEGORY(Category.class, "CAT", Category.RESIDENCE);
 
     private final Class<? extends DataType> dataType;
     private final String shortName;
