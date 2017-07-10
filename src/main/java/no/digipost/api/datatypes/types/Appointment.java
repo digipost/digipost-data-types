@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 @XmlRootElement
@@ -61,12 +61,21 @@ public class Appointment implements DataType {
     @Description("Additional sections of information (max 2) with a title and text")
     List<Info> info;
 
+    @XmlElement
+    @Description("Contact information, such as an email address, or a phone number")
+    @Size(max = 50)
+    String contactInformation;
+
     public static Appointment EXAMPLE = new Appointment(
-        ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-            ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault()),
-        "Oppmøte senest 15 minutter før timen",
-        "Oslo City Røntgen",
-         new Address("Storgata 23", "0011", "Oslo"),
-        "Undersøke smerter i ryggen", Collections.singletonList(
-                new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.")));
+                    ZonedDateTime.of(2017, 8, 4, 9, 30, 0, 0, ZoneId.systemDefault()),
+                    null,
+                    "Oppmøte senest 15 minutter før timen",
+                    "Oslo City Røntgen",
+                    new Address("Storgata 23", "0184", "Oslo"),
+                    "MR-undersøkelse av høyre kne", Arrays.asList(
+                    new Info("Forberedelse", "Husk å ta med gamle røntgen-bilder hvis du har dette tilgjengelig» eller informasjon om egenandel, veibeskrivelse, eller liknende"),
+                    new Info("Informasjon",
+                            "\n- Egenandel for undersøkelsen er kr.245,-, fritak for barn under 16 år og alle med frikort." +
+                                    "\n- CD med bilder av undersøkelsen koster kr.70,- pr stk.")),
+                    "kundesenter@unilabs.no");
 }
