@@ -55,14 +55,14 @@ public enum DataTypeIdentifier {
     public static DataTypeIdentifier fromRepresentationType(final Class<? extends DataType> representation) {
         return ofNullable(byType.get(representation))
             .orElseThrow(() -> new IllegalStateException(String.format(
-            "Could not find %s for type %s. All subtypes of %s must have a unique %s.",
-            DataTypeIdentifier.class.getSimpleName(), representation,
-            DataType.class.getSimpleName(), DataTypeIdentifier.class.getSimpleName())));
+                "Could not find %s for type %s. All subtypes of %s must have a unique %s.",
+                DataTypeIdentifier.class.getSimpleName(), representation,
+                DataType.class.getSimpleName(), DataTypeIdentifier.class.getSimpleName())));
     }
 
     public static DataTypeIdentifier fromShortName(final String shortName) {
         return Optional.ofNullable(byShortName.get(shortName))
-        .orElseThrow(() -> new IllegalArgumentException("No value for " + DataTypeIdentifier.class.getSimpleName() + " found for shortName " + shortName));
+            .orElseThrow(() -> new IllegalArgumentException("No value for " + DataTypeIdentifier.class.getSimpleName() + " found for shortName " + shortName));
     }
 
     public DataType getExample() {
