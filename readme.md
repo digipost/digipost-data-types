@@ -21,6 +21,7 @@ Appointment represents a meeting set for a specific place and time
 |address|[Address](#address)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
+|contactInformation|String|no|Contact information, such as an email address, or a phone number|
 
 ### Address
 
@@ -35,20 +36,26 @@ Appointment represents a meeting set for a specific place and time
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:appointment xmlns:ns2="http://api.digipost.no/schema/datatypes">
-    <start-time>2017-06-27T10:00:00+02:00</start-time>
-    <end-time>2017-06-27T11:00:00+02:00</end-time>
+    <start-time>2017-08-04T09:30:00+02:00</start-time>
     <arrival-time>Oppmøte senest 15 minutter før timen</arrival-time>
     <place>Oslo City Røntgen</place>
     <address>
         <street-address>Storgata 23</street-address>
-        <postal-code>0011</postal-code>
+        <postal-code>0184</postal-code>
         <city>Oslo</city>
     </address>
-    <sub-title>Undersøke smerter i ryggen</sub-title>
+    <sub-title>MR-undersøkelse av høyre kne</sub-title>
     <info>
-        <title>Informasjon om Oslo City Røntgen</title>
-        <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
+        <title>Forberedelse</title>
+        <text>Husk å ta med gamle røntgen-bilder hvis du har dette tilgjengelig» eller informasjon om egenandel, veibeskrivelse, eller liknende</text>
     </info>
+    <info>
+        <title>Informasjon</title>
+        <text>
+- Egenandel for undersøkelsen er kr.245,-, fritak for barn under 16 år og alle med frikort.
+- CD med bilder av undersøkelsen koster kr.70,- pr stk.</text>
+    </info>
+    <contactInformation>kundesenter@unilabs.no</contactInformation>
 </ns2:appointment>
 ```
 
