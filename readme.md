@@ -70,7 +70,9 @@ Residence is a way of linking separate data for the same residence
 |----|----|--------|-----------|
 |streetAddress|String|no||
 |postalCode|String|yes||
-|city|String|yes||### Matrikkel
+|city|String|yes||
+
+### Matrikkel
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
