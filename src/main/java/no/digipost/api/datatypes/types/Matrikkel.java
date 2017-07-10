@@ -28,7 +28,7 @@ public class Matrikkel {
     @XmlElement(required = true)
     @Valid
     @NotNull
-    @Size(max = 3)
+    @Size(max = 4)
     String gaardsnummer;
 
     @XmlElement(required = true)
@@ -39,12 +39,12 @@ public class Matrikkel {
 
     @XmlElement()
     @Valid
-    @Size(max = 2)
+    @Size(max = 4)
     String festenummer;
 
     @XmlElement()
     @Valid
-    @Size(max = 2)
+    @Size(max = 4)
     String seksjonsnummer;
 
 }
