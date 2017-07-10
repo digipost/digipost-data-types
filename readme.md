@@ -3,7 +3,7 @@
 |Type|Description|
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
-|[DocumentCategory](#documentcategory)|DocumentCategory is a way to specify which category the data of a document is related to.|
+|[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 
 ## Appointment
@@ -52,9 +52,9 @@ Appointment represents a meeting set for a specific place and time
 </ns2:appointment>
 ```
 
-## DocumentCategory
+## Category
 
-DocumentCategory is a way to specify which category the data of a document is related to.
+Category is a way to specify which category the data of a document is related to.
 
 ### Fields
 
@@ -66,7 +66,7 @@ DocumentCategory is a way to specify which category the data of a document is re
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:documentCategory xmlns:ns2="http://api.digipost.no/schema/datatypes">RESIDENCE</ns2:documentCategory>
+<ns2:category xmlns:ns2="http://api.digipost.no/schema/datatypes">RESIDENCE</ns2:category>
 ```
 
 ## Residence

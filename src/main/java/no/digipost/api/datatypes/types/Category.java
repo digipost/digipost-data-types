@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlEnum
-@Description("DocumentCategory is a way to specify which category the data of a document is related to.")
-public enum DocumentCategory implements DataType {
+@Description("Category is a way to specify which category the data of a document is related to.")
+public enum Category implements DataType {
     RESIDENCE;
 
-    public static DocumentCategory EXAMPLE = DocumentCategory.RESIDENCE;
+    public static Category EXAMPLE = Category.RESIDENCE;
 }

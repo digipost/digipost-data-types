@@ -2,7 +2,7 @@ package no.digipost.api.datatypes.marshalling;
 
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.types.Appointment;
-import no.digipost.api.datatypes.types.DocumentCategory;
+import no.digipost.api.datatypes.types.Category;
 import no.digipost.api.datatypes.types.Residence;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -45,8 +45,8 @@ public class DataTypeXmlAdapterTest {
 
     @Test
     public void check_expected_marshalled_xmlstructureForEnum() throws Exception {
-        DataType dt = DocumentCategory.EXAMPLE;
-        String expectedXml = "<ns2:documentCategory xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</ns2:documentCategory>";
+        DataType dt = Category.EXAMPLE;
+        String expectedXml = "<ns2:category xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</ns2:category>";
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
@@ -70,7 +70,7 @@ public class DataTypeXmlAdapterTest {
 
         Assert.assertEquals(originalDt2, resultDt2);
 
-        DataType originalDt3 = DocumentCategory.EXAMPLE;
+        DataType originalDt3 = Category.EXAMPLE;
         Element newElement3 = adapter.marshal(originalDt3);
         DataType resultDt3 = adapter.unmarshal(newElement3);
 
