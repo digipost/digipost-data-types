@@ -1,7 +1,7 @@
 package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.Appointment;
-import no.digipost.api.datatypes.types.DocumentType;
+import no.digipost.api.datatypes.types.DocumentCategory;
 import no.digipost.api.datatypes.types.Residence;
 
 import java.util.Map;
@@ -24,7 +24,7 @@ import static java.util.stream.Collectors.toMap;
 public enum DataTypeIdentifier {
     APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
     RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
-    DOCUMENTTYPE(DocumentType.class, "DOCT", DocumentType.EXAMPLE);
+    DOCUMENTCATEGORY(DocumentCategory.class, "DOCCAT", DocumentCategory.EXAMPLE);
 
     private final Class<? extends DataType> dataType;
     private final String shortName;
