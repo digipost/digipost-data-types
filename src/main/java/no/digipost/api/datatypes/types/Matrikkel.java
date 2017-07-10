@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
-import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,7 +15,6 @@ import javax.xml.bind.annotation.XmlType;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Description("")
 public class Matrikkel {
 
     @XmlElement(required = true)
