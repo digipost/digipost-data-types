@@ -60,7 +60,7 @@ Category is a way to specify which category the data of a document is related to
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-
+|category|String|no||
 
 ### XML
 
