@@ -28,6 +28,6 @@ public class Category implements DataType {
     }
 
     public static Category RESIDENCE = new Category("RESIDENCE");
-    public static Category EXAMPLE = new Category("EXAMPLE");
+    public static Category EXAMPLE = RESIDENCE;
 
 }
