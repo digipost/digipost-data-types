@@ -58,15 +58,16 @@ Category is a way to specify which category the data of a document is related to
 
 ### Fields
 
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-
+|Name|
+|----|
+|EXAMPLE|
+|RESIDENCE|
 
 ### XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:category xmlns:ns2="http://api.digipost.no/schema/datatypes">RESIDENCE</ns2:category>
+<ns2:category xmlns:ns2="http://api.digipost.no/schema/datatypes">EXAMPLE</ns2:category>
 ```
 
 ## Residence

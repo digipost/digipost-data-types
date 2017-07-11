@@ -46,7 +46,7 @@ public class DataTypeXmlAdapterTest {
     @Test
     public void check_expected_marshalled_xmlstructureForEnum() throws Exception {
         DataType dt = Category.EXAMPLE;
-        String expectedXml = "<ns2:category xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</ns2:category>";
+        String expectedXml = "<ns2:category xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">EXAMPLE</ns2:category>";
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
