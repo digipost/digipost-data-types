@@ -25,7 +25,9 @@ Appointment represents a meeting set for a specific place and time
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|streetAddress|String|no||
+|dwellingNumber|String|no|Bolignummer. Must be of format [UKHL]0000. Ex H0304|
+|houseNumber|String|no|The house number. One uppercase letter. Ex A|
+|streetAddress|String|yes||
 |postalCode|String|yes||
 |city|String|yes||
 
@@ -60,7 +62,7 @@ Residence is a way of linking separate data for the same residence
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |address|[Address](#address)|yes||
-|matrikkel|[Matrikkel](#matrikkel)|yes||
+|matrikkel|[Matrikkel](#matrikkel)|no||
 |source|String|no||
 |externalId|String|no||
 
@@ -68,7 +70,9 @@ Residence is a way of linking separate data for the same residence
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|streetAddress|String|no||
+|dwellingNumber|String|no|Bolignummer. Must be of format [UKHL]0000. Ex H0304|
+|houseNumber|String|no|The house number. One uppercase letter. Ex A|
+|streetAddress|String|yes||
 |postalCode|String|yes||
 |city|String|yes||
 

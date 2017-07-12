@@ -10,12 +10,40 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.regex.Pattern;
 
 @XmlType
 @Value
-@AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 public class Matrikkel {
+
+    public Matrikkel(String kommunenummer, String gaardsnummer, String bruksnummer) {
+        this(kommunenummer,gaardsnummer,bruksnummer, "0", "0");
+    }
+
+    public Matrikkel(String kommunenummer, String gaardsnummer, String bruksnummer, String festenummer, String seksjonsnummer) {
+        if (!Pattern.matches("\\d{4}", kommunenummer)) {
+            throw new IllegalArgumentException("Kommunenummer must be 4 digits");
+        }
+        if (!Pattern.matches("\\d+", gaardsnummer)) {
+            throw new IllegalArgumentException("Gaardsnummer can only be digits");
+        }
+        if (!Pattern.matches("\\d+", bruksnummer)) {
+            throw new IllegalArgumentException("Bruksnummer can only be digits");
+        }
+        if (!Pattern.matches("\\d+", festenummer)) {
+            throw new IllegalArgumentException("Festenummer can only be digits");
+        }
+        if (!Pattern.matches("\\d+", seksjonsnummer)) {
+            throw new IllegalArgumentException("Seksjonsnummer can only be digits");
+        }
+
+        this.kommunenummer = kommunenummer;
+        this.gaardsnummer = gaardsnummer;
+        this.bruksnummer = bruksnummer;
+        this.festenummer = festenummer;
+        this.seksjonsnummer = seksjonsnummer;
+    }
 
     @XmlElement(required = true)
     @Valid
@@ -32,17 +60,14 @@ public class Matrikkel {
     @XmlElement(required = true)
     @Valid
     @NotNull
-    @Size(max = 4)
     String bruksnummer;
 
     @XmlElement()
     @Valid
-    @Size(max = 4)
     String festenummer;
 
     @XmlElement()
     @Valid
-    @Size(max = 4)
     String seksjonsnummer;
 
 }
