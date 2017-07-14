@@ -26,8 +26,7 @@ public class AppointmentAddress {
         this.city = city;
     }
 
-    @XmlElement(name = "street-address", required = true)
-    @NotNull
+    @XmlElement(name = "street-address")
     @Size(max = 100)
     @Description("E.g. Storgata 11")
     String streetAddress;
