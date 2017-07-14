@@ -33,7 +33,7 @@ public class ResidenceAddress {
             throw new IllegalArgumentException("Illegal house number. Please see description for this field.");
         }
 
-        if (! Pattern.matches("^[a-zA-ZæøåÆØÅ\\s]+$", streetName)) {
+        if (! Pattern.matches("^[a-zA-ZæøåÆØÅ ]+$", streetName)) {
             throw new IllegalArgumentException("Illegal Streetname. Can only contain letters and spaces");
         }
 
