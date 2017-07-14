@@ -18,15 +18,15 @@ Appointment represents a meeting set for a specific place and time
 |endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
-|address|[Address](#address)|no||
+|address|[AppointmentAddress](#appointmentaddress)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
 
-### Address
+### AppointmentAddress
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|streetAddress|String|no||
+|streetAddress|String|no|E.g. Storgata 11|
 |postalCode|String|yes||
 |city|String|yes||
 
@@ -77,17 +77,30 @@ Residence is a way of linking separate data for the same residence
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|address|[Address](#address)|yes||
+|address|[ResidenceAddress](#residenceaddress)|yes||
+|matrikkel|[Matrikkel](#matrikkel)|no||
 |source|String|no||
 |externalId|String|no||
 
-### Address
+### ResidenceAddress
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|streetAddress|String|no||
+|unitNumber|String|no|Bolignummer. Must be of format [UKHL]0000. E.g. H0304|
+|houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
+|streetName|String|yes|The name of the street. E.g. Storgata|
 |postalCode|String|yes||
 |city|String|yes||
+
+### Matrikkel
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|kommunenummer|String|yes||
+|gaardsnummer|String|yes||
+|bruksnummer|String|yes||
+|festenummer|String|no||
+|seksjonsnummer|String|no||
 
 ### XML
 
@@ -95,10 +108,18 @@ Residence is a way of linking separate data for the same residence
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:residence xmlns:ns2="http://api.digipost.no/schema/datatypes">
     <address>
-        <street-address>Storgata 23</street-address>
+        <house-number>23</house-number>
+        <street-name>Storgata</street-name>
         <postal-code>0011</postal-code>
         <city>Oslo</city>
     </address>
+    <matrikkel>
+        <kommunenummer>0301</kommunenummer>
+        <gaardsnummer>208</gaardsnummer>
+        <bruksnummer>630</bruksnummer>
+        <festenummer>0</festenummer>
+        <seksjonsnummer>0</seksjonsnummer>
+    </matrikkel>
     <source>boligmappa</source>
     <external-id>externalId</external-id>
 </ns2:residence>

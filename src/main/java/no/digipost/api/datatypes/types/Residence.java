@@ -23,7 +23,11 @@ public class Residence implements DataType {
     @XmlElement(required = true)
     @NotNull
     @Valid
-    Address address;
+    ResidenceAddress address;
+
+    @XmlElement
+    @Valid
+    Matrikkel matrikkel;
 
     @XmlElement
     @Valid
@@ -35,6 +39,8 @@ public class Residence implements DataType {
     @Size(max = 50)
     String externalId;
 
-    public static  Residence EXAMPLE = new Residence(
-            new Address("Storgata 23", "0011", "Oslo"), "boligmappa", "externalId");
+    public static Residence EXAMPLE = new Residence(
+            new ResidenceAddress("23","Storgata", "0011", "Oslo"),
+            new Matrikkel("0301", "208", "630", "0", "0"),
+            "boligmappa", "externalId");
 }
