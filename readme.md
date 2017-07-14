@@ -25,7 +25,7 @@ Appointment represents a meeting set for a specific place and time
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|streetAddress|String|yes|E.g. Storgata 11|
+|streetAddress|String|no|E.g. Storgata 11|
 |postalCode|String|yes||
 |city|String|yes||
 
