@@ -47,7 +47,7 @@ public class ResidenceAddress {
 
     @XmlElement(name = "unit-number")
     @Size(max = 5)
-    @Description("Bolignummer. Must be of format [UKHL]0000. Ex H0304")
+    @Description("Bolignummer. Must be of format [UKHL]0000. E.g. H0304")
     String unitNumber;
 
     @XmlElement(name = "house-number")

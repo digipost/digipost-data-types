@@ -68,7 +68,7 @@ Residence is a way of linking separate data for the same residence
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|unitNumber|String|no|Bolignummer. Must be of format [UKHL]0000. Ex H0304|
+|unitNumber|String|no|Bolignummer. Must be of format [UKHL]0000. E.g. H0304|
 |houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
 |streetName|String|yes|The name of the street. E.g. Storgata|
 |postalCode|String|yes||
