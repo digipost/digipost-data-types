@@ -5,6 +5,7 @@
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
+|[ResidenceDetails](#residencedetails)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 
 ## Appointment
 
@@ -90,9 +91,7 @@ Residence is a way of linking separate data for the same residence
 |houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
 |streetName|String|yes|The name of the street. E.g. Storgata|
 |postalCode|String|yes||
-|city|String|yes||
-
-### Matrikkel
+|city|String|yes||### Matrikkel
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -123,4 +122,56 @@ Residence is a way of linking separate data for the same residence
     <source>boligmappa</source>
     <external-id>externalId</external-id>
 </ns2:residence>
+```
+
+## ResidenceDetails
+
+Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|hjemmelshavere|List|no|List of people with legal rights associated with the residence|
+|bruksareal|Double|no|BRA for bolig|
+|antallOppholdsrom|Integer|no|Number of rooms, bathroom, kitchen and storage rooms excluded|
+|antallBaderom|Integer|no|Number of bathrooms|
+|salesHistory|List|no|Previous sales and transactions|
+|info|[Info](#info)|no|An additional section of information, consisting of a title- and text-field|
+|source|String|no||
+|externalId|String|no||
+
+### Info
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|title|String|no||
+|text|String|no||
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:residenceDetails xmlns:ns2="http://api.digipost.no/schema/datatypes">
+    <hjemmelshavere>
+        <name>Gunnar Gunnersen</name>
+        <email>gunnargunnar@gunn.ar</email>
+    </hjemmelshavere>
+    <bruksareal>59.0</bruksareal>
+    <antall-oppholdsrom>3</antall-oppholdsrom>
+    <antall-baderom>4</antall-baderom>
+    <sales-history>
+        <start-time>2017-07-27T10:00:00+02:00</start-time>
+        <description>Privat salg av sekundærbolig</description>
+        <amount>12345678</amount>
+        <seller>Bill Isalg</seller>
+        <buyer>Cooper Coopersen</buyer>
+    </sales-history>
+    <info>
+        <title>En spesiell bolig</title>
+        <text>Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen.</text>
+    </info>
+    <source>boligmappa</source>
+    <external-id>externalId</external-id>
+</ns2:residenceDetails>
 ```
