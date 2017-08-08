@@ -4,6 +4,7 @@
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
+|[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 
 ## Appointment
@@ -69,6 +70,36 @@ Category is a way to specify which category the data of a document is related to
 <ns2:category xmlns:ns2="http://api.digipost.no/schema/datatypes">RESIDENCE</ns2:category>
 ```
 
+## ExternalLink
+
+An external URL, along with an optional description and deadline for resources such as a survey.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|uuid|String|yes||
+|url|String|yes||
+|deadline|ZonedDateTime|no|ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.|
+|description|String|no|A short, optional text-field, describing the external url.|
+|buttonText|String|no|The text which will be displayed on the button which links the user to the url-field.|
+|urlIsActive|Boolean|no|A status indicating whether the button and URL will be available to the user or not.|
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:externalLink xmlns:ns2="http://api.digipost.no/schema/datatypes">
+    <uuid>febab962-77c5-47dd-a679-4f8d9f6f231b</uuid>
+    <url>https://www.digipost.no</url>
+    <deadline>2017-09-09T13:37:00+02:00</deadline>
+    <description>Lenke til vår hovedside.</description>
+    <button-text>Gå til Digipost</button-text>
+    <url-is-active>true</url-is-active>
+    <expired>false</expired>
+</ns2:externalLink>
+```
+
 ## Residence
 
 Residence is a way of linking separate data for the same residence
@@ -90,9 +121,7 @@ Residence is a way of linking separate data for the same residence
 |houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
 |streetName|String|yes|The name of the street. E.g. Storgata|
 |postalCode|String|yes||
-|city|String|yes||
-
-### Matrikkel
+|city|String|yes||### Matrikkel
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
