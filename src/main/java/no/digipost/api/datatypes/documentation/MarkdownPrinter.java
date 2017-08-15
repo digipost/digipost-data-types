@@ -91,7 +91,7 @@ public class MarkdownPrinter {
     }
 
     private String printFields(List<FieldInfo> fields) {
-        final String subTypes = fields.stream().map(FieldInfo::getType).filter(FieldType::isComplex).map(t -> (ComplexType) t).map(this::printTypeInfo).collect(joining());
+        final String subTypes = fields.stream().map(FieldInfo::getType).filter(FieldType::isComplex).map(t -> (ComplexType) t).map(this::printTypeInfo).collect(joining(LLF));
         return    "|Name|Type|Required|Description|" + LF +
                 "|----|----|--------|-----------|" + LF +
                 fields.stream().map(this::printField).collect(joining(LF)) +
