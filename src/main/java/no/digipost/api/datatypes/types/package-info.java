@@ -1,4 +1,4 @@
-@XmlSchema(namespace = DIGIPOST_DATATYPES_NAMESPACE)
+@XmlSchema(namespace = DIGIPOST_DATATYPES_NAMESPACE, elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 package no.digipost.api.datatypes.types;

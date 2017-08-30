@@ -31,10 +31,10 @@ public class DataTypeXmlAdapterTest {
     @Test
     public void check_expected_marshalled_xmlstructure() throws Exception {
         DataType dt = Residence.EXAMPLE;
-        String expectedXml = "<ns2:residence xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">" +
+        String expectedXml = "<residence xmlns=\"http://api.digipost.no/schema/datatypes\">" +
                 "<address><house-number>23</house-number><street-name>Storgata</street-name><postal-code>0011</postal-code><city>Oslo</city></address>" +
                 "<matrikkel><kommunenummer>0301</kommunenummer><gaardsnummer>208</gaardsnummer><bruksnummer>630</bruksnummer><festenummer>0</festenummer><seksjonsnummer>0</seksjonsnummer></matrikkel>" +
-                "<source>boligmappa</source><external-id>externalId</external-id></ns2:residence>";
+                "<source>boligmappa</source><external-id>externalId</external-id></residence>";
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
@@ -47,7 +47,7 @@ public class DataTypeXmlAdapterTest {
     @Test
     public void check_expected_marshalled_xmlstructureForEnum() throws Exception {
         DataType dt = Category.EXAMPLE;
-        String expectedXml = "<ns2:category xmlns:ns2=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</ns2:category>";
+        String expectedXml = "<category xmlns=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</category>";
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");

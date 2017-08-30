@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>digipost-data-types</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.5-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <description>Data types for Digipost Messages</description>
 
@@ -51,6 +51,7 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <version>1.3</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
