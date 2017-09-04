@@ -90,11 +90,11 @@ An external URL, along with an optional description and deadline for resources s
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:externalLink xmlns:ns2="http://api.digipost.no/schema/datatypes">
-    <uuid>febab962-77c5-47dd-a679-4f8d9f6f231b</uuid>
-    <url>https://www.digipost.no</url>
-    <deadline>2017-09-09T13:37:00+02:00</deadline>
-    <description>Lenke til vår hovedside.</description>
-    <button-text>Gå til Digipost</button-text>
+    <uuid>ee7018db-155f-456f-aac9-301a3c0092b5</uuid>
+    <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
+    <deadline>2017-09-30T13:37:00+02:00</deadline>
+    <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
+    <button-text>Svar på barnehageplass</button-text>
     <url-is-active>true</url-is-active>
     <expired>false</expired>
 </ns2:externalLink>

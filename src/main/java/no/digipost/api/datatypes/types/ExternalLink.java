@@ -53,7 +53,7 @@ public class ExternalLink implements DataType {
         return this.deadline != null && this.deadline.isBefore(ZonedDateTime.now());
     }
 
-    public static ExternalLink EXAMPLE = new ExternalLink(UUID.randomUUID().toString(), "https://www.digipost.no",
-            ZonedDateTime.of(2017, 9, 9, 13, 37, 0, 0, ZoneId.systemDefault()),
-            "Lenke til vår hovedside.", "Gå til Digipost", Boolean.TRUE);
+    public static ExternalLink EXAMPLE = new ExternalLink(UUID.randomUUID().toString(), "https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/",
+            ZonedDateTime.of(2017, 9, 30, 13, 37, 0, 0, ZoneId.systemDefault()),
+            "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass", Boolean.TRUE);
 }
