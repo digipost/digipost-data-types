@@ -65,7 +65,7 @@ public class ResidenceDetails implements DataType {
 
     public static ResidenceDetails EXAMPLE = new ResidenceDetails(
             Collections.singletonList(new Person("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
-            59.0, 3, 4,
+            59, 3, 4,
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
                             "Privat salg av sekundærbolig", 12345678L, "Bill Isalg", "Cooper Coopersen")),
             new Info("En spesiell bolig", "Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen."),

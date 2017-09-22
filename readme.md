@@ -91,7 +91,9 @@ Residence is a way of linking separate data for the same residence
 |houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
 |streetName|String|yes|The name of the street. E.g. Storgata|
 |postalCode|String|yes||
-|city|String|yes||### Matrikkel
+|city|String|yes||
+
+### Matrikkel
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -133,7 +135,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |hjemmelshavere|List|no|List of people with legal rights associated with the residence|
-|bruksareal|Double|no|BRA for bolig|
+|bruksareal|Integer|no|BRA for bolig|
 |antallOppholdsrom|Integer|no|Number of rooms, bathroom, kitchen and storage rooms excluded|
 |antallBaderom|Integer|no|Number of bathrooms|
 |salesHistory|List|no|Previous sales and transactions|
@@ -152,12 +154,12 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:residenceDetails xmlns:ns2="http://api.digipost.no/schema/datatypes">
+<residenceDetails xmlns="http://api.digipost.no/schema/datatypes">
     <hjemmelshavere>
         <name>Gunnar Gunnersen</name>
         <email>gunnargunnar@gunn.ar</email>
     </hjemmelshavere>
-    <bruksareal>59.0</bruksareal>
+    <bruksareal>59</bruksareal>
     <antall-oppholdsrom>3</antall-oppholdsrom>
     <antall-baderom>4</antall-baderom>
     <sales-history>
@@ -173,5 +175,5 @@ Details about a Residence, and may be joined with Residence to retrieve the core
     </info>
     <source>boligmappa</source>
     <external-id>externalId</external-id>
-</ns2:residenceDetails>
+</residenceDetails>
 ```
