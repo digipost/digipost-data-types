@@ -35,7 +35,7 @@ Appointment represents a meeting set for a specific place and time
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:appointment xmlns:ns2="http://api.digipost.no/schema/datatypes">
+<appointment xmlns="http://api.digipost.no/schema/datatypes">
     <start-time>2017-06-27T10:00:00+02:00</start-time>
     <end-time>2017-06-27T11:00:00+02:00</end-time>
     <arrival-time>Oppmøte senest 15 minutter før timen</arrival-time>
@@ -50,7 +50,7 @@ Appointment represents a meeting set for a specific place and time
         <title>Informasjon om Oslo City Røntgen</title>
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
     </info>
-</ns2:appointment>
+</appointment>
 ```
 
 ## Category
@@ -67,7 +67,7 @@ Category is a way to specify which category the data of a document is related to
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:category xmlns:ns2="http://api.digipost.no/schema/datatypes">RESIDENCE</ns2:category>
+<category xmlns="http://api.digipost.no/schema/datatypes">RESIDENCE</category>
 ```
 
 ## Residence
@@ -105,7 +105,7 @@ Residence is a way of linking separate data for the same residence
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:residence xmlns:ns2="http://api.digipost.no/schema/datatypes">
+<residence xmlns="http://api.digipost.no/schema/datatypes">
     <address>
         <house-number>23</house-number>
         <street-name>Storgata</street-name>
@@ -121,7 +121,7 @@ Residence is a way of linking separate data for the same residence
     </matrikkel>
     <source>boligmappa</source>
     <external-id>externalId</external-id>
-</ns2:residence>
+</residence>
 ```
 
 ## ResidenceDetails
