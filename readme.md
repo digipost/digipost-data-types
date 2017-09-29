@@ -138,10 +138,14 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksareal|Integer|no|BRA for bolig|
 |antallOppholdsrom|Integer|no|Number of rooms, bathroom, kitchen and storage rooms excluded|
 |antallBaderom|Integer|no|Number of bathrooms|
-|salesHistory|List|no|Previous sales and transactions|
+|omsetningshistorikk|List|no|Previous sales and transactions|
 |info|[Info](#info)|no|An additional section of information, consisting of a title- and text-field|
 |source|String|no||
 |externalId|String|no||
+|organisasjonsnummer|String|no||
+|bruksenhet|String|no||
+|andelsnummer|Long|no||
+|heftelse|List|no||
 
 ### Info
 
@@ -162,18 +166,26 @@ Details about a Residence, and may be joined with Residence to retrieve the core
     <bruksareal>59</bruksareal>
     <antall-oppholdsrom>3</antall-oppholdsrom>
     <antall-baderom>4</antall-baderom>
-    <sales-history>
+    <omsetningshistorikk>
         <start-time>2017-07-27T10:00:00+02:00</start-time>
         <description>Privat salg av sekundærbolig</description>
         <amount>12345678</amount>
         <seller>Bill Isalg</seller>
         <buyer>Cooper Coopersen</buyer>
-    </sales-history>
+    </omsetningshistorikk>
     <info>
         <title>En spesiell bolig</title>
         <text>Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen.</text>
     </info>
     <source>boligmappa</source>
     <external-id>externalId</external-id>
+    <organisasjonsnummer>123456789</organisasjonsnummer>
+    <bruksenhet>H1337</bruksenhet>
+    <andelsnummer>42</andelsnummer>
+    <heftelse>
+        <panthaver>TNT ASA</panthaver>
+        <type-pant>Pantedokument</type-pant>
+        <beloep>3000000000</beloep>
+    </heftelse>
 </residenceDetails>
 ```

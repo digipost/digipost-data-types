@@ -43,9 +43,9 @@ public class ResidenceDetails implements DataType {
     @Description("Number of bathrooms")
     Integer antallBaderom;
 
-    @XmlElement(name = "sales-history")
+    @XmlElement(name = "omsetningshistorikk")
     @Description("Previous sales and transactions")
-    List<Omsetningshistorikk> salesHistory;
+    List<Omsetningshistorikk> omsetningshistorikk;
 
     @XmlElement
     @Valid
@@ -62,6 +62,22 @@ public class ResidenceDetails implements DataType {
     @Size(max = 50)
     String externalId;
 
+    // Validering?
+    @XmlElement
+    @Size(max = 20)
+    String organisasjonsnummer;
+
+    @XmlElement
+    @Size(max = 10)
+    // Validering: "H0101"
+    String bruksenhet;
+
+    @XmlElement
+    // validering?
+    Long andelsnummer;
+
+    @XmlElement
+    List<Heftelse> heftelse;
 
     public static ResidenceDetails EXAMPLE = new ResidenceDetails(
             Collections.singletonList(new Person("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
@@ -69,5 +85,7 @@ public class ResidenceDetails implements DataType {
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
                             "Privat salg av sekundærbolig", 12345678L, "Bill Isalg", "Cooper Coopersen")),
             new Info("En spesiell bolig", "Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen."),
-            "boligmappa", "externalId");
+            "boligmappa", "externalId",
+            "123456789", "H1337", 42L,
+            Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", 3000000000L)));
 }
