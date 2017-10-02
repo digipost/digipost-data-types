@@ -1,5 +1,7 @@
 package no.digipost.api.datatypes.validation;
 
+import no.digipost.api.datatypes.DataType;
+import no.digipost.api.datatypes.DataTypeIdentifier;
 import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.AppointmentAddress;
 import org.hamcrest.Matchers;
@@ -11,7 +13,9 @@ import java.util.stream.Stream;
 
 import static co.unruly.matchers.Java8Matchers.where;
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
@@ -57,5 +61,14 @@ public class DataTypesValidatorTest {
     @Test
     public void testSuccessfulValidation() {
         validator.validateOrThrow(Appointment.EXAMPLE, __ -> new RuntimeException("Skulle ikke feilet"));
+    }
+
+    @Test
+    public void testValidationOfAllExamples() {
+        final Stream<DataTypesValidationError<DataType>> results =
+                Stream.of(DataTypeIdentifier.values())
+                        .map(DataTypeIdentifier::getExample)
+                        .flatMap(validator::validate);
+        assertThat(results.collect(toList()), is(empty()));
     }
 }
