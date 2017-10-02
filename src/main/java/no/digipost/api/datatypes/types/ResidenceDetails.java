@@ -8,6 +8,7 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
@@ -23,6 +24,10 @@ import java.util.List;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Description("Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.")
 public class ResidenceDetails implements DataType {
+
+    @XmlElement
+    @NotNull
+    Residence residence;
 
     @XmlElement
     @Description("List of people with legal rights associated with the residence")
@@ -52,16 +57,6 @@ public class ResidenceDetails implements DataType {
     @Description("An additional section of information, consisting of a title- and text-field")
     Info info;
 
-    @XmlElement
-    @Valid
-    @Size(max = 50)
-    String source;
-
-    @XmlElement(name = "external-id")
-    @Valid
-    @Size(max = 50)
-    String externalId;
-
     // Validering?
     @XmlElement
     @Size(max = 20)
@@ -79,13 +74,12 @@ public class ResidenceDetails implements DataType {
     @XmlElement
     List<Heftelse> heftelse;
 
-    public static ResidenceDetails EXAMPLE = new ResidenceDetails(
+    public static ResidenceDetails EXAMPLE = new ResidenceDetails(Residence.EXAMPLE,
             Collections.singletonList(new Person("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
             59, 3, 4,
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
                             "Privat salg av sekundærbolig", 12345678L, "Bill Isalg", "Cooper Coopersen")),
             new Info("En spesiell bolig", "Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen."),
-            "boligmappa", "externalId",
             "123456789", "H1337", 42L,
             Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", 3000000000L)));
 }

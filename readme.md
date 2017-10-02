@@ -134,18 +134,46 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
+|residence|[Residence](#residence)|yes||
 |hjemmelshavere|List|no|List of people with legal rights associated with the residence|
 |bruksareal|Integer|no|BRA for bolig|
 |antallOppholdsrom|Integer|no|Number of rooms, bathroom, kitchen and storage rooms excluded|
 |antallBaderom|Integer|no|Number of bathrooms|
 |omsetningshistorikk|List|no|Previous sales and transactions|
 |info|[Info](#info)|no|An additional section of information, consisting of a title- and text-field|
-|source|String|no||
-|externalId|String|no||
 |organisasjonsnummer|String|no||
 |bruksenhet|String|no||
 |andelsnummer|Long|no||
 |heftelse|List|no||
+
+### Residence
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|address|[ResidenceAddress](#residenceaddress)|yes||
+|matrikkel|[Matrikkel](#matrikkel)|no||
+|source|String|no||
+|externalId|String|no||
+
+### ResidenceAddress
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|unitNumber|String|no|Bolignummer. Must be of format [UKHL]0000. E.g. H0304|
+|houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
+|streetName|String|yes|The name of the street. E.g. Storgata|
+|postalCode|String|yes||
+|city|String|yes||
+
+### Matrikkel
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|kommunenummer|String|yes||
+|gaardsnummer|String|yes||
+|bruksnummer|String|yes||
+|festenummer|String|no||
+|seksjonsnummer|String|no||
 
 ### Info
 
@@ -159,6 +187,23 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <residenceDetails xmlns="http://api.digipost.no/schema/datatypes">
+    <residence>
+        <address>
+            <house-number>23</house-number>
+            <street-name>Storgata</street-name>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+        </address>
+        <matrikkel>
+            <kommunenummer>0301</kommunenummer>
+            <gaardsnummer>208</gaardsnummer>
+            <bruksnummer>630</bruksnummer>
+            <festenummer>0</festenummer>
+            <seksjonsnummer>0</seksjonsnummer>
+        </matrikkel>
+        <source>boligmappa</source>
+        <external-id>externalId</external-id>
+    </residence>
     <hjemmelshavere>
         <name>Gunnar Gunnersen</name>
         <email>gunnargunnar@gunn.ar</email>
@@ -177,8 +222,6 @@ Details about a Residence, and may be joined with Residence to retrieve the core
         <title>En spesiell bolig</title>
         <text>Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen.</text>
     </info>
-    <source>boligmappa</source>
-    <external-id>externalId</external-id>
     <organisasjonsnummer>123456789</organisasjonsnummer>
     <bruksenhet>H1337</bruksenhet>
     <andelsnummer>42</andelsnummer>
