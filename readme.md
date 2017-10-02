@@ -89,15 +89,15 @@ An external URL, along with an optional description and deadline for resources s
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:externalLink xmlns:ns2="http://api.digipost.no/schema/datatypes">
-    <uuid>ee7018db-155f-456f-aac9-301a3c0092b5</uuid>
+<externalLink xmlns="http://api.digipost.no/schema/datatypes">
+    <uuid>e408313a-1a77-43af-85cf-f0548c8a1d0f</uuid>
     <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
     <deadline>2017-09-30T13:37:00+02:00</deadline>
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
     <url-is-active>true</url-is-active>
-    <expired>false</expired>
-</ns2:externalLink>
+    <expired>true</expired>
+</externalLink>
 ```
 
 ## Residence
@@ -121,7 +121,9 @@ Residence is a way of linking separate data for the same residence
 |houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
 |streetName|String|yes|The name of the street. E.g. Storgata|
 |postalCode|String|yes||
-|city|String|yes||### Matrikkel
+|city|String|yes||
+
+### Matrikkel
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
