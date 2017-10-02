@@ -8,12 +8,12 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.UUID;
 
 @XmlRootElement
 @Value
@@ -24,6 +24,8 @@ public class ExternalLink implements DataType {
 
     @XmlElement
     @NotNull
+    @Description("Target URL of this link. Must be https://")
+    @Pattern(regexp = "^https://.*")
     String url;
 
     @XmlElement
@@ -48,5 +50,5 @@ public class ExternalLink implements DataType {
     public static ExternalLink EXAMPLE = new ExternalLink("https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/",
             ZonedDateTime.of(2017, 9, 30, 13, 37, 0, 0, ZoneId.systemDefault()),
             "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass",
-            UUID.randomUUID().toString());
+            "ee50447d-11ca-46bf-bb33-d6edf0e8aef7");
 }

@@ -78,7 +78,7 @@ An external URL, along with an optional description and deadline for resources s
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|url|String|yes||
+|url|String|yes|Target URL of this link. Must be https://|
 |deadline|ZonedDateTime|no|ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.|
 |description|String|no|A short, optional text-field, describing the external url.|
 |buttonText|String|no|The text which will be displayed on the button which links the user to the url-field.|
