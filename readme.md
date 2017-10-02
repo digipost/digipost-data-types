@@ -78,25 +78,22 @@ An external URL, along with an optional description and deadline for resources s
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|uuid|String|yes||
 |url|String|yes||
 |deadline|ZonedDateTime|no|ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.|
 |description|String|no|A short, optional text-field, describing the external url.|
 |buttonText|String|no|The text which will be displayed on the button which links the user to the url-field.|
-|urlIsActive|Boolean|no|A status indicating whether the button and URL will be available to the user or not.|
+|sendersReference|String|no|Optional reference to a customer or case in the sender's system|
 
 ### XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <externalLink xmlns="http://api.digipost.no/schema/datatypes">
-    <uuid>e408313a-1a77-43af-85cf-f0548c8a1d0f</uuid>
     <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
     <deadline>2017-09-30T13:37:00+02:00</deadline>
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
-    <url-is-active>true</url-is-active>
-    <expired>true</expired>
+    <sendersReference>ee50447d-11ca-46bf-bb33-d6edf0e8aef7</sendersReference>
 </externalLink>
 ```
 

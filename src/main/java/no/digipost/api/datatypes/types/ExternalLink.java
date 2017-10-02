@@ -24,10 +24,6 @@ public class ExternalLink implements DataType {
 
     @XmlElement
     @NotNull
-    String uuid;
-
-    @XmlElement
-    @NotNull
     String url;
 
     @XmlElement
@@ -44,16 +40,13 @@ public class ExternalLink implements DataType {
     @Description("The text which will be displayed on the button which links the user to the url-field.")
     String buttonText;
 
-    @XmlElement(name = "url-is-active")
-    @Description("A status indicating whether the button and URL will be available to the user or not.")
-    Boolean urlIsActive;
-
     @XmlElement
-    public boolean isExpired() {
-        return this.deadline != null && this.deadline.isBefore(ZonedDateTime.now());
-    }
+    @Size(max = 70)
+    @Description("Optional reference to a customer or case in the sender's system")
+    String sendersReference;
 
-    public static ExternalLink EXAMPLE = new ExternalLink(UUID.randomUUID().toString(), "https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/",
+    public static ExternalLink EXAMPLE = new ExternalLink("https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/",
             ZonedDateTime.of(2017, 9, 30, 13, 37, 0, 0, ZoneId.systemDefault()),
-            "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass", Boolean.TRUE);
+            "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass",
+            UUID.randomUUID().toString());
 }

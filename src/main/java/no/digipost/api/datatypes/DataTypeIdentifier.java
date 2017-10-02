@@ -26,7 +26,7 @@ public enum DataTypeIdentifier {
     APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
     RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
     CATEGORY(Category.class, "CAT", Category.EXAMPLE),
-    EXTERNAL_URL(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE);
+    EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE);
 
     private final Class<? extends DataType> dataType;
     private final String shortName;
