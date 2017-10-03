@@ -42,13 +42,7 @@ public class ExternalLink implements DataType {
     @Description("The text which will be displayed on the button which links the user to the url-field.")
     String buttonText;
 
-    @XmlElement
-    @Size(max = 70)
-    @Description("Optional reference to a customer or case in the sender's system")
-    String sendersReference;
-
     public static ExternalLink EXAMPLE = new ExternalLink("https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/",
             ZonedDateTime.of(2017, 9, 30, 13, 37, 0, 0, ZoneId.systemDefault()),
-            "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass",
-            "ee50447d-11ca-46bf-bb33-d6edf0e8aef7");
+            "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass");
 }

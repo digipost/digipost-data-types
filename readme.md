@@ -82,7 +82,6 @@ An external URL, along with an optional description and deadline for resources s
 |deadline|ZonedDateTime|no|ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.|
 |description|String|no|A short, optional text-field, describing the external url.|
 |buttonText|String|no|The text which will be displayed on the button which links the user to the url-field.|
-|sendersReference|String|no|Optional reference to a customer or case in the sender's system|
 
 ### XML
 
@@ -93,7 +92,6 @@ An external URL, along with an optional description and deadline for resources s
     <deadline>2017-09-30T13:37:00+02:00</deadline>
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
-    <sendersReference>ee50447d-11ca-46bf-bb33-d6edf0e8aef7</sendersReference>
 </externalLink>
 ```
 
