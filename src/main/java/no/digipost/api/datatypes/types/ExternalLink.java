@@ -8,7 +8,6 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,8 +23,7 @@ public class ExternalLink implements DataType {
 
     @XmlElement
     @NotNull
-    @Description("Target URL of this link. Must be https://")
-    @Pattern(regexp = "^https://.*")
+    @Description("Target URL of this link.")
     String url;
 
     @XmlElement
