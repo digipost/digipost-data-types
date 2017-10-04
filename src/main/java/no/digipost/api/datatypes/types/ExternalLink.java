@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
@@ -16,6 +17,7 @@ import java.time.ZonedDateTime;
 
 @XmlRootElement
 @Value
+@Wither
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Description("An external URL, along with an optional description and deadline for resources such as a survey.")
