@@ -47,7 +47,7 @@ public class ExternalLink implements DataType {
     @Description("The text which will be displayed on the button which links the user to the url-field.")
     String buttonText;
 
-    public static ExternalLink EXAMPLE = new ExternalLink(URI.create("http://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/"),
+    public static ExternalLink EXAMPLE = new ExternalLink(URI.create("https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/"),
             ZonedDateTime.of(2017, 9, 30, 13, 37, 0, 0, ZoneId.systemDefault()),
             "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass");
 }
