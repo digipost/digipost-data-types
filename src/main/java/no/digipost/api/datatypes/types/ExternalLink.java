@@ -30,7 +30,7 @@ public class ExternalLink implements DataType {
         this(url, null, null, null);
     }
 
-    @XmlElement
+    @XmlElement(required = true)
     @XmlSchemaType(name="anyURI")
     @NotNull
     @WebUrl
