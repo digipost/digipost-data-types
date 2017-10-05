@@ -1,9 +1,6 @@
 package no.digipost.api.datatypes.types;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.*;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
@@ -26,6 +23,13 @@ import java.time.ZonedDateTime;
 @Description("An external URL, along with an optional description and deadline for resources such as a survey.")
 public class ExternalLink implements DataType {
 
+    /**
+     * Required args constructor
+     */
+    public ExternalLink(final URI url) {
+        this(url, null, null, null);
+    }
+
     @XmlElement
     @XmlSchemaType(name="anyURI")
     @NotNull
@@ -34,17 +38,17 @@ public class ExternalLink implements DataType {
     URI url;
 
     @XmlElement
-    @Description("ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.")
+    @Description("Optional deadline for the user to respond. ISO8601 full DateTime.")
     ZonedDateTime deadline;
 
     @XmlElement
     @Size(max = 70)
-    @Description("A short, optional text-field, describing the external url.")
+    @Description("A short, optional text-field, describing the external link.")
     String description;
 
     @XmlElement(name = "button-text")
     @Size(max = 30)
-    @Description("The text which will be displayed on the button which links the user to the url-field.")
+    @Description("Optional text which will be displayed on the button.")
     String buttonText;
 
     public static ExternalLink EXAMPLE = new ExternalLink(URI.create("https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/"),
