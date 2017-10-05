@@ -4,6 +4,7 @@
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
+|[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[ResidenceDetails](#residencedetails)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 
@@ -68,6 +69,31 @@ Category is a way to specify which category the data of a document is related to
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <category xmlns="http://api.digipost.no/schema/datatypes">RESIDENCE</category>
+```
+
+## ExternalLink
+
+An external URL, along with an optional description and deadline for resources such as a survey.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|url|String|yes|Target URL of this link.|
+|deadline|ZonedDateTime|no|ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.|
+|description|String|no|A short, optional text-field, describing the external url.|
+|buttonText|String|no|The text which will be displayed on the button which links the user to the url-field.|
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<externalLink xmlns="http://api.digipost.no/schema/datatypes">
+    <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
+    <deadline>2017-09-30T13:37:00+02:00</deadline>
+    <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
+    <button-text>Svar på barnehageplass</button-text>
+</externalLink>
 ```
 
 ## Residence

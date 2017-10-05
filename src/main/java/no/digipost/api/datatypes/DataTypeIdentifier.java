@@ -3,6 +3,7 @@ package no.digipost.api.datatypes;
 import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.Category;
 import no.digipost.api.datatypes.types.Residence;
+import no.digipost.api.datatypes.types.ExternalLink;
 import no.digipost.api.datatypes.types.ResidenceDetails;
 
 import java.util.Map;
@@ -26,6 +27,7 @@ public enum DataTypeIdentifier {
     APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
     RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
     CATEGORY(Category.class, "CAT", Category.EXAMPLE),
+    EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE),
     RESIDENCE_DETAILS(ResidenceDetails.class, "RDTL", ResidenceDetails.EXAMPLE);
 
     private final Class<? extends DataType> dataType;
