@@ -72,7 +72,7 @@ public class ResidenceDetails implements DataType {
     Long andelsnummer;
 
     @XmlElement
-    List<Heftelse> heftelse;
+    List<Heftelse> heftelser;
 
     public static ResidenceDetails EXAMPLE = new ResidenceDetails(Residence.EXAMPLE,
             Collections.singletonList(new Person("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),

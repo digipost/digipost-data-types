@@ -144,7 +144,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |organisasjonsnummer|String|no||
 |bruksenhet|String|no||
 |andelsnummer|Long|no||
-|heftelse|List|no||
+|heftelser|List|no||
 
 ### Residence
 
@@ -225,10 +225,10 @@ Details about a Residence, and may be joined with Residence to retrieve the core
     <organisasjonsnummer>123456789</organisasjonsnummer>
     <bruksenhet>H1337</bruksenhet>
     <andelsnummer>42</andelsnummer>
-    <heftelse>
+    <heftelser>
         <panthaver>TNT ASA</panthaver>
         <type-pant>Pantedokument</type-pant>
         <beloep>3000000000</beloep>
-    </heftelse>
+    </heftelser>
 </residenceDetails>
 ```
