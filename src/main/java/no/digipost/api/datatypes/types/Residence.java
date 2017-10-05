@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
@@ -17,6 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@Wither
 @Description("Residence is a way of linking separate data for the same residence")
 public class Residence implements DataType {
 
@@ -39,8 +41,6 @@ public class Residence implements DataType {
     @Size(max = 50)
     String externalId;
 
-    public static Residence EXAMPLE = new Residence(
-            new ResidenceAddress("23","Storgata", "0011", "Oslo"),
-            new Matrikkel("0301", "208", "630", "0", "0"),
+    public static Residence EXAMPLE = new Residence(ResidenceAddress.EXAMPLE, Matrikkel.EXAMPLE,
             "boligmappa", "externalId");
 }
