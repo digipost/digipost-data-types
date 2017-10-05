@@ -7,11 +7,14 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.validation.WebUrl;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import java.net.URI;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -24,9 +27,11 @@ import java.time.ZonedDateTime;
 public class ExternalLink implements DataType {
 
     @XmlElement
+    @XmlSchemaType(name="anyURI")
     @NotNull
-    @Description("Target URL of this link.")
-    String url;
+    @WebUrl
+    @Description("Target URL of this link. Must be http or https.")
+    URI url;
 
     @XmlElement
     @Description("ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.")
@@ -42,7 +47,7 @@ public class ExternalLink implements DataType {
     @Description("The text which will be displayed on the button which links the user to the url-field.")
     String buttonText;
 
-    public static ExternalLink EXAMPLE = new ExternalLink("https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/",
+    public static ExternalLink EXAMPLE = new ExternalLink(URI.create("http://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/"),
             ZonedDateTime.of(2017, 9, 30, 13, 37, 0, 0, ZoneId.systemDefault()),
             "Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.", "Svar på barnehageplass");
 }

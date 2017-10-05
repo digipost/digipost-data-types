@@ -78,7 +78,7 @@ An external URL, along with an optional description and deadline for resources s
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|url|String|yes|Target URL of this link.|
+|url|URI|yes|Target URL of this link. Must be http or https.|
 |deadline|ZonedDateTime|no|ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.|
 |description|String|no|A short, optional text-field, describing the external url.|
 |buttonText|String|no|The text which will be displayed on the button which links the user to the url-field.|
@@ -88,7 +88,7 @@ An external URL, along with an optional description and deadline for resources s
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <externalLink xmlns="http://api.digipost.no/schema/datatypes">
-    <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
+    <url>http://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
     <deadline>2017-09-30T13:37:00+02:00</deadline>
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
