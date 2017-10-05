@@ -38,6 +38,7 @@ public class ExternalLink implements DataType {
     URI url;
 
     @XmlElement
+    @XmlSchemaType(name="dateTime")
     @Description("Optional deadline for the user to respond. ISO8601 full DateTime.")
     ZonedDateTime deadline;
 
