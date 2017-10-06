@@ -1,30 +1,24 @@
 package no.digipost.api.datatypes.types;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.regex.Pattern;
 
 @XmlType
 @Value
+@AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@Wither
 public class AppointmentAddress {
-
-    public AppointmentAddress(String streetAddress, String postalCode, String city) {
-        if (!Pattern.matches("\\d{4}", postalCode)) {
-            throw new IllegalArgumentException("Postal code must be 4 digits");
-        }
-
-        this.streetAddress = streetAddress;
-        this.postalCode = postalCode;
-        this.city = city;
-    }
 
     @XmlElement(name = "street-address")
     @Size(max = 100)
@@ -41,4 +35,5 @@ public class AppointmentAddress {
     @Size(max = 100)
     String city;
 
+    public static final AppointmentAddress EXAMPLE = new AppointmentAddress("Storgata 23", "0011", "Oslo");
 }

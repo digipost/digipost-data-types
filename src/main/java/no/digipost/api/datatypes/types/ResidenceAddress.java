@@ -1,52 +1,32 @@
 package no.digipost.api.datatypes.types;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.regex.Pattern;
 
 @XmlType
 @Value
+@AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@Wither
 public class ResidenceAddress {
 
     public ResidenceAddress(String houseNumber, String streetName, String postalCode, String city) {
         this(null, houseNumber, streetName, postalCode, city);
     }
 
-    public ResidenceAddress(String unitNumber, String houseNumber, String streetName, String postalCode, String city) {
-        if (!Pattern.matches("\\d{4}", postalCode)) {
-            throw new IllegalArgumentException("Postal code must be 4 digits");
-        }
-
-        if (unitNumber != null && !Pattern.matches("^[KUHL]\\d{4}$", unitNumber)) {
-            throw new IllegalArgumentException("Illegal unit number. Please see description for this field.");
-        }
-
-        if (houseNumber != null && !Pattern.matches("^\\d+[A-Z]*$", houseNumber)) {
-            throw new IllegalArgumentException("Illegal house number. Please see description for this field.");
-        }
-
-        if (! Pattern.matches("^[a-zA-ZæøåÆØÅ ]+$", streetName)) {
-            throw new IllegalArgumentException("Illegal Streetname. Can only contain letters and spaces");
-        }
-
-        this.unitNumber = unitNumber;
-        this.houseNumber = houseNumber;
-        this.streetName = streetName;
-        this.postalCode = postalCode;
-        this.city = city;
-    }
-
-
     @XmlElement(name = "unit-number")
     @Size(max = 5)
+    @Pattern(regexp = "^[UKHL]\\d{4}$", message = "must be of format [UKHL]0000. E.g. H0304")
     @Description("Bolignummer. Must be of format [UKHL]0000. E.g. H0304")
     String unitNumber;
 
@@ -70,4 +50,6 @@ public class ResidenceAddress {
     @NotNull
     @Size(max = 100)
     String city;
+
+    public static final ResidenceAddress EXAMPLE = new ResidenceAddress("23","Storgata", "0011", "Oslo");
 }

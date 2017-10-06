@@ -79,10 +79,10 @@ An external URL, along with an optional description and deadline for resources s
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|url|String|yes|Target URL of this link.|
-|deadline|ZonedDateTime|no|ISO8601 full DateTime. After the deadline, the button with the external url will be deactivated.|
-|description|String|no|A short, optional text-field, describing the external url.|
-|buttonText|String|no|The text which will be displayed on the button which links the user to the url-field.|
+|url|URI|yes|Target URL of this link. Must be http or https.|
+|deadline|ZonedDateTime|no|Optional deadline for the user to respond. ISO8601 full DateTime.|
+|description|String|no|A short, optional text-field, describing the external link.|
+|buttonText|String|no|Optional text which will be displayed on the button.|
 
 ### XML
 
