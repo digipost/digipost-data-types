@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-public class Person {
+public class Hjemmelshaver {
 
     @XmlElement
     @NotNull

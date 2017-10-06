@@ -23,7 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Description("Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.")
-public class ResidenceDetails implements DataType {
+public class Boligdetaljer implements DataType {
 
     @XmlElement
     @NotNull
@@ -31,7 +31,7 @@ public class ResidenceDetails implements DataType {
 
     @XmlElement
     @Description("List of people with legal rights associated with the residence")
-    List<Person> hjemmelshavere;
+    List<Hjemmelshaver> hjemmelshavere;
 
     @XmlElement
     @Positive
@@ -74,8 +74,8 @@ public class ResidenceDetails implements DataType {
     @XmlElement
     List<Heftelse> heftelser;
 
-    public static ResidenceDetails EXAMPLE = new ResidenceDetails(Residence.EXAMPLE,
-            Collections.singletonList(new Person("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
+    public static Boligdetaljer EXAMPLE = new Boligdetaljer(Residence.EXAMPLE,
+            Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
             59, 3, 4,
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
                             "Privat salg av sekundærbolig", 12345678L, "Bill Isalg", "Cooper Coopersen")),

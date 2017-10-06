@@ -19,23 +19,23 @@ import java.time.ZonedDateTime;
 @Description("A previous transaction or sale")
 public class Omsetningshistorikk {
 
-    @XmlElement(name = "start-time", required = true)
+    @XmlElement(name = "dato", required = true)
     @NotNull
     @Description("ISO8601 full DateTime")
-    ZonedDateTime date;
+    ZonedDateTime dato;
 
     @XmlElement
     @Size(max = 50)
-    String description;
+    String beskrivelse;
 
     @XmlElement
-    Long amount;
-
-    @XmlElement
-    @Size(max = 50)
-    String seller;
+    Long beloep;
 
     @XmlElement
     @Size(max = 50)
-    String buyer;
+    String selger;
+
+    @XmlElement
+    @Size(max = 50)
+    String kjoeper;
 }
