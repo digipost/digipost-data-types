@@ -29,13 +29,13 @@ public class Omsetningshistorikk {
     String beskrivelse;
 
     @XmlElement
-    Long beloep;
-
-    @XmlElement
     @Size(max = 50)
     String selger;
 
     @XmlElement
     @Size(max = 50)
     String kjoeper;
+
+    @XmlElement
+    Long beloep;
 }

@@ -78,7 +78,7 @@ public class Boligdetaljer implements DataType {
             Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
             59, 3, 4,
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-                            "Privat salg av sekundærbolig", 12345678L, "Bill Isalg", "Cooper Coopersen")),
+                            "Privat salg av sekundærbolig", "Bill Isalg", "Cooper Coopersen", 12345678L)),
             new Info("En spesiell bolig", "Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen."),
             "123456789", "H1337", 42L,
             Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", 3000000000L)));
