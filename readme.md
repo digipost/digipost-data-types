@@ -142,9 +142,9 @@ Details about a Residence, and may be joined with Residence to retrieve the core
     <omsetningshistorikk>
         <dato>2017-07-27T10:00:00+02:00</dato>
         <beskrivelse>Privat salg av sekundærbolig</beskrivelse>
-        <beloep>12345678</beloep>
         <selger>Bill Isalg</selger>
         <kjoeper>Cooper Coopersen</kjoeper>
+        <beloep>12345678</beloep>
     </omsetningshistorikk>
     <info>
         <title>En spesiell bolig</title>
