@@ -37,7 +37,7 @@ public class DataTypesValidatorTest {
     @Test
     public void testValidateOrThrow() {
         try {
-            validator.validateOrThrow(appointment, errors -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
+            validator.validateOrThrow(appointment, (Set<DataTypesValidationError<Appointment>> errors) -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
         } catch (RuntimeException e) {
             assertEquals("The value for field 'Appointment.address.city' must not be null", e.getMessage());
         }
