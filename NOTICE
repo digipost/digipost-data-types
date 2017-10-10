@@ -13,7 +13,7 @@ under the License.
 
 This project includes:
   Animal Sniffer Annotations under MIT license
-  Bean Validation API under The Apache Software License, Version 2.0
+  Bean Validation API under Apache License 2.0
   ClassMate under The Apache Software License, Version 2.0
   digipost-data-types under The Apache Software License, Version 2.0
   error-prone annotations under Apache 2.0
@@ -22,7 +22,7 @@ This project includes:
   Guava: Google Core Libraries for Java under The Apache Software License, Version 2.0
   Hamcrest Core under New BSD License
   Hamcrest library under New BSD License
-  Hibernate Validator Engine under Apache License, Version 2.0
+  Hibernate Validator Engine under Apache License 2.0
   J2ObjC Annotations under The Apache Software License, Version 2.0
   Jackson datatype: JSR310 under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0
