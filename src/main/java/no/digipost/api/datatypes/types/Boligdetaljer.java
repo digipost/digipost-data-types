@@ -14,6 +14,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -70,7 +71,7 @@ public class Boligdetaljer implements DataType {
 
     @XmlElement
     // validering?
-    Long andelsnummer;
+    String andelsnummer;
 
     @XmlElement
     List<Heftelse> heftelser;
@@ -81,6 +82,6 @@ public class Boligdetaljer implements DataType {
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
                             "Privat salg av sekundærbolig", "Bill Isalg", "Cooper Coopersen", 12345678L)),
             new Info("En spesiell bolig", "Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen."),
-            "123456789", "H1337", 42L,
-            Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", 3000000000L)));
+            "123456789", "H1337", "42",
+            Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", "3000000000")));
 }

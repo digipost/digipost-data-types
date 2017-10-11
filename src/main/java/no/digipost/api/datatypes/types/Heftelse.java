@@ -28,5 +28,5 @@ public class Heftelse {
 
     @XmlElement
     @NotNull
-    Long beloep;
+    String beloep;
 }

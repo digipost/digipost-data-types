@@ -71,7 +71,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |info|[Info](#info)|no|An additional section of information, consisting of a title- and text-field|
 |organisasjonsnummer|String|no||
 |bruksenhet|String|no||
-|andelsnummer|Long|no||
+|andelsnummer|String|no||
 |heftelser|List|no||
 
 ### Residence
