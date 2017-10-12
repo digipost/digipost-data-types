@@ -7,14 +7,12 @@ import lombok.Value;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -54,11 +52,6 @@ public class Boligdetaljer implements DataType {
     @Description("Previous sales and transactions")
     List<Omsetningshistorikk> omsetningshistorikk;
 
-    @XmlElement
-    @Valid
-    @Description("An additional section of information, consisting of a title- and text-field")
-    Info info;
-
     // Validering?
     @XmlElement
     @Size(max = 20)
@@ -81,7 +74,6 @@ public class Boligdetaljer implements DataType {
             59, 3, 4,
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
                             "Privat salg av sekundærbolig", "Bill Isalg", "Cooper Coopersen", 12345678L)),
-            new Info("En spesiell bolig", "Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen."),
             "123456789", "H1337", "42",
             Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", "3000000000")));
 }
