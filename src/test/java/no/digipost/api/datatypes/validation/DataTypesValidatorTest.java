@@ -37,9 +37,9 @@ public class DataTypesValidatorTest {
     @Test
     public void testValidateOrThrow() {
         try {
-            validator.validateOrThrow(appointment, errors -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
+            validator.validateOrThrow(appointment, (Set<DataTypesValidationError<Appointment>> errors) -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
         } catch (RuntimeException e) {
-            assertEquals(e.getMessage(), "The value for field 'Appointment.address.city' may not be null");
+            assertEquals("The value for field 'Appointment.address.city' may not be null", e.getMessage());
         }
     }
 
@@ -48,7 +48,7 @@ public class DataTypesValidatorTest {
         try {
             validator.validateOrThrow(Collections.singleton(appointment), (Set<DataTypesValidationError<Appointment>> errors) -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
         } catch (RuntimeException e) {
-            assertEquals(e.getMessage(), "The value for field 'Appointment.address.city' may not be null");
+            assertEquals("The value for field 'Appointment.address.city' may not be null", e.getMessage());
         }
     }
 

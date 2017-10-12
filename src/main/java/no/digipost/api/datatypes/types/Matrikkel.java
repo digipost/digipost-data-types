@@ -30,7 +30,7 @@ public class Matrikkel {
     @XmlElement(required = true)
     @Valid
     @NotNull
-    @Size(min = 4, max = 4)
+    @Size(max = 4)
     @Pattern(regexp = "\\d+", message = "can only be digits")
     String kommunenummer;
 
