@@ -68,7 +68,6 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |antallOppholdsrom|Integer|no|Number of rooms, bathroom, kitchen and storage rooms excluded|
 |antallBaderom|Integer|no|Number of bathrooms|
 |omsetningshistorikk|List|no|Previous sales and transactions|
-|info|[Info](#info)|no|An additional section of information, consisting of a title- and text-field|
 |organisasjonsnummer|String|no||
 |bruksenhet|String|no||
 |andelsnummer|String|no||
@@ -102,13 +101,6 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksnummer|String|yes||
 |festenummer|String|no||
 |seksjonsnummer|String|no||
-
-### Info
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|title|String|no||
-|text|String|no||
 
 ### XML
 
@@ -146,10 +138,6 @@ Details about a Residence, and may be joined with Residence to retrieve the core
         <kjoeper>Cooper Coopersen</kjoeper>
         <beloep>12345678</beloep>
     </omsetningshistorikk>
-    <info>
-        <title>En spesiell bolig</title>
-        <text>Spesielt med denne boligen er at den har vært til sjøs på en husbåt i flere år, før den ble heiset og plassert på Vippetangen.</text>
-    </info>
     <organisasjonsnummer>123456789</organisasjonsnummer>
     <bruksenhet>H1337</bruksenhet>
     <andelsnummer>42</andelsnummer>
