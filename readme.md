@@ -88,9 +88,9 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |----|----|--------|-----------|
 |unitNumber|String|no|Bolignummer. Must be of format [UKHL]0000. E.g. H0304|
 |houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
-|streetName|String|yes|The name of the street. E.g. Storgata|
-|postalCode|String|yes||
-|city|String|yes||
+|streetName|String|no|The name of the street. E.g. Storgata|
+|postalCode|String|no||
+|city|String|no||
 
 ### Matrikkel
 
@@ -210,9 +210,9 @@ Residence is a way of linking separate data for the same residence
 |----|----|--------|-----------|
 |unitNumber|String|no|Bolignummer. Must be of format [UKHL]0000. E.g. H0304|
 |houseNumber|String|no|A house number with or without a house letter. E.g. 11 or 11A|
-|streetName|String|yes|The name of the street. E.g. Storgata|
-|postalCode|String|yes||
-|city|String|yes||
+|streetName|String|no|The name of the street. E.g. Storgata|
+|postalCode|String|no||
+|city|String|no||
 
 ### Matrikkel
 
