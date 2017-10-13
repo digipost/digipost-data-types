@@ -35,19 +35,16 @@ public class ResidenceAddress {
     @Description("A house number with or without a house letter. E.g. 11 or 11A")
     String houseNumber;
 
-    @XmlElement(name = "street-name", required = true)
-    @NotNull
+    @XmlElement(name = "street-name")
     @Size(max = 100)
     @Description("The name of the street. E.g. Storgata")
     String streetName;
 
-    @XmlElement(name = "postal-code", required = true)
-    @NotNull
+    @XmlElement(name = "postal-code")
     @Size(max = 10)
     String postalCode;
 
-    @XmlElement(required = true)
-    @NotNull
+    @XmlElement
     @Size(max = 100)
     String city;
 
