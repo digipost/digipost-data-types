@@ -8,6 +8,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,10 +30,12 @@ public class Boligdetaljer implements DataType {
 
     @XmlElement
     @NotNull
+    @Valid
     Residence residence;
 
     @XmlElement
     @Description("List of people with legal rights associated with the residence")
+    @Valid
     List<Hjemmelshaver> hjemmelshavere;
 
     @XmlElement
@@ -52,6 +55,7 @@ public class Boligdetaljer implements DataType {
 
     @XmlElement(name = "omsetningshistorikk")
     @Description("Previous sales and transactions")
+    @Valid
     List<Omsetningshistorikk> omsetningshistorikk;
 
     // Validering?
@@ -69,6 +73,7 @@ public class Boligdetaljer implements DataType {
     String andelsnummer;
 
     @XmlElement
+    @Valid
     List<Heftelse> heftelser;
 
     public static Boligdetaljer EXAMPLE = new Boligdetaljer(Residence.EXAMPLE,
