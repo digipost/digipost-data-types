@@ -21,7 +21,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-@Description("Receipt represents a documents containing details about a purchase")
+@Description("Receipt represents a document containing details about a purchase")
 public class Receipt implements DataType {
 
 
@@ -43,18 +43,18 @@ public class Receipt implements DataType {
     @XmlElement(name = "sales-point", required = true)
     @NotNull
     @Size(max = 150)
-    @Description("Name of the sales point. Example: Oslo City Røntgen")
+    @Description("Name of the sales point. Example: Grünerløkka Hip Kaffe")
     String salesPoint;
 
     @XmlElement
-    @Description("The name of the chain the sales point is a member of. Example: Røntgen Labs AS")
+    @Description("The name of the chain the sales point is a member of. Example: Hip Kaffe AS")
     @Size(max = 150)
     String chain;
 
     public static Receipt EXAMPLE = new Receipt(
-        ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-        BigDecimal.valueOf(42000, 2),
+        ZonedDateTime.of(2017, 10, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
+        BigDecimal.valueOf(14200, 2),
         "NOK",
-        "Oslo City Røntgen",
-        "Røntgen Labs AS");
+        "Grünerløkka Hip Kaffe",
+        "Hip Kaffe AS");
 }
