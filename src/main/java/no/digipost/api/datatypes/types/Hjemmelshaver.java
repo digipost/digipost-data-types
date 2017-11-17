@@ -19,7 +19,6 @@ public class Hjemmelshaver {
 
     @XmlElement
     @NotNull
-    @NotEmpty
     @Size(max = 50)
     String name;
 
