@@ -8,6 +8,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
@@ -15,6 +16,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Collections;
+import java.util.List;
+
+import static java.util.Collections.singletonList;
 
 @XmlRootElement
 @Value
@@ -43,18 +48,23 @@ public class Receipt implements DataType {
     @XmlElement(name = "sales-point", required = true)
     @NotNull
     @Size(max = 150)
-    @Description("Name of the sales point. Example: Grünerløkka Hip Kaffe")
+    @Description("Name of the sales point. Example: Grünerløkka Hip Coffee")
     String salesPoint;
 
     @XmlElement
-    @Description("The name of the chain the sales point is a member of. Example: Hip Kaffe AS")
+    @Description("The name of the chain the sales point is a member of. Example: Hip Coffee inc")
     @Size(max = 150)
     String chain;
+
+    @XmlElement
+    @Description("The individual items sold")
+    @Valid
+    List<ReceiptItem> items;
 
     public static Receipt EXAMPLE = new Receipt(
         ZonedDateTime.of(2017, 10, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
         BigDecimal.valueOf(14200, 2),
         "NOK",
-        "Grünerløkka Hip Kaffe",
-        "Hip Kaffe AS");
+        "Grünerløkka Hip Coffee",
+        "Hip Coffee inc", singletonList(ReceiptItem.EXAMPLE));
 }
