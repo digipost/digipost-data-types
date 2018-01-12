@@ -9,6 +9,7 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
@@ -16,7 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Collections;
 import java.util.List;
 
 import static java.util.Collections.singletonList;
@@ -57,6 +57,11 @@ public class Receipt implements DataType {
     String chain;
 
     @XmlElement
+    @Description("The norwegian bank account number associated with the purchase, if applicable")
+    @Digits(integer = 11, fraction = 0)
+    String bankaccount;
+
+    @XmlElement
     @Description("The individual items sold")
     @Valid
     List<ReceiptItem> items;
@@ -66,5 +71,5 @@ public class Receipt implements DataType {
         BigDecimal.valueOf(14200, 2),
         "NOK",
         "Grünerløkka Hip Coffee",
-        "Hip Coffee inc", singletonList(ReceiptItem.EXAMPLE));
+        "Hip Coffee inc", "12340112331", singletonList(ReceiptItem.EXAMPLE));
 }
