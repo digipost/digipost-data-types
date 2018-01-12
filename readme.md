@@ -205,7 +205,7 @@ Receipt represents a document containing details about a purchase
 |currencyCode|String|no|Currency of the price, ISO4217. Example: NOK|
 |salesPoint|String|yes|Name of the sales point. Example: Grünerløkka Hip Coffee|
 |chain|String|no|The name of the chain the sales point is a member of. Example: Hip Coffee inc|
-|bankaccount|String|no|The norwegian bank account number associated with the purchase, if applicable|
+|bankAccount|String|no|The norwegian bank account number associated with the purchase, if applicable|
 |items|List|no|The individual items sold|
 
 ### XML
@@ -218,7 +218,7 @@ Receipt represents a document containing details about a purchase
     <currency>NOK</currency>
     <sales-point>Grünerløkka Hip Coffee</sales-point>
     <chain>Hip Coffee inc</chain>
-    <bankaccount>12340112331</bankaccount>
+    <bank-account>12340112331</bank-account>
     <items>
         <itemName>Tall vanilla latte with extra sugar</itemName>
         <vat>0.25</vat>

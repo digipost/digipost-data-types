@@ -56,10 +56,10 @@ public class Receipt implements DataType {
     @Size(max = 150)
     String chain;
 
-    @XmlElement
+    @XmlElement(name = "bank-account")
     @Description("The norwegian bank account number associated with the purchase, if applicable")
     @Digits(integer = 11, fraction = 0)
-    String bankaccount;
+    String bankAccount;
 
     @XmlElement
     @Description("The individual items sold")
