@@ -201,12 +201,26 @@ Receipt represents a document containing details about a purchase
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |time|ZonedDateTime|yes|When the purchase was made. ISO8601 full DateTime|
-|price|BigDecimal|yes|The total price paid for the item(s) purchased|
+|price|BigDecimal|yes|The total net price paid for the item(s) purchased|
 |currencyCode|String|no|Currency of the price, ISO4217. Example: NOK|
+|cashier|String|no|Identifier for cashier who made the sale|
+|register|String|no|Identifier for the register where the purchase was made|
 |salesPoint|String|yes|Name of the sales point. Example: Grünerløkka Hip Coffee|
 |chain|String|no|The name of the chain the sales point is a member of. Example: Hip Coffee inc|
-|bankAccount|String|no|The norwegian bank account number associated with the purchase, if applicable|
+|externalId|String|no|The ID of this receipt in the system it was imported from|
+|barcode|String|no|The barcode on this receipt|
+|address|[AppointmentAddress](#appointmentaddress)|no|Address of the sales point|
+|organizationNumber|String|no|Organization number of the sales point|
+|payments|List|no|List of payments done during this purchase|
 |items|List|no|The individual items sold|
+
+### AppointmentAddress
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|postalCode|String|yes||
+|city|String|yes||
 
 ### XML
 
@@ -216,13 +230,28 @@ Receipt represents a document containing details about a purchase
     <time>2017-10-27T10:00:00+02:00</time>
     <price>142.00</price>
     <currency>NOK</currency>
+    <cashier>Benny</cashier>
+    <register>15</register>
     <sales-point>Grünerløkka Hip Coffee</sales-point>
     <chain>Hip Coffee inc</chain>
-    <bank-account>12340112331</bank-account>
+    <externalId>12340112331</externalId>
+    <barcode>12340112331</barcode>
+    <address>
+        <street-address>Storgata 23</street-address>
+        <postal-code>0011</postal-code>
+        <city>Oslo</city>
+    </address>
+    <orgnumber>010234563</orgnumber>
+    <payments>
+        <card-number>************1234</card-number>
+        <amount>142</amount>
+        <currency>NOK</currency>
+    </payments>
     <items>
         <itemName>Tall vanilla latte with extra sugar</itemName>
         <vat>0.25</vat>
-        <itemCount>2</itemCount>
+        <quantity>2.0</quantity>
+        <unit>stk</unit>
         <price>29.90</price>
     </items>
 </receipt>

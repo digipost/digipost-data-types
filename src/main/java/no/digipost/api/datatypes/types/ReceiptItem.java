@@ -23,15 +23,18 @@ public class ReceiptItem {
     String itemName;
 
     @XmlElement
-    @Description("Percent VAT in the range 0.0 - 1.0")
+    @Description("Decimal VAT")
     BigDecimal vat;
 
     @XmlElement
-    int itemCount;
+    double quantity;
 
     @XmlElement
-    @Description("Unit item price")
+    String unit;
+
+    @XmlElement
+    @Description("Unit item net price")
     BigDecimal price;
 
-    public static final ReceiptItem EXAMPLE = new ReceiptItem("Tall vanilla latte with extra sugar", new BigDecimal("0.25"), 2, new BigDecimal("29.90"));
+    public static final ReceiptItem EXAMPLE = new ReceiptItem("Tall vanilla latte with extra sugar", new BigDecimal("0.25"), 2.0, "stk", new BigDecimal("29.90"));
 }

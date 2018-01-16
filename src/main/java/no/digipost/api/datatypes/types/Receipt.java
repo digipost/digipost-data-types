@@ -37,13 +37,23 @@ public class Receipt implements DataType {
 
     @XmlElement(required = true)
     @NotNull
-    @Description("The total price paid for the item(s) purchased")
+    @Description("The total net price paid for the item(s) purchased")
     BigDecimal price;
 
     @XmlElement(name = "currency")
     @Size(max = 3)
     @Description("Currency of the price, ISO4217. Example: NOK")
     String currencyCode;
+
+    @XmlElement
+    @Description("Identifier for cashier who made the sale")
+    @Size(max = 100)
+    String cashier;
+
+    @XmlElement
+    @Description("Identifier for the register where the purchase was made")
+    @Size(max = 50)
+    String register;
 
     @XmlElement(name = "sales-point", required = true)
     @NotNull
@@ -56,10 +66,30 @@ public class Receipt implements DataType {
     @Size(max = 150)
     String chain;
 
-    @XmlElement(name = "bank-account")
-    @Description("The norwegian bank account number associated with the purchase, if applicable")
-    @Digits(integer = 11, fraction = 0)
-    String bankAccount;
+    @XmlElement
+    @Description("The ID of this receipt in the system it was imported from")
+    @Size(max = 50)
+    String externalId;
+
+    @XmlElement
+    @Description("The barcode on this receipt")
+    @Digits(integer = 50, fraction = 0)
+    String barcode;
+
+    @XmlElement
+    @Description("Address of the sales point")
+    @Valid
+    AppointmentAddress address;
+
+    @XmlElement(name = "orgnumber")
+    @Description("Organization number of the sales point")
+    @Digits(integer = 9, fraction = 0)
+    String organizationNumber;
+
+    @XmlElement
+    @Description("List of payments done during this purchase")
+    @Valid
+    List<Payment> payments;
 
     @XmlElement
     @Description("The individual items sold")
@@ -69,7 +99,8 @@ public class Receipt implements DataType {
     public static Receipt EXAMPLE = new Receipt(
         ZonedDateTime.of(2017, 10, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
         BigDecimal.valueOf(14200, 2),
-        "NOK",
-        "Grünerløkka Hip Coffee",
-        "Hip Coffee inc", "12340112331", singletonList(ReceiptItem.EXAMPLE));
+            "NOK", "Benny", "15",
+            "Grünerløkka Hip Coffee",
+            "Hip Coffee inc", "12340112331", "12340112331", AppointmentAddress.EXAMPLE,
+            "010234563", singletonList(Payment.EXAMPLE), singletonList(ReceiptItem.EXAMPLE));
 }
