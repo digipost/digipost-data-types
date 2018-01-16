@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-@Description("Contains details about a single item (line) on the receipt")
+@Description("Contains details about a payment carried out as part of this purchase")
 public class Payment {
 
     @XmlElement(name = "bank-account")
@@ -33,7 +33,7 @@ public class Payment {
     String cardNumber;
 
     @XmlElement
-    @Description("Free text field for other types of payments, e.g. vouchers")
+    @Description("Free text field for other types of payments, e.g. vouchers, cash")
     @Size(max = 50)
     String other;
 
