@@ -34,5 +34,8 @@ public class Address {
     @Size(max = 100)
     String city;
 
-    public static final Address EXAMPLE = new Address("Storgata 23", "0011", "Oslo");
+    @XmlElement
+    String country;
+
+    public static final Address EXAMPLE = new Address("Storgata 23", "0011", "Oslo", "Norge");
 }
