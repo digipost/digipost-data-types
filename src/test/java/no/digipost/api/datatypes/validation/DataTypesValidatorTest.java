@@ -3,7 +3,7 @@ package no.digipost.api.datatypes.validation;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.DataTypeIdentifier;
 import no.digipost.api.datatypes.types.Appointment;
-import no.digipost.api.datatypes.types.AppointmentAddress;
+import no.digipost.api.datatypes.types.Address;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class DataTypesValidatorTest {
 
     private static DataTypesValidator validator = new DataTypesValidator();
 
-    final Appointment appointment = Appointment.EXAMPLE.withAddress(new AppointmentAddress("Storgata 2", "0001", null));
+    final Appointment appointment = Appointment.EXAMPLE.withAddress(new Address("Storgata 2", "0001", null));
 
     @Test
     public void testValidate() {

@@ -8,7 +8,6 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -18,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-public class AppointmentAddress {
+public class Address {
 
     @XmlElement(name = "street-address")
     @Size(max = 100)
@@ -35,5 +34,5 @@ public class AppointmentAddress {
     @Size(max = 100)
     String city;
 
-    public static final AppointmentAddress EXAMPLE = new AppointmentAddress("Storgata 23", "0011", "Oslo");
+    public static final Address EXAMPLE = new Address("Storgata 23", "0011", "Oslo");
 }

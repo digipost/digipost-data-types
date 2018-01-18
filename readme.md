@@ -21,11 +21,11 @@ Appointment represents a meeting set for a specific place and time
 |endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
-|address|[AppointmentAddress](#appointmentaddress)|no||
+|address|[Address](#address)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
 
-### AppointmentAddress
+### Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -200,21 +200,24 @@ Receipt represents a document containing details about a purchase
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|time|ZonedDateTime|yes|When the purchase was made. ISO8601 full DateTime|
-|price|BigDecimal|yes|The total net price paid for the item(s) purchased|
+|receiptId|String|no|The ID of this receipt in the system it was imported from|
+|purchaseTime|ZonedDateTime|yes|When the purchase was made. ISO8601 full DateTime|
+|totalPrice|BigDecimal|yes|The total net price paid for the item(s) purchased|
+|totalVat|BigDecimal|yes|The total net vat amount for the item(s) purchased|
 |currencyCode|String|no|Currency of the price, ISO4217. Example: NOK|
 |cashier|String|no|Identifier for cashier who made the sale|
 |register|String|no|Identifier for the register where the purchase was made|
-|salesPoint|String|yes|Name of the sales point. Example: Grünerløkka Hip Coffee|
-|chain|String|no|The name of the chain the sales point is a member of. Example: Hip Coffee inc|
-|externalId|String|no|The ID of this receipt in the system it was imported from|
-|barcode|String|no|The barcode on this receipt|
-|address|[AppointmentAddress](#appointmentaddress)|no|Address of the sales point|
+|merchantId|String|no|A unique identifier for the merchant|
+|merchantName|String|yes|Name of the store or merchant. Example: Grünerløkka Hip Coffee|
+|merchantPhoneNumber|String|no||
+|logoId|String|no|Unique logo id. Populated by server.|
+|merchantAddress|[Address](#address)|no|Address of the store or merchant|
 |organizationNumber|String|no|Organization number of the sales point|
+|barcode|[Barcode](#barcode)|no||
 |payments|List|no|List of payments done during this purchase|
 |items|List|no|The individual items sold|
 
-### AppointmentAddress
+### Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -222,37 +225,61 @@ Receipt represents a document containing details about a purchase
 |postalCode|String|yes||
 |city|String|yes||
 
+### Barcode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|barcodeValue|String|no|The barcode on this receipt|
+|barcodeType|String|no||
+|barcodeDisplayValue|String|no||
+
 ### XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <receipt xmlns="http://api.digipost.no/schema/datatypes">
-    <time>2017-10-27T10:00:00+02:00</time>
-    <price>142.00</price>
+    <receiptId>F96B6805-2453-478A-B58B-CCDFA07E21ED</receiptId>
+    <purchaseTime>2018-05-27T10:00:00+02:00</purchaseTime>
+    <totalPrice>59.80</totalPrice>
+    <totalVat>11.96</totalVat>
     <currency>NOK</currency>
     <cashier>Benny</cashier>
     <register>15</register>
-    <sales-point>Grünerløkka Hip Coffee</sales-point>
-    <chain>Hip Coffee inc</chain>
-    <externalId>12340112331</externalId>
-    <barcode>12340112331</barcode>
-    <address>
+    <merchant-id>7F5A1EFF-ECAE-48A7-A07F-38D87576F815</merchant-id>
+    <merchant-name>Grünerløkka Hip Coffee</merchant-name>
+    <merchant-phone-number>12345678</merchant-phone-number>
+    <merchant-address>
         <street-address>Storgata 23</street-address>
         <postal-code>0011</postal-code>
         <city>Oslo</city>
-    </address>
-    <orgnumber>010234563</orgnumber>
+    </merchant-address>
+    <orgnumber>123456789</orgnumber>
+    <barcode>
+        <barcode-value>1234567890</barcode-value>
+        <barcode-type>1D</barcode-type>
+        <barcode-display-value>1234567890</barcode-display-value>
+    </barcode>
     <payments>
+        <type>Bank Axept</type>
         <card-number>************1234</card-number>
-        <amount>142</amount>
-        <currency>NOK</currency>
+        <cardName>Visa</cardName>
+        <amount>100.0</amount>
+        <currency-code>NOK</currency-code>
+        <foreign-currency-payment>
+            <currency-code>USD</currency-code>
+            <amount>15</amount>
+            <exchange-rate>7.534567</exchange-rate>
+        </foreign-currency-payment>
     </payments>
     <items>
-        <itemName>Tall vanilla latte with extra sugar</itemName>
-        <vat>0.25</vat>
+        <item-name>Tall Cafe latte</item-name>
+        <itemDescription>Tall vanilla latte with extra sugar</itemDescription>
+        <unit>cup</unit>
         <quantity>2.0</quantity>
-        <unit>stk</unit>
-        <price>29.90</price>
+        <item-price>29.90</item-price>
+        <item-vat>5.98</item-vat>
+        <total-price>59.80</total-price>
+        <total-vat>11.96</total-vat>
     </items>
 </receipt>
 ```

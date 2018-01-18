@@ -13,7 +13,9 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -29,16 +31,25 @@ import static java.util.Collections.singletonList;
 @Description("Receipt represents a document containing details about a purchase")
 public class Receipt implements DataType {
 
+    @XmlElement
+    @Description("The ID of this receipt in the system it was imported from")
+    @Size(max = 50)
+    String receiptId;
 
     @XmlElement(required = true)
     @NotNull
     @Description("When the purchase was made. ISO8601 full DateTime")
-    ZonedDateTime time;
+    ZonedDateTime purchaseTime;
 
     @XmlElement(required = true)
     @NotNull
     @Description("The total net price paid for the item(s) purchased")
-    BigDecimal price;
+    BigDecimal totalPrice;
+
+    @NotNull
+    @XmlElement(required = true)
+    @Description("The total net vat amount for the item(s) purchased")
+    BigDecimal totalVat;
 
     @XmlElement(name = "currency")
     @Size(max = 3)
@@ -55,36 +66,35 @@ public class Receipt implements DataType {
     @Size(max = 50)
     String register;
 
-    @XmlElement(name = "sales-point", required = true)
+    @XmlElement(name = "merchant-id")
+    @Description("A unique identifier for the merchant")
+    String merchantId;
+
+    @XmlElement(name = "merchant-name", required = true)
     @NotNull
     @Size(max = 150)
-    @Description("Name of the sales point. Example: Grünerløkka Hip Coffee")
-    String salesPoint;
+    @Description("Name of the store or merchant. Example: Grünerløkka Hip Coffee")
+    String merchantName;
 
-    @XmlElement
-    @Description("The name of the chain the sales point is a member of. Example: Hip Coffee inc")
-    @Size(max = 150)
-    String chain;
+    @XmlElement(name = "merchant-phone-number")
+    String merchantPhoneNumber;
 
-    @XmlElement
-    @Description("The ID of this receipt in the system it was imported from")
-    @Size(max = 50)
-    String externalId;
+    @XmlElement(name = "logo-id")
+    @Description("Unique logo id. Populated by server.")
+    String logoId;
 
-    @XmlElement
-    @Description("The barcode on this receipt")
-    @Digits(integer = 50, fraction = 0)
-    String barcode;
-
-    @XmlElement
-    @Description("Address of the sales point")
+    @XmlElement(name = "merchant-address")
+    @Description("Address of the store or merchant")
     @Valid
-    AppointmentAddress address;
+    Address merchantAddress;
 
     @XmlElement(name = "orgnumber")
     @Description("Organization number of the sales point")
     @Digits(integer = 9, fraction = 0)
     String organizationNumber;
+
+    @XmlElement
+    Barcode barcode;
 
     @XmlElement
     @Description("List of payments done during this purchase")
@@ -94,13 +104,13 @@ public class Receipt implements DataType {
     @XmlElement
     @Description("The individual items sold")
     @Valid
-    List<ReceiptItem> items;
+    List<ReceiptLine> items;
 
-    public static Receipt EXAMPLE = new Receipt(
-        ZonedDateTime.of(2017, 10, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-        BigDecimal.valueOf(14200, 2),
+    public static Receipt EXAMPLE = new Receipt("F96B6805-2453-478A-B58B-CCDFA07E21ED",
+            ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
+            ReceiptLine.EXAMPLE.getTotalPrice(), ReceiptLine.EXAMPLE.getTotalVat(),
             "NOK", "Benny", "15",
-            "Grünerløkka Hip Coffee",
-            "Hip Coffee inc", "12340112331", "12340112331", AppointmentAddress.EXAMPLE,
-            "010234563", singletonList(Payment.EXAMPLE), singletonList(ReceiptItem.EXAMPLE));
+            "7F5A1EFF-ECAE-48A7-A07F-38D87576F815",
+            "Grünerløkka Hip Coffee", "12345678", null, Address.EXAMPLE, "123456789", Barcode.EXAMPLE,
+            singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE));
 }

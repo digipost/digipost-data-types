@@ -22,10 +22,9 @@ import java.math.BigDecimal;
 @Description("Contains details about a payment carried out as part of this purchase")
 public class Payment {
 
-    @XmlElement(name = "bank-account")
-    @Description("The norwegian bank account number associated with the purchase, if applicable")
-    @Digits(integer = 11, fraction = 0)
-    String bankAccount;
+    @XmlElement
+    @Description("Payment type. Examples: Credit Card, BankAxept, Cash")
+    String type;
 
     @XmlElement(name = "card-number")
     @Description("The obscured card number associated with the purchase")
@@ -33,19 +32,20 @@ public class Payment {
     String cardNumber;
 
     @XmlElement
-    @Description("Free text field for other types of payments, e.g. vouchers, cash")
-    @Size(max = 50)
-    String other;
+    String cardName;
 
     @XmlElement
-    @Description("Amount payed in this payment")
+    @Description("Amount paid in this payment")
     @Digits(integer = Integer.MAX_VALUE, fraction = 2)
     BigDecimal amount;
 
-    @XmlElement(name = "currency")
+    @XmlElement(name = "currency-code")
     @Size(max = 3)
     @Description("Currency of the payment, ISO4217. Example: NOK")
     String currencyCode;
 
-    public static final Payment EXAMPLE = new Payment(null, "************1234", null, BigDecimal.valueOf(142), "NOK");
+    @XmlElement(name = "foreign-currency-payment")
+    ForeignCurrencyPayment foreignCurrencyPayment;
+
+    public static final Payment EXAMPLE = new Payment("Bank Axept", "************1234", "Visa", new BigDecimal("100.0"), "NOK", ForeignCurrencyPayment.EXAMPLE);
 }

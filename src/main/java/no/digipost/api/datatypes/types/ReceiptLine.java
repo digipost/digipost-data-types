@@ -19,20 +19,14 @@ import java.math.BigDecimal;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @Description("Contains details about a single item (line) on the receipt")
-public class ReceiptItem {
+public class ReceiptLine {
 
-    @XmlElement
-    @Description("The name of the item")
+    @XmlElement(name = "item-name")
     @Size(max = 100)
     String itemName;
 
-    @XmlElement
-    @Description("Decimal Value Added Tax, e.g. 0.25 for 25% VAT")
-    @Digits(integer = 1, fraction = 2)
-    BigDecimal vat;
-
-    @XmlElement
-    double quantity;
+    @XmlElement(name = "itemDescription")
+    String itemDescription;
 
     @XmlElement
     @Description("The unit that the item is measured in")
@@ -40,9 +34,26 @@ public class ReceiptItem {
     String unit;
 
     @XmlElement
+    double quantity;
+
+    @XmlElement(name = "item-price")
     @Description("Unit item net price")
     @Digits(integer = Integer.MAX_VALUE, fraction = 2)
-    BigDecimal price;
+    BigDecimal itemPrice;
 
-    public static final ReceiptItem EXAMPLE = new ReceiptItem("Tall vanilla latte with extra sugar", new BigDecimal("0.25"), 2.0, "stk", new BigDecimal("29.90"));
+    @XmlElement(name = "item-vat")
+    BigDecimal itemVat;
+
+    @XmlElement(name = "total-price")
+    @Description("Total line price")
+    BigDecimal totalPrice;
+
+    @XmlElement(name = "total-vat")
+    @Description("Total line vat amount")
+    BigDecimal totalVat;
+
+
+    public static final ReceiptLine EXAMPLE = new ReceiptLine("Tall Cafe latte", "Tall vanilla latte with extra sugar",
+            "cup", 2.0, new BigDecimal("29.90"), new BigDecimal("5.98"),
+            new BigDecimal("59.80"), new BigDecimal("11.96"));
 }

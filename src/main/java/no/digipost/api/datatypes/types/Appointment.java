@@ -48,7 +48,7 @@ public class Appointment implements DataType {
 
     @XmlElement
     @Valid
-    AppointmentAddress address;
+    Address address;
 
     @XmlElement(name = "sub-title")
     @Size(max = 150)
@@ -65,7 +65,7 @@ public class Appointment implements DataType {
         ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
             ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault()),
         "Oppmøte senest 15 minutter før timen",
-        "Oslo City Røntgen", AppointmentAddress.EXAMPLE,
+        "Oslo City Røntgen", Address.EXAMPLE,
         "Undersøke smerter i ryggen", Collections.singletonList(
                 new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.")));
 }
