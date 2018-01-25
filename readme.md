@@ -32,6 +32,7 @@ Appointment represents a meeting set for a specific place and time
 |streetAddress|String|no|E.g. Storgata 11|
 |postalCode|String|yes||
 |city|String|yes||
+|country|String|no||
 
 ### XML
 
@@ -46,6 +47,7 @@ Appointment represents a meeting set for a specific place and time
         <street-address>Storgata 23</street-address>
         <postal-code>0011</postal-code>
         <city>Oslo</city>
+        <country>Norge</country>
     </address>
     <sub-title>Undersøke smerter i ryggen</sub-title>
     <info>
@@ -224,6 +226,7 @@ Receipt represents a document containing details about a purchase
 |streetAddress|String|no|E.g. Storgata 11|
 |postalCode|String|yes||
 |city|String|yes||
+|country|String|no||
 
 ### Barcode
 
@@ -252,6 +255,7 @@ Receipt represents a document containing details about a purchase
         <street-address>Storgata 23</street-address>
         <postal-code>0011</postal-code>
         <city>Oslo</city>
+        <country>Norge</country>
     </merchant-address>
     <orgnumber>123456789</orgnumber>
     <barcode>

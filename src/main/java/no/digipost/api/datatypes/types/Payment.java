@@ -28,7 +28,7 @@ public class Payment {
 
     @XmlElement(name = "card-number")
     @Description("The obscured card number associated with the purchase")
-    @Pattern(regexp = "[0-9*]{0,16}")
+    @Pattern(regexp = "[0-9*]{0,25}")
     String cardNumber;
 
     @XmlElement

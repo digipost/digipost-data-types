@@ -25,7 +25,7 @@ public class DataTypesValidatorTest {
 
     private static DataTypesValidator validator = new DataTypesValidator();
 
-    final Appointment appointment = Appointment.EXAMPLE.withAddress(new Address("Storgata 2", "0001", null));
+    final Appointment appointment = Appointment.EXAMPLE.withAddress(new Address("Storgata 2", "0001", null, null));
 
     @Test
     public void testValidate() {
