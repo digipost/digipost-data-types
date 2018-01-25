@@ -90,7 +90,6 @@ public class Receipt implements DataType {
 
     @XmlElement(name = "orgnumber")
     @Description("Organization number of the sales point")
-    @Digits(integer = 9, fraction = 0)
     String organizationNumber;
 
     @XmlElement
