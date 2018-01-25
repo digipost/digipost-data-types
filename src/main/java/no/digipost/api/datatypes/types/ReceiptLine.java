@@ -38,7 +38,6 @@ public class ReceiptLine {
 
     @XmlElement(name = "item-price")
     @Description("Unit item net price")
-    @Digits(integer = Integer.MAX_VALUE, fraction = 2)
     BigDecimal itemPrice;
 
     @XmlElement(name = "item-vat")
