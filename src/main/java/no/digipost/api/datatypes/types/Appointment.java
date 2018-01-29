@@ -61,6 +61,11 @@ public class Appointment implements DataType {
     @Description("Additional sections of information (max 2) with a title and text")
     List<Info> info;
 
+    @Override
+    public DataType withDefaultValues() {
+        return this.withEndTime(endTime == null ? startTime.plusMinutes(30) : endTime);
+    }
+
     public static Appointment EXAMPLE = new Appointment(
         ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
             ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault()),

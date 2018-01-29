@@ -14,4 +14,8 @@ public interface DataType {
     default DataTypeIdentifier getTypeIdentifier() {
         return DataTypeIdentifier.fromRepresentationType(getClass());
     }
+
+    default DataType withDefaultValues() {
+        return this;
+    }
 }
