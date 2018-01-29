@@ -62,8 +62,8 @@ public class Appointment implements DataType {
     List<Info> info;
 
     @Override
-    public DataType withDefaultValues() {
-        return this.withEndTime(endTime == null ? startTime.plusMinutes(30) : endTime);
+    public DataType withDefaultsForMissingOptionalValues() {
+        return endTime == null ? this.withEndTime(startTime.plusMinutes(30)) : this;
     }
 
     public static Appointment EXAMPLE = new Appointment(
