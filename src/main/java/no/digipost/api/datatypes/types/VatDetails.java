@@ -25,5 +25,5 @@ public class VatDetails {
     @XmlElement
     BigDecimal sum;
 
-    public static final VatDetails EXAMPLE = new VatDetails(Collections.singletonList(VatLevel.EXAMPLE), new BigDecimal("64,90"));
+    public static final VatDetails EXAMPLE = new VatDetails(Collections.singletonList(VatLevel.EXAMPLE), new BigDecimal("64.90"));
 }
