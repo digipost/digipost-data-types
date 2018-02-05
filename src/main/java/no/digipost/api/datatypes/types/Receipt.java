@@ -9,13 +9,10 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -105,11 +102,16 @@ public class Receipt implements DataType {
     @Valid
     List<ReceiptLine> items;
 
+    @XmlElement
+    @Description("Details for taxi receipts")
+    @Valid
+    TaxiDetails taxiDetails;
+
     public static Receipt EXAMPLE = new Receipt("F96B6805-2453-478A-B58B-CCDFA07E21ED",
             ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
             ReceiptLine.EXAMPLE.getTotalPrice(), ReceiptLine.EXAMPLE.getTotalVat(),
             "NOK", "Benny", "15",
             "7F5A1EFF-ECAE-48A7-A07F-38D87576F815",
             "Grünerløkka Hip Coffee", "12345678", null, Address.EXAMPLE, "123456789", Barcode.EXAMPLE,
-            singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE));
+            singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE), TaxiDetails.EXAMPLE);
 }
