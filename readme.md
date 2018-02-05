@@ -218,6 +218,7 @@ Receipt represents a document containing details about a purchase
 |barcode|[Barcode](#barcode)|no||
 |payments|List|no|List of payments done during this purchase|
 |items|List|no|The individual items sold|
+|taxiDetails|[TaxiDetails](#taxidetails)|no|Details for taxi receipts|
 
 ### Address
 
@@ -235,6 +236,32 @@ Receipt represents a document containing details about a purchase
 |barcodeValue|String|no|The barcode on this receipt|
 |barcodeType|String|no||
 |barcodeDisplayValue|String|no||
+
+### TaxiDetails
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|carPlateNumber|String|no||
+|license|String|no||
+|orgNumberLicenseHolder|String|no||
+|startTime|ZonedDateTime|no||
+|stopTime|ZonedDateTime|no||
+|tips|BigDecimal|no||
+|totalMeterPrice|BigDecimal|no||
+|totalDistanceBeforeBoardingInMeters|Integer|no||
+|totalDistanceInMeters|Integer|no||
+|totalDistanceWithPassengerInMeters|Integer|no||
+|totalTimeBeforeBoardingInSeconds|Integer|no||
+|totalTimeInSeconds|Integer|no||
+|totalTimeWithPassengerInSeconds|Integer|no||
+|vat|[VatDetails](#vatdetails)|no||
+
+### VatDetails
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|levels|List|no||
+|sum|BigDecimal|no||
 
 ### XML
 
@@ -285,6 +312,30 @@ Receipt represents a document containing details about a purchase
         <total-price>59.80</total-price>
         <total-vat>11.96</total-vat>
     </items>
+    <taxiDetails>
+        <carPlateNumber>EK99999</carPlateNumber>
+        <license>12341ASDF</license>
+        <orgNumberLicenseHolder>123456789</orgNumberLicenseHolder>
+        <startTime>2018-06-05T10:00:00+02:00</startTime>
+        <stopTime>2018-06-05T10:30:00+02:00</stopTime>
+        <tips>8</tips>
+        <totalMeterPrice>438.50</totalMeterPrice>
+        <totalDistanceBeforeBoardingInMeters>2000</totalDistanceBeforeBoardingInMeters>
+        <totalDistanceInMeters>8500</totalDistanceInMeters>
+        <totalDistanceWithPassengerInMeters>6500</totalDistanceWithPassengerInMeters>
+        <totalTimeBeforeBoardingInSeconds>320</totalTimeBeforeBoardingInSeconds>
+        <totalTimeInSeconds>1220</totalTimeInSeconds>
+        <totalTimeWithPassengerInSeconds>900</totalTimeWithPassengerInSeconds>
+        <vat>
+            <levels>
+                <grossAmount>400</grossAmount>
+                <netAmount>320</netAmount>
+                <vat>80</vat>
+                <vatPercent>0.25</vatPercent>
+            </levels>
+            <sum>64.90</sum>
+        </vat>
+    </taxiDetails>
 </receipt>
 ```
 
