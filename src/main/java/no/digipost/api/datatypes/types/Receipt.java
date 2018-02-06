@@ -40,12 +40,12 @@ public class Receipt implements DataType {
 
     @XmlElement(required = true)
     @NotNull
-    @Description("The total net price paid for the item(s) purchased")
+    @Description("The total price paid for the item(s) purchased")
     BigDecimal totalPrice;
 
     @NotNull
     @XmlElement(required = true)
-    @Description("The total net vat amount for the item(s) purchased")
+    @Description("The total vat amount for the item(s) purchased")
     BigDecimal totalVat;
 
     @XmlElement(name = "currency")
