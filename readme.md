@@ -204,8 +204,8 @@ Receipt represents a document containing details about a purchase
 |----|----|--------|-----------|
 |receiptId|String|no|The ID of this receipt in the system it was imported from|
 |purchaseTime|ZonedDateTime|yes|When the purchase was made. ISO8601 full DateTime|
-|totalPrice|BigDecimal|yes|The total net price paid for the item(s) purchased|
-|totalVat|BigDecimal|yes|The total net vat amount for the item(s) purchased|
+|totalPrice|BigDecimal|yes|The total price paid for the item(s) purchased|
+|totalVat|BigDecimal|yes|The total vat amount for the item(s) purchased|
 |currencyCode|String|no|Currency of the price, ISO4217. Example: NOK|
 |cashier|String|no|Identifier for cashier who made the sale|
 |register|String|no|Identifier for the register where the purchase was made|
