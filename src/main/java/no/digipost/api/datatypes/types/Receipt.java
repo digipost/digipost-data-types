@@ -76,10 +76,6 @@ public class Receipt implements DataType {
     @XmlElement(name = "merchant-phone-number")
     String merchantPhoneNumber;
 
-    @XmlElement(name = "logo-id")
-    @Description("Unique logo id. Populated by server.")
-    String logoId;
-
     @XmlElement(name = "merchant-address")
     @Description("Address of the store or merchant")
     @Valid
@@ -112,6 +108,6 @@ public class Receipt implements DataType {
             ReceiptLine.EXAMPLE.getTotalPrice(), ReceiptLine.EXAMPLE.getTotalVat(),
             "NOK", "Benny", "15",
             "7F5A1EFF-ECAE-48A7-A07F-38D87576F815",
-            "Grünerløkka Hip Coffee", "12345678", null, Address.EXAMPLE, "123456789", Barcode.EXAMPLE,
+            "Grünerløkka Hip Coffee", "12345678", Address.EXAMPLE, "123456789", Barcode.EXAMPLE,
             singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE), TaxiDetails.EXAMPLE);
 }

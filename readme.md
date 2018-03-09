@@ -212,7 +212,6 @@ Receipt represents a document containing details about a purchase
 |merchantId|String|no|A unique identifier for the merchant|
 |merchantName|String|yes|Name of the store or merchant. Example: Grünerløkka Hip Coffee|
 |merchantPhoneNumber|String|no||
-|logoId|String|no|Unique logo id. Populated by server.|
 |merchantAddress|[Address](#address)|no|Address of the store or merchant|
 |organizationNumber|String|no|Organization number of the sales point|
 |barcode|[Barcode](#barcode)|no||
