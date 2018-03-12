@@ -203,6 +203,7 @@ Receipt represents a document containing details about a purchase
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |receiptId|String|no|The ID of this receipt in the system it was imported from|
+|receiptNumber|String|no|The original receipt number from the store|
 |purchaseTime|ZonedDateTime|yes|When the purchase was made. ISO8601 full DateTime|
 |totalPrice|BigDecimal|yes|The total price paid for the item(s) purchased|
 |totalVat|BigDecimal|yes|The total vat amount for the item(s) purchased|
@@ -268,6 +269,7 @@ Receipt represents a document containing details about a purchase
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <receipt xmlns="http://api.digipost.no/schema/datatypes">
     <receiptId>F96B6805-2453-478A-B58B-CCDFA07E21ED</receiptId>
+    <receiptNumber>364567</receiptNumber>
     <purchaseTime>2018-05-27T10:00:00+02:00</purchaseTime>
     <totalPrice>59.80</totalPrice>
     <totalVat>11.96</totalVat>

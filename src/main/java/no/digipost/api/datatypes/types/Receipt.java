@@ -33,6 +33,10 @@ public class Receipt implements DataType {
     @Size(max = 50)
     String receiptId;
 
+    @XmlElement
+    @Description("The original receipt number from the store")
+    String receiptNumber;
+
     @XmlElement(required = true)
     @NotNull
     @Description("When the purchase was made. ISO8601 full DateTime")
@@ -103,7 +107,7 @@ public class Receipt implements DataType {
     @Valid
     TaxiDetails taxiDetails;
 
-    public static Receipt EXAMPLE = new Receipt("F96B6805-2453-478A-B58B-CCDFA07E21ED",
+    public static Receipt EXAMPLE = new Receipt("F96B6805-2453-478A-B58B-CCDFA07E21ED", "364567",
             ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
             ReceiptLine.EXAMPLE.getTotalPrice(), ReceiptLine.EXAMPLE.getTotalVat(),
             "NOK", "Benny", "15",
