@@ -235,7 +235,6 @@ Receipt represents a document containing details about a purchase
 |----|----|--------|-----------|
 |barcodeValue|String|no|The barcode on this receipt|
 |barcodeType|String|no||
-|barcodeDisplayValue|String|no||
 
 ### TaxiDetails
 
@@ -288,8 +287,7 @@ Receipt represents a document containing details about a purchase
     <orgnumber>123456789</orgnumber>
     <barcode>
         <barcode-value>1234567890</barcode-value>
-        <barcode-type>1D</barcode-type>
-        <barcode-display-value>1234567890</barcode-display-value>
+        <barcode-type>code-128</barcode-type>
     </barcode>
     <payments>
         <type>Bank Axept</type>

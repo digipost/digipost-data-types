@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.XmlType;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 public class Barcode {
+    public static final String CODE_128 = "code-128";
+
     @XmlElement(name = "barcode-value")
     @Description("The barcode on this receipt")
     String barcodeValue;
@@ -23,8 +25,5 @@ public class Barcode {
     @XmlElement(name = "barcode-type")
     String barcodeType;
 
-    @XmlElement(name = "barcode-display-value")
-    String barcodeDisplayValue;
-
-    public static Barcode EXAMPLE = new Barcode("1234567890", "1D", "1234567890");
+    public static Barcode EXAMPLE = new Barcode("1234567890", CODE_128);
 }
