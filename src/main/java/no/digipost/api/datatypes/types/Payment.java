@@ -6,15 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.marshalling.MoneyBigDecimalXmlAdapter;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 
 @XmlType
+@XmlJavaTypeAdapter(MoneyBigDecimalXmlAdapter.class)
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
@@ -36,7 +37,6 @@ public class Payment {
 
     @XmlElement
     @Description("Amount paid in this payment")
-    @Digits(integer = Integer.MAX_VALUE, fraction = 2)
     BigDecimal amount;
 
     @XmlElement(name = "currency-code")

@@ -219,6 +219,8 @@ Receipt represents a document containing details about a purchase
 |payments|List|no|List of payments done during this purchase|
 |items|List|no|The individual items sold|
 |taxiDetails|[TaxiDetails](#taxidetails)|no|Details for taxi receipts|
+|customer|[NameAndAddress](#nameandaddress)|no|Name and address of customer|
+|delivery|[NameAndAddress](#nameandaddress)|no|Name and address of delivery|
 
 ### Address
 
@@ -261,6 +263,38 @@ Receipt represents a document containing details about a purchase
 |----|----|--------|-----------|
 |levels|List|no||
 |sum|BigDecimal|no||
+
+### NameAndAddress
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|no||
+|address|[Address](#address)|no||
+
+### Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|postalCode|String|yes||
+|city|String|yes||
+|country|String|no||
+
+### NameAndAddress
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|no||
+|address|[Address](#address)|no||
+
+### Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|postalCode|String|yes||
+|city|String|yes||
+|country|String|no||
 
 ### XML
 
@@ -335,6 +369,24 @@ Receipt represents a document containing details about a purchase
             <sum>64.90</sum>
         </vat>
     </taxiDetails>
+    <customer>
+        <name>Ola Nordmann</name>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </customer>
+    <delivery>
+        <name>Ola Nordmann</name>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </delivery>
 </receipt>
 ```
 

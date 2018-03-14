@@ -7,12 +7,14 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.marshalling.MoneyBigDecimalXmlAdapter;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -21,6 +23,7 @@ import java.util.List;
 import static java.util.Collections.singletonList;
 
 @XmlRootElement
+@XmlJavaTypeAdapter(MoneyBigDecimalXmlAdapter.class)
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
@@ -107,11 +110,20 @@ public class Receipt implements DataType {
     @Valid
     TaxiDetails taxiDetails;
 
+    @XmlElement
+    @Description("Name and address of customer")
+    NameAndAddress customer;
+
+    @XmlElement
+    @Description("Name and address of delivery")
+    NameAndAddress delivery;
+
     public static Receipt EXAMPLE = new Receipt("F96B6805-2453-478A-B58B-CCDFA07E21ED", "364567",
             ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
             ReceiptLine.EXAMPLE.getTotalPrice(), ReceiptLine.EXAMPLE.getTotalVat(),
             "NOK", "Benny", "15",
             "7F5A1EFF-ECAE-48A7-A07F-38D87576F815",
             "Grünerløkka Hip Coffee", "12345678", Address.EXAMPLE, "123456789", Barcode.EXAMPLE,
-            singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE), TaxiDetails.EXAMPLE);
+            singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE), TaxiDetails.EXAMPLE,
+            NameAndAddress.EXAMPLE, NameAndAddress.EXAMPLE);
 }

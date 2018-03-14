@@ -5,13 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
+import no.digipost.api.datatypes.marshalling.MoneyBigDecimalXmlAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 
 @XmlType
 @Value
+@XmlJavaTypeAdapter(MoneyBigDecimalXmlAdapter.class)
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
