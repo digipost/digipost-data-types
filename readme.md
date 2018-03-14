@@ -220,7 +220,7 @@ Receipt represents a document containing details about a purchase
 |items|List|no|The individual items sold|
 |taxiDetails|[TaxiDetails](#taxidetails)|no|Details for taxi receipts|
 |customer|[NameAndAddress](#nameandaddress)|no|Name and address of customer|
-|delivery|[NameAndAddress](#nameandaddress)|no|Name and address of delivery|
+|delivery|[Delivery](#delivery)|no|Name and address of delivery|
 
 ### Address
 
@@ -279,6 +279,13 @@ Receipt represents a document containing details about a purchase
 |postalCode|String|yes||
 |city|String|yes||
 |country|String|no||
+
+### Delivery
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|nameAndAddress|[NameAndAddress](#nameandaddress)|no||
+|terms|String|no||
 
 ### NameAndAddress
 
@@ -379,13 +386,16 @@ Receipt represents a document containing details about a purchase
         </address>
     </customer>
     <delivery>
-        <name>Ola Nordmann</name>
-        <address>
-            <street-address>Storgata 23</street-address>
-            <postal-code>0011</postal-code>
-            <city>Oslo</city>
-            <country>Norge</country>
-        </address>
+        <nameAndAddress>
+            <name>Ola Nordmann</name>
+            <address>
+                <street-address>Storgata 23</street-address>
+                <postal-code>0011</postal-code>
+                <city>Oslo</city>
+                <country>Norge</country>
+            </address>
+        </nameAndAddress>
+        <terms>Delivered to the doorstep</terms>
     </delivery>
 </receipt>
 ```
