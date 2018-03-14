@@ -7,11 +7,12 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
+
+import static java.math.BigDecimal.ROUND_HALF_UP;
 
 @XmlType
 @Value
@@ -55,4 +56,12 @@ public class ReceiptLine {
     public static final ReceiptLine EXAMPLE = new ReceiptLine("Tall Cafe latte", "Tall vanilla latte with extra sugar",
             "cup", 2.0, new BigDecimal("29.90"), new BigDecimal("5.98"),
             new BigDecimal("59.80"), new BigDecimal("11.96"));
+
+    public BigDecimal getVatPercent() {
+        if (itemPrice != null && itemVat != null) {
+            return itemVat.multiply(BigDecimal.valueOf(100)).divide(itemPrice.subtract(itemVat), ROUND_HALF_UP).setScale(0, ROUND_HALF_UP);
+        } else {
+            return null;
+        }
+    }
 }
