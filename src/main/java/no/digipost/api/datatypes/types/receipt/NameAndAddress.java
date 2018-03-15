@@ -1,10 +1,11 @@
-package no.digipost.api.datatypes.types;
+package no.digipost.api.datatypes.types.receipt;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
+import no.digipost.api.datatypes.types.Address;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;

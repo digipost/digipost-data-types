@@ -210,10 +210,10 @@ Receipt represents a document containing details about a purchase
 |currencyCode|String|no|Currency of the price, ISO4217. Example: NOK|
 |cashier|String|no|Identifier for cashier who made the sale|
 |register|String|no|Identifier for the register where the purchase was made|
-|merchantId|String|no|A unique identifier for the merchant|
+|merchantChain|String|no|Optional name of the chain that the merchant is a part of|
 |merchantName|String|yes|Name of the store or merchant. Example: Grünerløkka Hip Coffee|
 |merchantPhoneNumber|String|no||
-|merchantAddress|[Address](#address)|no|Address of the store or merchant|
+|merchantAddress|Address|no|Address of the store or merchant|
 |organizationNumber|String|no|Organization number of the sales point|
 |barcode|[Barcode](#barcode)|no||
 |payments|List|no|List of payments done during this purchase|
@@ -221,15 +221,6 @@ Receipt represents a document containing details about a purchase
 |taxiDetails|[TaxiDetails](#taxidetails)|no|Details for taxi receipts|
 |customer|[NameAndAddress](#nameandaddress)|no|Name and address of customer|
 |delivery|[Delivery](#delivery)|no|Name and address of delivery|
-
-### Address
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|streetAddress|String|no|E.g. Storgata 11|
-|postalCode|String|yes||
-|city|String|yes||
-|country|String|no||
 
 ### Barcode
 
@@ -269,16 +260,7 @@ Receipt represents a document containing details about a purchase
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|no||
-|address|[Address](#address)|no||
-
-### Address
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|streetAddress|String|no|E.g. Storgata 11|
-|postalCode|String|yes||
-|city|String|yes||
-|country|String|no||
+|address|Address|no||
 
 ### Delivery
 
@@ -292,16 +274,7 @@ Receipt represents a document containing details about a purchase
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|no||
-|address|[Address](#address)|no||
-
-### Address
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|streetAddress|String|no|E.g. Storgata 11|
-|postalCode|String|yes||
-|city|String|yes||
-|country|String|no||
+|address|Address|no||
 
 ### XML
 
@@ -316,7 +289,7 @@ Receipt represents a document containing details about a purchase
     <currency>NOK</currency>
     <cashier>Benny</cashier>
     <register>15</register>
-    <merchant-id>7F5A1EFF-ECAE-48A7-A07F-38D87576F815</merchant-id>
+    <merchant-chain>7F5A1EFF-ECAE-48A7-A07F-38D87576F815</merchant-chain>
     <merchant-name>Grünerløkka Hip Coffee</merchant-name>
     <merchant-phone-number>12345678</merchant-phone-number>
     <merchant-address>
@@ -334,7 +307,7 @@ Receipt represents a document containing details about a purchase
         <type>Bank Axept</type>
         <card-number>************1234</card-number>
         <cardName>Visa</cardName>
-        <amount>100.0</amount>
+        <amount>100.00</amount>
         <currency-code>NOK</currency-code>
         <foreign-currency-payment>
             <currency-code>USD</currency-code>
@@ -344,13 +317,15 @@ Receipt represents a document containing details about a purchase
     </payments>
     <items>
         <item-name>Tall Cafe latte</item-name>
-        <itemDescription>Tall vanilla latte with extra sugar</itemDescription>
+        <item-description>Tall vanilla latte with extra sugar</item-description>
+        <item-code>0000012</item-code>
         <unit>cup</unit>
         <quantity>2.0</quantity>
         <item-price>29.90</item-price>
         <item-vat>5.98</item-vat>
         <total-price>59.80</total-price>
         <total-vat>11.96</total-vat>
+        <discount>5.50</discount>
     </items>
     <taxiDetails>
         <carPlateNumber>EK99999</carPlateNumber>
@@ -358,7 +333,7 @@ Receipt represents a document containing details about a purchase
         <orgNumberLicenseHolder>123456789</orgNumberLicenseHolder>
         <startTime>2018-06-05T10:00:00+02:00</startTime>
         <stopTime>2018-06-05T10:30:00+02:00</stopTime>
-        <tips>8</tips>
+        <tips>8.00</tips>
         <totalMeterPrice>438.50</totalMeterPrice>
         <totalDistanceBeforeBoardingInMeters>2000</totalDistanceBeforeBoardingInMeters>
         <totalDistanceInMeters>8500</totalDistanceInMeters>
@@ -368,9 +343,9 @@ Receipt represents a document containing details about a purchase
         <totalTimeWithPassengerInSeconds>900</totalTimeWithPassengerInSeconds>
         <vat>
             <levels>
-                <grossAmount>400</grossAmount>
-                <netAmount>320</netAmount>
-                <vat>80</vat>
+                <grossAmount>400.00</grossAmount>
+                <netAmount>320.00</netAmount>
+                <vat>80.00</vat>
                 <vatPercent>0.25</vatPercent>
             </levels>
             <sum>64.90</sum>

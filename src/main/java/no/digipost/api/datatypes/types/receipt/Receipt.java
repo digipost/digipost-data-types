@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types;
+package no.digipost.api.datatypes.types.receipt;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -7,14 +7,13 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
-import no.digipost.api.datatypes.marshalling.MoneyBigDecimalXmlAdapter;
+import no.digipost.api.datatypes.types.Address;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -23,7 +22,6 @@ import java.util.List;
 import static java.util.Collections.singletonList;
 
 @XmlRootElement
-@XmlJavaTypeAdapter(MoneyBigDecimalXmlAdapter.class)
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
@@ -70,9 +68,9 @@ public class Receipt implements DataType {
     @Size(max = 50)
     String register;
 
-    @XmlElement(name = "merchant-id")
-    @Description("A unique identifier for the merchant")
-    String merchantId;
+    @XmlElement(name = "merchant-chain")
+    @Description("Optional name of the chain that the merchant is a part of")
+    String merchantChain;
 
     @XmlElement(name = "merchant-name", required = true)
     @NotNull

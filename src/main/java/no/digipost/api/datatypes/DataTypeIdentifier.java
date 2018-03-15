@@ -1,6 +1,7 @@
 package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.*;
+import no.digipost.api.datatypes.types.receipt.Receipt;
 
 import java.util.Map;
 import java.util.Optional;

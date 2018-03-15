@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types;
+package no.digipost.api.datatypes.types.receipt;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

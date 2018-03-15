@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types;
+package no.digipost.api.datatypes.types.receipt;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -6,16 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
-import no.digipost.api.datatypes.marshalling.MoneyBigDecimalXmlAdapter;
+import no.digipost.api.datatypes.types.ForeignCurrencyPayment;
 
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 
 @XmlType
-@XmlJavaTypeAdapter(MoneyBigDecimalXmlAdapter.class)
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
@@ -47,5 +45,5 @@ public class Payment {
     @XmlElement(name = "foreign-currency-payment")
     ForeignCurrencyPayment foreignCurrencyPayment;
 
-    public static final Payment EXAMPLE = new Payment("Bank Axept", "************1234", "Visa", new BigDecimal("100.0"), "NOK", ForeignCurrencyPayment.EXAMPLE);
+    public static final Payment EXAMPLE = new Payment("Bank Axept", "************1234", "Visa", new BigDecimal("100.00"), "NOK", ForeignCurrencyPayment.EXAMPLE);
 }
