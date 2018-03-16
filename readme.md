@@ -222,7 +222,6 @@ Receipt represents a document containing details about a purchase
 |customer|[Customer](#customer)|no|Name and address of customer|
 |delivery|[Delivery](#delivery)|no|Name and address of delivery|
 |orderNumber|String|no||
-|cards|List|no||
 
 ### Barcode
 
@@ -324,6 +323,7 @@ Receipt represents a document containing details about a purchase
         <total-vat>11.96</total-vat>
         <discount>5.50</discount>
         <serialNumber>XY12345325GF</serialNumber>
+        <eanCode>1345678</eanCode>
     </items>
     <taxiDetails>
         <carPlateNumber>EK99999</carPlateNumber>
@@ -344,7 +344,7 @@ Receipt represents a document containing details about a purchase
                 <grossAmount>400.00</grossAmount>
                 <netAmount>320.00</netAmount>
                 <vat>80.00</vat>
-                <vatPercent>0.25</vatPercent>
+                <vatPercent>25.00</vatPercent>
             </levels>
             <sum>64.90</sum>
         </vat>
@@ -370,10 +370,6 @@ Receipt represents a document containing details about a purchase
         <terms>Delivered to the doorstep</terms>
     </delivery>
     <order-number>123456</order-number>
-    <cards>
-        <card-number>12345678900</card-number>
-        <type>BankAxept</type>
-    </cards>
 </receipt>
 ```
 

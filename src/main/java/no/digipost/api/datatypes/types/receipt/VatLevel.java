@@ -24,8 +24,8 @@ public class VatLevel {
     @XmlElement
     BigDecimal vat;
     @XmlElement
-    @Description("VAT percent from 0.00 to 1.00")
+    @Description("VAT percent from 0 to 100")
     BigDecimal vatPercent;
 
-    public static final VatLevel EXAMPLE = new VatLevel(new BigDecimal("400.00"), new BigDecimal("320.00"), new BigDecimal("80.00"), new BigDecimal("0.25"));
+    public static final VatLevel EXAMPLE = new VatLevel(new BigDecimal("400.00"), new BigDecimal("320.00"), new BigDecimal("80.00"), new BigDecimal("25.00"));
 }
