@@ -222,6 +222,7 @@ Receipt represents a document containing details about a purchase
 |customer|[Customer](#customer)|no|Name and address of customer|
 |delivery|[Delivery](#delivery)|no|Name and address of delivery|
 |orderNumber|String|no||
+|cards|List|no||
 
 ### Barcode
 
@@ -369,6 +370,10 @@ Receipt represents a document containing details about a purchase
         <terms>Delivered to the doorstep</terms>
     </delivery>
     <order-number>123456</order-number>
+    <cards>
+        <card-number>12345678900</card-number>
+        <type>BankAxept</type>
+    </cards>
 </receipt>
 ```
 
