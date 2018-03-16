@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
+import no.digipost.api.datatypes.types.Address;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -16,9 +17,11 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class Delivery {
     @XmlElement
-    NameAndAddress nameAndAddress;
+    String name;
+    @XmlElement
+    Address address;
     @XmlElement
     String terms;
 
-    public static final Delivery EXAMPLE = new Delivery(NameAndAddress.EXAMPLE, "Delivered to the doorstep");
+    public static final Delivery EXAMPLE = new Delivery("Ola Nordmann", Address.EXAMPLE, "Delivered to the doorstep");
 }

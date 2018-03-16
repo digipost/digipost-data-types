@@ -7,7 +7,6 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -24,13 +23,11 @@ public class Address {
     @Description("E.g. Storgata 11")
     String streetAddress;
 
-    @XmlElement(name = "postal-code", required = true)
-    @NotNull
+    @XmlElement(name = "postal-code")
     @Size(max = 10)
     String postalCode;
 
-    @XmlElement(required = true)
-    @NotNull
+    @XmlElement
     @Size(max = 100)
     String city;
 

@@ -56,10 +56,13 @@ public class ReceiptLine {
     @Description("The amount of discount given")
     BigDecimal discount;
 
+    @XmlElement
+    String serialNumber;
+
 
     public static final ReceiptLine EXAMPLE = new ReceiptLine("Tall Cafe latte", "Tall vanilla latte with extra sugar",
             "0000012", "cup", 2.0, new BigDecimal("29.90"), new BigDecimal("5.98"),
-            new BigDecimal("59.80"), new BigDecimal("11.96"), new BigDecimal("5.50"));
+            new BigDecimal("59.80"), new BigDecimal("11.96"), new BigDecimal("5.50"), "XY12345325GF");
 
     public BigDecimal getVatPercent() {
         if (itemPrice != null && itemVat != null) {

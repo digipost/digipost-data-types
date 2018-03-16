@@ -15,11 +15,13 @@ import javax.xml.bind.annotation.XmlType;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-public class NameAndAddress {
+public class Customer {
     @XmlElement
     String name;
     @XmlElement
     Address address;
+    @XmlElement
+    String phoneNumber;
 
-    public static NameAndAddress EXAMPLE = new NameAndAddress("Ola Nordmann", Address.EXAMPLE);
+    public static final Customer EXAMPLE = new Customer("Ola Nordmann", Address.EXAMPLE, "Delivered to the doorstep");
 }

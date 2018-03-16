@@ -30,8 +30,8 @@ Appointment represents a meeting set for a specific place and time
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|no|E.g. Storgata 11|
-|postalCode|String|yes||
-|city|String|yes||
+|postalCode|String|no||
+|city|String|no||
 |country|String|no||
 
 ### XML
@@ -219,8 +219,9 @@ Receipt represents a document containing details about a purchase
 |payments|List|no|List of payments done during this purchase|
 |items|List|no|The individual items sold|
 |taxiDetails|[TaxiDetails](#taxidetails)|no|Details for taxi receipts|
-|customer|[NameAndAddress](#nameandaddress)|no|Name and address of customer|
+|customer|[Customer](#customer)|no|Name and address of customer|
 |delivery|[Delivery](#delivery)|no|Name and address of delivery|
+|orderNumber|String|no||
 
 ### Barcode
 
@@ -255,26 +256,21 @@ Receipt represents a document containing details about a purchase
 |levels|List|no||
 |sum|BigDecimal|no||
 
-### NameAndAddress
+### Customer
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|no||
 |address|Address|no||
+|phoneNumber|String|no||
 
 ### Delivery
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|nameAndAddress|[NameAndAddress](#nameandaddress)|no||
-|terms|String|no||
-
-### NameAndAddress
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
 |name|String|no||
 |address|Address|no||
+|terms|String|no||
 
 ### XML
 
@@ -326,6 +322,7 @@ Receipt represents a document containing details about a purchase
         <total-price>59.80</total-price>
         <total-vat>11.96</total-vat>
         <discount>5.50</discount>
+        <serialNumber>XY12345325GF</serialNumber>
     </items>
     <taxiDetails>
         <carPlateNumber>EK99999</carPlateNumber>
@@ -359,19 +356,19 @@ Receipt represents a document containing details about a purchase
             <city>Oslo</city>
             <country>Norge</country>
         </address>
+        <phoneNumber>Delivered to the doorstep</phoneNumber>
     </customer>
     <delivery>
-        <nameAndAddress>
-            <name>Ola Nordmann</name>
-            <address>
-                <street-address>Storgata 23</street-address>
-                <postal-code>0011</postal-code>
-                <city>Oslo</city>
-                <country>Norge</country>
-            </address>
-        </nameAndAddress>
+        <name>Ola Nordmann</name>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
         <terms>Delivered to the doorstep</terms>
     </delivery>
+    <order-number>123456</order-number>
 </receipt>
 ```
 

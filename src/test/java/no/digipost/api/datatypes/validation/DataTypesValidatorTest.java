@@ -25,13 +25,14 @@ public class DataTypesValidatorTest {
 
     private static DataTypesValidator validator = new DataTypesValidator();
 
-    final Appointment appointment = Appointment.EXAMPLE.withAddress(new Address("Storgata 2", "0001", null, null));
+    private final Appointment appointment = Appointment.EXAMPLE.withAddress(new Address("Storgata 2", "00000000001", "Oslo", null));
+    private final String error = "The value for field 'Appointment.address.postalCode' size must be between 0 and 10. The invalid value was '00000000001'";
 
     @Test
     public void testValidate() {
         final Set<DataTypesValidationError<Appointment>> constraintViolations = validator.validate(appointment).collect(toSet());
         assertThat(constraintViolations, hasSize(1));
-        assertThat(constraintViolations, Matchers.<DataTypesValidationError<Appointment>>hasItem(where(DataTypesValidationError::getPrettyMessage, is("The value for field 'Appointment.address.city' may not be null"))));
+        assertThat(constraintViolations, Matchers.<DataTypesValidationError<Appointment>>hasItem(where(DataTypesValidationError::getPrettyMessage, is(error))));
     }
 
     @Test
@@ -39,7 +40,7 @@ public class DataTypesValidatorTest {
         try {
             validator.validateOrThrow(appointment, (Set<DataTypesValidationError<Appointment>> errors) -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
         } catch (RuntimeException e) {
-            assertEquals("The value for field 'Appointment.address.city' may not be null", e.getMessage());
+            assertEquals(error, e.getMessage());
         }
     }
 
@@ -48,7 +49,7 @@ public class DataTypesValidatorTest {
         try {
             validator.validateOrThrow(Collections.singleton(appointment), (Set<DataTypesValidationError<Appointment>> errors) -> new RuntimeException(errors.stream().map(DataTypesValidationError::getPrettyMessage).collect(joining("\n"))));
         } catch (RuntimeException e) {
-            assertEquals("The value for field 'Appointment.address.city' may not be null", e.getMessage());
+            assertEquals(error, e.getMessage());
         }
     }
 
