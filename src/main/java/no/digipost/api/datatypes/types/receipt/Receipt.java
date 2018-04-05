@@ -116,8 +116,11 @@ public class Receipt implements DataType {
     @Description("Name and address of delivery")
     Delivery delivery;
 
-    @XmlElement(name ="order-number")
+    @XmlElement(name = "order-number")
     String orderNumber;
+
+    @XmlElement(name = "membership-number")
+    String membershipNumber;
 
     public static Receipt EXAMPLE = new Receipt("F96B6805-2453-478A-B58B-CCDFA07E21ED", "364567",
             ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
@@ -126,5 +129,5 @@ public class Receipt implements DataType {
             "7F5A1EFF-ECAE-48A7-A07F-38D87576F815",
             "Grünerløkka Hip Coffee", "12345678", Address.EXAMPLE, "123456789", Barcode.EXAMPLE,
             singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE), TaxiDetails.EXAMPLE,
-            Customer.EXAMPLE, Delivery.EXAMPLE, "123456");
+            Customer.EXAMPLE, Delivery.EXAMPLE, "123456", "HG1234HH8778");
 }
