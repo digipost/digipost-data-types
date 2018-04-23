@@ -223,6 +223,7 @@ Receipt represents a document containing details about a purchase
 |delivery|[Delivery](#delivery)|no|Name and address of delivery|
 |orderNumber|String|no||
 |membershipNumber|String|no||
+|comment|String|no||
 
 ### Barcode
 
@@ -372,6 +373,7 @@ Receipt represents a document containing details about a purchase
     </delivery>
     <order-number>123456</order-number>
     <membership-number>HG1234HH8778</membership-number>
+    <comment>Hip Coffee to the good citizens of Løkka</comment>
 </receipt>
 ```
 
