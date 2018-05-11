@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>digipost-data-types</artifactId>
-    <version>0.9</version>
+    <version>0.9.1-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <description>Data types for Digipost Messages</description>
 
@@ -96,6 +96,15 @@
                 <directory>target/generated-resources/schemagen</directory>
             </resource>
         </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.projectlombok</groupId>
