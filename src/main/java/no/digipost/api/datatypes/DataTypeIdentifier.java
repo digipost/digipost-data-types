@@ -24,7 +24,8 @@ public enum DataTypeIdentifier {
     RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
     CATEGORY(Category.class, "CAT", Category.EXAMPLE),
     EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE),
-    BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE);
+    BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE),
+    RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE);
 
     private final Class<? extends DataType> dataType;
     private final String shortName;

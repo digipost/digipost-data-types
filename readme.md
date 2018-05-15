@@ -6,6 +6,7 @@
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
+|[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 
 ## Appointment
@@ -189,6 +190,42 @@ An external URL, along with an optional description and deadline for resources s
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
 </externalLink>
+```
+
+## Receipt
+
+Receipt represents a document containing details about a purchase
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|time|ZonedDateTime|yes|When the purchase was made. ISO8601 full DateTime|
+|price|BigDecimal|yes|The total price paid for the item(s) purchased|
+|currencyCode|String|no|Currency of the price, ISO4217. Example: NOK|
+|salesPoint|String|yes|Name of the sales point. Example: Grünerløkka Hip Coffee|
+|chain|String|no|The name of the chain the sales point is a member of. Example: Hip Coffee inc|
+|bankAccount|String|no|The norwegian bank account number associated with the purchase, if applicable|
+|items|List|no|The individual items sold|
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<receipt xmlns="http://api.digipost.no/schema/datatypes">
+    <time>2017-10-27T10:00:00+02:00</time>
+    <price>142.00</price>
+    <currency>NOK</currency>
+    <sales-point>Grünerløkka Hip Coffee</sales-point>
+    <chain>Hip Coffee inc</chain>
+    <bank-account>12340112331</bank-account>
+    <items>
+        <itemName>Tall vanilla latte with extra sugar</itemName>
+        <vat>0.25</vat>
+        <itemCount>2</itemCount>
+        <price>29.90</price>
+    </items>
+</receipt>
 ```
 
 ## Residence
