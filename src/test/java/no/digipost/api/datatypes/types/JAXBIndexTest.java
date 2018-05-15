@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 
 import static com.google.common.io.Resources.readLines;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.util.stream.Collectors.toList;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertThat;
 
@@ -18,7 +17,9 @@ public class JAXBIndexTest {
     @Test
     public void check_all_metatdata_in_jaxb_index() throws IOException {
         final List<String> classNames = readLines(getClass().getResource("jaxb.index"), UTF_8);
-        final List<String> allDataTypes = Stream.of(DataTypeIdentifier.values()).map(DataTypeIdentifier::getDataType).map(Class::getSimpleName).collect(toList());
-        assertThat("Alle datatyper må ligge i jaxb.index for at de skal fungere med JAXB", classNames, containsInAnyOrder(allDataTypes.toArray()));
+        assertThat("Alle datatyper må ligge i jaxb.index for at de skal fungere med JAXB", classNames, containsInAnyOrder(Stream.of(DataTypeIdentifier.values())
+                .map(DataTypeIdentifier::getDataType)
+                .map(Class::getName)
+                .map(n -> n.replaceAll("no.digipost.api.datatypes.types.", "")).toArray()));
     }
 }

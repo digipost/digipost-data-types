@@ -6,6 +6,7 @@
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
+|[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 
 ## Appointment
@@ -20,17 +21,18 @@ Appointment represents a meeting set for a specific place and time
 |endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
-|address|[AppointmentAddress](#appointmentaddress)|no||
+|address|[Address](#address)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
 
-### AppointmentAddress
+### Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|no|E.g. Storgata 11|
-|postalCode|String|yes||
-|city|String|yes||
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
 
 ### XML
 
@@ -45,6 +47,7 @@ Appointment represents a meeting set for a specific place and time
         <street-address>Storgata 23</street-address>
         <postal-code>0011</postal-code>
         <city>Oslo</city>
+        <country>Norge</country>
     </address>
     <sub-title>Undersøke smerter i ryggen</sub-title>
     <info>
@@ -189,6 +192,189 @@ An external URL, along with an optional description and deadline for resources s
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
 </externalLink>
+```
+
+## Receipt
+
+Receipt represents a document containing details about a purchase
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|receiptId|String|no|The ID of this receipt in the system it was imported from|
+|receiptNumber|String|no|The original receipt number from the store|
+|purchaseTime|ZonedDateTime|yes|When the purchase was made. ISO8601 full DateTime|
+|totalPrice|BigDecimal|yes|The total price paid for the item(s) purchased|
+|totalVat|BigDecimal|yes|The total vat amount for the item(s) purchased|
+|currencyCode|String|no|Currency of the price, ISO4217. Example: NOK|
+|cashier|String|no|Identifier for cashier who made the sale|
+|register|String|no|Identifier for the register where the purchase was made|
+|merchantChain|String|no|Optional name of the chain that the merchant is a part of|
+|merchantName|String|yes|Name of the store or merchant. Example: Grünerløkka Hip Coffee|
+|merchantPhoneNumber|String|no||
+|merchantAddress|Address|no|Address of the store or merchant|
+|organizationNumber|String|no|Organization number of the sales point|
+|barcode|[Barcode](#barcode)|no||
+|payments|List|no|List of payments done during this purchase|
+|items|List|no|The individual items sold|
+|taxiDetails|[TaxiDetails](#taxidetails)|no|Details for taxi receipts|
+|customer|[Customer](#customer)|no|Name and address of customer|
+|delivery|[Delivery](#delivery)|no|Name and address of delivery|
+|orderNumber|String|no||
+|membershipNumber|String|no||
+|comment|String|no||
+
+### Barcode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|barcodeValue|String|no|The barcode on this receipt|
+|barcodeType|String|no||
+
+### TaxiDetails
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|carPlateNumber|String|no||
+|license|String|no||
+|orgNumberLicenseHolder|String|no||
+|startTime|ZonedDateTime|no||
+|stopTime|ZonedDateTime|no||
+|tips|BigDecimal|no||
+|totalMeterPrice|BigDecimal|no||
+|totalDistanceBeforeBoardingInMeters|Integer|no||
+|totalDistanceInMeters|Integer|no||
+|totalDistanceWithPassengerInMeters|Integer|no||
+|totalTimeBeforeBoardingInSeconds|Integer|no||
+|totalTimeInSeconds|Integer|no||
+|totalTimeWithPassengerInSeconds|Integer|no||
+|vat|[VatDetails](#vatdetails)|no||
+
+### VatDetails
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|levels|List|no||
+|sum|BigDecimal|no||
+
+### Customer
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|no||
+|address|Address|no||
+|phoneNumber|String|no||
+
+### Delivery
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|no||
+|address|Address|no||
+|terms|String|no||
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<receipt xmlns="http://api.digipost.no/schema/datatypes">
+    <receiptId>F96B6805-2453-478A-B58B-CCDFA07E21ED</receiptId>
+    <receiptNumber>364567</receiptNumber>
+    <purchaseTime>2018-05-27T10:00:00+02:00</purchaseTime>
+    <totalPrice>59.80</totalPrice>
+    <totalVat>11.96</totalVat>
+    <currency>NOK</currency>
+    <cashier>Benny</cashier>
+    <register>15</register>
+    <merchant-chain>7F5A1EFF-ECAE-48A7-A07F-38D87576F815</merchant-chain>
+    <merchant-name>Grünerløkka Hip Coffee</merchant-name>
+    <merchant-phone-number>12345678</merchant-phone-number>
+    <merchant-address>
+        <street-address>Storgata 23</street-address>
+        <postal-code>0011</postal-code>
+        <city>Oslo</city>
+        <country>Norge</country>
+    </merchant-address>
+    <orgnumber>123456789</orgnumber>
+    <barcode>
+        <barcode-value>1234567890</barcode-value>
+        <barcode-type>code-128</barcode-type>
+    </barcode>
+    <payments>
+        <type>Bank Axept</type>
+        <card-number>************1234</card-number>
+        <cardName>Visa</cardName>
+        <amount>100.00</amount>
+        <currency-code>NOK</currency-code>
+        <foreign-currency-payment>
+            <currency-code>USD</currency-code>
+            <amount>15</amount>
+            <exchange-rate>7.534567</exchange-rate>
+        </foreign-currency-payment>
+    </payments>
+    <items>
+        <item-name>Tall Cafe latte</item-name>
+        <item-description>Tall vanilla latte with extra sugar</item-description>
+        <item-code>0000012</item-code>
+        <unit>cup</unit>
+        <quantity>2.0</quantity>
+        <item-price>29.90</item-price>
+        <item-vat>5.98</item-vat>
+        <total-price>59.80</total-price>
+        <total-vat>11.96</total-vat>
+        <discount>5.50</discount>
+        <serialNumber>XY12345325GF</serialNumber>
+        <eanCode>1345678</eanCode>
+    </items>
+    <taxiDetails>
+        <carPlateNumber>EK99999</carPlateNumber>
+        <license>12341ASDF</license>
+        <orgNumberLicenseHolder>123456789</orgNumberLicenseHolder>
+        <startTime>2018-06-05T10:00:00+02:00</startTime>
+        <stopTime>2018-06-05T10:30:00+02:00</stopTime>
+        <tips>8.00</tips>
+        <totalMeterPrice>438.50</totalMeterPrice>
+        <totalDistanceBeforeBoardingInMeters>2000</totalDistanceBeforeBoardingInMeters>
+        <totalDistanceInMeters>8500</totalDistanceInMeters>
+        <totalDistanceWithPassengerInMeters>6500</totalDistanceWithPassengerInMeters>
+        <totalTimeBeforeBoardingInSeconds>320</totalTimeBeforeBoardingInSeconds>
+        <totalTimeInSeconds>1220</totalTimeInSeconds>
+        <totalTimeWithPassengerInSeconds>900</totalTimeWithPassengerInSeconds>
+        <vat>
+            <levels>
+                <grossAmount>400.00</grossAmount>
+                <netAmount>320.00</netAmount>
+                <vat>80.00</vat>
+                <vatPercent>25.00</vatPercent>
+            </levels>
+            <sum>64.90</sum>
+        </vat>
+    </taxiDetails>
+    <customer>
+        <name>Ola Nordmann</name>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+        <phoneNumber>Delivered to the doorstep</phoneNumber>
+    </customer>
+    <delivery>
+        <name>Ola Nordmann</name>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+        <terms>Delivered to the doorstep</terms>
+    </delivery>
+    <order-number>123456</order-number>
+    <membership-number>HG1234HH8778</membership-number>
+    <comment>Hip Coffee to the good citizens of Løkka</comment>
+</receipt>
 ```
 
 ## Residence
