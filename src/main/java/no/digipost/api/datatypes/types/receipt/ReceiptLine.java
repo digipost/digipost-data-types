@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
 
 import static java.math.BigDecimal.ROUND_HALF_UP;
+import static java.math.BigDecimal.ZERO;
 
 @XmlType
 @Value
@@ -65,7 +66,10 @@ public class ReceiptLine {
 
     public BigDecimal getVatPercent() {
         if (itemPrice != null && itemVat != null) {
-            return itemVat.multiply(BigDecimal.valueOf(100)).divide(itemPrice.subtract(itemVat), ROUND_HALF_UP).setScale(0, ROUND_HALF_UP);
+            if (itemVat.compareTo(ZERO) == 0) return BigDecimal.ZERO;
+            BigDecimal priceMinusVat = itemPrice.subtract(itemVat);
+            if (priceMinusVat.compareTo(ZERO) == 0) return BigDecimal.valueOf(100, 0);
+            return itemVat.multiply(BigDecimal.valueOf(100)).divide(priceMinusVat, ROUND_HALF_UP).setScale(0, ROUND_HALF_UP);
         } else {
             return null;
         }
