@@ -25,7 +25,6 @@ public class Heftelse {
 
     @XmlElement(name = "type-pant")
     @NotNull
-    @Size(max = 20)
     String typePant;
 
     @XmlElement
