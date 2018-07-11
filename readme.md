@@ -9,6 +9,7 @@
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
+|[SignedDocument](#signeddocument)|Details about a signed document|
 
 ## Appointment
 
@@ -449,4 +450,27 @@ Residence is a way of linking separate data for the same residence
     <source>boligmappa</source>
     <external-id>externalId</external-id>
 </residence>
+```
+
+## SignedDocument
+
+Details about a signed document
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|documentIssuer|String|yes|The original issuer of the document to be signed.|
+|documentSubject|String|yes|The original subject of the document to be signed.|
+|signingTime|ZonedDateTime|yes|When the recipient signed the document. ISO8601 full DateTime.|
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<signedDocument xmlns="http://api.digipost.no/schema/datatypes">
+    <document-issuer>Bedrift AS</document-issuer>
+    <document-subject>Ansettelseskontrakt</document-subject>
+    <signing-time>2018-07-11T10:00:00+02:00</signing-time>
+</signedDocument>
 ```
