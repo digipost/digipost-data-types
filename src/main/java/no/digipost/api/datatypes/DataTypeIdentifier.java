@@ -27,7 +27,9 @@ public enum DataTypeIdentifier {
     EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE),
     BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE),
     RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE),
-    PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE);
+    PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE),
+    SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE),
+    ;
 
     private final Class<? extends DataType> dataType;
     private final String shortName;
