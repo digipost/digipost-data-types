@@ -6,6 +6,7 @@
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
+|[Payslip](#payslip)|For treating documents as Payslips.|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 
@@ -192,6 +193,23 @@ An external URL, along with an optional description and deadline for resources s
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
 </externalLink>
+```
+
+## Payslip
+
+For treating documents as Payslips.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<payslip xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
 
 ## Receipt
