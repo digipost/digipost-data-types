@@ -11,7 +11,6 @@ import javax.xml.bind.annotation.XmlValue;
 
 @XmlRootElement
 @Value
-
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Description("Category is a way to specify which category the data of a document is related to.")
 public class Category implements DataType {
@@ -19,7 +18,7 @@ public class Category implements DataType {
     @XmlValue
     private String category;
 
-    private Category(String name){
+    public Category(String name){
         this.category = name;
     }
 
