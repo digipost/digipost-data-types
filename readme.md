@@ -7,6 +7,7 @@
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Payslip](#payslip)|For treating documents as Payslips.|
+|[PickupNotice](#pickupnotice)|Details about a signed document|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -211,6 +212,89 @@ For treating documents as Payslips.
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <payslip xmlns="http://api.digipost.no/schema/datatypes"/>
+```
+
+## PickupNotice
+
+Details about a signed document
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|parcelId|String|yes|The id of the parcel in posten|
+|parcelUUID|String|yes|The uuid of the parcel|
+|barcode|Barcode|yes|Bar code|
+|recipient|[Recipient](#recipient)|yes|The recipient of the parcel|
+|sender|[Sender](#sender)|yes|The sender of the parcel|
+|pickupPlace|[PickupPlace](#pickupplace)|yes|where the parcel can be fetched|
+
+### Recipient
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|digipostAddress|String|yes|The digipost address for the recipient|
+|address|Address|no||
+|emailAdress|String|no||
+
+### Sender
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|reference|String|yes|The senders reference|
+|address|Address|no||
+
+### PickupPlace
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|yes|The pickup place name|
+|id|String|yes|The pickup place id|
+|instruction|String|yes|instructions for fetching the parcel|
+|address|Address|no||
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pickupNotice xmlns="http://api.digipost.no/schema/datatypes">
+    <parcel-id>KB432788293NO</parcel-id>
+    <parcel-uuid>70300492517312675</parcel-uuid>
+    <bar-code>
+        <barcode-value>1234567890</barcode-value>
+        <barcode-type>EAN-128</barcode-type>
+    </bar-code>
+    <recipient>
+        <digipost-address>test.testesen#0000</digipost-address>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+        <email-address>test.testesen@example.com</email-address>
+    </recipient>
+    <sender>
+        <reference>13372500</reference>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </sender>
+    <pickup-place>
+        <name>0132</name>
+        <id>Coop Mega</id>
+        <instruction>Må hentes innen 010180</instruction>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </pickup-place>
+</pickupNotice>
 ```
 
 ## Receipt

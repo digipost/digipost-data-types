@@ -1,6 +1,7 @@
 package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.*;
+import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 
 import java.util.Map;
@@ -29,6 +30,7 @@ public enum DataTypeIdentifier {
     RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE),
     PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE),
     SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE),
+    PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE),
     ;
 
     private final Class<? extends DataType> dataType;
