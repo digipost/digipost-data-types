@@ -37,6 +37,10 @@ public class PickupNotice implements DataType {
     @Description("Bar code")
     Barcode barcode;
     
+    @XmlElement(name = "product-name", required = true)
+    @Description("Mail Service product name")
+    String productName;
+    
     @XmlElement(name = "recipient", required = true)
     @Description("The recipient of the parcel")
     Recipient recipient;
@@ -48,14 +52,20 @@ public class PickupNotice implements DataType {
     @XmlElement(name = "pickup-place", required = true)
     @Description("where the parcel can be fetched")
     PickupPlace pickupPlace;
+
+    @XmlElement(name = "package", required = true)
+    @Description("package information")
+    Package thePackage;
     
     public static PickupNotice EXAMPLE = new PickupNotice(
             "KB432788293NO"
             , "70300492517312675"
             , Barcode.EXAMPLE.withBarcodeType("EAN-128")
+            , "Klimanøytral Servicepakke"
             , Recipient.EXAMPLE
             , Sender.EXAMPLE
             , PickupPlace.EXAMPLE
+            , Package.EXAMPLE
     );
 }
 

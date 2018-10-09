@@ -225,9 +225,11 @@ Details about a signed document
 |parcelId|String|yes|The id of the parcel in posten|
 |parcelUUID|String|yes|The uuid of the parcel|
 |barcode|Barcode|yes|Bar code|
+|productName|String|yes|Mail Service product name|
 |recipient|[Recipient](#recipient)|yes|The recipient of the parcel|
 |sender|[Sender](#sender)|yes|The sender of the parcel|
 |pickupPlace|[PickupPlace](#pickupplace)|yes|where the parcel can be fetched|
+|thePackage|[Package](#package)|yes|package information|
 
 ### Recipient
 
@@ -251,7 +253,17 @@ Details about a signed document
 |name|String|yes|The pickup place name|
 |id|String|yes|The pickup place id|
 |instruction|String|yes|instructions for fetching the parcel|
+|shelfLocation|String|no|shelf location at pickup point|
 |address|Address|no||
+
+### Package
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|length|Integer|no|Package lenght in cm|
+|width|Integer|no|Package width in cm|
+|height|Integer|no|Package height in cm|
+|weight|Integer|no|Package weight in grams|
 
 ### XML
 
@@ -264,6 +276,7 @@ Details about a signed document
         <barcode-value>1234567890</barcode-value>
         <barcode-type>EAN-128</barcode-type>
     </bar-code>
+    <product-name>Klimanøytral Servicepakke</product-name>
     <recipient>
         <digipost-address>test.testesen#0000</digipost-address>
         <address>
@@ -287,6 +300,7 @@ Details about a signed document
         <name>0132</name>
         <id>Coop Mega</id>
         <instruction>Må hentes innen 010180</instruction>
+        <shelf-location>H32</shelf-location>
         <address>
             <street-address>Storgata 23</street-address>
             <postal-code>0011</postal-code>
@@ -294,6 +308,12 @@ Details about a signed document
             <country>Norge</country>
         </address>
     </pickup-place>
+    <package>
+        <lenght>120</lenght>
+        <width>60</width>
+        <height>60</height>
+        <weight>35000</weight>
+    </package>
 </pickupNotice>
 ```
 

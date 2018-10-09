@@ -30,10 +30,14 @@ public class PickupPlace {
     @Description("instructions for fetching the parcel")
     String instruction;
 
+    @XmlElement(name = "shelf-location")
+    @Description("shelf location at pickup point")
+    String shelfLocation;
+
     @XmlElement
     Address address;
 
-    public static final PickupPlace EXAMPLE = new PickupPlace("0132", "Coop Mega", "Må hentes innen 010180", Address.EXAMPLE);
+    public static final PickupPlace EXAMPLE = new PickupPlace("0132", "Coop Mega", "Må hentes innen 010180", "H32", Address.EXAMPLE);
 
 
 }
