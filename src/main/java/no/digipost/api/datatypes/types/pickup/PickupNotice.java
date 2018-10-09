@@ -57,6 +57,10 @@ public class PickupNotice implements DataType {
     @Description("package information")
     Package thePackage;
     
+    @XmlElement(name = "customs")
+    @Description("Information about value and customs processing")
+    Customs customs;
+    
     public static PickupNotice EXAMPLE = new PickupNotice(
             "KB432788293NO"
             , "70300492517312675"
@@ -66,6 +70,7 @@ public class PickupNotice implements DataType {
             , Sender.EXAMPLE
             , PickupPlace.EXAMPLE
             , Package.EXAMPLE
+            , Customs.EXAMPLE
     );
 }
 

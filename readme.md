@@ -230,6 +230,7 @@ Details about a signed document
 |sender|[Sender](#sender)|yes|The sender of the parcel|
 |pickupPlace|[PickupPlace](#pickupplace)|yes|where the parcel can be fetched|
 |thePackage|[Package](#package)|yes|package information|
+|customs|[Customs](#customs)|no|Information about value and customs processing|
 
 ### Recipient
 
@@ -264,6 +265,14 @@ Details about a signed document
 |width|Integer|no|Package width in cm|
 |height|Integer|no|Package height in cm|
 |weight|Integer|no|Package weight in grams|
+
+### Customs
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|value|BigDecimal|yes|The value of the parcel in NOK|
+|payedCustumsFee|BigDecimal|yes|payed fee in  custums|
+|vasText|String|yes|Text from custums|
 
 ### XML
 
@@ -314,6 +323,11 @@ Details about a signed document
         <height>60</height>
         <weight>35000</weight>
     </package>
+    <customs>
+        <value>1277.00</value>
+        <payed-custums-fee>162.00</payed-custums-fee>
+        <vas-text>FORENKLET TOLLBEHANDLING</vas-text>
+    </customs>
 </pickupNotice>
 ```
 
