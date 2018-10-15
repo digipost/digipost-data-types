@@ -1,12 +1,14 @@
 package no.digipost.api.datatypes.documentation;
 
 import no.digipost.api.datatypes.DataType;
+import no.digipost.api.datatypes.types.MetaData;
 import no.digipost.api.datatypes.types.ShortTextMessage;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Stream;
 
@@ -24,17 +26,26 @@ public class DocumentationTest {
     @Test
     public void should_build_type_structure_for_test_data_type() {
         final Stream<ComplexType> types = DocumentationStructureBuilder.<DataType>buildTypeStructure(
-            singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE);
+                singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE);
+        System.out.println(MetaData.EXAMPLE);
         assertThat(types.collect(toSet()), contains(
-            new ComplexType(ShortTextMessage.class, "150 character short message",
-                    Collections.singletonList(new FieldInfo("message", new SimpleType(String.class), true, "Your short message goes here")),
-                    ShortTextMessage.EXAMPLE)));
+                new ComplexType(ShortTextMessage.class, "150 character short message",
+                        Arrays.asList(
+                                new FieldInfo("message", new SimpleType(String.class), true, "Your short message goes here"),
+                                new FieldInfo("metaData", 
+                                        new ComplexType(
+                                                MetaData.class
+                                                , "Metainformation"
+                                                , Collections.singletonList(new FieldInfo("value", new SimpleType(String.class), true, "Your extra information"))
+                                                , null), false, "Some metadata for shortTextMessage")
+                        ),
+                        ShortTextMessage.EXAMPLE)));
     }
 
     @Test
     public void should_print_docs_for_test_data_type() throws IOException, JAXBException {
         final String docs = new MarkdownPrinter(JAXBContext.newInstance(ShortTextMessage.class), true).print(DocumentationStructureBuilder.<DataType>buildTypeStructure(
-            singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE).collect(toList()));
+                singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE).collect(toList()));
 
         assertThat(docs, is(new String(toByteArray(getClass().getResource("testdoc.md")), UTF_8)));
     }
