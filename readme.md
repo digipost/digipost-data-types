@@ -281,7 +281,7 @@ Details about a signed document
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<pickupNotice xmlns="http://api.digipost.no/schema/datatypes">
+<pickup-notice xmlns="http://api.digipost.no/schema/datatypes">
     <parcel-id>KB432788293NO</parcel-id>
     <parcel-uuid>70300492517312675</parcel-uuid>
     <barcode>
@@ -334,7 +334,7 @@ Details about a signed document
         <payed-customs-fee>162.00</payed-customs-fee>
         <vas-text>FORENKLET TOLLBEHANDLING</vas-text>
     </customs>
-</pickupNotice>
+</pickup-notice>
 ```
 
 ## Receipt

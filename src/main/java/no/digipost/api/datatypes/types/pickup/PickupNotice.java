@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-@XmlRootElement
+@XmlRootElement(name = "pickup-notice")
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
