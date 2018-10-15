@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class Package {
 
-    @XmlElement(name = "lenght")
+    @XmlElement(name = "length")
     @Description("Package lenght in cm")
     Integer length;
 

@@ -26,7 +26,7 @@ public class Recipient {
     Address address;
 
     @XmlElement(name = "email-address")
-    String emailAdress;
+    String emailAddress;
     
     public static final Recipient EXAMPLE = new Recipient("test.testesen#0000", Address.EXAMPLE, "test.testesen@example.com");
     

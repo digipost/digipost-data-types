@@ -18,9 +18,9 @@ import java.math.BigDecimal;
 @Wither
 public class Customs {
 
-    @XmlElement(name = "value", required = true)
+    @XmlElement(name = "package-value", required = true)
     @Description("The value of the parcel in NOK")
-    BigDecimal value;
+    BigDecimal packageValue;
     
     @XmlElement(name = "payed-customs-fee", required = true)
     @Description("payed fee in customs")

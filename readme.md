@@ -224,7 +224,7 @@ Details about a signed document
 |----|----|--------|-----------|
 |parcelId|String|yes|The id of the parcel in posten|
 |parcelUUID|String|yes|The uuid of the parcel|
-|barcode|Barcode|yes|Bar code|
+|barcode|Barcode|yes|Barcode|
 |productName|String|yes|Mail Service product name|
 |arrivalDateTime|ZonedDateTime|yes|ISO8601 full DateTime for arrival at pickup place|
 |returnDateTime|ZonedDateTime|yes|ISO8601 full DateTime for return back to sender|
@@ -240,7 +240,7 @@ Details about a signed document
 |----|----|--------|-----------|
 |digipostAddress|String|yes|The digipost address for the recipient|
 |address|Address|no||
-|emailAdress|String|no||
+|emailAddress|String|no||
 
 ### Sender
 
@@ -273,7 +273,7 @@ Details about a signed document
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|value|BigDecimal|yes|The value of the parcel in NOK|
+|packageValue|BigDecimal|yes|The value of the parcel in NOK|
 |payedCustomsFee|BigDecimal|yes|payed fee in customs|
 |vasText|String|yes|Text from custums|
 
@@ -284,10 +284,10 @@ Details about a signed document
 <pickupNotice xmlns="http://api.digipost.no/schema/datatypes">
     <parcel-id>KB432788293NO</parcel-id>
     <parcel-uuid>70300492517312675</parcel-uuid>
-    <bar-code>
+    <barcode>
         <barcode-value>1234567890</barcode-value>
         <barcode-type>EAN-128</barcode-type>
-    </bar-code>
+    </barcode>
     <product-name>Klimanøytral Servicepakke</product-name>
     <arrival-date-time>2018-09-10T10:00:00+02:00</arrival-date-time>
     <return-date-time>2018-09-24T10:00:00+02:00</return-date-time>
@@ -324,13 +324,13 @@ Details about a signed document
         </address>
     </pickup-place>
     <package>
-        <lenght>120</lenght>
+        <length>120</length>
         <width>60</width>
         <height>60</height>
         <weight>35000</weight>
     </package>
     <customs>
-        <value>1277.00</value>
+        <package-value>1277.00</package-value>
         <payed-customs-fee>162.00</payed-customs-fee>
         <vas-text>FORENKLET TOLLBEHANDLING</vas-text>
     </customs>

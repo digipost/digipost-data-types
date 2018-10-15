@@ -34,8 +34,8 @@ public class PickupNotice implements DataType {
     @Description("The uuid of the parcel")
     String parcelUUID;
     
-    @XmlElement(name = "bar-code", required = true)
-    @Description("Bar code")
+    @XmlElement(name = "barcode", required = true)
+    @Description("Barcode")
     Barcode barcode;
     
     @XmlElement(name = "product-name", required = true)
