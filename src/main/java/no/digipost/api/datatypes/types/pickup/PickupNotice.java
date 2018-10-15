@@ -7,15 +7,14 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
-import no.digipost.api.datatypes.types.Address;
-import no.digipost.api.datatypes.types.Info;
 import no.digipost.api.datatypes.types.receipt.Barcode;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @XmlRootElement
 @Value
@@ -27,6 +26,8 @@ public class PickupNotice implements DataType {
     
     @XmlElement(name = "parcel-id", required = true)
     @Description("The id of the parcel in posten")
+    @NotNull
+    @Valid
     String parcelId;
     
     @XmlElement(name = "parcel-uuid", required = true)
@@ -41,16 +42,32 @@ public class PickupNotice implements DataType {
     @Description("Mail Service product name")
     String productName;
     
+    @XmlElement(name = "arrival-date-time", required = true)
+    @Description("ISO8601 full DateTime for arrival at pickup place")
+    @Valid
+    ZonedDateTime arrivalDateTime;
+    
+    @XmlElement(name = "return-date-time", required = true)
+    @Description("ISO8601 full DateTime for return back to sender")
+    @Valid
+    ZonedDateTime returnDateTime;
+    
     @XmlElement(name = "recipient", required = true)
     @Description("The recipient of the parcel")
+    @NotNull
+    @Valid
     Recipient recipient;
     
     @XmlElement(name = "sender", required = true)
     @Description("The sender of the parcel")
+    @NotNull
+    @Valid
     Sender sender;
     
     @XmlElement(name = "pickup-place", required = true)
     @Description("where the parcel can be fetched")
+    @NotNull
+    @Valid
     PickupPlace pickupPlace;
 
     @XmlElement(name = "package", required = true)
@@ -60,12 +77,14 @@ public class PickupNotice implements DataType {
     @XmlElement(name = "customs")
     @Description("Information about value and customs processing")
     Customs customs;
-    
+
     public static PickupNotice EXAMPLE = new PickupNotice(
             "KB432788293NO"
             , "70300492517312675"
             , Barcode.EXAMPLE.withBarcodeType("EAN-128")
             , "Klimanøytral Servicepakke"
+            , ZonedDateTime.of(2018, 9, 10, 10, 0, 0, 0, ZoneId.systemDefault())
+            , ZonedDateTime.of(2018, 9, 24, 10, 0, 0, 0, ZoneId.systemDefault())
             , Recipient.EXAMPLE
             , Sender.EXAMPLE
             , PickupPlace.EXAMPLE

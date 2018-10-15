@@ -226,6 +226,8 @@ Details about a signed document
 |parcelUUID|String|yes|The uuid of the parcel|
 |barcode|Barcode|yes|Bar code|
 |productName|String|yes|Mail Service product name|
+|arrivalDateTime|ZonedDateTime|yes|ISO8601 full DateTime for arrival at pickup place|
+|returnDateTime|ZonedDateTime|yes|ISO8601 full DateTime for return back to sender|
 |recipient|[Recipient](#recipient)|yes|The recipient of the parcel|
 |sender|[Sender](#sender)|yes|The sender of the parcel|
 |pickupPlace|[PickupPlace](#pickupplace)|yes|where the parcel can be fetched|
@@ -253,6 +255,7 @@ Details about a signed document
 |----|----|--------|-----------|
 |name|String|yes|The pickup place name|
 |id|String|yes|The pickup place id|
+|code|String|yes|The pickup code|
 |instruction|String|yes|instructions for fetching the parcel|
 |shelfLocation|String|no|shelf location at pickup point|
 |address|Address|no||
@@ -286,6 +289,8 @@ Details about a signed document
         <barcode-type>EAN-128</barcode-type>
     </bar-code>
     <product-name>Klimanøytral Servicepakke</product-name>
+    <arrival-date-time>2018-09-10T10:00:00+02:00</arrival-date-time>
+    <return-date-time>2018-09-24T10:00:00+02:00</return-date-time>
     <recipient>
         <digipost-address>test.testesen#0000</digipost-address>
         <address>
@@ -308,6 +313,7 @@ Details about a signed document
     <pickup-place>
         <name>0132</name>
         <id>Coop Mega</id>
+        <code>RC89</code>
         <instruction>Må hentes innen 010180</instruction>
         <shelf-location>H32</shelf-location>
         <address>

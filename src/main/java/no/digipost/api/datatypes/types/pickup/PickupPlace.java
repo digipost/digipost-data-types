@@ -26,6 +26,10 @@ public class PickupPlace {
     @Description("The pickup place id")
     String id;
 
+    @XmlElement(name = "code", required = true)
+    @Description("The pickup code")
+    String code;
+
     @XmlElement(name = "instruction", required = true)
     @Description("instructions for fetching the parcel")
     String instruction;
@@ -37,7 +41,7 @@ public class PickupPlace {
     @XmlElement
     Address address;
 
-    public static final PickupPlace EXAMPLE = new PickupPlace("0132", "Coop Mega", "Må hentes innen 010180", "H32", Address.EXAMPLE);
+    public static final PickupPlace EXAMPLE = new PickupPlace("0132", "Coop Mega", "RC89", "Må hentes innen 010180", "H32", Address.EXAMPLE);
 
 
 }
