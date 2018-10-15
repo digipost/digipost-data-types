@@ -274,7 +274,7 @@ Details about a signed document
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |value|BigDecimal|yes|The value of the parcel in NOK|
-|payedCustumsFee|BigDecimal|yes|payed fee in  custums|
+|payedCustomsFee|BigDecimal|yes|payed fee in customs|
 |vasText|String|yes|Text from custums|
 
 ### XML
@@ -331,7 +331,7 @@ Details about a signed document
     </package>
     <customs>
         <value>1277.00</value>
-        <payed-custums-fee>162.00</payed-custums-fee>
+        <payed-customs-fee>162.00</payed-customs-fee>
         <vas-text>FORENKLET TOLLBEHANDLING</vas-text>
     </customs>
 </pickupNotice>

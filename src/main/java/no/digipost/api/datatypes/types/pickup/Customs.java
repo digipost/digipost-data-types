@@ -22,9 +22,9 @@ public class Customs {
     @Description("The value of the parcel in NOK")
     BigDecimal value;
     
-    @XmlElement(name = "payed-custums-fee", required = true)
-    @Description("payed fee in  custums")
-    BigDecimal payedCustumsFee;
+    @XmlElement(name = "payed-customs-fee", required = true)
+    @Description("payed fee in customs")
+    BigDecimal payedCustomsFee;
     
     @XmlElement(name = "vas-text", required = true)
     @Description("Text from custums")
