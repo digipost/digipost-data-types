@@ -254,11 +254,11 @@ Details about a signed document
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|yes|The pickup place name|
-|id|String|yes|The pickup place id|
+|location|Location|yes|The location for the pickup place|
 |code|String|yes|The pickup code|
 |instruction|String|yes|instructions for fetching the parcel|
 |shelfLocation|String|no|shelf location at pickup point|
-|address|Address|no||
+|address|Address|yes||
 
 ### Package
 
@@ -312,7 +312,11 @@ Details about a signed document
     </sender>
     <pickup-place>
         <name>0132</name>
-        <id>Coop Mega</id>
+        <location>
+            <id>1231</id>
+            <name>Coop Mega</name>
+            <type>POSTEN</type>
+        </location>
         <code>RC89</code>
         <instruction>Må hentes innen 010180</instruction>
         <shelf-location>H32</shelf-location>
