@@ -7,7 +7,7 @@
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Payslip](#payslip)|For treating documents as Payslips.|
-|[PickupNotice](#pickupnotice)|Details about a signed document|
+|[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -216,7 +216,7 @@ For treating documents as Payslips.
 
 ## PickupNotice
 
-Details about a signed document
+Details about a pickup notice
 
 ### Fields
 
@@ -224,43 +224,73 @@ Details about a signed document
 |----|----|--------|-----------|
 |parcelId|String|yes|The id of the parcel in posten|
 |parcelUUID|String|yes|The uuid of the parcel|
-|barcode|Barcode|yes|Barcode|
+|barcode|[Barcode](#pickupnoticebarcode)|yes|Barcode|
 |productName|String|yes|Mail Service product name|
 |arrivalDateTime|ZonedDateTime|yes|ISO8601 full DateTime for arrival at pickup place|
 |returnDateTime|ZonedDateTime|yes|ISO8601 full DateTime for return back to sender|
-|recipient|[Recipient](#recipient)|yes|The recipient of the parcel|
-|sender|[Sender](#sender)|yes|The sender of the parcel|
-|pickupPlace|[PickupPlace](#pickupplace)|yes|where the parcel can be fetched|
-|thePackage|[Package](#package)|yes|package information|
-|customs|[Customs](#customs)|no|Information about value and customs processing|
+|recipient|[Recipient](#pickupnoticerecipient)|yes|The recipient of the parcel|
+|sender|[Sender](#pickupnoticesender)|yes|The sender of the parcel|
+|pickupPlace|[PickupPlace](#pickupnoticepickupplace)|yes|where the parcel can be fetched|
+|thePackage|[Package](#pickupnoticepackage)|yes|package information|
+|customs|[Customs](#pickupnoticecustoms)|no|Information about value and customs processing|
 
-### Recipient
+### PickupNotice.Barcode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|barcodeValue|String|no|The barcode on this receipt|
+|barcodeType|String|no||
+
+### PickupNotice.Recipient
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |digipostAddress|String|yes|The digipost address for the recipient|
-|address|Address|no||
+|address|[Address](#pickupnoticeaddress)|no||
 |emailAddress|String|no||
 
-### Sender
+### PickupNotice.Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
+
+### PickupNotice.Sender
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |reference|String|yes|The senders reference|
-|address|Address|no||
+|address|[Address](#pickupnoticeaddress)|no||
 
-### PickupPlace
+### PickupNotice.PickupPlace
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|yes|The pickup place name|
-|location|Location|yes|The location for the pickup place|
+|location|[Location](#pickupnoticelocation)|yes|The location for the pickup place|
 |code|String|yes|The pickup code|
 |instruction|String|yes|instructions for fetching the parcel|
 |shelfLocation|String|no|shelf location at pickup point|
-|address|Address|yes||
+|address|[Address](#pickupnoticeaddress)|yes||
 
-### Package
+### PickupNotice.Location
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|id|String|yes|The unique identification for the location|
+|name|String|yes|The name of the pickup place|
+|locationType|[LocationType](#pickupnoticelocationtype)|yes|The type is used in conjunction with id above to fetch more information about a particular pickup place|
+
+### PickupNotice.LocationType
+
+Valid values:
+
+* POSTEN
+
+### PickupNotice.Package
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -269,7 +299,7 @@ Details about a signed document
 |height|Integer|no|Package height in cm|
 |weight|Integer|no|Package weight in grams|
 
-### Customs
+### PickupNotice.Customs
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|

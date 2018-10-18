@@ -3,6 +3,7 @@ package no.digipost.api.datatypes.documentation;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.DataTypeIdentifier;
 import no.digipost.api.datatypes.marshalling.DataTypesJAXBContext;
+import no.digipost.api.datatypes.types.pickup.PickupNotice;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;

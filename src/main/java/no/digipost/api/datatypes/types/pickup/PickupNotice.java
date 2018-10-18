@@ -21,7 +21,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-@Description("Details about a signed document")
+@Description("Details about a pickup notice")
 public class PickupNotice implements DataType {
     
     @XmlElement(name = "parcel-id", required = true)
