@@ -4,8 +4,10 @@
         @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class),
         @XmlJavaTypeAdapter(MoneyBigDecimalXmlAdapter.class)
 })
+@DataTypePackage
 package no.digipost.api.datatypes.types.receipt;
 
+import no.digipost.api.datatypes.documentation.DataTypePackage;
 import no.digipost.api.datatypes.marshalling.MoneyBigDecimalXmlAdapter;
 import no.digipost.api.datatypes.marshalling.ZonedDateTimeXmlAdapter;
 
@@ -16,3 +18,4 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
 
 import static no.digipost.api.datatypes.marshalling.DataTypesJAXBContext.DIGIPOST_DATATYPES_NAMESPACE;
+

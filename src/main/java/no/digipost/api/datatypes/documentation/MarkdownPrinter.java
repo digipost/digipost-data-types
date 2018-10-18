@@ -8,7 +8,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.lang.System.lineSeparator;
@@ -30,7 +32,7 @@ public class MarkdownPrinter {
 
 
     public String print(List<ComplexType> typeInfos) {
-        return  printHeader(typeInfos) + LLF +
+        return printHeader(typeInfos) + LLF +
                 printTypes(typeInfos) + LF;
     }
 
@@ -39,19 +41,19 @@ public class MarkdownPrinter {
     }
 
     private String printHeader(List<ComplexType> typeInfos) {
-        return     heading(2, "Data types") + LLF +
+        return heading(2, "Data types") + LLF +
                 "|Type|Description|" + LF +
                 "|----|-----------|" + LF +
                 typeInfos.stream().map(t ->
-                "|" + printLink(t) + "|" + t.getDescription() + "|"
+                        "|" + printLink(t, t) + "|" + t.getDescription() + "|"
                 ).collect(joining(LF));
     }
 
     private String printTypeOverview(ComplexType typeInfo) {
-        return     heading(2, typeInfo.getTypeName()) + LLF +
+        return heading(2, typeInfo.getTypeName()) + LLF +
                 typeInfo.getDescription() + LLF +
                 heading(3, "Fields") + LLF +
-                printFields(typeInfo.getFields()) + LLF +
+                printFields(typeInfo, typeInfo.getFields(), new HashSet<>()) + LLF +
                 (this.printJsonExamples ? printJsonExample(typeInfo.getExample()) + LLF : "") +
                 printXmlExample(typeInfo.getExample());
     }
@@ -62,7 +64,7 @@ public class MarkdownPrinter {
             final Marshaller marshaller = jaxb.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(example, writer);
-            return    heading(3, "XML") + LLF +
+            return heading(3, "XML") + LLF +
                     code("xml", writer.toString().trim());
         } catch (JAXBException e) {
             throw new RuntimeException(e);
@@ -75,36 +77,46 @@ public class MarkdownPrinter {
 
     private String printJsonExample(Object example) {
         try {
-            return     heading(3, "JSON") + LLF +
+            return heading(3, "JSON") + LLF +
                     code("json",
-                    DataTypesJsonMapper.getMapper()
-                        .configure(SerializationFeature.INDENT_OUTPUT, true)
-                        .writeValueAsString(example).trim());
+                            DataTypesJsonMapper.getMapper()
+                                    .configure(SerializationFeature.INDENT_OUTPUT, true)
+                                    .writeValueAsString(example).trim());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private String printTypeInfo(ComplexType type) {
-        return    heading(3, type.getTypeName()) + LLF +
-                printFields(type.getFields());
+    private String printTypeInfo(ComplexType parent, ComplexType type, Set<ComplexType> printed) {
+        printed.add(type);
+        return heading(3, parent.getTypeName() + "." + type.getTypeName()) + LLF +
+                printFields(parent, type.getFields(), printed);
     }
 
-    private String printFields(List<FieldInfo> fields) {
-        final String subTypes = fields.stream().map(FieldInfo::getType).filter(FieldType::isComplex).map(t -> (ComplexType) t).map(this::printTypeInfo).collect(joining(LLF));
-        return    "|Name|Type|Required|Description|" + LF +
+    private String printFields(ComplexType parent, List<FieldInfo> fields, Set<ComplexType> printed) {
+
+        final String subTypes = fields.stream()
+                .map(FieldInfo::getType)
+                .filter(FieldType::isComplex)
+                .map(t -> (ComplexType) t)
+                .filter(o -> !printed.contains(o))
+                .map(type -> printTypeInfo(parent, type, printed))
+                .collect(joining(LLF));
+        return "|Name|Type|Required|Description|" + LF +
                 "|----|----|--------|-----------|" + LF +
-                fields.stream().map(this::printField).collect(joining(LF)) +
+                fields.stream().map(f -> printField(parent, f)).collect(joining(LF)) +
                 (subTypes.isEmpty() ? subTypes : LLF + subTypes);
     }
 
-    private String printField(FieldInfo f) {
-        final String type = f.getType().isComplex() ? printLink(f.getType()) : f.getType().getTypeName();
+    private String printField(ComplexType parent, FieldInfo f) {
+        final String type = f.getType().isComplex() ? printLink(parent, (ComplexType) f.getType()) : f.getType().getTypeName();
         return "|" + f.getName() + "|" + type + "|" + (f.isMandatory() ? "yes" : "no") + "|" + f.getDescription() + "|";
     }
 
-    private String printLink(FieldType f) {
-        return "[" + f.getTypeName() + "](#" + f.getTypeName().toLowerCase().replaceAll(" ", "-") + ")";
+    private String printLink(ComplexType parent, ComplexType field) {
+        String prefix = (!parent.hasSameNameAs(field)) ? parent.getTypeName().toLowerCase().replaceAll(" ", "-") : "";
+
+        return "[" + field.getTypeName() + "](#" + prefix + field.getTypeName().toLowerCase().replaceAll(" ", "-") + ")";
     }
 
     private String heading(int level, String heading) {
