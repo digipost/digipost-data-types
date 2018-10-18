@@ -25,4 +25,8 @@ public class ComplexType implements FieldType, Comparable<ComplexType> {
     public int compareTo(ComplexType o) {
         return getTypeName().compareTo(o.getTypeName());
     }
+    
+    public boolean hasSameNameAs(ComplexType ct){
+        return this.getTypeName().equals(ct.getTypeName());
+    }
 }

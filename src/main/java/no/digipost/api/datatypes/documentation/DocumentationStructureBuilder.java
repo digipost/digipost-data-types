@@ -28,11 +28,11 @@ public class DocumentationStructureBuilder {
     }
 
     private static List<FieldInfo> getFieldInfos(Class<?> dataType) {
-        return Stream.of(dataType.getDeclaredFields()).filter(f -> !isStatic(f.getModifiers())).map(getFieldInfo(dataType)).collect(toList());
+        return Stream.of(dataType.getDeclaredFields()).filter(f -> !isStatic(f.getModifiers())).map(getFieldInfo()).collect(toList());
     }
 
-    private static Function<Field, FieldInfo> getFieldInfo(final Class<?> parentType) {
-        return field -> new FieldInfo(field.getName(), resolveTypeOfField(parentType, field.getType()), isMandatory(field), getDescription(field));
+    private static Function<Field, FieldInfo> getFieldInfo() {
+        return field -> new FieldInfo(field.getName(), resolveTypeOfField(field.getType()), isMandatory(field), getDescription(field));
     }
 
     private static String getDescription(AnnotatedElement element) {
@@ -44,9 +44,9 @@ public class DocumentationStructureBuilder {
         final boolean notNull = field.getAnnotationsByType(NotNull.class).length > 0;
         return requiredXmlElement || notNull;
     }
-
-    private static FieldType resolveTypeOfField(Class<?> parentType, Class<?> fieldType) {
-        if (fieldType.getPackage().equals(parentType.getPackage())) {
+  
+    private static FieldType resolveTypeOfField(Class<?> fieldType) {
+        if (fieldType.getPackage().isAnnotationPresent(DataTypePackage.class)) {
             return new ComplexType(fieldType, getDescription(fieldType), getFieldInfos(fieldType), null);
         } else {
             return new SimpleType(fieldType);

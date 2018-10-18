@@ -25,5 +25,8 @@ public class ShortTextMessage implements DataType {
     @Description("Your short message goes here")
     String message;
 
-    public static final ShortTextMessage EXAMPLE = new ShortTextMessage("Dette er en kort melding til deg");
+    @Description("Some metadata for shortTextMessage")
+    MetaData metaData;
+
+    public static final ShortTextMessage EXAMPLE = new ShortTextMessage("Dette er en kort melding til deg", MetaData.EXAMPLE);
 }

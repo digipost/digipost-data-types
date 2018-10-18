@@ -24,11 +24,11 @@ Appointment represents a meeting set for a specific place and time
 |endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
-|address|[Address](#address)|no||
+|address|[Address](#appointmentaddress)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
 
-### Address
+### Appointment.Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -68,7 +68,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|residence|[Residence](#residence)|yes||
+|residence|[Residence](#boligdetaljerresidence)|yes||
 |hjemmelshavere|List|no|List of people with legal rights associated with the residence|
 |bruksareal|Integer|no|BRA for bolig|
 |antallOppholdsrom|Integer|no|Number of rooms, bathroom, kitchen and storage rooms excluded|
@@ -79,16 +79,16 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |andelsnummer|String|no||
 |heftelser|List|no||
 
-### Residence
+### Boligdetaljer.Residence
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|address|[ResidenceAddress](#residenceaddress)|yes||
-|matrikkel|[Matrikkel](#matrikkel)|no||
+|address|[ResidenceAddress](#boligdetaljerresidenceaddress)|yes||
+|matrikkel|[Matrikkel](#boligdetaljermatrikkel)|no||
 |source|String|no||
 |externalId|String|no||
 
-### ResidenceAddress
+### Boligdetaljer.ResidenceAddress
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -98,7 +98,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |postalCode|String|no||
 |city|String|no||
 
-### Matrikkel
+### Boligdetaljer.Matrikkel
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -360,26 +360,35 @@ Receipt represents a document containing details about a purchase
 |merchantChain|String|no|Optional name of the chain that the merchant is a part of|
 |merchantName|String|yes|Name of the store or merchant. Example: Grünerløkka Hip Coffee|
 |merchantPhoneNumber|String|no||
-|merchantAddress|Address|no|Address of the store or merchant|
+|merchantAddress|[Address](#receiptaddress)|no|Address of the store or merchant|
 |organizationNumber|String|no|Organization number of the sales point|
-|barcode|[Barcode](#barcode)|no||
+|barcode|[Barcode](#receiptbarcode)|no||
 |payments|List|no|List of payments done during this purchase|
 |items|List|no|The individual items sold|
-|taxiDetails|[TaxiDetails](#taxidetails)|no|Details for taxi receipts|
-|customer|[Customer](#customer)|no|Name and address of customer|
-|delivery|[Delivery](#delivery)|no|Name and address of delivery|
+|taxiDetails|[TaxiDetails](#receipttaxidetails)|no|Details for taxi receipts|
+|customer|[Customer](#receiptcustomer)|no|Name and address of customer|
+|delivery|[Delivery](#receiptdelivery)|no|Name and address of delivery|
 |orderNumber|String|no||
 |membershipNumber|String|no||
 |comment|String|no||
 
-### Barcode
+### Receipt.Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
+
+### Receipt.Barcode
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |barcodeValue|String|no|The barcode on this receipt|
 |barcodeType|String|no||
 
-### TaxiDetails
+### Receipt.TaxiDetails
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -396,29 +405,29 @@ Receipt represents a document containing details about a purchase
 |totalTimeBeforeBoardingInSeconds|Integer|no||
 |totalTimeInSeconds|Integer|no||
 |totalTimeWithPassengerInSeconds|Integer|no||
-|vat|[VatDetails](#vatdetails)|no||
+|vat|[VatDetails](#receiptvatdetails)|no||
 
-### VatDetails
+### Receipt.VatDetails
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |levels|List|no||
 |sum|BigDecimal|no||
 
-### Customer
+### Receipt.Customer
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|no||
-|address|Address|no||
+|address|[Address](#receiptaddress)|no||
 |phoneNumber|String|no||
 
-### Delivery
+### Receipt.Delivery
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|no||
-|address|Address|no||
+|address|[Address](#receiptaddress)|no||
 |terms|String|no||
 
 ### XML
@@ -532,12 +541,12 @@ Residence is a way of linking separate data for the same residence
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|address|[ResidenceAddress](#residenceaddress)|yes||
-|matrikkel|[Matrikkel](#matrikkel)|no||
+|address|[ResidenceAddress](#residenceresidenceaddress)|yes||
+|matrikkel|[Matrikkel](#residencematrikkel)|no||
 |source|String|no||
 |externalId|String|no||
 
-### ResidenceAddress
+### Residence.ResidenceAddress
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
@@ -547,7 +556,7 @@ Residence is a way of linking separate data for the same residence
 |postalCode|String|no||
 |city|String|no||
 
-### Matrikkel
+### Residence.Matrikkel
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
