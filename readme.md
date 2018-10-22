@@ -232,7 +232,7 @@ Details about a pickup notice
 |sender|[Sender](#pickupnoticesender)|yes|The sender of the parcel|
 |pickupPlace|[PickupPlace](#pickupnoticepickupplace)|yes|where the parcel can be fetched|
 |thePackage|[Package](#pickupnoticepackage)|yes|package information|
-|customs|[Customs](#pickupnoticecustoms)|no|Information about value and customs processing|
+|cost|[Cost](#pickupnoticecost)|no|Information about value, mva, customs processing and more|
 
 ### PickupNotice.Barcode
 
@@ -301,13 +301,18 @@ Valid values:
 |height|Integer|no|Package height in cm|
 |weight|Integer|no|Package weight in grams|
 
-### PickupNotice.Customs
+### PickupNotice.Cost
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|packageValue|BigDecimal|yes|The value of the parcel in NOK|
-|payedCustomsFee|BigDecimal|yes|payed fee in customs|
-|vasText|String|yes|Text from custums|
+|valueToBePayed|BigDecimal|yes|The value of the parcel in NOK|
+|packageValue|BigDecimal|no|The value of the parcel in NOK|
+|customsFeeOutlayed|BigDecimal|no|payed fee in customs|
+|vasText|String|no|Information about the value added service (vas)|
+|customsFee|BigDecimal|no|Fee payed for customs declaration|
+|customsFeeOutlayCost|BigDecimal|no|Outlay for customs by the service|
+|codAmount|BigDecimal|no|Cash on delivery (cod) amount|
+|codFee|BigDecimal|no|Cash on delivery (cod) fee|
 
 ### XML
 
@@ -367,11 +372,16 @@ Valid values:
         <height>60</height>
         <weight>35000</weight>
     </package>
-    <customs>
+    <cost>
+        <value-to-be-payed>128.00</value-to-be-payed>
         <package-value>1277.00</package-value>
-        <payed-customs-fee>162.00</payed-customs-fee>
+        <customs-fee-outlayed>162.00</customs-fee-outlayed>
         <vas-text>FORENKLET TOLLBEHANDLING</vas-text>
-    </customs>
+        <customs-fee>0</customs-fee>
+        <customs-fee-outlay-cost>0</customs-fee-outlay-cost>
+        <cod-amount>0</cod-amount>
+        <cod-fee>0</cod-fee>
+    </cost>
 </pickup-notice>
 ```
 
