@@ -48,6 +48,5 @@ public class PickupPlace {
     Address address;
 
     public static final PickupPlace EXAMPLE = new PickupPlace("0132", new Location("1231","Coop Mega", LocationType.POSTEN), "RC89", "Må hentes innen 010180", "H32", Address.EXAMPLE);
-
-
+    
 }

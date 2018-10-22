@@ -81,7 +81,7 @@ public class PickupNotice implements DataType {
     public static PickupNotice EXAMPLE = new PickupNotice(
             "KB432788293NO"
             , "70300492517312675"
-            , Barcode.EXAMPLE.withBarcodeType("EAN-128")
+            , Barcode.EXAMPLE.withBarcodeType("CODE_128")
             , "Klimanøytral Servicepakke"
             , ZonedDateTime.of(2018, 9, 10, 10, 0, 0, 0, ZoneId.systemDefault())
             , ZonedDateTime.of(2018, 9, 24, 10, 0, 0, 0, ZoneId.systemDefault())

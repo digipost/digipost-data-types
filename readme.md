@@ -245,6 +245,7 @@ Details about a pickup notice
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
+|name|String|yes|The name of the recipient|
 |digipostAddress|String|yes|The digipost address for the recipient|
 |address|[Address](#pickupnoticeaddress)|no||
 |emailAddress|String|no||
@@ -262,6 +263,7 @@ Details about a pickup notice
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
+|name|String|yes|The senders name|
 |reference|String|yes|The senders reference|
 |address|[Address](#pickupnoticeaddress)|no||
 
@@ -316,12 +318,13 @@ Valid values:
     <parcel-uuid>70300492517312675</parcel-uuid>
     <barcode>
         <barcode-value>1234567890</barcode-value>
-        <barcode-type>EAN-128</barcode-type>
+        <barcode-type>CODE_128</barcode-type>
     </barcode>
     <product-name>Klimanøytral Servicepakke</product-name>
     <arrival-date-time>2018-09-10T10:00:00+02:00</arrival-date-time>
     <return-date-time>2018-09-24T10:00:00+02:00</return-date-time>
     <recipient>
+        <name>Test Testesen</name>
         <digipost-address>test.testesen#0000</digipost-address>
         <address>
             <street-address>Storgata 23</street-address>
@@ -332,6 +335,7 @@ Valid values:
         <email-address>test.testesen@example.com</email-address>
     </recipient>
     <sender>
+        <name>Avsenderservice as</name>
         <reference>13372500</reference>
         <address>
             <street-address>Storgata 23</street-address>

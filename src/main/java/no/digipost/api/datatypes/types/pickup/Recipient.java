@@ -18,6 +18,10 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class Recipient {
 
+    @XmlElement(name = "name", required = true)
+    @Description("The name of the recipient")
+    String name;
+
     @XmlElement(name = "digipost-address", required = true)
     @Description("The digipost address for the recipient")
     String digipostAddress;
@@ -28,6 +32,6 @@ public class Recipient {
     @XmlElement(name = "email-address")
     String emailAddress;
     
-    public static final Recipient EXAMPLE = new Recipient("test.testesen#0000", Address.EXAMPLE, "test.testesen@example.com");
+    public static final Recipient EXAMPLE = new Recipient("Test Testesen", "test.testesen#0000", Address.EXAMPLE, "test.testesen@example.com");
     
 }

@@ -18,13 +18,17 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class Sender {
 
+    @XmlElement(name = "name", required = true)
+    @Description("The senders name")
+    String name;
+    
     @XmlElement(name = "reference", required = true)
     @Description("The senders reference")
     String reference;
-
+    
     @XmlElement
     Address address;
     
-    public static final Sender EXAMPLE = new Sender("13372500", Address.EXAMPLE);
+    public static final Sender EXAMPLE = new Sender("Avsenderservice as", "13372500", Address.EXAMPLE);
     
 }
