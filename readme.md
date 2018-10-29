@@ -33,6 +33,7 @@ Appointment represents a meeting set for a specific place and time
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||
@@ -255,6 +256,7 @@ Details about a pickup notice
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||
@@ -421,6 +423,7 @@ Receipt represents a document containing details about a purchase
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||
