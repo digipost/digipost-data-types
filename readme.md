@@ -266,7 +266,7 @@ Details about a pickup notice
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|yes|The senders name|
-|reference|String|yes|The senders reference|
+|reference|String|no|The senders reference|
 |address|[Address](#pickupnoticeaddress)|no||
 
 ### PickupNotice.PickupPlace

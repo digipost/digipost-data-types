@@ -22,7 +22,7 @@ public class Sender {
     @Description("The senders name")
     String name;
     
-    @XmlElement(name = "reference", required = true)
+    @XmlElement(name = "reference", required = false)
     @Description("The senders reference")
     String reference;
     
