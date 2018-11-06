@@ -30,7 +30,7 @@ public class PickupNotice implements DataType {
     @Valid
     String parcelId;
     
-    @XmlElement(name = "parcel-uuid", required = true)
+    @XmlElement(name = "parcel-uuid")
     @Description("The uuid of the parcel")
     String parcelUUID;
     
@@ -38,7 +38,7 @@ public class PickupNotice implements DataType {
     @Description("Barcode")
     Barcode barcode;
     
-    @XmlElement(name = "product-name", required = true)
+    @XmlElement(name = "product-name")
     @Description("Mail Service product name")
     String productName;
     
@@ -58,9 +58,8 @@ public class PickupNotice implements DataType {
     @Valid
     Recipient recipient;
     
-    @XmlElement(name = "sender", required = true)
+    @XmlElement(name = "sender")
     @Description("The sender of the parcel")
-    @NotNull
     @Valid
     Sender sender;
     
@@ -70,7 +69,7 @@ public class PickupNotice implements DataType {
     @Valid
     PickupPlace pickupPlace;
 
-    @XmlElement(name = "package", required = true)
+    @XmlElement(name = "package")
     @Description("package information")
     Package thePackage;
     

@@ -224,15 +224,15 @@ Details about a pickup notice
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |parcelId|String|yes|The id of the parcel in posten|
-|parcelUUID|String|yes|The uuid of the parcel|
+|parcelUUID|String|no|The uuid of the parcel|
 |barcode|[Barcode](#pickupnoticebarcode)|yes|Barcode|
-|productName|String|yes|Mail Service product name|
+|productName|String|no|Mail Service product name|
 |arrivalDateTime|ZonedDateTime|yes|ISO8601 full DateTime for arrival at pickup place|
 |returnDateTime|ZonedDateTime|yes|ISO8601 full DateTime for return back to sender|
 |recipient|[Recipient](#pickupnoticerecipient)|yes|The recipient of the parcel|
-|sender|[Sender](#pickupnoticesender)|yes|The sender of the parcel|
+|sender|[Sender](#pickupnoticesender)|no|The sender of the parcel|
 |pickupPlace|[PickupPlace](#pickupnoticepickupplace)|yes|where the parcel can be fetched|
-|thePackage|[Package](#pickupnoticepackage)|yes|package information|
+|thePackage|[Package](#pickupnoticepackage)|no|package information|
 |cost|[Cost](#pickupnoticecost)|no|Information about value, mva, customs processing and more|
 
 ### PickupNotice.Barcode
@@ -265,7 +265,7 @@ Details about a pickup notice
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|name|String|yes|The senders name|
+|name|String|no|The senders name|
 |reference|String|no|The senders reference|
 |address|[Address](#pickupnoticeaddress)|no||
 

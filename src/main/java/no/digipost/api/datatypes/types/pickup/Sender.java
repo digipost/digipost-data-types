@@ -18,11 +18,11 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class Sender {
 
-    @XmlElement(name = "name", required = true)
+    @XmlElement(name = "name")
     @Description("The senders name")
     String name;
     
-    @XmlElement(name = "reference", required = false)
+    @XmlElement(name = "reference")
     @Description("The senders reference")
     String reference;
     
