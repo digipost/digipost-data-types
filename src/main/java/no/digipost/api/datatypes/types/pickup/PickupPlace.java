@@ -7,8 +7,6 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Address;
-import no.digipost.api.datatypes.types.Location;
-import no.digipost.api.datatypes.types.LocationType;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,11 +24,6 @@ public class PickupPlace {
     @NotNull
     String name;
 
-    @XmlElement(name = "location", required = true)
-    @Description("The location for the pickup place")
-    @NotNull
-    Location location;
-
     @XmlElement(name = "code", required = true)
     @Description("The pickup code")
     String code;
@@ -47,6 +40,6 @@ public class PickupPlace {
     @NotNull
     Address address;
 
-    public static final PickupPlace EXAMPLE = new PickupPlace("0132", new Location("1231","Coop Mega", LocationType.POSTEN), "RC89", "Må hentes innen 010180", "H32", Address.EXAMPLE);
+    public static final PickupPlace EXAMPLE = new PickupPlace("Coop Mega", "RC89", "Må hentes innen 010180", "H32", Address.EXAMPLE);
     
 }

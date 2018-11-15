@@ -249,7 +249,6 @@ Details about a pickup notice
 |name|String|yes|The name of the recipient|
 |digipostAddress|String|yes|The digipost address for the recipient|
 |address|[Address](#pickupnoticeaddress)|no||
-|emailAddress|String|no||
 
 ### PickupNotice.Address
 
@@ -274,25 +273,10 @@ Details about a pickup notice
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |name|String|yes|The pickup place name|
-|location|[Location](#pickupnoticelocation)|yes|The location for the pickup place|
 |code|String|yes|The pickup code|
 |instruction|String|yes|instructions for fetching the parcel|
 |shelfLocation|String|no|shelf location at pickup point|
 |address|[Address](#pickupnoticeaddress)|yes||
-
-### PickupNotice.Location
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|id|String|yes|The unique identification for the location|
-|name|String|yes|The name of the pickup place|
-|locationType|[LocationType](#pickupnoticelocationtype)|yes|The type is used in conjunction with id above to fetch more information about a particular pickup place|
-
-### PickupNotice.LocationType
-
-Valid values:
-
-* POSTEN
 
 ### PickupNotice.Package
 
@@ -339,7 +323,6 @@ Valid values:
             <city>Oslo</city>
             <country>Norge</country>
         </address>
-        <email-address>test.testesen@example.com</email-address>
     </recipient>
     <sender>
         <name>Avsenderservice as</name>
@@ -352,12 +335,7 @@ Valid values:
         </address>
     </sender>
     <pickup-place>
-        <name>0132</name>
-        <location>
-            <id>1231</id>
-            <name>Coop Mega</name>
-            <type>POSTEN</type>
-        </location>
+        <name>Coop Mega</name>
         <code>RC89</code>
         <instruction>Må hentes innen 010180</instruction>
         <shelf-location>H32</shelf-location>

@@ -29,9 +29,6 @@ public class Recipient {
     @XmlElement
     Address address;
 
-    @XmlElement(name = "email-address")
-    String emailAddress;
-    
-    public static final Recipient EXAMPLE = new Recipient("Test Testesen", "test.testesen#0000", Address.EXAMPLE, "test.testesen@example.com");
+    public static final Recipient EXAMPLE = new Recipient("Test Testesen", "test.testesen#0000", Address.EXAMPLE);
     
 }
