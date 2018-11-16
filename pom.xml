@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>digipost-data-types</artifactId>
-    <version>0.14</version>
+    <version>0.15-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <description>Data types for Digipost Messages</description>
 
@@ -229,6 +229,6 @@
         <connection>scm:git:git@github.com:digipost/digipost-data-types.git</connection>
         <developerConnection>scm:git:git@github.com:digipost/digipost-data-types.git</developerConnection>
         <url>scm:git:git@github.com:digipost/digipost-data-types</url>
-        <tag>0.14</tag>
+        <tag>HEAD</tag>
     </scm>
 </project>
