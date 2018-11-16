@@ -22,6 +22,11 @@ public class Address {
     @Size(max = 100)
     @Description("E.g. Storgata 11")
     String streetAddress;
+    
+    @XmlElement(name = "street-address-2")
+    @Size(max = 100)
+    @Description("E.g. Romerike Næringspark")
+    String streetAddress2;
 
     @XmlElement(name = "postal-code")
     @Size(max = 10)
@@ -34,5 +39,5 @@ public class Address {
     @XmlElement
     String country;
 
-    public static final Address EXAMPLE = new Address("Storgata 23", "0011", "Oslo", "Norge");
+    public static final Address EXAMPLE = new Address("Storgata 23", null, "0011", "Oslo", "Norge");
 }

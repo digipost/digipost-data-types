@@ -7,6 +7,7 @@
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Payslip](#payslip)|For treating documents as Payslips.|
+|[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -32,6 +33,7 @@ Appointment represents a meeting set for a specific place and time
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||
@@ -213,6 +215,156 @@ For treating documents as Payslips.
 <payslip xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
 
+## PickupNotice
+
+Details about a pickup notice
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|parcelId|String|yes|The id of the parcel in posten|
+|parcelUUID|String|no|The uuid of the parcel|
+|barcode|[Barcode](#pickupnoticebarcode)|yes|Barcode|
+|productName|String|no|Mail Service product name|
+|arrivalDateTime|ZonedDateTime|yes|ISO8601 full DateTime for arrival at pickup place|
+|returnDateTime|ZonedDateTime|yes|ISO8601 full DateTime for return back to sender|
+|recipient|[Recipient](#pickupnoticerecipient)|yes|The recipient of the parcel|
+|sender|[Sender](#pickupnoticesender)|no|The sender of the parcel|
+|pickupPlace|[PickupPlace](#pickupnoticepickupplace)|yes|where the parcel can be fetched|
+|thePackage|[Package](#pickupnoticepackage)|no|package information|
+|cost|[Cost](#pickupnoticecost)|no|Information about value, mva, customs processing and more|
+
+### PickupNotice.Barcode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|barcodeValue|String|no|The barcode on this receipt|
+|barcodeType|String|no||
+
+### PickupNotice.Recipient
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|yes|The name of the recipient|
+|digipostAddress|String|yes|The digipost address for the recipient|
+|address|[Address](#pickupnoticeaddress)|no||
+
+### PickupNotice.Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
+
+### PickupNotice.Sender
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|no|The senders name|
+|reference|String|no|The senders reference|
+|address|[Address](#pickupnoticeaddress)|no||
+
+### PickupNotice.PickupPlace
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|yes|The pickup place name|
+|code|String|yes|The pickup code|
+|instruction|String|yes|instructions for fetching the parcel|
+|shelfLocation|String|no|shelf location at pickup point|
+|address|[Address](#pickupnoticeaddress)|yes||
+
+### PickupNotice.Package
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|length|Integer|no|Package lenght in cm|
+|width|Integer|no|Package width in cm|
+|height|Integer|no|Package height in cm|
+|weight|Integer|no|Package weight in grams|
+
+### PickupNotice.Cost
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|valueToBePayed|BigDecimal|yes|The value of the parcel in NOK|
+|packageValue|BigDecimal|no|The value of the parcel in NOK|
+|customsFeeOutlayed|BigDecimal|no|payed fee in customs|
+|vasText|String|no|Information about the value added service (vas)|
+|customsFee|BigDecimal|no|Fee payed for customs declaration|
+|customsFeeOutlayCost|BigDecimal|no|Outlay for customs by the service|
+|codAmount|BigDecimal|no|Cash on delivery (cod) amount|
+|codFee|BigDecimal|no|Cash on delivery (cod) fee|
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pickup-notice xmlns="http://api.digipost.no/schema/datatypes">
+    <parcel-id>KB432788293NO</parcel-id>
+    <parcel-uuid>70300492517312675</parcel-uuid>
+    <barcode>
+        <barcode-value>1234567890</barcode-value>
+        <barcode-type>CODE_128</barcode-type>
+    </barcode>
+    <product-name>Klimanøytral Servicepakke</product-name>
+    <arrival-date-time>2018-09-10T10:00:00+02:00</arrival-date-time>
+    <return-date-time>2018-09-24T10:00:00+02:00</return-date-time>
+    <recipient>
+        <name>Test Testesen</name>
+        <digipost-address>test.testesen#0000</digipost-address>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </recipient>
+    <sender>
+        <name>Avsenderservice as</name>
+        <reference>13372500</reference>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </sender>
+    <pickup-place>
+        <name>Coop Mega</name>
+        <code>RC89</code>
+        <instruction>Må hentes innen 010180</instruction>
+        <shelf-location>H32</shelf-location>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </pickup-place>
+    <package>
+        <length>120</length>
+        <width>60</width>
+        <height>60</height>
+        <weight>35000</weight>
+    </package>
+    <cost>
+        <value-to-be-payed>128.00</value-to-be-payed>
+        <package-value>1277.00</package-value>
+        <customs-fee-outlayed>162.00</customs-fee-outlayed>
+        <vas-text>FORENKLET TOLLBEHANDLING</vas-text>
+        <customs-fee>0</customs-fee>
+        <customs-fee-outlay-cost>0</customs-fee-outlay-cost>
+        <cod-amount>0</cod-amount>
+        <cod-fee>0</cod-fee>
+    </cost>
+</pickup-notice>
+```
+
 ## Receipt
 
 Receipt represents a document containing details about a purchase
@@ -249,6 +401,7 @@ Receipt represents a document containing details about a purchase
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||

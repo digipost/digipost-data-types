@@ -11,6 +11,7 @@ import java.io.StringWriter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.System.lineSeparator;
@@ -90,7 +91,13 @@ public class MarkdownPrinter {
     private String printTypeInfo(ComplexType parent, ComplexType type, Set<ComplexType> printed) {
         printed.add(type);
         return heading(3, parent.getTypeName() + "." + type.getTypeName()) + LLF +
-                printFields(parent, type.getFields(), printed);
+                ((type.getType().isEnum()) ? printEnum(type.getType()) : printFields(parent, type.getFields(), printed));
+    }
+
+    private String printEnum(Class<?> type) {
+        String desc = "Valid values:";
+        
+        return desc + LLF + Stream.of(type.getEnumConstants()).map(s-> "" + s).collect(Collectors.joining(LF, "* ", ""));
     }
 
     private String printFields(ComplexType parent, List<FieldInfo> fields, Set<ComplexType> printed) {
