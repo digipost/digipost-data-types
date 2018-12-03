@@ -2,6 +2,7 @@ package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.*;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
+import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 
 import java.util.Map;
@@ -22,15 +23,16 @@ import static java.util.stream.Collectors.toMap;
  * 4. profit!
  */
 public enum DataTypeIdentifier {
-    APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
-    RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
-    CATEGORY(Category.class, "CAT", Category.EXAMPLE),
-    EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE),
-    BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE),
-    RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE),
-    PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE),
-    SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE),
-    PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE),
+    APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE)
+    , RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE)
+    , CATEGORY(Category.class, "CAT", Category.EXAMPLE)
+    , EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE)
+    , BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE)
+    , RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE)
+    , PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE)
+    , SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE)
+    , PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE)
+    , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;

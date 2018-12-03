@@ -107,6 +107,12 @@
             <version>25.0-jre</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>co.unruly</groupId>
+            <artifactId>java-8-matchers</artifactId>
+            <version>1.6</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <resources>

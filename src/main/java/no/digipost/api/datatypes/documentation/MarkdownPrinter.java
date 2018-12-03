@@ -96,8 +96,8 @@ public class MarkdownPrinter {
 
     private String printEnum(Class<?> type) {
         String desc = "Valid values:";
-        
-        return desc + LLF + Stream.of(type.getEnumConstants()).map(s-> "" + s).collect(Collectors.joining(LF, "* ", ""));
+
+        return desc + LLF + Stream.of(type.getEnumConstants()).map(String::valueOf).collect(joining(LF + "* ", "* ", ""));
     }
 
     private String printFields(ComplexType parent, List<FieldInfo> fields, Set<ComplexType> printed) {

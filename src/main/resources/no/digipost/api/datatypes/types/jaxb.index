@@ -7,3 +7,4 @@ receipt.Receipt
 Payslip
 SignedDocument
 pickup.PickupNotice
+pickup.PickupNoticeStatus
