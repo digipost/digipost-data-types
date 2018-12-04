@@ -401,7 +401,7 @@ Valid values:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <pickup-notice-status xmlns="http://api.digipost.no/schema/datatypes">
-    <parcel-id>READY_FOR_PICKUP</parcel-id>
+    <status>READY_FOR_PICKUP</status>
 </pickup-notice-status>
 ```
 

@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Description("Updates to status for PickupNotice")
 public class PickupNoticeStatus implements DataType {
 
-    @XmlElement(name = "parcel-id", required = true)
+    @XmlElement(name = "status", required = true)
     @Description("The status of the PickupNotice")
     @NotNull
     @Valid
