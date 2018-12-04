@@ -12,8 +12,7 @@ import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 import no.digipost.api.datatypes.validation.ComplementedBy;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -21,7 +20,9 @@ import java.util.stream.Stream;
 
 import static java.util.Optional.ofNullable;
 import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Collectors.toSet;
 
 /**
  * HOWTO: Add new data type
@@ -50,7 +51,7 @@ public enum DataTypeIdentifier {
 
     private static final Map<Class<? extends DataType>, DataTypeIdentifier> byType;
     private static final Map<String, DataTypeIdentifier> byShortName;
-    private final Set<Class<? extends DataType>> complementables = new HashSet<>();
+    private final Set<Class<? extends DataType>> complementables;
 
     static {
         byType = Stream.of(values()).collect(toMap(DataTypeIdentifier::getDataType, identity()));
@@ -61,10 +62,11 @@ public enum DataTypeIdentifier {
         this.dataType = dataType;
         this.shortName = shortName;
         this.example = example;
-        ComplementedBy complementedBy = this.getDataType().getAnnotation(ComplementedBy.class);
-        if (complementedBy != null) {
-            complementables.addAll(Arrays.asList(complementedBy.value()));
-        }
+        complementables = Optional.ofNullable(getDataType().getAnnotation(ComplementedBy.class))
+                .map(ComplementedBy::value)
+                .map(Stream::of)
+                .orElseGet(Stream::empty)
+                .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
     }
 
     public Class<? extends DataType> getDataType() {
