@@ -89,11 +89,11 @@ public enum DataTypeIdentifier {
         return byType.keySet();
     }
 
-    static boolean validComplementation(Class<? extends DataType> start, Class<? extends DataType> successor) {
-        ComplementedBy complementedBy = start.getAnnotation(ComplementedBy.class);
+    public boolean validComplementation(DataType successor) {
+        ComplementedBy complementedBy = this.getDataType().getAnnotation(ComplementedBy.class);
         if (complementedBy != null) {
             for (Class<?> c : complementedBy.value()) {
-                if (c == successor) {
+                if (c == successor.getClass()) {
                     return true;
                 }
             }

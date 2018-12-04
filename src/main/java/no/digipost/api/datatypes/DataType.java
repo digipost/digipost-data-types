@@ -18,8 +18,5 @@ public interface DataType {
     default DataType withDefaultsForMissingOptionalValues() {
         return this;
     }
-
-    default boolean canBeComplementedBy(DataType target) {
-        return DataTypeIdentifier.validComplementation(this.getClass(), target.getClass());
-    }
+    
 }
