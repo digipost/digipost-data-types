@@ -13,17 +13,17 @@ public class ComplementValidationTest {
     
     @Test
     public void kan_komplementere() {
-        assertThat(PickupNotice.EXAMPLE, where(s -> s.getTypeIdentifier().validComplementation(PickupNoticeStatus.EXAMPLE)));
-        assertThat(PickupNotice.EXAMPLE, where(s -> s.getTypeIdentifier().validComplementation(PickupNotice.EXAMPLE)));
+        assertThat(PickupNotice.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(PickupNoticeStatus.EXAMPLE)));
+        assertThat(PickupNotice.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(PickupNotice.EXAMPLE)));
     }
 
     @Test
     public void kan_IKKE_complementere_HVIS_target_type_ikke_komplementer() {
-        assertThat(PickupNotice.EXAMPLE, whereNot(s -> s.getTypeIdentifier().validComplementation(Appointment.EXAMPLE)));
+        assertThat(PickupNotice.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(Appointment.EXAMPLE)));
     }
 
     @Test
     public void kan_IKKE_complementere_HVIS_original_ikke_komplementerer() {
-        assertThat(Appointment.EXAMPLE, whereNot(s -> s.getTypeIdentifier().validComplementation(PickupNoticeStatus.EXAMPLE)));
+        assertThat(Appointment.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(PickupNoticeStatus.EXAMPLE)));
     }
 }

@@ -96,7 +96,7 @@ public enum DataTypeIdentifier {
         return byType.keySet();
     }
 
-    public boolean validComplementation(DataType successor) {
+    public boolean canBeComplementedBy(DataType successor) {
         return complementables.contains(successor.getClass());
     }
 }
