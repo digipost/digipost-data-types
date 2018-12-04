@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Value;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
-import no.digipost.api.datatypes.validation.ComplementedBy;
+import no.digipost.api.datatypes.ComplementedBy;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;

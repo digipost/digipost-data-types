@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.validation;
+package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.DataType;
 

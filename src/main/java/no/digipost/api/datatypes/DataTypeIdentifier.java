@@ -10,7 +10,6 @@ import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.receipt.Receipt;
-import no.digipost.api.datatypes.validation.ComplementedBy;
 
 import java.util.Collections;
 import java.util.Map;

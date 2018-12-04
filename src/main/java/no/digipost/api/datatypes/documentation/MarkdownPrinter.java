@@ -2,9 +2,7 @@ package no.digipost.api.datatypes.documentation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import no.digipost.api.datatypes.DataTypeIdentifier;
 import no.digipost.api.datatypes.marshalling.DataTypesJsonMapper;
-import no.digipost.api.datatypes.validation.ComplementedBy;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -13,7 +11,6 @@ import java.io.StringWriter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.System.lineSeparator;

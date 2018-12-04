@@ -8,7 +8,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.receipt.Barcode;
-import no.digipost.api.datatypes.validation.ComplementedBy;
+import no.digipost.api.datatypes.ComplementedBy;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

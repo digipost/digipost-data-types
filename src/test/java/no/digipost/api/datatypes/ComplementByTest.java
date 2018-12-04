@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.validation;
+package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
@@ -9,7 +9,7 @@ import static co.unruly.matchers.Java8Matchers.where;
 import static co.unruly.matchers.Java8Matchers.whereNot;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ComplementValidationTest {
+public class ComplementByTest {
     
     @Test
     public void kan_komplementere() {

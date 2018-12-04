@@ -1,12 +1,11 @@
 package no.digipost.api.datatypes.documentation;
 
-import no.digipost.api.datatypes.validation.ComplementedBy;
+import no.digipost.api.datatypes.ComplementedBy;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +18,6 @@ import static java.lang.reflect.Modifier.isStatic;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
 
 public class DocumentationStructureBuilder {
 
