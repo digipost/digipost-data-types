@@ -2,7 +2,9 @@ package no.digipost.api.datatypes.documentation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import no.digipost.api.datatypes.DataTypeIdentifier;
 import no.digipost.api.datatypes.marshalling.DataTypesJsonMapper;
+import no.digipost.api.datatypes.validation.ComplementedBy;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -53,10 +55,20 @@ public class MarkdownPrinter {
     private String printTypeOverview(ComplexType typeInfo) {
         return heading(2, typeInfo.getTypeName()) + LLF +
                 typeInfo.getDescription() + LLF +
+                printComplementedByInformation(typeInfo) +
                 heading(3, "Fields") + LLF +
                 printFields(typeInfo, typeInfo.getFields(), new HashSet<>()) + LLF +
                 (this.printJsonExamples ? printJsonExample(typeInfo.getExample()) + LLF : "") +
                 printXmlExample(typeInfo.getExample());
+    }
+
+    private String printComplementedByInformation(ComplexType type) {
+        List<ComplexType> complementables = type.getComplementables();
+        if (!complementables.isEmpty()) {
+            return "### Complemented by: " + LF 
+                    + complementables.stream().map(s->printLink(s, s)).collect(joining(", ")) + LLF;
+        }
+        return "";
     }
 
     private String printXmlExample(Object example) {

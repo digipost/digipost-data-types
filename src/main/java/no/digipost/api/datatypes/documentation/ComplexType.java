@@ -10,6 +10,7 @@ public class ComplexType implements FieldType, Comparable<ComplexType> {
     String description;
     List<FieldInfo> fields;
     Object example;
+    List<ComplexType> complementables;
 
     @Override
     public String getTypeName() {

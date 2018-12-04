@@ -220,6 +220,9 @@ For treating documents as Payslips.
 
 Details about a pickup notice
 
+### Complemented by: 
+[PickupNotice](#pickupnotice), [PickupNoticeStatus](#pickupnoticestatus)
+
 ### Fields
 
 |Name|Type|Required|Description|

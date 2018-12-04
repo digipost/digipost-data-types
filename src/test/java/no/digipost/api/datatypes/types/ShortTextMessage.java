@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Value;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.validation.ComplementedBy;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@ComplementedBy({Addition.class})
 public class ShortTextMessage implements DataType {
 
     @XmlElement(required = true)

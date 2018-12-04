@@ -1,6 +1,7 @@
 package no.digipost.api.datatypes.documentation;
 
 import no.digipost.api.datatypes.DataType;
+import no.digipost.api.datatypes.types.Addition;
 import no.digipost.api.datatypes.types.MetaData;
 import no.digipost.api.datatypes.types.ShortTextMessage;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
 import static com.google.common.io.Resources.toByteArray;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Collections.singleton;
+import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static org.hamcrest.Matchers.contains;
@@ -37,9 +39,9 @@ public class DocumentationTest {
                                                 MetaData.class
                                                 , "Metainformation"
                                                 , Collections.singletonList(new FieldInfo("value", new SimpleType(String.class), true, "Your extra information"))
-                                                , null), false, "Some metadata for shortTextMessage")
+                                                , null, Collections.emptyList()), false, "Some metadata for shortTextMessage")
                         ),
-                        ShortTextMessage.EXAMPLE)));
+                        ShortTextMessage.EXAMPLE, singletonList(new ComplexType(Addition.class, null, null, null, Collections.emptyList())))));
     }
 
     @Test
