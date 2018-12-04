@@ -8,6 +8,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.receipt.Barcode;
+import no.digipost.api.datatypes.ComplementedBy;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -22,6 +23,7 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @Description("Details about a pickup notice")
+@ComplementedBy({PickupNotice.class, PickupNoticeStatus.class})
 public class PickupNotice implements DataType {
     
     @XmlElement(name = "parcel-id", required = true)
@@ -77,6 +79,20 @@ public class PickupNotice implements DataType {
     @Description("Information about value, mva, customs processing and more")
     Cost cost;
     
+    @XmlElement(name = "status")
+    @Description("The state the package is at present time")
+    Status status;
+
+    @Override
+    public PickupNotice withDefaultsForMissingOptionalValues() {
+        if (status == null) {
+            if (returnDateTime != null && ZonedDateTime.now().isAfter(returnDateTime)) {
+                return this.withStatus(Status.UNKNOWN);
+            }
+            return this.withStatus(Status.READY_FOR_PICKUP);
+        } else return this;
+    }
+
     public static PickupNotice EXAMPLE = new PickupNotice(
             "KB432788293NO"
             , "70300492517312675"
@@ -89,6 +105,7 @@ public class PickupNotice implements DataType {
             , PickupPlace.EXAMPLE
             , Package.EXAMPLE
             , Cost.EXAMPLE
+            , Status.READY_FOR_PICKUP
     );
 }
 

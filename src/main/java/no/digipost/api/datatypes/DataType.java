@@ -18,4 +18,5 @@ public interface DataType {
     default DataType withDefaultsForMissingOptionalValues() {
         return this;
     }
+    
 }

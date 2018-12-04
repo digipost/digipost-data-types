@@ -1,9 +1,17 @@
 package no.digipost.api.datatypes;
 
-import no.digipost.api.datatypes.types.*;
+import no.digipost.api.datatypes.types.Appointment;
+import no.digipost.api.datatypes.types.Boligdetaljer;
+import no.digipost.api.datatypes.types.Category;
+import no.digipost.api.datatypes.types.ExternalLink;
+import no.digipost.api.datatypes.types.Payslip;
+import no.digipost.api.datatypes.types.Residence;
+import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
+import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -11,7 +19,9 @@ import java.util.stream.Stream;
 
 import static java.util.Optional.ofNullable;
 import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Collectors.toSet;
 
 /**
  * HOWTO: Add new data type
@@ -22,15 +32,16 @@ import static java.util.stream.Collectors.toMap;
  * 4. profit!
  */
 public enum DataTypeIdentifier {
-    APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE),
-    RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE),
-    CATEGORY(Category.class, "CAT", Category.EXAMPLE),
-    EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE),
-    BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE),
-    RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE),
-    PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE),
-    SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE),
-    PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE),
+    APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE)
+    , RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE)
+    , CATEGORY(Category.class, "CAT", Category.EXAMPLE)
+    , EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE)
+    , BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE)
+    , RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE)
+    , PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE)
+    , SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE)
+    , PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE)
+    , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;
@@ -39,6 +50,7 @@ public enum DataTypeIdentifier {
 
     private static final Map<Class<? extends DataType>, DataTypeIdentifier> byType;
     private static final Map<String, DataTypeIdentifier> byShortName;
+    private final Set<Class<? extends DataType>> complementables;
 
     static {
         byType = Stream.of(values()).collect(toMap(DataTypeIdentifier::getDataType, identity()));
@@ -49,6 +61,11 @@ public enum DataTypeIdentifier {
         this.dataType = dataType;
         this.shortName = shortName;
         this.example = example;
+        complementables = Optional.ofNullable(getDataType().getAnnotation(ComplementedBy.class))
+                .map(ComplementedBy::value)
+                .map(Stream::of)
+                .orElseGet(Stream::empty)
+                .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
     }
 
     public Class<? extends DataType> getDataType() {
@@ -78,5 +95,9 @@ public enum DataTypeIdentifier {
 
     public static Set<Class<? extends DataType>> getAllClasses() {
         return byType.keySet();
+    }
+
+    public boolean canBeComplementedBy(DataType successor) {
+        return complementables.contains(successor.getClass());
     }
 }

@@ -12,24 +12,15 @@ specific language governing permissions and limitations
 under the License.
 
 This project includes:
-  Animal Sniffer Annotations under MIT license
   Bean Validation API under Apache License 2.0
-  Checker Qual under GNU General Public License, version 2 (GPL2), with the classpath exception or The MIT License
   ClassMate under The Apache Software License, Version 2.0
   digipost-data-types under The Apache Software License, Version 2.0
-  error-prone annotations under Apache 2.0
   Expression Language 3.0 under CDDL + GPLv2 with classpath exception
-  FindBugs-jsr305 under The Apache Software License, Version 2.0
-  Guava: Google Core Libraries for Java under The Apache Software License, Version 2.0
   Hibernate Validator Engine under Apache License, Version 2.0
-  J2ObjC Annotations under The Apache Software License, Version 2.0
   Jackson datatype: JSR310 under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0
   Jackson-core under The Apache Software License, Version 2.0
   jackson-databind under The Apache Software License, Version 2.0
-  Java Hamcrest under BSD Licence 3
-  java-8-matchers under MIT License
   JBoss Logging 3 under Apache License, version 2.0
-  JUnit under Eclipse Public License 1.0
   Project Lombok under The MIT License
 

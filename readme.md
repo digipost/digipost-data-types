@@ -8,6 +8,7 @@
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
+|[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -219,6 +220,9 @@ For treating documents as Payslips.
 
 Details about a pickup notice
 
+### Complemented by: 
+[PickupNotice](#pickupnotice), [PickupNoticeStatus](#pickupnoticestatus)
+
 ### Fields
 
 |Name|Type|Required|Description|
@@ -234,6 +238,7 @@ Details about a pickup notice
 |pickupPlace|[PickupPlace](#pickupnoticepickupplace)|yes|where the parcel can be fetched|
 |thePackage|[Package](#pickupnoticepackage)|no|package information|
 |cost|[Cost](#pickupnoticecost)|no|Information about value, mva, customs processing and more|
+|status|[Status](#pickupnoticestatus)|no|The state the package is at present time|
 
 ### PickupNotice.Barcode
 
@@ -300,6 +305,15 @@ Details about a pickup notice
 |codAmount|BigDecimal|no|Cash on delivery (cod) amount|
 |codFee|BigDecimal|no|Cash on delivery (cod) fee|
 
+### PickupNotice.Status
+
+Valid values:
+
+* READY_FOR_PICKUP
+* PICKED_UP
+* RETURNED
+* UNKNOWN
+
 ### XML
 
 ```xml
@@ -362,7 +376,36 @@ Details about a pickup notice
         <cod-amount>0</cod-amount>
         <cod-fee>0</cod-fee>
     </cost>
+    <status>READY_FOR_PICKUP</status>
 </pickup-notice>
+```
+
+## PickupNoticeStatus
+
+Updates to status for PickupNotice
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|status|[Status](#pickupnoticestatusstatus)|yes|The status of the PickupNotice|
+
+### PickupNoticeStatus.Status
+
+Valid values:
+
+* READY_FOR_PICKUP
+* PICKED_UP
+* RETURNED
+* UNKNOWN
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pickup-notice-status xmlns="http://api.digipost.no/schema/datatypes">
+    <status>READY_FOR_PICKUP</status>
+</pickup-notice-status>
 ```
 
 ## Receipt

@@ -11,7 +11,6 @@ import java.io.StringWriter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.System.lineSeparator;
@@ -53,10 +52,20 @@ public class MarkdownPrinter {
     private String printTypeOverview(ComplexType typeInfo) {
         return heading(2, typeInfo.getTypeName()) + LLF +
                 typeInfo.getDescription() + LLF +
+                printComplementedByInformation(typeInfo) +
                 heading(3, "Fields") + LLF +
                 printFields(typeInfo, typeInfo.getFields(), new HashSet<>()) + LLF +
                 (this.printJsonExamples ? printJsonExample(typeInfo.getExample()) + LLF : "") +
                 printXmlExample(typeInfo.getExample());
+    }
+
+    private String printComplementedByInformation(ComplexType type) {
+        List<ComplexType> complementables = type.getComplementables();
+        if (!complementables.isEmpty()) {
+            return "### Complemented by: " + LF 
+                    + complementables.stream().map(s->printLink(s, s)).collect(joining(", ")) + LLF;
+        }
+        return "";
     }
 
     private String printXmlExample(Object example) {
@@ -96,8 +105,8 @@ public class MarkdownPrinter {
 
     private String printEnum(Class<?> type) {
         String desc = "Valid values:";
-        
-        return desc + LLF + Stream.of(type.getEnumConstants()).map(s-> "" + s).collect(Collectors.joining(LF, "* ", ""));
+
+        return desc + LLF + Stream.of(type.getEnumConstants()).map(String::valueOf).collect(joining(LF + "* ", "* ", ""));
     }
 
     private String printFields(ComplexType parent, List<FieldInfo> fields, Set<ComplexType> printed) {
