@@ -1,5 +1,7 @@
 package no.digipost.api.datatypes.validation;
 
+import no.digipost.api.datatypes.DataType;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -12,6 +14,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface ComplementedBy {
 
-    Class[] value() default {};
+    Class<? extends DataType>[] value() default {};
     
 }

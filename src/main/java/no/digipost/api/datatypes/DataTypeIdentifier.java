@@ -12,6 +12,8 @@ import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 import no.digipost.api.datatypes.validation.ComplementedBy;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -48,6 +50,7 @@ public enum DataTypeIdentifier {
 
     private static final Map<Class<? extends DataType>, DataTypeIdentifier> byType;
     private static final Map<String, DataTypeIdentifier> byShortName;
+    private final Set<Class<? extends DataType>> complementables = new HashSet<>();
 
     static {
         byType = Stream.of(values()).collect(toMap(DataTypeIdentifier::getDataType, identity()));
@@ -58,6 +61,10 @@ public enum DataTypeIdentifier {
         this.dataType = dataType;
         this.shortName = shortName;
         this.example = example;
+        ComplementedBy complementedBy = this.getDataType().getAnnotation(ComplementedBy.class);
+        if (complementedBy != null) {
+            complementables.addAll(Arrays.asList(complementedBy.value()));
+        }
     }
 
     public Class<? extends DataType> getDataType() {
@@ -90,14 +97,6 @@ public enum DataTypeIdentifier {
     }
 
     public boolean validComplementation(DataType successor) {
-        ComplementedBy complementedBy = this.getDataType().getAnnotation(ComplementedBy.class);
-        if (complementedBy != null) {
-            for (Class<?> c : complementedBy.value()) {
-                if (c == successor.getClass()) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return complementables.contains(successor.getClass());
     }
 }
