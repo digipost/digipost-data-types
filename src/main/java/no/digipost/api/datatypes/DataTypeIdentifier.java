@@ -1,9 +1,16 @@
 package no.digipost.api.datatypes;
 
-import no.digipost.api.datatypes.types.*;
+import no.digipost.api.datatypes.types.Appointment;
+import no.digipost.api.datatypes.types.Boligdetaljer;
+import no.digipost.api.datatypes.types.Category;
+import no.digipost.api.datatypes.types.ExternalLink;
+import no.digipost.api.datatypes.types.Payslip;
+import no.digipost.api.datatypes.types.Residence;
+import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.receipt.Receipt;
+import no.digipost.api.datatypes.validation.ComplementedBy;
 
 import java.util.Map;
 import java.util.Optional;
@@ -80,5 +87,17 @@ public enum DataTypeIdentifier {
 
     public static Set<Class<? extends DataType>> getAllClasses() {
         return byType.keySet();
+    }
+
+    static boolean validComplementation(Class<? extends DataType> start, Class<? extends DataType> successor) {
+        ComplementedBy complementedBy = start.getAnnotation(ComplementedBy.class);
+        if (complementedBy != null) {
+            for (Class<?> c : complementedBy.value()) {
+                if (c == successor) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
