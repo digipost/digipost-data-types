@@ -313,6 +313,7 @@ Valid values:
 * PICKED_UP
 * RETURNED
 * UNKNOWN
+* DEVIATION
 
 ### XML
 
@@ -398,6 +399,7 @@ Valid values:
 * PICKED_UP
 * RETURNED
 * UNKNOWN
+* DEVIATION
 
 ### XML
 
