@@ -9,9 +9,12 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @XmlRootElement(name = "pickup-notice-status")
 @Value
@@ -27,7 +30,12 @@ public class PickupNoticeStatus implements DataType {
     @Valid
     Status status;
 
+    @XmlElement(name = "occurrence-datetime")
+    @Description("ISO8601 full DateTime for time of occurrence")
+    ZonedDateTime occurrenceDatetime;
+
     public static PickupNoticeStatus EXAMPLE = new PickupNoticeStatus(
             Status.READY_FOR_PICKUP
+            , ZonedDateTime.of(2019, 1, 10, 10, 10, 0, 0, ZoneId.systemDefault())
     );
 }
