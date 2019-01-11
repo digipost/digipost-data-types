@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
+import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.types.Tag;
 import no.digipost.api.datatypes.types.receipt.Barcode;
-import no.digipost.api.datatypes.ComplementedBy;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Collections;
+import java.util.Set;
 
 @XmlRootElement(name = "pickup-notice")
 @Value
@@ -83,6 +86,10 @@ public class PickupNotice implements DataType {
     @Description("The state the package is at present time")
     Status status;
 
+    @XmlElement(name = "tags")
+    @Description("Tags to describe the document")
+    Set<Tag> tags;
+
     @Override
     public PickupNotice withDefaultsForMissingOptionalValues() {
         if (status == null) {
@@ -105,7 +112,8 @@ public class PickupNotice implements DataType {
             , PickupPlace.EXAMPLE
             , Package.EXAMPLE
             , Cost.EXAMPLE
-            , Status.READY_FOR_PICKUP
+            , Status.READY_FOR_PICKUP,
+            Collections.singleton(Tag.POSTEN)
     );
 }
 

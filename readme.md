@@ -239,6 +239,7 @@ Details about a pickup notice
 |thePackage|[Package](#pickupnoticepackage)|no|package information|
 |cost|[Cost](#pickupnoticecost)|no|Information about value, mva, customs processing and more|
 |status|[Status](#pickupnoticestatus)|no|The state the package is at present time|
+|tags|Set|no|Tags to describe the document|
 
 ### PickupNotice.Barcode
 
@@ -378,6 +379,7 @@ Valid values:
         <cod-fee>0</cod-fee>
     </cost>
     <status>READY_FOR_PICKUP</status>
+    <tags>POSTEN</tags>
 </pickup-notice>
 ```
 
