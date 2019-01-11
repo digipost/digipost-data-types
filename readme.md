@@ -392,6 +392,7 @@ Updates to status for PickupNotice
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |status|[Status](#pickupnoticestatusstatus)|yes|The status of the PickupNotice|
+|occurrenceDatetime|ZonedDateTime|no|ISO8601 full DateTime for time of occurrence|
 
 ### PickupNoticeStatus.Status
 
@@ -409,6 +410,7 @@ Valid values:
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <pickup-notice-status xmlns="http://api.digipost.no/schema/datatypes">
     <status>READY_FOR_PICKUP</status>
+    <occurrence-datetime>2019-01-10T10:10:00+01:00</occurrence-datetime>
 </pickup-notice-status>
 ```
 
