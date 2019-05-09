@@ -9,7 +9,7 @@ import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Tag;
-import no.digipost.api.datatypes.types.receipt.Barcode;
+import no.digipost.api.datatypes.types.Barcode;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
