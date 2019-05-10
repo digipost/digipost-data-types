@@ -71,10 +71,6 @@ public class Appointment implements DataType {
     @Description("Barcode")
     Barcode barcode;
 
-    @XmlElement(name = "tags")
-    @Description("Tags to describe the document")
-    Set<Tag> tags;
-
     @XmlElement(name = "links")
     @Description("Links for releated information to the appointment")
     List<Link> links;
@@ -91,5 +87,5 @@ public class Appointment implements DataType {
         "Oslo City Røntgen", null, Address.EXAMPLE,
         "Undersøke smerter i ryggen", Collections.singletonList(
                 new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."))
-            , null, null, null);
+            , null, null);
 }

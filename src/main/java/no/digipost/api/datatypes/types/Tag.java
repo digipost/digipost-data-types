@@ -4,5 +4,4 @@ public enum Tag {
     VARSEL1
     , VARSEL2
     , POSTEN
-    , VALGKORT
 }
