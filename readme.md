@@ -30,7 +30,6 @@ Appointment represents a meeting set for a specific place and time
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
 |barcode|[Barcode](#appointmentbarcode)|no|Barcode|
-|tags|Set|no|Tags to describe the document|
 |links|List|no|Links for releated information to the appointment|
 
 ### Appointment.Address
