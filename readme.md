@@ -25,9 +25,12 @@ Appointment represents a meeting set for a specific place and time
 |endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
+|placeLabel|String|no|Optional label for place. null yield default in gui|
 |address|[Address](#appointmentaddress)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
+|barcode|[Barcode](#appointmentbarcode)|no|Barcode|
+|links|List|no|Links for releated information to the appointment|
 
 ### Appointment.Address
 
@@ -38,6 +41,14 @@ Appointment represents a meeting set for a specific place and time
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||
+
+### Appointment.Barcode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|barcodeValue|String|no|The barcode on this receipt|
+|barcodeType|String|no||
+|barcodeText|String|no|Barcode text can be used to describe the barcode|
 
 ### XML
 
@@ -247,6 +258,7 @@ Details about a pickup notice
 |----|----|--------|-----------|
 |barcodeValue|String|no|The barcode on this receipt|
 |barcodeType|String|no||
+|barcodeText|String|no|Barcode text can be used to describe the barcode|
 
 ### PickupNotice.Recipient
 
@@ -461,6 +473,7 @@ Receipt represents a document containing details about a purchase
 |----|----|--------|-----------|
 |barcodeValue|String|no|The barcode on this receipt|
 |barcodeType|String|no||
+|barcodeText|String|no|Barcode text can be used to describe the barcode|
 
 ### Receipt.TaxiDetails
 

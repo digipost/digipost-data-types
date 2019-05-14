@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types.receipt;
+package no.digipost.api.datatypes.types;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,5 +25,9 @@ public class Barcode {
     @XmlElement(name = "barcode-type")
     String barcodeType;
 
-    public static Barcode EXAMPLE = new Barcode("1234567890", CODE_128);
+    @XmlElement(name = "barcode-text")
+    @Description("Barcode text can be used to describe the barcode")
+    String barcodeText;
+
+    public static Barcode EXAMPLE = new Barcode("1234567890", CODE_128, null);
 }
