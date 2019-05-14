@@ -47,9 +47,9 @@ public class Appointment implements DataType {
     String place;
     
     @XmlElement
-    @Description("Optional title for place. null yield default in gui, not data")
+    @Description("Optional label for place. null yield default in gui")
     @Size(max = 150)
-    String placeTitle;
+    String placeLabel;
 
     @XmlElement
     @Valid

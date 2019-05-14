@@ -25,7 +25,7 @@ Appointment represents a meeting set for a specific place and time
 |endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
-|placeTitle|String|no|Optional title for place. null yield default in gui, not data|
+|placeLabel|String|no|Optional label for place. null yield default in gui|
 |address|[Address](#appointmentaddress)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
