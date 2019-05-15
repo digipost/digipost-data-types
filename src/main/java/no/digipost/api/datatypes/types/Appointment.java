@@ -74,6 +74,10 @@ public class Appointment implements DataType {
     @Description("Links for releated information to the appointment")
     List<Link> links;
 
+    public Appointment(ZonedDateTime startTime, ZonedDateTime endTime, String arrivalTime, String place, Address address, String subTitle, List<Info> info) {
+        this(startTime, endTime, arrivalTime, place, null, address, subTitle, info, null, null);
+    }
+
     @Override
     public Appointment withDefaultsForMissingOptionalValues() {
         return endTime == null ? this.withEndTime(startTime.plusMinutes(30)) : this;
