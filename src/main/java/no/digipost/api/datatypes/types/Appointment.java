@@ -15,8 +15,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.singletonList;
 
 @XmlRootElement
 @Value
@@ -67,10 +68,12 @@ public class Appointment implements DataType {
     }
 
     public static Appointment EXAMPLE = new Appointment(
-        ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-            ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault()),
-        "Oppmøte senest 15 minutter før timen",
-        "Oslo City Røntgen", Address.EXAMPLE,
-        "Undersøke smerter i ryggen", Collections.singletonList(
-                new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.")));
+            ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault())
+            , ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault())
+            , "Oppmøte senest 15 minutter før timen"
+            , "Oslo City Røntgen"
+            , Address.EXAMPLE
+            , "Undersøke smerter i ryggen"
+            , singletonList(new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."))
+    );
 }
