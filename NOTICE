@@ -16,7 +16,7 @@ This project includes:
   ClassMate under The Apache Software License, Version 2.0
   digipost-data-types under The Apache Software License, Version 2.0
   Expression Language 3.0 under CDDL + GPLv2 with classpath exception
-  Hibernate Validator Engine under Apache License, Version 2.0
+  Hibernate Validator Engine under Apache License 2.0
   Jackson datatype: JSR310 under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0
   Jackson-core under The Apache Software License, Version 2.0

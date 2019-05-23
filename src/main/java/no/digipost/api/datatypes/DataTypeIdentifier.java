@@ -3,6 +3,7 @@ package no.digipost.api.datatypes;
 import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.Boligdetaljer;
 import no.digipost.api.datatypes.types.Category;
+import no.digipost.api.datatypes.types.Event;
 import no.digipost.api.datatypes.types.ExternalLink;
 import no.digipost.api.datatypes.types.Payslip;
 import no.digipost.api.datatypes.types.Residence;
@@ -42,6 +43,7 @@ public enum DataTypeIdentifier {
     , SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE)
     , PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE)
     , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
+    , EVENT(Event.class, "EVNT", Event.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;

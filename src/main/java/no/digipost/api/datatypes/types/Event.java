@@ -10,7 +10,6 @@ import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,7 +31,6 @@ public class Event implements DataType {
     String subTitle;
     
     @XmlElement(name = "start-time", required = true)
-    @NotNull
     @NotEmpty
     @Description("List of time intervals")
     List<TimeInterval> time;
@@ -42,10 +40,10 @@ public class Event implements DataType {
     @Size(max = 150)
     String timeLabel;
     
-    @XmlElement(name = "arrival-time")
+    @XmlElement(name = "description")
     @Description("Free text but can contain a ISO8601 DateTime. Example: 'Please use entrance from street'")
-    @Size(max = 150)
-    String arrivalTime;
+    @Size(max = 120)
+    String description;
 
     @XmlElement
     @Description("The name of the place. Example: 'Sagene skole'")
@@ -63,8 +61,8 @@ public class Event implements DataType {
 
     @XmlElement
     @Valid
-    @Size(max = 2)
-    @Description("Additional sections of information (max 2) with a title and text.")
+    @Size(max = 10)
+    @Description("Additional sections of information (max 10) with a title and text.")
     List<Info> info;
 
     @XmlElement(name = "barcode")
@@ -79,7 +77,7 @@ public class Event implements DataType {
             "Kommunestyre- og fylkestingvalg"
             , singletonList(TimeInterval.EXAMPLE)
             , "Opening hours"
-            , "Husk legitimasjon"
+            , "Velkommen til valg! Husk legitimasjon."
             , "Sagene skole"
             , "Election venue"
             , Address.EXAMPLE
