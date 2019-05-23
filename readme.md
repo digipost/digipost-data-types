@@ -191,6 +191,7 @@ Event represents an event that occurs over a time period or several days. Eg. a 
 |placeLabel|String|no|Optional label for place. null yield default in gui, eg. 'Venue location'|
 |address|[Address](#eventaddress)|no||
 |info|List|no|Additional sections of information (max 10) with a title and text.|
+|barcodeLabel|String|no|Optional label for barcode. null yield default in gui, eg. ''|
 |barcode|[Barcode](#eventbarcode)|no|Barcode|
 |links|List|no|Links for releated information to the appointment|
 
@@ -237,6 +238,7 @@ Event represents an event that occurs over a time period or several days. Eg. a 
         <title>Forhåndsstemming</title>
         <text>Du kan forhåndsstemme fra 10. august</text>
     </info>
+    <barcodeLabel>Barcode for use on election day:</barcodeLabel>
     <barcode>
         <barcode-value>1234567890</barcode-value>
         <barcode-type>code-128</barcode-type>

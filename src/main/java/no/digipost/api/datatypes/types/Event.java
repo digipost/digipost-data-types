@@ -26,7 +26,7 @@ import static java.util.Collections.singletonList;
 public class Event implements DataType {
     
     @XmlElement(name = "sub-title")
-    @Size(max = 150)
+    @Size(max = 100)
     @Description("Example: 'Kommunestyre- og fylkestingvalg'")
     String subTitle;
     
@@ -37,7 +37,7 @@ public class Event implements DataType {
 
     @XmlElement
     @Description("Optional label for time. null yield default in gui, eg. 'Opening hours'")
-    @Size(max = 150)
+    @Size(max = 100)
     String timeLabel;
     
     @XmlElement(name = "description")
@@ -47,12 +47,11 @@ public class Event implements DataType {
 
     @XmlElement
     @Description("The name of the place. Example: 'Sagene skole'")
-    @Size(max = 150)
     String place;
     
     @XmlElement
     @Description("Optional label for place. null yield default in gui, eg. 'Venue location'")
-    @Size(max = 150)
+    @Size(max = 100)
     String placeLabel;
 
     @XmlElement
@@ -65,6 +64,11 @@ public class Event implements DataType {
     @Description("Additional sections of information (max 10) with a title and text.")
     List<Info> info;
 
+    @XmlElement
+    @Description("Optional label for barcode. null yield default in gui, eg. ''")
+    @Size(max = 100)
+    String barcodeLabel;
+    
     @XmlElement(name = "barcode")
     @Description("Barcode")
     Barcode barcode;
@@ -82,6 +86,7 @@ public class Event implements DataType {
             , "Election venue"
             , Address.EXAMPLE
             , singletonList(new Info("Forhåndsstemming", "Du kan forhåndsstemme fra 10. august"))
+            , "Barcode for use on election day:"
             , Barcode.EXAMPLE
             , singletonList(Link.EXAMPLE)
     );
