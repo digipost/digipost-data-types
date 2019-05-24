@@ -15,8 +15,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.singletonList;
 
 @XmlRootElement
 @Value
@@ -45,11 +46,6 @@ public class Appointment implements DataType {
     @Description("The name of the place. Example: Oslo City Røntgen")
     @Size(max = 150)
     String place;
-    
-    @XmlElement
-    @Description("Optional label for place. null yield default in gui")
-    @Size(max = 150)
-    String placeLabel;
 
     @XmlElement
     @Valid
@@ -66,29 +62,18 @@ public class Appointment implements DataType {
     @Description("Additional sections of information (max 2) with a title and text")
     List<Info> info;
 
-    @XmlElement(name = "barcode")
-    @Description("Barcode")
-    Barcode barcode;
-
-    @XmlElement(name = "links")
-    @Description("Links for releated information to the appointment")
-    List<Link> links;
-
-    public Appointment(ZonedDateTime startTime, ZonedDateTime endTime, String arrivalTime, String place, Address address, String subTitle, List<Info> info) {
-        this(startTime, endTime, arrivalTime, place, null, address, subTitle, info, null, null);
-    }
-
     @Override
     public Appointment withDefaultsForMissingOptionalValues() {
         return endTime == null ? this.withEndTime(startTime.plusMinutes(30)) : this;
     }
 
     public static Appointment EXAMPLE = new Appointment(
-        ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-            ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault()),
-        "Oppmøte senest 15 minutter før timen",
-        "Oslo City Røntgen", null, Address.EXAMPLE,
-        "Undersøke smerter i ryggen", Collections.singletonList(
-                new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."))
-            , null, null);
+            ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.systemDefault())
+            , ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.systemDefault())
+            , "Oppmøte senest 15 minutter før timen"
+            , "Oslo City Røntgen"
+            , Address.EXAMPLE
+            , "Undersøke smerter i ryggen"
+            , singletonList(new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."))
+    );
 }

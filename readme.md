@@ -5,6 +5,7 @@
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
+|[Event](#event)|Event represents an event that occurs over a time period or several days. Eg. a conference or an election|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
@@ -25,12 +26,9 @@ Appointment represents a meeting set for a specific place and time
 |endTime|ZonedDateTime|no|ISO8601 full DateTime. Default value 30 minutes after startTime|
 |arrivalTime|String|no|Free text but can contain a ISO8601 DateTime. Example: Please arrive 15 minutes early|
 |place|String|no|The name of the place. Example: Oslo City Røntgen|
-|placeLabel|String|no|Optional label for place. null yield default in gui|
 |address|[Address](#appointmentaddress)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
-|barcode|[Barcode](#appointmentbarcode)|no|Barcode|
-|links|List|no|Links for releated information to the appointment|
 
 ### Appointment.Address
 
@@ -41,14 +39,6 @@ Appointment represents a meeting set for a specific place and time
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||
-
-### Appointment.Barcode
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|barcodeValue|String|no|The barcode on this receipt|
-|barcodeType|String|no||
-|barcodeText|String|no|Barcode text can be used to describe the barcode|
 
 ### XML
 
@@ -185,6 +175,83 @@ Category is a way to specify which category the data of a document is related to
 <category xmlns="http://api.digipost.no/schema/datatypes">RESIDENCE</category>
 ```
 
+## Event
+
+Event represents an event that occurs over a time period or several days. Eg. a conference or an election
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|subTitle|String|no|Example: 'Kommunestyre- og fylkestingvalg'|
+|time|List|yes|List of time intervals|
+|timeLabel|String|no|Optional label for time. null yield default in gui, eg. 'Opening hours'|
+|description|String|no|Free text but can contain a ISO8601 DateTime. Example: 'Please use entrance from street'|
+|place|String|no|The name of the place. Example: 'Sagene skole'|
+|placeLabel|String|no|Optional label for place. null yield default in gui, eg. 'Venue location'|
+|address|[Address](#eventaddress)|no||
+|info|List|no|Additional sections of information (max 10) with a title and text.|
+|barcodeLabel|String|no|Optional label for barcode. null yield default in gui, eg. ''|
+|barcode|[Barcode](#eventbarcode)|no|Barcode|
+|links|List|no|Links for releated information to the appointment|
+
+### Event.Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
+
+### Event.Barcode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|barcodeValue|String|no|The barcode on this receipt|
+|barcodeType|String|no||
+|barcodeText|String|no|Barcode text can be used to describe the barcode|
+|showValueInBarcode|Boolean|no|If true, the barcode will render its value as part of the image|
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event xmlns="http://api.digipost.no/schema/datatypes">
+    <sub-title>Kommunestyre- og fylkestingvalg</sub-title>
+    <start-time>
+        <start-time>2019-05-23T10:00:00+02:00</start-time>
+        <end-time>2019-05-23T16:00:00+02:00</end-time>
+    </start-time>
+    <timeLabel>Opening hours</timeLabel>
+    <description>Velkommen til valg! Husk legitimasjon.</description>
+    <place>Sagene skole</place>
+    <placeLabel>Election venue</placeLabel>
+    <address>
+        <street-address>Storgata 23</street-address>
+        <postal-code>0011</postal-code>
+        <city>Oslo</city>
+        <country>Norge</country>
+    </address>
+    <info>
+        <title>Forhåndsstemming</title>
+        <text>Du kan forhåndsstemme fra 10. august</text>
+    </info>
+    <barcodeLabel>Barcode for use on election day:</barcodeLabel>
+    <barcode>
+        <barcode-value>1234567890</barcode-value>
+        <barcode-type>code-128</barcode-type>
+        <barcode-text>Show barcode for faster identification</barcode-text>
+        <show-value-in-barcode>true</show-value-in-barcode>
+    </barcode>
+    <links>
+        <url>https://valg.no</url>
+        <description>Les mer om valget på valg.no</description>
+    </links>
+</event>
+```
+
 ## ExternalLink
 
 An external URL, along with an optional description and deadline for resources such as a survey.
@@ -259,6 +326,7 @@ Details about a pickup notice
 |barcodeValue|String|no|The barcode on this receipt|
 |barcodeType|String|no||
 |barcodeText|String|no|Barcode text can be used to describe the barcode|
+|showValueInBarcode|Boolean|no|If true, the barcode will render its value as part of the image|
 
 ### PickupNotice.Recipient
 
@@ -338,6 +406,8 @@ Valid values:
     <barcode>
         <barcode-value>1234567890</barcode-value>
         <barcode-type>CODE_128</barcode-type>
+        <barcode-text>Show barcode for faster identification</barcode-text>
+        <show-value-in-barcode>true</show-value-in-barcode>
     </barcode>
     <product-name>Klimanøytral Servicepakke</product-name>
     <arrival-date-time>2018-09-10T10:00:00+02:00</arrival-date-time>
@@ -474,6 +544,7 @@ Receipt represents a document containing details about a purchase
 |barcodeValue|String|no|The barcode on this receipt|
 |barcodeType|String|no||
 |barcodeText|String|no|Barcode text can be used to describe the barcode|
+|showValueInBarcode|Boolean|no|If true, the barcode will render its value as part of the image|
 
 ### Receipt.TaxiDetails
 
@@ -543,6 +614,8 @@ Receipt represents a document containing details about a purchase
     <barcode>
         <barcode-value>1234567890</barcode-value>
         <barcode-type>code-128</barcode-type>
+        <barcode-text>Show barcode for faster identification</barcode-text>
+        <show-value-in-barcode>true</show-value-in-barcode>
     </barcode>
     <payments>
         <type>Bank Axept</type>
