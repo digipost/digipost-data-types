@@ -78,7 +78,7 @@ public class Boligdetaljer implements DataType {
 
     @XmlElement
     @Valid
-    ExternalLink extra;
+    ExternalLink callToAction;
 
     public static Boligdetaljer EXAMPLE = new Boligdetaljer(Residence.EXAMPLE,
             Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
@@ -87,5 +87,5 @@ public class Boligdetaljer implements DataType {
                             "Privat salg av sekundærbolig", "Bill Isalg", "Cooper Coopersen", 12345678L)),
             "123456789", "H1337", "42",
             Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", "3000000000")),
-            ExternalLink.EXAMPLE);
+            ExternalLink.EXAMPLE_NO_DEADLINE);
 }

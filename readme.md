@@ -81,7 +81,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksenhet|String|no||
 |andelsnummer|String|no||
 |heftelser|List|no||
-|extra|[ExternalLink](#boligdetaljerexternallink)|no||
+|callToAction|[ExternalLink](#boligdetaljerexternallink)|no||
 
 ### Boligdetaljer.Residence
 
@@ -165,12 +165,11 @@ Details about a Residence, and may be joined with Residence to retrieve the core
         <type-pant>Pantedokument</type-pant>
         <beloep>3000000000</beloep>
     </heftelser>
-    <extra>
-        <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
-        <deadline>2017-09-30T13:37:00+02:00</deadline>
-        <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
-        <button-text>Svar på barnehageplass</button-text>
-    </extra>
+    <callToAction>
+        <url>https://www.example.com</url>
+        <description>Gå til avsenders side for å gjøre en handling</description>
+        <button-text>Ta meg til handling!</button-text>
+    </callToAction>
 </boligdetaljer>
 ```
 
