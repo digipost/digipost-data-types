@@ -81,6 +81,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksenhet|String|no||
 |andelsnummer|String|no||
 |heftelser|List|no||
+|extra|[ExternalLink](#boligdetaljerexternallink)|no||
 
 ### Boligdetaljer.Residence
 
@@ -110,6 +111,15 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksnummer|String|yes||
 |festenummer|String|no||
 |seksjonsnummer|String|no||
+
+### Boligdetaljer.ExternalLink
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|url|URI|yes|Target URL of this link. Must be http or https.|
+|deadline|ZonedDateTime|no|Optional deadline for the user to respond. ISO8601 full DateTime.|
+|description|String|no|A short, optional text-field, describing the external link.|
+|buttonText|String|no|Optional text which will be displayed on the button.|
 
 ### XML
 
@@ -155,6 +165,12 @@ Details about a Residence, and may be joined with Residence to retrieve the core
         <type-pant>Pantedokument</type-pant>
         <beloep>3000000000</beloep>
     </heftelser>
+    <extra>
+        <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
+        <deadline>2017-09-30T13:37:00+02:00</deadline>
+        <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
+        <button-text>Svar på barnehageplass</button-text>
+    </extra>
 </boligdetaljer>
 ```
 

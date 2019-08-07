@@ -76,11 +76,16 @@ public class Boligdetaljer implements DataType {
     @Valid
     List<Heftelse> heftelser;
 
+    @XmlElement
+    @Valid
+    ExternalLink extra;
+
     public static Boligdetaljer EXAMPLE = new Boligdetaljer(Residence.EXAMPLE,
             Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
             59, 3, 4,
             Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
                             "Privat salg av sekundærbolig", "Bill Isalg", "Cooper Coopersen", 12345678L)),
             "123456789", "H1337", "42",
-            Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", "3000000000")));
+            Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", "3000000000")),
+            ExternalLink.EXAMPLE);
 }
