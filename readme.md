@@ -81,6 +81,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksenhet|String|no||
 |andelsnummer|String|no||
 |heftelser|List|no||
+|callToAction|[ExternalLink](#boligdetaljerexternallink)|no|An optional ExternalLink prompting the user to perform an action on an external site|
 
 ### Boligdetaljer.Residence
 
@@ -110,6 +111,15 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksnummer|String|yes||
 |festenummer|String|no||
 |seksjonsnummer|String|no||
+
+### Boligdetaljer.ExternalLink
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|url|URI|yes|Target URL of this link. Must be http or https.|
+|deadline|ZonedDateTime|no|Optional deadline for the user to respond. ISO8601 full DateTime.|
+|description|String|no|A short, optional text-field, describing the external link.|
+|buttonText|String|no|Optional text which will be displayed on the button.|
 
 ### XML
 
@@ -155,6 +165,11 @@ Details about a Residence, and may be joined with Residence to retrieve the core
         <type-pant>Pantedokument</type-pant>
         <beloep>3000000000</beloep>
     </heftelser>
+    <callToAction>
+        <url>https://www.example.com</url>
+        <description>Gå til avsenders side for å gjøre en handling</description>
+        <button-text>Ta meg til handling!</button-text>
+    </callToAction>
 </boligdetaljer>
 ```
 
