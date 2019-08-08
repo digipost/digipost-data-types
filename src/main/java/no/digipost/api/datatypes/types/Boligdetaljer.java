@@ -78,7 +78,15 @@ public class Boligdetaljer implements DataType {
 
     @XmlElement
     @Valid
+    @Description("An optional ExternalLink prompting the user to perform an action on an external site")
     ExternalLink callToAction;
+
+    public Boligdetaljer(Residence residence, List<Hjemmelshaver> hjemmelshavere, Integer bruksareal, Integer antallOppholdsrom,
+            Integer antallBaderom, List<Omsetningshistorikk> omsetningshistorikk, String organisasjonsnummer, String bruksenhet,
+            String andelsnummer, List<Heftelse> heftelser) {
+        this(residence, hjemmelshavere, bruksareal, antallOppholdsrom, antallBaderom, omsetningshistorikk, organisasjonsnummer,
+                bruksenhet, andelsnummer, heftelser, null);
+    }
 
     public static Boligdetaljer EXAMPLE = new Boligdetaljer(Residence.EXAMPLE,
             Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),

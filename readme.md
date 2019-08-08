@@ -81,7 +81,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |bruksenhet|String|no||
 |andelsnummer|String|no||
 |heftelser|List|no||
-|callToAction|[ExternalLink](#boligdetaljerexternallink)|no||
+|callToAction|[ExternalLink](#boligdetaljerexternallink)|no|An optional ExternalLink prompting the user to perform an action on an external site|
 
 ### Boligdetaljer.Residence
 
