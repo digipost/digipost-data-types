@@ -46,7 +46,7 @@ public class ExternalLink implements DataType {
     ZonedDateTime deadline;
 
     @XmlElement
-    @Size(max = 70)
+    @Size(max = 140)
     @Description("A short, optional text-field, describing the external link.")
     String description;
 
