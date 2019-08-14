@@ -26,4 +26,10 @@ public class ComplementByTest {
     public void kan_IKKE_complementere_HVIS_original_ikke_komplementerer() {
         assertThat(Appointment.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(PickupNoticeStatus.EXAMPLE)));
     }
+
+    @Test
+    public void kan_IKKE_complementere_seg_selv_med_mindre_eksplisitt_definert() {
+        assertThat(Appointment.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(Appointment.EXAMPLE)));
+        assertThat(PickupNotice.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(PickupNotice.EXAMPLE)));
+    }
 }

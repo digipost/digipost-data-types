@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
+import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
@@ -26,6 +27,7 @@ import java.util.List;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @Description("Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.")
+@ComplementedBy({Boligdetaljer.class})
 public class Boligdetaljer implements DataType {
 
     @XmlElement
