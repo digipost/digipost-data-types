@@ -67,6 +67,9 @@ Appointment represents a meeting set for a specific place and time
 
 Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.
 
+### Complemented by: 
+[Boligdetaljer](#boligdetaljer)
+
 ### Fields
 
 |Name|Type|Required|Description|
