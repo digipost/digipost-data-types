@@ -5,18 +5,17 @@
     <parent>
         <groupId>no.digipost</groupId>
         <artifactId>digipost-open-super-pom</artifactId>
-        <version>1</version>
+        <version>3</version>
     </parent>
 
     <artifactId>digipost-data-types</artifactId>
-    <version>0.23-SNAPSHOT</version>
-    <name>${project.artifactId}</name>
-    <description>Data types for Digipost Messages</description>
+    <version>0.24-SNAPSHOT</version>
+    <name>Digipost Data Types</name>
+    <description>Data types for Digipost messages</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <jackson.version>2.8.9</jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -24,7 +23,14 @@
             <dependency>
                 <groupId>com.fasterxml.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
-                <version>2.9.5</version>
+                <version>2.9.10</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.5.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -55,38 +61,48 @@
             <artifactId>jackson-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.0.16.Final</version>
+            <version>6.0.17.Final</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>3.0.0</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
             <exclusions>
                 <exclusion>
-                    <groupId>org.hamcrest</groupId>
-                    <artifactId>hamcrest-core</artifactId>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+            <version>3.0.3</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.quicktheories</groupId>
+            <artifactId>quicktheories</artifactId>
+            <version>0.26</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>java-hamcrest</artifactId>
-            <version>2.0.0.0</version>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2-rc1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -104,7 +120,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>25.0-jre</version>
+            <version>28.1-jre</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -120,9 +136,80 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0-M2</version>
+                    <configuration>
+                        <rules>
+                            <requireMavenVersion>
+                                <version>3.3.1</version>
+                            </requireMavenVersion>
+                            <bannedDependencies>
+                                <excludes>
+                                    <exclude>javax.*</exclude>
+                                    <exclude>org.hamcrest:hamcrest-core</exclude>
+                                </excludes>
+                            </bannedDependencies>
+                        </rules>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M3</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>2.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.siom79.japicmp</groupId>
+                    <artifactId>japicmp-maven-plugin</artifactId>
+                    <version>0.14.1</version>
+                    <configuration>
+                        <newVersion>
+                            <file><path>${project.build.directory}/${project.build.finalName}.${project.packaging}</path></file>
+                        </newVersion>
+                        <parameter>
+                            <onlyModified>true</onlyModified>
+                            <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
+                            <includes>
+                                <include>no.digipost</include>
+                            </includes>
+                        </parameter>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -178,35 +265,33 @@
                     </transformSchemas>
                 </configuration>
             </plugin>
-      <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <id>copy-resources</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}</outputDirectory>
-              <resources>          
-                <resource>
-                    <directory>${project.build.directory}/generated-resources/schemagen/</directory>
-                    <includes>
-                        <include>*.xsd</include>
-                    </includes>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>              
-            </configuration>            
-          </execution>
-        </executions>
-      </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-resources/schemagen/</directory>
+                                    <includes>
+                                        <include>*.xsd</include>
+                                    </includes>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
                 <executions>
                     <execution>
                         <id>datatypes-documentation</id>
@@ -221,7 +306,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <goals>

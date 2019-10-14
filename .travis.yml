@@ -1,0 +1,24 @@
+dist: trusty
+language: java
+
+jdk:
+- oraclejdk8
+#- openjdk11 # will not build on JDK > 8, until we upgrade Lombok
+#- openjdk12
+
+cache:
+  directories:
+  - "$HOME/.m2"
+
+env:
+  global:
+  - secure: dEmO9A2TvDhHBVwuMq7nUqO7IBtSwStTqZ/jwscAPdgKIB/lE/+Zojk4ovBoSKgu/sW+Zr3KOGgikrJoTinSmvlu2sZXkS0AetZoGjG9iympqOH/a9yiiIlDhSjccxWyfStHpXNYBFs8/dpQ3S8omAue2WNWrI3TK0u7Kw4XRvH0RB/byyvv6zFp6Dnyx8doK96MHXTGIWdWV99xtz5a24s/TMpND2ohFvgrtXbc9nNV/YZbui2RGhX50cBrUPoiNBGh+FnBSSjdwhTA1bGzDog0ym1aQ9/Uya5qmpHS8Z5vCRgWvYQW/l7v/y4Jvolz8sJRccf7pj8qTpmfKKP1nj1P5bX+Hn6TYKBRzBJaHxPn4XWi/E7bCbssLvEPmE2oYWvExnKaHzERJlkMoNOtiRNfm+RWQRLvEIXsbwnr8hL1GUYlokeHDiQMM896tAdmPn9kh73huThNTVn25XZPKc3o1W18pmQjpcO8rW2FDVR73vvW1kmldRJd/UU+oqM96QYwWcRFpCmRzNWIAntJo8yQXkCcUsHA9a14nuTHAeYWbczv9d9+X+ypbsjHg4PCvkkKYz6DfwElUjrShbhgUMqu4qOzgu0gW5ZhRAEQlCqF9WjgyzeYxzcKakZQxqriSOkYKL9xFDaiFe0CaQOqNL9WOaggah7cKjiopvAEgPo=
+  - secure: huH1J4qQxTu/ll2QmozX+QbcQBUinmOEW+UnmZzWyib8l40nmXzul8c9/9RQgk732yTkqHAJrNd6hbFwN786nRLThfTGnvTSTUwBNyBvfnnVppm5IKU0VPa5hCLCNHz/e3WG4qdOAZMnd/NnoB8diRaC9vOxaiXPumN51hx9nkahhs3JdbCU/ZW1zHTf7U+Kh6UP4V4DXimwnqwlTgrO4jvcb+pwGzVKt+BNi1lP4Xzajm400FEkbZbscr3Wc6MXNFoIawQbENbvQr4LJyh3Tys9YRTTHWF78vGnENiaz0VWQ5Zxv71DSTlMqnyk2uGyIQmbpqM1HsbOgk8dpoeMC5+EEBc4C905Q8JMjMoh7vf+7ipnAmC1HPGWicwq9MOZ60jnoiCBpsk75JuzESB909Ecxz28AnR81Kh6eKwT5q5HTy4cMUHV9yVsnMDisj8/C2yuEVRjeIIP5ebg3QACrIVty6jJIbScLWOX8Bzky38kn8faJ/DvS8Nap5f29d5hp1wGI85Zq86EgRJZYIpfjoF6EIVRGZrVGzc1+cA/9pQhBSLjwquLqOeoLuV26SHvEExZEvvtgniH7RXZ8ktVnUKKgezqiiQpiCJuhNkKHKiCy+uznEiPPccNIDcyEtHOoj87uDO/MeyvjbdzQS9xsyFax9k7UJWbauzCmn/WlyA=
+
+install: true
+
+before_script:
+- cp .travis/maven.settings.xml ~/.m2/settings.xml
+
+script:
+- mvn clean deploy --update-snapshots

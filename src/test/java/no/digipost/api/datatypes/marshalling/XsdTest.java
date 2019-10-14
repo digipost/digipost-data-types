@@ -1,13 +1,13 @@
 package no.digipost.api.datatypes.marshalling;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static no.digipost.api.datatypes.marshalling.DataTypesJAXBContext.DATATYPES_XSD_FILENAME;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class XsdTest {
+class XsdTest {
     @Test
-    public void generatedXsdShouldBeOnClasspath() {
+    void generatedXsdShouldBeOnClasspath() {
         assertNotNull(getClass().getClassLoader().getResourceAsStream(DATATYPES_XSD_FILENAME));
     }
 }

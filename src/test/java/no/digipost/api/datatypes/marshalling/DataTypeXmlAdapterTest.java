@@ -4,9 +4,7 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.Category;
 import no.digipost.api.datatypes.types.Residence;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Element;
 
 import javax.xml.bind.JAXBContext;
@@ -16,20 +14,23 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import java.io.StringWriter;
 
 import static java.util.Collections.singletonList;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DataTypeXmlAdapterTest {
+class DataTypeXmlAdapterTest {
 
     private final DataTypeXmlAdapter adapter = new DataTypeXmlAdapter();
 
-    public DataTypeXmlAdapterTest() throws JAXBException {
+    DataTypeXmlAdapterTest() throws JAXBException {
     }
 
     @Test
-    public void check_expected_marshalled_xmlstructure() throws Exception {
+    void check_expected_marshalled_xmlstructure() throws Exception {
         DataType dt = Residence.EXAMPLE;
         String expectedXml = "<residence xmlns=\"http://api.digipost.no/schema/datatypes\">" +
                 "<address><house-number>23</house-number><street-name>Storgata</street-name><postal-code>0011</postal-code><city>Oslo</city></address>" +
@@ -41,11 +42,11 @@ public class DataTypeXmlAdapterTest {
         StringWriter writer = new StringWriter();
         transformer.transform(new DOMSource(adapter.marshal(dt)), new StreamResult(writer));
         String newXml = writer.toString();
-        Assert.assertEquals(expectedXml, newXml);
+        assertEquals(expectedXml, newXml);
     }
 
     @Test
-    public void check_expected_marshalled_xmlstructureForEnum() throws Exception {
+    void check_expected_marshalled_xmlstructureForEnum() throws Exception {
         DataType dt = Category.EXAMPLE;
         String expectedXml = "<category xmlns=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</category>";
         TransformerFactory tf = TransformerFactory.newInstance();
@@ -54,35 +55,35 @@ public class DataTypeXmlAdapterTest {
         StringWriter writer = new StringWriter();
         transformer.transform(new DOMSource(adapter.marshal(dt)), new StreamResult(writer));
         String newXml = writer.toString();
-        Assert.assertEquals(expectedXml, newXml);
+        assertEquals(expectedXml, newXml);
     }
 
     @Test
-    public void check_expected_unmarshalled_javaobject() throws Exception {
+    void check_expected_unmarshalled_javaobject() throws Exception {
         DataType originalDt = Residence.EXAMPLE;
         Element newElement = adapter.marshal(originalDt);
         DataType resultDt = adapter.unmarshal(newElement);
 
-        Assert.assertEquals(originalDt, resultDt);
+        assertEquals(originalDt, resultDt);
 
         DataType originalDt2 = Appointment.EXAMPLE;
         Element newElement2 = adapter.marshal(originalDt2);
         DataType resultDt2 = adapter.unmarshal(newElement2);
 
-        Assert.assertEquals(originalDt2, resultDt2);
+        assertEquals(originalDt2, resultDt2);
 
         DataType originalDt3 = Category.RESIDENCE;
         Element newElement3 = adapter.marshal(originalDt3);
         DataType resultDt3 = adapter.unmarshal(newElement3);
 
-        Assert.assertEquals(originalDt3, resultDt3);
+        assertEquals(originalDt3, resultDt3);
     }
 
     @Test
-    public void test_usage_as_part_of_other_jaxb_context() throws JAXBException {
+    void test_usage_as_part_of_other_jaxb_context() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(TestDocument.class);
         final StringWriter writer = new StringWriter();
         jaxbContext.createMarshaller().marshal(new TestDocument(singletonList(Appointment.EXAMPLE)), writer);
-        assertThat(writer.toString(), Matchers.containsString("appointment"));
+        assertThat(writer.toString(), containsString("appointment"));
     }
 }
