@@ -3,8 +3,8 @@ language: java
 
 jdk:
 - oraclejdk8
-- openjdk11
-- openjdk12
+#- openjdk11 # will not build on JDK > 8, until we upgrade Lombok
+#- openjdk12
 
 cache:
   directories:
