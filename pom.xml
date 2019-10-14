@@ -10,8 +10,8 @@
 
     <artifactId>digipost-data-types</artifactId>
     <version>0.23-SNAPSHOT</version>
-    <name>${project.artifactId}</name>
-    <description>Data types for Digipost Messages</description>
+    <name>Digipost Data Types</name>
+    <description>Data types for Digipost messages</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -144,6 +144,12 @@
                             <requireMavenVersion>
                                 <version>3.3.1</version>
                             </requireMavenVersion>
+                            <bannedDependencies>
+                                <excludes>
+                                    <exclude>javax.*</exclude>
+                                    <exclude>org.hamcrest:hamcrest-core</exclude>
+                                </excludes>
+                            </bannedDependencies>
                         </rules>
                     </configuration>
                 </plugin>
