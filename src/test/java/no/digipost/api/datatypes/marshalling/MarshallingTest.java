@@ -3,36 +3,37 @@ package no.digipost.api.datatypes.marshalling;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.DataTypeIdentifier;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.stream.Stream;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
 
-public class MarshallingTest {
+class MarshallingTest {
 
     @Test
-    public void testJaxbMarshallingAllTypes() {
+    void testJaxbMarshallingAllTypes() {
         Stream.of(DataTypeIdentifier.values())
                 .map(DataTypeIdentifier::getExample)
-                .forEach(this::testJaxbMarshalling);
+                .forEach(MarshallingTest::testJaxbMarshalling);
     }
 
     @Test
-    public void testJacksonJsonMarshallingAlltypes() {
+    void testJacksonJsonMarshallingAlltypes() {
         Stream.of(DataTypeIdentifier.values())
-                .forEach(this::testJacksonJsonMarshalling);
+                .forEach(MarshallingTest::testJacksonJsonMarshalling);
     }
 
-    public void testJacksonJsonMarshalling(DataTypeIdentifier example) {
+    static void testJacksonJsonMarshalling(DataTypeIdentifier example) {
         try {
             ObjectMapper mapper = DataTypesJsonMapper.getMapper();
             final String json = mapper.writer().writeValueAsString(example.getExample());
@@ -43,7 +44,7 @@ public class MarshallingTest {
         }
     }
 
-    public void testJaxbMarshalling(DataType example) {
+    static void testJaxbMarshalling(DataType example) {
         try {
             final JAXBContext jaxbContext = DataTypesJAXBContext.getSingleton();
             final Marshaller marshaller = jaxbContext.createMarshaller();
