@@ -12,15 +12,15 @@ specific language governing permissions and limitations
 under the License.
 
 This project includes:
-  Bean Validation API under Apache License 2.0
   ClassMate under The Apache Software License, Version 2.0
   digipost-data-types under The Apache Software License, Version 2.0
-  Expression Language 3.0 under CDDL + GPLv2 with classpath exception
   Hibernate Validator Engine under Apache License 2.0
   Jackson datatype: JSR310 under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0
   Jackson-core under The Apache Software License, Version 2.0
   jackson-databind under The Apache Software License, Version 2.0
+  Jakarta Bean Validation API under Apache License 2.0
+  Jakarta Expression Language 3.0 under EPL 2.0 or GPL2 w/ CPE
   JBoss Logging 3 under Apache License, version 2.0
   Project Lombok under The MIT License
 
