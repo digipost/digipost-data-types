@@ -1,13 +1,7 @@
 package no.digipost.api.datatypes;
 
-import no.digipost.api.datatypes.types.Appointment;
-import no.digipost.api.datatypes.types.Boligdetaljer;
-import no.digipost.api.datatypes.types.Category;
-import no.digipost.api.datatypes.types.Event;
-import no.digipost.api.datatypes.types.ExternalLink;
-import no.digipost.api.datatypes.types.Payslip;
-import no.digipost.api.datatypes.types.Residence;
-import no.digipost.api.datatypes.types.SignedDocument;
+import no.digipost.api.datatypes.types.*;
+import no.digipost.api.datatypes.types.bevis.Bevis;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.receipt.Receipt;
@@ -44,6 +38,7 @@ public enum DataTypeIdentifier {
     , PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE)
     , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
     , EVENT(Event.class, "EVNT", Event.EXAMPLE)
+    , BEVIS(Bevis.class, "BVIS", Bevis.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;

@@ -14,6 +14,7 @@ public class DataTypesJsonMapper {
 
     private static ObjectMapper initMapper() {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.enableDefaultTyping();
         mapper.registerModule(new JavaTimeModule());
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         mapper.setTimeZone(TimeZone.getDefault());
