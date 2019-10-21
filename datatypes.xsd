@@ -3,6 +3,8 @@
 
   <xs:element name="appointment" type="tns:appointment"/>
 
+  <xs:element name="bevis" type="tns:bevis"/>
+
   <xs:element name="boligdetaljer" type="tns:boligdetaljer"/>
 
   <xs:element name="category" type="tns:category"/>
@@ -195,6 +197,127 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType final="extension restriction" name="aaligRepeterendePeriode">
+    <xs:complexContent>
+      <xs:extension base="tns:tidsPeriode">
+        <xs:sequence>
+          <xs:element name="start-aar" type="xs:int"/>
+          <xs:element name="slutt-aar" type="xs:int"/>
+          <xs:element name="fra" type="tns:maanedsTidspunkt"/>
+          <xs:element name="til" type="tns:maanedsTidspunkt"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="tidsPeriode">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="maanedsTidspunkt">
+    <xs:sequence>
+      <xs:element name="maaned" type="xs:int"/>
+      <xs:element name="dag" type="xs:int"/>
+      <xs:element minOccurs="0" name="time" type="xs:int"/>
+      <xs:element minOccurs="0" name="min" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="attributt">
+    <xs:sequence>
+      <xs:element name="navn" type="tns:string30MedSpraak"/>
+      <xs:element name="verdi" type="tns:string100MedSpraak"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="string30MedSpraak">
+    <xs:sequence>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="lang" type="tns:spraakKode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="spraakKode">
+    <xs:sequence>
+      <xs:element name="lang" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="string100MedSpraak">
+    <xs:sequence>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="lang" type="tns:spraakKode"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="bevis">
+    <xs:sequence>
+      <xs:element name="utsteder-visningsnavn" type="tns:string30MedSpraak"/>
+      <xs:element minOccurs="0" name="bakgrunnsfarge" type="xs:string"/>
+      <xs:element minOccurs="0" name="logo" type="xs:string"/>
+      <xs:element minOccurs="0" name="utstedt-tidspunkt" type="xs:string"/>
+      <xs:element name="gyldighetsperioder" type="tns:periodeListe"/>
+      <xs:element minOccurs="0" name="bevis-bruker" type="tns:bruker"/>
+      <xs:element name="tittel" type="tns:string30MedSpraak"/>
+      <xs:element name="bevis-id-navn" type="tns:string30MedSpraak"/>
+      <xs:element name="bevis-id-verdi" type="tns:string100MedSpraak"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attributt" type="tns:attributt"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:bevisInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="periodeListe">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="periode" type="tns:periode"/>
+        <xs:element name="aarlig-repeterende-periode" type="tns:aaligRepeterendePeriode"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="periode">
+    <xs:complexContent>
+      <xs:extension base="tns:tidsPeriode">
+        <xs:sequence>
+          <xs:element name="fra" type="xs:string"/>
+          <xs:element name="til" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="bruker">
+    <xs:sequence>
+      <xs:element name="fornavn" type="xs:string"/>
+      <xs:element name="etternavn" type="xs:string"/>
+      <xs:element minOccurs="0" name="foedselsnummer" type="xs:string"/>
+      <xs:element minOccurs="0" name="adresse" type="tns:bevisAdresse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="bevisAdresse">
+    <xs:sequence>
+      <xs:element name="gate" type="xs:string"/>
+      <xs:element name="postnummer" type="xs:string"/>
+      <xs:element name="sted" type="xs:string"/>
+      <xs:element minOccurs="0" name="land" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="bevisInfo">
+    <xs:sequence>
+      <xs:element name="navn" type="tns:string30MedSpraak"/>
+      <xs:element name="verdi" type="tns:string250MedSpraak"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="string250MedSpraak">
+    <xs:sequence>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="lang" type="tns:spraakKode"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType final="extension restriction" name="cost">
     <xs:sequence>
       <xs:element name="value-to-be-payed" type="xs:decimal"/>
@@ -376,19 +499,19 @@
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="UNKNOWN"/>
-      <xs:enumeration value="DEVIATION"/>
       <xs:enumeration value="RETURNED"/>
-      <xs:enumeration value="PICKED_UP"/>
       <xs:enumeration value="READY_FOR_PICKUP"/>
+      <xs:enumeration value="PICKED_UP"/>
+      <xs:enumeration value="DEVIATION"/>
+      <xs:enumeration value="UNKNOWN"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="tag">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="POSTEN"/>
-      <xs:enumeration value="VARSEL2"/>
       <xs:enumeration value="VARSEL1"/>
+      <xs:enumeration value="VARSEL2"/>
+      <xs:enumeration value="POSTEN"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

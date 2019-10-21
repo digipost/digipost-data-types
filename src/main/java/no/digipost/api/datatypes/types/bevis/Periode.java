@@ -1,9 +1,6 @@
 package no.digipost.api.datatypes.types.bevis;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.*;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.TimeInterval;
@@ -19,6 +16,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
+@EqualsAndHashCode(callSuper = false)
 public class Periode extends TidsPeriode {
     @XmlElement(name = "fra", required = true)
     @NotNull

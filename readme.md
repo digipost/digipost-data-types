@@ -3,6 +3,7 @@
 |Type|Description|
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
+|[Bevis](#bevis)|Bevis description here|
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[Event](#event)|Event represents an event that occurs over a time period or several days. Eg. a conference or an election|
@@ -61,6 +62,157 @@ Appointment represents a meeting set for a specific place and time
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
     </info>
 </appointment>
+```
+
+## Bevis
+
+Bevis description here
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|utstederVisningsnavn|[String30MedSpraak](#bevisstring30medspraak)|yes||
+|bakgrunnsfarge|String|no|RRGGBB fargekode|
+|logo|String|no||
+|utstedtTidspunkt|ZonedDateTime|no||
+|gyldighetsPerioder|[PeriodeListe](#bevisperiodeliste)|yes||
+|bevisBruker|[Bruker](#bevisbruker)|no||
+|tittel|[String30MedSpraak](#bevisstring30medspraak)|yes||
+|bevisIdNavn|[String30MedSpraak](#bevisstring30medspraak)|yes||
+|bevisIdVerdi|[String100MedSpraak](#bevisstring100medspraak)|yes||
+|attributt|List|no||
+|info|List|no||
+
+### Bevis.String30MedSpraak
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|text|String|yes||
+|spraakKode|[SpraakKode](#bevisspraakkode)|yes||
+
+### Bevis.SpraakKode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|spraakKode|String|yes|Språkkode ihht ISO-639-1 (2 bokstaver)|
+
+### Bevis.PeriodeListe
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|periodeListe|List|no||
+
+### Bevis.Bruker
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|navn|String|yes||
+|verdi|String|yes||
+|foedselsnummer|String|no||
+|adresse|[BevisAdresse](#bevisbevisadresse)|no||
+
+### Bevis.BevisAdresse
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|gate|String|yes|E.g. Storgata 11|
+|postnummer|String|yes||
+|sted|String|yes||
+|land|String|no||
+
+### Bevis.String100MedSpraak
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|text|String|yes||
+|spraakKode|[SpraakKode](#bevisspraakkode)|yes||
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bevis xmlns="http://api.digipost.no/schema/datatypes">
+    <utsteder-visningsnavn>
+        <text>Stedsnavn</text>
+        <lang>
+            <lang>NO</lang>
+        </lang>
+    </utsteder-visningsnavn>
+    <bakgrunnsfarge>ff0000</bakgrunnsfarge>
+    <logo>logo.png</logo>
+    <utstedt-tidspunkt>2019-05-23T10:00:00+02:00</utstedt-tidspunkt>
+    <gyldighetsperioder>
+        <aarlig-repeterende-periode>
+            <start-aar>2020</start-aar>
+            <slutt-aar>2022</slutt-aar>
+            <fra>
+                <maaned>1</maaned>
+                <dag>1</dag>
+            </fra>
+            <til>
+                <maaned>12</maaned>
+                <dag>31</dag>
+            </til>
+        </aarlig-repeterende-periode>
+    </gyldighetsperioder>
+    <bevis-bruker>
+        <fornavn>Ola</fornavn>
+        <etternavn>Nordmann</etternavn>
+        <adresse>
+            <gate>Storgata 23</gate>
+            <postnummer>0011</postnummer>
+            <sted>Oslo</sted>
+            <land>Norge</land>
+        </adresse>
+    </bevis-bruker>
+    <tittel>
+        <text>Tittel</text>
+        <lang>
+            <lang>NO</lang>
+        </lang>
+    </tittel>
+    <bevis-id-navn>
+        <text>ID Navn</text>
+        <lang>
+            <lang>NO</lang>
+        </lang>
+    </bevis-id-navn>
+    <bevis-id-verdi>
+        <text>ID Verdi</text>
+        <lang>
+            <lang>NO</lang>
+        </lang>
+    </bevis-id-verdi>
+    <attributt>
+        <navn>
+            <text>navn</text>
+            <lang>
+                <lang>NO</lang>
+            </lang>
+        </navn>
+        <verdi>
+            <text>verdi</text>
+            <lang>
+                <lang>NO</lang>
+            </lang>
+        </verdi>
+    </attributt>
+    <info>
+        <navn>
+            <text>Info#1</text>
+            <lang>
+                <lang>NO</lang>
+            </lang>
+        </navn>
+        <verdi>
+            <text>Verdi tekst</text>
+            <lang>
+                <lang>NO</lang>
+            </lang>
+        </verdi>
+    </info>
+</bevis>
 ```
 
 ## Boligdetaljer

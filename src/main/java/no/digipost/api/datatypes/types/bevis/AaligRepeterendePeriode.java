@@ -1,9 +1,6 @@
 package no.digipost.api.datatypes.types.bevis;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.*;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
@@ -16,6 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
+@EqualsAndHashCode(callSuper = false)
 public class AaligRepeterendePeriode extends TidsPeriode {
     @XmlElement(name = "start-aar", required = true)
     @NotNull
