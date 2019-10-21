@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @EqualsAndHashCode(callSuper = false)
-public class AaligRepeterendePeriode extends TidsPeriode {
+public class AarligRepeterendePeriode extends TidsPeriode {
     @XmlElement(name = "start-aar", required = true)
     @NotNull
     @Description("")
@@ -35,7 +35,7 @@ public class AaligRepeterendePeriode extends TidsPeriode {
     @Description("")
     MaanedsTidspunkt til;
 
-    public static AaligRepeterendePeriode EXAMPLE = new AaligRepeterendePeriode(
+    public static AarligRepeterendePeriode EXAMPLE = new AarligRepeterendePeriode(
             2020,
             2022,
             new MaanedsTidspunkt(1, 1, null, null),

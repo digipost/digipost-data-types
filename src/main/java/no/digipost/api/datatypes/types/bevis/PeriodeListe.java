@@ -23,11 +23,11 @@ public class PeriodeListe {
     @XmlElements(
             {
                     @XmlElement(name = "periode", type = Periode.class, required = true),
-                    @XmlElement(name = "aarlig-repeterende-periode", type = AaligRepeterendePeriode.class, required = true)
+                    @XmlElement(name = "aarlig-repeterende-periode", type = AarligRepeterendePeriode.class, required = true)
             })
     @Size(min = 1, max = 100)
     @Description("")
     List<TidsPeriode> periodeListe;
 
-    public static PeriodeListe EXAMPLE = new PeriodeListe(singletonList(AaligRepeterendePeriode.EXAMPLE));
+    public static PeriodeListe EXAMPLE = new PeriodeListe(singletonList(AarligRepeterendePeriode.EXAMPLE));
 }
