@@ -7,6 +7,7 @@ import no.digipost.api.datatypes.documentation.Description;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.TimeZone;
 
 @XmlType
 @Value
@@ -35,10 +36,15 @@ public class AarligRepeterendePeriode extends TidsPeriode {
     @Description("")
     MaanedsTidspunkt til;
 
+    @XmlElement(name = "tidssone")
+    @Description("Java.Util.Timezone ID, default er system timezone")
+    String tidssone;
+
     public static AarligRepeterendePeriode EXAMPLE = new AarligRepeterendePeriode(
             2020,
             2022,
             new MaanedsTidspunkt(1, 1, null, null),
-            new MaanedsTidspunkt(12, 31, null, null)
+            new MaanedsTidspunkt(12, 31, null, null),
+            TimeZone.getDefault().getID()
     );
 }

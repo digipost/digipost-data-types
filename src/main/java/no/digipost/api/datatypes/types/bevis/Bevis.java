@@ -29,8 +29,9 @@ public class Bevis implements DataType {
 
     @XmlElement(name = "utsteder-visningsnavn", required = true)
     @NotNull
+    @Size(max = 30)
     @Description("")
-    String30MedSpraak utstederVisningsnavn;
+    String utstederVisningsnavn;
 
     @XmlElement(name = "bakgrunnsfarge")
     @Pattern(regexp = "[A-Fa-f0-9]{6}")
@@ -57,18 +58,21 @@ public class Bevis implements DataType {
 
     @XmlElement(name = "tittel", required = true)
     @NotNull
+    @Size(max = 30)
     @Description("")
-    String30MedSpraak tittel;
+    String tittel;
 
     @XmlElement(name = "bevis-id-navn", required = true)
     @NotNull
+    @Size(max = 100)
     @Description("")
-    String30MedSpraak bevisIdNavn;
+    String bevisIdNavn;
 
     @XmlElement(name = "bevis-id-verdi", required = true)
     @NotNull
+    @Size(max = 250)
     @Description("")
-    String100MedSpraak bevisIdVerdi;
+    String bevisIdVerdi;
 
     @XmlElement(name = "attributt")
     @Size(max = 5)
@@ -83,15 +87,15 @@ public class Bevis implements DataType {
 
     public static Bevis EXAMPLE =
             new Bevis(
-                    new String30MedSpraak("Stedsnavn", new SpraakKode("NO")),
+                    "Stedsnavn",
                     "ff0000",
                     "logo.png",
                     ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault()),
                     PeriodeListe.EXAMPLE,
                     Bruker.EXAMPLE,
-                    new String30MedSpraak("Tittel", new SpraakKode("NO")),
-                    new String30MedSpraak("ID Navn", new SpraakKode("NO")),
-                    new String100MedSpraak("ID Verdi", new SpraakKode("NO")),
+                    "Tittel",
+                    "ID Navn",
+                    "ID Verdi",
                     singletonList(Attributt.EXAMPLE),
                     singletonList(BevisInfo.EXAMPLE)
             );

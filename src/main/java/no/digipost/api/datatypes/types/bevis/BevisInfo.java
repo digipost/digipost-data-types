@@ -7,6 +7,7 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,15 +18,14 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class BevisInfo {
     @XmlElement(name = "navn", required = true)
+    @Size(max = 30)
     @Description("")
-    String30MedSpraak navn;
+    String navn;
 
     @XmlElement(name = "verdi", required = true)
+    @Size(max = 2500)
     @Description("")
-    String250MedSpraak verdi;
+    String verdi;
 
-    public static BevisInfo EXAMPLE = new BevisInfo(
-            new String30MedSpraak("Info#1", new SpraakKode("NO")),
-            new String250MedSpraak("Verdi tekst", new SpraakKode("NO"))
-    );
+    public static BevisInfo EXAMPLE = new BevisInfo("Info#1", "Verdi tekst");
 }
