@@ -36,16 +36,10 @@ public class AarligRepeterendePeriode extends TidsPeriode {
     @Description("")
     MaanedsTidspunkt til;
 
-    @XmlElement(name = "tidssone", required = true)
-    @NotNull
-    @Description("Java.Util.Timezone ID, default er system timezone")
-    String tidssone;
-
     public static AarligRepeterendePeriode EXAMPLE = new AarligRepeterendePeriode(
             2020,
             2022,
-            new MaanedsTidspunkt(1, 1, null, null, TimeZone.getDefault().getID()),
-            new MaanedsTidspunkt(12, 31, null, null, TimeZone.getDefault().getID()),
-            TimeZone.getDefault().getID()
+            new MaanedsTidspunkt(1, 1, null, null, "Europe/Oslo"),
+            new MaanedsTidspunkt(12, 31, null, null, "+2:00")
     );
 }
