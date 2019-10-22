@@ -36,7 +36,8 @@ public class AarligRepeterendePeriode extends TidsPeriode {
     @Description("")
     MaanedsTidspunkt til;
 
-    @XmlElement(name = "tidssone")
+    @XmlElement(name = "tidssone", required = true)
+    @NotNull
     @Description("Java.Util.Timezone ID, default er system timezone")
     String tidssone;
 

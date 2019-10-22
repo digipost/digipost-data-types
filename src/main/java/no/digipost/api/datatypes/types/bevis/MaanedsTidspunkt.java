@@ -36,7 +36,8 @@ public class MaanedsTidspunkt {
     @Description("")
     Integer min;
 
-    @XmlElement(name = "tidssone")
+    @XmlElement(name = "tidssone", required = true)
+    @NotNull
     @Description("Java.Util.Timezone ID, default er system timezone")
     String tidssone;
 
