@@ -8,6 +8,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -37,8 +38,9 @@ public class MaanedsTidspunkt {
 
     @XmlElement(name = "tidssone", required = true)
     @NotNull
-    @Description("TZ Database name")
+    @Pattern(regexp = "^[zZ+-]")
+    @Description("ISO8601 Offset")
     String tidssone;
 
-    public static MaanedsTidspunkt EXAMPLE = new MaanedsTidspunkt(5, 9, null, null, "Europe/Oslo");
+    public static MaanedsTidspunkt EXAMPLE = new MaanedsTidspunkt(5, 9, null, null, "+02:00");
 }
