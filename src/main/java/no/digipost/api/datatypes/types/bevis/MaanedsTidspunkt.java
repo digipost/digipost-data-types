@@ -38,8 +38,8 @@ public class MaanedsTidspunkt {
 
     @XmlElement(name = "tidssone", required = true)
     @NotNull
-    @Pattern(regexp = "^[zZ+-]")
-    @Description("ISO8601 Offset")
+    @Pattern(regexp = "Z|[+-][01]\\d:{0,1}[0-5]\\d|[+-][01]\\d")
+    @Description("Tidssone iht ISO8601")
     String tidssone;
 
     public static MaanedsTidspunkt EXAMPLE = new MaanedsTidspunkt(5, 9, null, null, "+02:00");
