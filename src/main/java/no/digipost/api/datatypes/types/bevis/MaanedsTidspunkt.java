@@ -10,6 +10,7 @@ import no.digipost.api.datatypes.documentation.Description;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.TimeZone;
 
 @XmlType
 @Value
@@ -35,5 +36,9 @@ public class MaanedsTidspunkt {
     @Description("")
     Integer min;
 
-    public static MaanedsTidspunkt EXAMPLE = new MaanedsTidspunkt(5, 9, null, null);
+    @XmlElement(name = "tidssone")
+    @Description("Java.Util.Timezone ID, default er system timezone")
+    String tidssone;
+
+    public static MaanedsTidspunkt EXAMPLE = new MaanedsTidspunkt(5, 9, null, null, TimeZone.getDefault().getID());
 }

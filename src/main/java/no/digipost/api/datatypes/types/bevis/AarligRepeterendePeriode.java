@@ -43,8 +43,8 @@ public class AarligRepeterendePeriode extends TidsPeriode {
     public static AarligRepeterendePeriode EXAMPLE = new AarligRepeterendePeriode(
             2020,
             2022,
-            new MaanedsTidspunkt(1, 1, null, null),
-            new MaanedsTidspunkt(12, 31, null, null),
+            new MaanedsTidspunkt(1, 1, null, null, TimeZone.getDefault().getID()),
+            new MaanedsTidspunkt(12, 31, null, null, TimeZone.getDefault().getID()),
             TimeZone.getDefault().getID()
     );
 }
