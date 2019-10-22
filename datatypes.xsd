@@ -197,7 +197,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType final="extension restriction" name="aaligRepeterendePeriode">
+  <xs:complexType final="extension restriction" name="aarligRepeterendePeriode">
     <xs:complexContent>
       <xs:extension base="tns:tidsPeriode">
         <xs:sequence>
@@ -220,47 +220,28 @@
       <xs:element name="dag" type="xs:int"/>
       <xs:element minOccurs="0" name="time" type="xs:int"/>
       <xs:element minOccurs="0" name="min" type="xs:int"/>
+      <xs:element name="tidssone" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="attributt">
     <xs:sequence>
-      <xs:element name="navn" type="tns:string30MedSpraak"/>
-      <xs:element name="verdi" type="tns:string100MedSpraak"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType final="extension restriction" name="string30MedSpraak">
-    <xs:sequence>
-      <xs:element name="text" type="xs:string"/>
-      <xs:element name="lang" type="tns:spraakKode"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType final="extension restriction" name="spraakKode">
-    <xs:sequence>
-      <xs:element name="lang" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType final="extension restriction" name="string100MedSpraak">
-    <xs:sequence>
-      <xs:element name="text" type="xs:string"/>
-      <xs:element name="lang" type="tns:spraakKode"/>
+      <xs:element name="navn" type="xs:string"/>
+      <xs:element name="verdi" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="bevis">
     <xs:sequence>
-      <xs:element name="utsteder-visningsnavn" type="tns:string30MedSpraak"/>
+      <xs:element name="utsteder-visningsnavn" type="xs:string"/>
       <xs:element minOccurs="0" name="bakgrunnsfarge" type="xs:string"/>
       <xs:element minOccurs="0" name="logo" type="xs:string"/>
       <xs:element minOccurs="0" name="utstedt-tidspunkt" type="xs:string"/>
       <xs:element name="gyldighetsperioder" type="tns:periodeListe"/>
       <xs:element minOccurs="0" name="bevis-bruker" type="tns:bruker"/>
-      <xs:element name="tittel" type="tns:string30MedSpraak"/>
-      <xs:element name="bevis-id-navn" type="tns:string30MedSpraak"/>
-      <xs:element name="bevis-id-verdi" type="tns:string100MedSpraak"/>
+      <xs:element name="tittel" type="xs:string"/>
+      <xs:element name="bevis-id-navn" type="xs:string"/>
+      <xs:element name="bevis-id-verdi" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="attributt" type="tns:attributt"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:bevisInfo"/>
     </xs:sequence>
@@ -270,7 +251,7 @@
     <xs:sequence>
       <xs:choice maxOccurs="unbounded">
         <xs:element name="periode" type="tns:periode"/>
-        <xs:element name="aarlig-repeterende-periode" type="tns:aaligRepeterendePeriode"/>
+        <xs:element name="aarlig-repeterende-periode" type="tns:aarligRepeterendePeriode"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -306,15 +287,8 @@
 
   <xs:complexType final="extension restriction" name="bevisInfo">
     <xs:sequence>
-      <xs:element name="navn" type="tns:string30MedSpraak"/>
-      <xs:element name="verdi" type="tns:string250MedSpraak"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType final="extension restriction" name="string250MedSpraak">
-    <xs:sequence>
-      <xs:element name="text" type="xs:string"/>
-      <xs:element name="lang" type="tns:spraakKode"/>
+      <xs:element name="navn" type="xs:string"/>
+      <xs:element name="verdi" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -500,18 +474,18 @@
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
       <xs:enumeration value="RETURNED"/>
-      <xs:enumeration value="READY_FOR_PICKUP"/>
-      <xs:enumeration value="PICKED_UP"/>
-      <xs:enumeration value="DEVIATION"/>
       <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="READY_FOR_PICKUP"/>
+      <xs:enumeration value="DEVIATION"/>
+      <xs:enumeration value="PICKED_UP"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="tag">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="VARSEL1"/>
       <xs:enumeration value="VARSEL2"/>
       <xs:enumeration value="POSTEN"/>
+      <xs:enumeration value="VARSEL1"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

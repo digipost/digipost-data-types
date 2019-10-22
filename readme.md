@@ -72,30 +72,17 @@ Bevis description here
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|utstederVisningsnavn|[String30MedSpraak](#bevisstring30medspraak)|yes||
+|utstederVisningsnavn|String|yes||
 |bakgrunnsfarge|String|no|RRGGBB fargekode|
 |logo|String|no||
 |utstedtTidspunkt|ZonedDateTime|no||
 |gyldighetsPerioder|[PeriodeListe](#bevisperiodeliste)|yes||
 |bevisBruker|[Bruker](#bevisbruker)|no||
-|tittel|[String30MedSpraak](#bevisstring30medspraak)|yes||
-|bevisIdNavn|[String30MedSpraak](#bevisstring30medspraak)|yes||
-|bevisIdVerdi|[String100MedSpraak](#bevisstring100medspraak)|yes||
+|tittel|String|yes||
+|bevisIdNavn|String|yes||
+|bevisIdVerdi|String|yes||
 |attributt|List|no||
 |info|List|no||
-
-### Bevis.String30MedSpraak
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|text|String|yes||
-|spraakKode|[SpraakKode](#bevisspraakkode)|yes||
-
-### Bevis.SpraakKode
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|spraakKode|String|yes|Språkkode ihht ISO-639-1 (2 bokstaver)|
 
 ### Bevis.PeriodeListe
 
@@ -121,24 +108,12 @@ Bevis description here
 |sted|String|yes||
 |land|String|no||
 
-### Bevis.String100MedSpraak
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|text|String|yes||
-|spraakKode|[SpraakKode](#bevisspraakkode)|yes||
-
 ### XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <bevis xmlns="http://api.digipost.no/schema/datatypes">
-    <utsteder-visningsnavn>
-        <text>Stedsnavn</text>
-        <lang>
-            <lang>NO</lang>
-        </lang>
-    </utsteder-visningsnavn>
+    <utsteder-visningsnavn>Stedsnavn</utsteder-visningsnavn>
     <bakgrunnsfarge>ff0000</bakgrunnsfarge>
     <logo>logo.png</logo>
     <utstedt-tidspunkt>2019-05-23T10:00:00+02:00</utstedt-tidspunkt>
@@ -149,10 +124,12 @@ Bevis description here
             <fra>
                 <maaned>1</maaned>
                 <dag>1</dag>
+                <tidssone>Europe/Oslo</tidssone>
             </fra>
             <til>
                 <maaned>12</maaned>
                 <dag>31</dag>
+                <tidssone>+2:00</tidssone>
             </til>
         </aarlig-repeterende-periode>
     </gyldighetsperioder>
@@ -166,51 +143,16 @@ Bevis description here
             <land>Norge</land>
         </adresse>
     </bevis-bruker>
-    <tittel>
-        <text>Tittel</text>
-        <lang>
-            <lang>NO</lang>
-        </lang>
-    </tittel>
-    <bevis-id-navn>
-        <text>ID Navn</text>
-        <lang>
-            <lang>NO</lang>
-        </lang>
-    </bevis-id-navn>
-    <bevis-id-verdi>
-        <text>ID Verdi</text>
-        <lang>
-            <lang>NO</lang>
-        </lang>
-    </bevis-id-verdi>
+    <tittel>Tittel</tittel>
+    <bevis-id-navn>ID Navn</bevis-id-navn>
+    <bevis-id-verdi>ID Verdi</bevis-id-verdi>
     <attributt>
-        <navn>
-            <text>navn</text>
-            <lang>
-                <lang>NO</lang>
-            </lang>
-        </navn>
-        <verdi>
-            <text>verdi</text>
-            <lang>
-                <lang>NO</lang>
-            </lang>
-        </verdi>
+        <navn>navn</navn>
+        <verdi>verdi</verdi>
     </attributt>
     <info>
-        <navn>
-            <text>Info#1</text>
-            <lang>
-                <lang>NO</lang>
-            </lang>
-        </navn>
-        <verdi>
-            <text>Verdi tekst</text>
-            <lang>
-                <lang>NO</lang>
-            </lang>
-        </verdi>
+        <navn>Info#1</navn>
+        <verdi>Verdi tekst</verdi>
     </info>
 </bevis>
 ```
