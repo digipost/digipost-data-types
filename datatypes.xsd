@@ -198,20 +198,12 @@
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="aarligRepeterendePeriode">
-    <xs:complexContent>
-      <xs:extension base="tns:tidsPeriode">
-        <xs:sequence>
-          <xs:element name="start-aar" type="xs:int"/>
-          <xs:element name="slutt-aar" type="xs:int"/>
-          <xs:element name="fra" type="tns:maanedsTidspunkt"/>
-          <xs:element name="til" type="tns:maanedsTidspunkt"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="tidsPeriode">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="start-aar" type="xs:int"/>
+      <xs:element minOccurs="0" name="slutt-aar" type="xs:int"/>
+      <xs:element name="fra" type="tns:maanedsTidspunkt"/>
+      <xs:element name="til" type="tns:maanedsTidspunkt"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="maanedsTidspunkt">
@@ -221,13 +213,6 @@
       <xs:element minOccurs="0" name="time" type="xs:int"/>
       <xs:element minOccurs="0" name="min" type="xs:int"/>
       <xs:element name="tidssone" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType final="extension restriction" name="attributt">
-    <xs:sequence>
-      <xs:element name="navn" type="xs:string"/>
-      <xs:element name="verdi" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -242,8 +227,8 @@
       <xs:element name="tittel" type="xs:string"/>
       <xs:element name="bevis-id-navn" type="xs:string"/>
       <xs:element name="bevis-id-verdi" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="attributt" type="tns:attributt"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:bevisInfo"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attributt" type="tns:info"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:info"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -257,14 +242,10 @@
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="periode">
-    <xs:complexContent>
-      <xs:extension base="tns:tidsPeriode">
-        <xs:sequence>
-          <xs:element name="fra" type="xs:string"/>
-          <xs:element name="til" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
+    <xs:sequence>
+      <xs:element name="fra" type="xs:string"/>
+      <xs:element name="til" type="xs:string"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="bruker">
@@ -272,23 +253,7 @@
       <xs:element name="fornavn" type="xs:string"/>
       <xs:element name="etternavn" type="xs:string"/>
       <xs:element minOccurs="0" name="foedselsnummer" type="xs:string"/>
-      <xs:element minOccurs="0" name="adresse" type="tns:bevisAdresse"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType final="extension restriction" name="bevisAdresse">
-    <xs:sequence>
-      <xs:element name="gate" type="xs:string"/>
-      <xs:element name="postnummer" type="xs:string"/>
-      <xs:element name="sted" type="xs:string"/>
-      <xs:element minOccurs="0" name="land" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType final="extension restriction" name="bevisInfo">
-    <xs:sequence>
-      <xs:element name="navn" type="xs:string"/>
-      <xs:element name="verdi" type="xs:string"/>
+      <xs:element minOccurs="0" name="adresse" type="tns:address"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -473,11 +438,11 @@
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="UNKNOWN"/>
       <xs:enumeration value="PICKED_UP"/>
-      <xs:enumeration value="RETURNED"/>
-      <xs:enumeration value="READY_FOR_PICKUP"/>
       <xs:enumeration value="DEVIATION"/>
+      <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="READY_FOR_PICKUP"/>
+      <xs:enumeration value="RETURNED"/>
     </xs:restriction>
   </xs:simpleType>
 

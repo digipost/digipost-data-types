@@ -95,18 +95,19 @@ Bevis description here
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |navn|String|yes||
-|verdi|String|yes||
+|etternavn|String|yes||
 |foedselsnummer|String|no||
-|adresse|[BevisAdresse](#bevisbevisadresse)|no||
+|adresse|[Address](#bevisaddress)|no||
 
-### Bevis.BevisAdresse
+### Bevis.Address
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|gate|String|yes|E.g. Storgata 11|
-|postnummer|String|yes||
-|sted|String|yes||
-|land|String|no||
+|streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
 
 ### XML
 
@@ -114,7 +115,7 @@ Bevis description here
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <bevis xmlns="http://api.digipost.no/schema/datatypes">
     <utsteder-visningsnavn>Stedsnavn</utsteder-visningsnavn>
-    <bakgrunnsfarge>ff0000</bakgrunnsfarge>
+    <bakgrunnsfarge>#ff0000</bakgrunnsfarge>
     <logo>logo.png</logo>
     <utstedt-tidspunkt>2019-05-23T10:00:00+02:00</utstedt-tidspunkt>
     <gyldighetsperioder>
@@ -137,22 +138,22 @@ Bevis description here
         <fornavn>Ola</fornavn>
         <etternavn>Nordmann</etternavn>
         <adresse>
-            <gate>Storgata 23</gate>
-            <postnummer>0011</postnummer>
-            <sted>Oslo</sted>
-            <land>Norge</land>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
         </adresse>
     </bevis-bruker>
     <tittel>Tittel</tittel>
     <bevis-id-navn>ID Navn</bevis-id-navn>
     <bevis-id-verdi>ID Verdi</bevis-id-verdi>
     <attributt>
-        <navn>navn</navn>
-        <verdi>verdi</verdi>
+        <title>Key</title>
+        <text>Value</text>
     </attributt>
     <info>
-        <navn>Info#1</navn>
-        <verdi>Verdi tekst</verdi>
+        <title>Title</title>
+        <text>Text</text>
     </info>
 </bevis>
 ```

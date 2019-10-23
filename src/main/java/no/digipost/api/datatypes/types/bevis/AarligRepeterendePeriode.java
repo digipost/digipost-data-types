@@ -7,7 +7,6 @@ import no.digipost.api.datatypes.documentation.Description;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.TimeZone;
 
 @XmlType
 @Value
@@ -21,8 +20,7 @@ public class AarligRepeterendePeriode implements TidsPeriode {
     @Description("")
     Integer startaar;
 
-    @XmlElement(name = "slutt-aar", required = true)
-    @NotNull
+    @XmlElement(name = "slutt-aar")
     @Description("")
     Integer sluttaar;
 
