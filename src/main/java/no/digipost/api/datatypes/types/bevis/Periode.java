@@ -17,7 +17,7 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @EqualsAndHashCode(callSuper = false)
-public class Periode extends TidsPeriode {
+public class Periode implements TidsPeriode {
     @XmlElement(name = "fra", required = true)
     @NotNull
     @Description("ISO8601 full DateTime")

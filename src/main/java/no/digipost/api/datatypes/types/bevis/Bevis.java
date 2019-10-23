@@ -89,7 +89,7 @@ public class Bevis implements DataType {
     public static Bevis EXAMPLE =
             new Bevis(
                     "Stedsnavn",
-                    "ff0000",
+                    "#ff0000",
                     "logo.png",
                     ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault()),
                     PeriodeListe.EXAMPLE,

@@ -15,7 +15,7 @@ import java.util.TimeZone;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @EqualsAndHashCode(callSuper = false)
-public class AarligRepeterendePeriode extends TidsPeriode {
+public class AarligRepeterendePeriode implements TidsPeriode {
     @XmlElement(name = "start-aar", required = true)
     @NotNull
     @Description("")

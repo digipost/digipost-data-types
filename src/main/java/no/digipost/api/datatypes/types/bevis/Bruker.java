@@ -24,7 +24,7 @@ public class Bruker {
 
     @XmlElement(name = "etternavn", required = true)
     @Description("")
-    String verdi;
+    String etternavn;
 
     @XmlElement(name = "foedselsnummer")
     @Pattern(regexp = "[0-9]{11}")
