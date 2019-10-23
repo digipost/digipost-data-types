@@ -78,7 +78,7 @@ public class Bevis implements DataType {
     @XmlElement(name = "attributt")
     @Size(max = 5)
     @Description("")
-    List<Attributt> attributt;
+    List<Info> attributt;
 
     @XmlElement(name = "info")
     @Size(max = 3)
@@ -97,7 +97,7 @@ public class Bevis implements DataType {
                     "Tittel",
                     "ID Navn",
                     "ID Verdi",
-                    singletonList(Attributt.EXAMPLE),
+                    singletonList(new Info("Key", "Value")),
                     singletonList(new Info("Title", "Text"))
             );
 }
