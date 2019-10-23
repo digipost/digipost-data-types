@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types.bevis;
+package no.digipost.api.datatypes.types.proof;
 
 import lombok.*;
 import lombok.experimental.Wither;
@@ -15,8 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 @EqualsAndHashCode(callSuper = false)
 public class AarligRepeterendePeriode implements TidsPeriode {
-    @XmlElement(name = "start-aar", required = true)
-    @NotNull
+    @XmlElement(name = "start-aar")
     @Description("")
     Integer startaar;
 

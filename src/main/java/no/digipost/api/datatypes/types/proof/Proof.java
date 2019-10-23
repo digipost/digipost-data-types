@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types.bevis;
+package no.digipost.api.datatypes.types.proof;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,8 +25,8 @@ import static java.util.Collections.singletonList;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-@Description("Bevis description here")
-public class Bevis implements DataType {
+@Description("Proof description here")
+public class Proof implements DataType {
 
     @XmlElement(name = "utsteder-visningsnavn", required = true)
     @NotNull
@@ -35,14 +35,9 @@ public class Bevis implements DataType {
     String utstederVisningsnavn;
 
     @XmlElement(name = "bakgrunnsfarge")
-    @Pattern(regexp = "#[A-Fa-f0-9]{6}")
-    @Description("RRGGBB fargekode")
+    @Pattern(regexp = "#[A-SFa-f0-9]{6}")
+    @Description("#RRGGBB fargekode")
     String bakgrunnsfarge;
-
-    @XmlElement(name = "logo")
-    @Size(min = 1, max = 50)
-    @Description("")
-    String logo;
 
     @XmlElement(name = "utstedt-tidspunkt")
     @Description("")
@@ -51,9 +46,10 @@ public class Bevis implements DataType {
     @XmlElement(name = "gyldighetsperioder", required = true)
     @NotNull
     @Description("")
-    PeriodeListe gyldighetsPerioder;
+    GyldighetsPeriode gyldighetsPerioder;
 
-    @XmlElement(name = "bevis-bruker")
+    @XmlElement(name = "bevis-bruker", required = true)
+    @NotNull
     @Description("")
     Bruker bevisBruker;
 
@@ -63,14 +59,12 @@ public class Bevis implements DataType {
     @Description("")
     String tittel;
 
-    @XmlElement(name = "bevis-id-navn", required = true)
-    @NotNull
+    @XmlElement(name = "bevis-id-navn")
     @Size(max = 100)
     @Description("")
     String bevisIdNavn;
 
-    @XmlElement(name = "bevis-id-verdi", required = true)
-    @NotNull
+    @XmlElement(name = "bevis-id-verdi")
     @Size(max = 250)
     @Description("")
     String bevisIdVerdi;
@@ -86,13 +80,12 @@ public class Bevis implements DataType {
     List<Info> info;
 
 
-    public static Bevis EXAMPLE =
-            new Bevis(
+    public static Proof EXAMPLE =
+            new Proof(
                     "Stedsnavn",
                     "#ff0000",
-                    "logo.png",
                     ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault()),
-                    PeriodeListe.EXAMPLE,
+                    GyldighetsPeriode.EXAMPLE,
                     Bruker.EXAMPLE,
                     "Tittel",
                     "ID Navn",

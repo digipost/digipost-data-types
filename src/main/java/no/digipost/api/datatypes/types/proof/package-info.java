@@ -4,7 +4,7 @@
         @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class),
 })
 @DataTypePackage
-package no.digipost.api.datatypes.types.bevis;
+package no.digipost.api.datatypes.types.proof;
 
 import no.digipost.api.datatypes.documentation.DataTypePackage;
 import no.digipost.api.datatypes.marshalling.ZonedDateTimeXmlAdapter;

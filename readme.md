@@ -3,7 +3,6 @@
 |Type|Description|
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
-|[Bevis](#bevis)|Bevis description here|
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 |[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[Event](#event)|Event represents an event that occurs over a time period or several days. Eg. a conference or an election|
@@ -11,6 +10,7 @@
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
+|[Proof](#proof)|Proof description here|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -62,100 +62,6 @@ Appointment represents a meeting set for a specific place and time
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
     </info>
 </appointment>
-```
-
-## Bevis
-
-Bevis description here
-
-### Fields
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|utstederVisningsnavn|String|yes||
-|bakgrunnsfarge|String|no|RRGGBB fargekode|
-|logo|String|no||
-|utstedtTidspunkt|ZonedDateTime|no||
-|gyldighetsPerioder|[PeriodeListe](#bevisperiodeliste)|yes||
-|bevisBruker|[Bruker](#bevisbruker)|no||
-|tittel|String|yes||
-|bevisIdNavn|String|yes||
-|bevisIdVerdi|String|yes||
-|attributt|List|no||
-|info|List|no||
-
-### Bevis.PeriodeListe
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|periodeListe|List|no||
-
-### Bevis.Bruker
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|navn|String|yes||
-|etternavn|String|yes||
-|foedselsnummer|String|no||
-|adresse|[Address](#bevisaddress)|no||
-
-### Bevis.Address
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|streetAddress|String|no|E.g. Storgata 11|
-|streetAddress2|String|no|E.g. Romerike Næringspark|
-|postalCode|String|no||
-|city|String|no||
-|country|String|no||
-
-### XML
-
-```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<bevis xmlns="http://api.digipost.no/schema/datatypes">
-    <utsteder-visningsnavn>Stedsnavn</utsteder-visningsnavn>
-    <bakgrunnsfarge>#ff0000</bakgrunnsfarge>
-    <logo>logo.png</logo>
-    <utstedt-tidspunkt>2019-05-23T10:00:00+02:00</utstedt-tidspunkt>
-    <gyldighetsperioder>
-        <aarlig-repeterende-periode>
-            <start-aar>2020</start-aar>
-            <slutt-aar>2022</slutt-aar>
-            <fra>
-                <maaned>1</maaned>
-                <dag>1</dag>
-                <tidssone>Europe/Oslo</tidssone>
-            </fra>
-            <til>
-                <maaned>12</maaned>
-                <dag>31</dag>
-                <tidssone>+2:00</tidssone>
-            </til>
-        </aarlig-repeterende-periode>
-    </gyldighetsperioder>
-    <bevis-bruker>
-        <fornavn>Ola</fornavn>
-        <etternavn>Nordmann</etternavn>
-        <adresse>
-            <street-address>Storgata 23</street-address>
-            <postal-code>0011</postal-code>
-            <city>Oslo</city>
-            <country>Norge</country>
-        </adresse>
-    </bevis-bruker>
-    <tittel>Tittel</tittel>
-    <bevis-id-navn>ID Navn</bevis-id-navn>
-    <bevis-id-verdi>ID Verdi</bevis-id-verdi>
-    <attributt>
-        <title>Key</title>
-        <text>Value</text>
-    </attributt>
-    <info>
-        <title>Title</title>
-        <text>Text</text>
-    </info>
-</bevis>
 ```
 
 ## Boligdetaljer
@@ -607,6 +513,104 @@ Valid values:
     <status>READY_FOR_PICKUP</status>
     <occurrence-datetime>2019-01-10T10:10:00+01:00</occurrence-datetime>
 </pickup-notice-status>
+```
+
+## Proof
+
+Proof description here
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|utstederVisningsnavn|String|yes||
+|bakgrunnsfarge|String|no|#RRGGBB fargekode|
+|utstedtTidspunkt|ZonedDateTime|no||
+|gyldighetsPerioder|[GyldighetsPeriode](#proofgyldighetsperiode)|yes||
+|bevisBruker|[Bruker](#proofbruker)|yes||
+|tittel|String|yes||
+|bevisIdNavn|String|no||
+|bevisIdVerdi|String|no||
+|attributt|List|no||
+|info|List|no||
+
+### Proof.GyldighetsPeriode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|periodeListe|[TidsPeriode](#prooftidsperiode)|no||
+
+### Proof.TidsPeriode
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+
+
+### Proof.Bruker
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|navn|String|yes||
+|etternavn|String|yes||
+|foedselsnummer|String|no||
+|adresse|[Address](#proofaddress)|no||
+
+### Proof.Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<proof xmlns="http://api.digipost.no/schema/datatypes">
+    <utsteder-visningsnavn>Stedsnavn</utsteder-visningsnavn>
+    <bakgrunnsfarge>#ff0000</bakgrunnsfarge>
+    <utstedt-tidspunkt>2019-05-23T10:00:00+02:00</utstedt-tidspunkt>
+    <gyldighetsperioder>
+        <aarlig-repeterende-periode>
+            <start-aar>2020</start-aar>
+            <slutt-aar>2022</slutt-aar>
+            <fra>
+                <maaned>1</maaned>
+                <dag>1</dag>
+                <tidssone>Europe/Oslo</tidssone>
+            </fra>
+            <til>
+                <maaned>12</maaned>
+                <dag>31</dag>
+                <tidssone>+2:00</tidssone>
+            </til>
+        </aarlig-repeterende-periode>
+    </gyldighetsperioder>
+    <bevis-bruker>
+        <fornavn>Ola</fornavn>
+        <etternavn>Nordmann</etternavn>
+        <adresse>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </adresse>
+    </bevis-bruker>
+    <tittel>Tittel</tittel>
+    <bevis-id-navn>ID Navn</bevis-id-navn>
+    <bevis-id-verdi>ID Verdi</bevis-id-verdi>
+    <attributt>
+        <title>Key</title>
+        <text>Value</text>
+    </attributt>
+    <info>
+        <title>Title</title>
+        <text>Text</text>
+    </info>
+</proof>
 ```
 
 ## Receipt

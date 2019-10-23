@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types.bevis;
+package no.digipost.api.datatypes.types.proof;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Address;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -19,10 +20,12 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class Bruker {
     @XmlElement(name = "fornavn", required = true)
+    @NotNull
     @Description("")
     String navn;
 
     @XmlElement(name = "etternavn", required = true)
+    @NotNull
     @Description("")
     String etternavn;
 

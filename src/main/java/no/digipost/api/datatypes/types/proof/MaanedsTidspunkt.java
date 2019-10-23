@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types.bevis;
+package no.digipost.api.datatypes.types.proof;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,6 +9,7 @@ import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -19,25 +20,28 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 public class MaanedsTidspunkt {
     @XmlElement(name = "maaned", required = true)
+    @Size(min = 1, max = 12)
     @NotNull
     @Description("")
     Integer maaned;
 
     @XmlElement(name = "dag", required = true)
+    @Size(min = 1, max = 31)
     @NotNull
     @Description("")
     Integer dag;
 
     @XmlElement(name = "time")
+    @Size(min = 1, max = 11)
     @Description("")
     Integer time;
 
     @XmlElement(name = "min")
+    @Size(min = 1, max = 59)
     @Description("")
     Integer min;
 
-    @XmlElement(name = "tidssone", required = true)
-    @NotNull
+    @XmlElement(name = "tidssone", defaultValue = "+02:00")
     @Pattern(regexp = "Z|[+-][01]\\d:{0,1}[0-5]\\d|[+-][01]\\d")
     @Description("Tidssone iht ISO8601")
     String tidssone;

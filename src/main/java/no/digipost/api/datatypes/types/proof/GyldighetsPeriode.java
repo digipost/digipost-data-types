@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types.bevis;
+package no.digipost.api.datatypes.types.proof;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,9 +9,6 @@ import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.*;
-import java.util.List;
-
-import static java.util.Collections.singletonList;
 
 @XmlType
 @Value
@@ -19,15 +16,15 @@ import static java.util.Collections.singletonList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-public class PeriodeListe {
+public class GyldighetsPeriode {
     @XmlElements(
             {
                     @XmlElement(name = "periode", type = Periode.class, required = true),
                     @XmlElement(name = "aarlig-repeterende-periode", type = AarligRepeterendePeriode.class, required = true)
             })
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 1)
     @Description("")
-    List<TidsPeriode> periodeListe;
+    TidsPeriode periodeListe;
 
-    public static PeriodeListe EXAMPLE = new PeriodeListe(singletonList(AarligRepeterendePeriode.EXAMPLE));
+    public static GyldighetsPeriode EXAMPLE = new GyldighetsPeriode(AarligRepeterendePeriode.EXAMPLE);
 }
