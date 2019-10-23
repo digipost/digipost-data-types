@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.types.Address;
 
 import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlElement;
@@ -32,7 +33,7 @@ public class Bruker {
 
     @XmlElement(name = "adresse")
     @Description("")
-    BevisAdresse adresse;
+    Address adresse;
 
-    public static Bruker EXAMPLE = new Bruker("Ola", "Nordmann", null, BevisAdresse.EXAMPLE);
+    public static Bruker EXAMPLE = new Bruker("Ola", "Nordmann", null, Address.EXAMPLE);
 }

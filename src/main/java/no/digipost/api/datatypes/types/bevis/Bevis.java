@@ -7,6 +7,7 @@ import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.types.Info;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -34,7 +35,7 @@ public class Bevis implements DataType {
     String utstederVisningsnavn;
 
     @XmlElement(name = "bakgrunnsfarge")
-    @Pattern(regexp = "[A-Fa-f0-9]{6}")
+    @Pattern(regexp = "#[A-Fa-f0-9]{6}")
     @Description("RRGGBB fargekode")
     String bakgrunnsfarge;
 
@@ -82,7 +83,7 @@ public class Bevis implements DataType {
     @XmlElement(name = "info")
     @Size(max = 3)
     @Description("")
-    List<BevisInfo> info;
+    List<Info> info;
 
 
     public static Bevis EXAMPLE =
@@ -97,6 +98,6 @@ public class Bevis implements DataType {
                     "ID Navn",
                     "ID Verdi",
                     singletonList(Attributt.EXAMPLE),
-                    singletonList(BevisInfo.EXAMPLE)
+                    singletonList(new Info("Title", "Text"))
             );
 }
