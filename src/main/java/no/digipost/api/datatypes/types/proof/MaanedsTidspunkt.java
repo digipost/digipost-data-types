@@ -32,7 +32,7 @@ public class MaanedsTidspunkt {
     Integer dag;
 
     @XmlElement(name = "time")
-    @Size(min = 1, max = 11)
+    @Size(min = 1, max = 23)
     @Description("")
     Integer time;
 
