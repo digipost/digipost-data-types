@@ -45,7 +45,7 @@ public enum DataTypeIdentifier {
     , PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE)
     , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
     , EVENT(Event.class, "EVNT", Event.EXAMPLE)
-    , BEVIS(Proof.class, "BVIS", Proof.EXAMPLE)
+    , PROOF(Proof.class, "PRF", Proof.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;
