@@ -1,11 +1,16 @@
 package no.digipost.api.datatypes.types.proof;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.Value;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.validation.ValidPeriode;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
