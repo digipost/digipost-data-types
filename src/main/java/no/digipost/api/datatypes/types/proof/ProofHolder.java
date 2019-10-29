@@ -18,25 +18,25 @@ import javax.xml.bind.annotation.XmlType;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-public class Bruker {
+public class ProofHolder {
     @XmlElement(name = "fornavn", required = true)
     @NotNull
     @Description("")
-    String navn;
+    String firstName;
 
     @XmlElement(name = "etternavn", required = true)
     @NotNull
     @Description("")
-    String etternavn;
+    String surName;
 
     @XmlElement(name = "foedselsnummer")
     @Pattern(regexp = "[0-9]{11}")
     @Description("")
-    String foedselsnummer;
+    String socialSecurityNumber;
 
     @XmlElement(name = "adresse")
     @Description("")
-    Address adresse;
+    Address address;
 
-    public static Bruker EXAMPLE = new Bruker("Ola", "Nordmann", null, Address.EXAMPLE);
+    public static ProofHolder EXAMPLE = new ProofHolder("Ola", "Nordmann", null, Address.EXAMPLE);
 }

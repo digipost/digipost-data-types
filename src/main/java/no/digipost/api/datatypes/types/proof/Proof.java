@@ -25,54 +25,54 @@ import static java.util.Collections.singletonList;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-@Description("Proof description here")
+@Description("Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a single person, valid for one or more time periods.")
 public class Proof implements DataType {
 
     @XmlElement(name = "utsteder-visningsnavn", required = true)
     @NotNull
     @Size(max = 30)
     @Description("")
-    String utstederVisningsnavn;
+    String authorizerName;
 
-    @XmlElement(name = "bakgrunnsfarge")
+    @XmlElement(name = "backgroundColor")
     @Pattern(regexp = "#[A-SFa-f0-9]{6}")
     @Description("#RRGGBB fargekode")
-    String bakgrunnsfarge;
+    String backgroundColor;
 
     @XmlElement(name = "utstedt-tidspunkt")
     @Description("")
-    ZonedDateTime utstedtTidspunkt;
+    ZonedDateTime issuedTime;
 
     @XmlElement(name = "gyldighetsperioder", required = true)
     @NotNull
     @Description("")
-    GyldighetsPeriode gyldighetsPerioder;
+    ValidPeriod validPeriod;
 
     @XmlElement(name = "bevis-bruker", required = true)
     @NotNull
     @Description("")
-    Bruker bevisBruker;
+    ProofHolder proofHolder;
 
     @XmlElement(name = "tittel", required = true)
     @NotNull
     @Size(max = 30)
     @Description("")
-    String tittel;
+    String title;
 
     @XmlElement(name = "bevis-id-navn")
     @Size(max = 100)
     @Description("")
-    String bevisIdNavn;
+    String proofIdName;
 
     @XmlElement(name = "bevis-id-verdi")
     @Size(max = 250)
     @Description("")
-    String bevisIdVerdi;
+    String proofIdValue;
 
     @XmlElement(name = "attributt")
     @Size(max = 5)
     @Description("")
-    List<Info> attributt;
+    List<Info> attribute;
 
     @XmlElement(name = "info")
     @Size(max = 3)
@@ -85,8 +85,8 @@ public class Proof implements DataType {
                     "Stedsnavn",
                     "#ff0000",
                     ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault()),
-                    GyldighetsPeriode.EXAMPLE,
-                    Bruker.EXAMPLE,
+                    ValidPeriod.EXAMPLE,
+                    ProofHolder.EXAMPLE,
                     "Tittel",
                     "ID Navn",
                     "ID Verdi",

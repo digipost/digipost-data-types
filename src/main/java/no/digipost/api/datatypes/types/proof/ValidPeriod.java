@@ -16,15 +16,15 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-public class GyldighetsPeriode {
+public class ValidPeriod {
     @XmlElements(
             {
-                    @XmlElement(name = "periode", type = Periode.class, required = true),
-                    @XmlElement(name = "aarlig-repeterende-periode", type = AarligRepeterendePeriode.class, required = true)
+                    @XmlElement(name = "periode", type = Period.class, required = true),
+                    @XmlElement(name = "aarlig-repeterende-periode", type = YearlyRepeatingPeriod.class, required = true)
             })
     @Size(min = 1, max = 1)
     @Description("")
-    TidsPeriode periodeListe;
+    TimePeriod period;
 
-    public static GyldighetsPeriode EXAMPLE = new GyldighetsPeriode(AarligRepeterendePeriode.EXAMPLE);
+    public static ValidPeriod EXAMPLE = new ValidPeriod(YearlyRepeatingPeriod.EXAMPLE);
 }

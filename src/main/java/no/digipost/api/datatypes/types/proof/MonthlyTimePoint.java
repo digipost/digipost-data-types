@@ -18,23 +18,23 @@ import javax.xml.bind.annotation.XmlType;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-public class MaanedsTidspunkt {
+public class MonthlyTimePoint {
     @XmlElement(name = "maaned", required = true)
     @Size(min = 1, max = 12)
     @NotNull
     @Description("")
-    Integer maaned;
+    Integer month;
 
     @XmlElement(name = "dag", required = true)
     @Size(min = 1, max = 31)
     @NotNull
     @Description("")
-    Integer dag;
+    Integer day;
 
     @XmlElement(name = "time")
     @Size(min = 1, max = 23)
     @Description("")
-    Integer time;
+    Integer hour;
 
     @XmlElement(name = "min")
     @Size(min = 1, max = 59)
@@ -44,7 +44,7 @@ public class MaanedsTidspunkt {
     @XmlElement(name = "tidssone", defaultValue = "+02:00")
     @Pattern(regexp = "Z|[+-][01]\\d:{0,1}[0-5]\\d|[+-][01]\\d")
     @Description("Tidssone iht ISO8601")
-    String tidssone;
+    String timeZone;
 
-    public static MaanedsTidspunkt EXAMPLE = new MaanedsTidspunkt(5, 9, null, null, "+02:00");
+    public static MonthlyTimePoint EXAMPLE = new MonthlyTimePoint(5, 9, null, null, "+02:00");
 }

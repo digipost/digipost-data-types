@@ -1,6 +1,6 @@
 package no.digipost.api.datatypes.validation;
 
-import no.digipost.api.datatypes.types.proof.Periode;
+import no.digipost.api.datatypes.types.proof.Period;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -16,10 +16,10 @@ public class PeriodeValidatorTest {
 
     @Test
     void testValidPerioder() {
-        List<Periode> periodes = Arrays.asList(
-                Periode.EXAMPLE,
-                Periode.EXAMPLE.withFra(null),
-                Periode.EXAMPLE.withTil(null)
+        List<Period> periodes = Arrays.asList(
+                Period.EXAMPLE,
+                Period.EXAMPLE.withFrom(null),
+                Period.EXAMPLE.withTo(null)
         );
 
         assertThat(validator.validate(periodes).collect(toList()), empty());
@@ -27,9 +27,9 @@ public class PeriodeValidatorTest {
 
     @Test
     void testInvalidPerioder() {
-        Periode invalid = Periode.EXAMPLE.withFra(null).withTil(null);
+        Period invalid = Period.EXAMPLE.withFrom(null).withTo(null);
 
-        final List<DataTypesValidationError<Periode>> result = validator.validate(invalid).collect(toList());
+        final List<DataTypesValidationError<Period>> result = validator.validate(invalid).collect(toList());
         assertThat(result, hasSize(1));
         assertThat(result.get(0).getConstraintViolation().getMessage(), is("At least one of the time periods from/to must be set."));
     }

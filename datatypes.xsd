@@ -315,14 +315,14 @@
   <xs:complexType final="extension restriction" name="proof">
     <xs:sequence>
       <xs:element name="utsteder-visningsnavn" type="xs:string"/>
-      <xs:element minOccurs="0" name="bakgrunnsfarge" type="xs:string"/>
+      <xs:element minOccurs="0" name="getBackgroundColor" type="xs:string"/>
       <xs:element minOccurs="0" name="utstedt-tidspunkt" type="xs:string"/>
       <xs:element name="gyldighetsperioder" type="tns:gyldighetsPeriode"/>
       <xs:element name="bevis-bruker" type="tns:bruker"/>
-      <xs:element name="tittel" type="xs:string"/>
+      <xs:element name="getTitle" type="xs:string"/>
       <xs:element minOccurs="0" name="bevis-id-navn" type="xs:string"/>
       <xs:element minOccurs="0" name="bevis-id-verdi" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="attributt" type="tns:info"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="getAttribute" type="tns:info"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:info"/>
     </xs:sequence>
   </xs:complexType>

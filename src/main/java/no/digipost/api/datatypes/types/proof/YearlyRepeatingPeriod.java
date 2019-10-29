@@ -14,29 +14,29 @@ import javax.xml.bind.annotation.XmlType;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @EqualsAndHashCode(callSuper = false)
-public class AarligRepeterendePeriode implements TidsPeriode {
+public class YearlyRepeatingPeriod implements TimePeriod {
     @XmlElement(name = "start-aar")
     @Description("")
-    Integer startaar;
+    Integer startYear;
 
     @XmlElement(name = "slutt-aar")
     @Description("")
-    Integer sluttaar;
+    Integer endYear;
 
     @XmlElement(name = "fra", required = true)
     @NotNull
     @Description("")
-    MaanedsTidspunkt fra;
+    MonthlyTimePoint from;
 
     @XmlElement(name = "til", required = true)
     @NotNull
     @Description("")
-    MaanedsTidspunkt til;
+    MonthlyTimePoint to;
 
-    public static AarligRepeterendePeriode EXAMPLE = new AarligRepeterendePeriode(
+    public static YearlyRepeatingPeriod EXAMPLE = new YearlyRepeatingPeriod(
             2020,
             2022,
-            new MaanedsTidspunkt(1, 1, null, null, "Europe/Oslo"),
-            new MaanedsTidspunkt(12, 31, null, null, "+2:00")
+            new MonthlyTimePoint(1, 1, null, null, "Europe/Oslo"),
+            new MonthlyTimePoint(12, 31, null, null, "+2:00")
     );
 }

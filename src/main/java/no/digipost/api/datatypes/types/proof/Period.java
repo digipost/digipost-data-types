@@ -16,16 +16,16 @@ import java.time.ZonedDateTime;
 @Wither
 @EqualsAndHashCode(callSuper = false)
 @ValidPeriode
-public class Periode implements TidsPeriode {
+public class Period implements TimePeriod {
     @XmlElement(name = "fra")
     @Description("ISO8601 full DateTime")
-    ZonedDateTime fra;
+    ZonedDateTime from;
 
     @XmlElement(name = "til")
     @Description("ISO8601 full DateTime")
-    ZonedDateTime til;
+    ZonedDateTime to;
 
-    public static Periode EXAMPLE = new Periode(
+    public static Period EXAMPLE = new Period(
             ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault())
             , ZonedDateTime.of(2019, 5, 23, 16, 0, 0, 0, ZoneId.systemDefault())
     );
