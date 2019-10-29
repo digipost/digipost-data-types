@@ -36,7 +36,7 @@ public class Proof implements DataType {
 
     @XmlElement(name = "bakgrunnsfarge")
     @Pattern(regexp = "#[A-SFa-f0-9]{6}")
-    @Description("#RRGGBB fargekode")
+    @Description("#RRGGBB color code")
     String backgroundColor;
 
     @XmlElement(name = "utstedt-tidspunkt")
