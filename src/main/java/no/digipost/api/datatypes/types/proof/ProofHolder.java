@@ -19,22 +19,22 @@ import javax.xml.bind.annotation.XmlType;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 public class ProofHolder {
-    @XmlElement(name = "fornavn", required = true)
+    @XmlElement(name = "firstname", required = true)
     @NotNull
     @Description("")
     String firstName;
 
-    @XmlElement(name = "etternavn", required = true)
+    @XmlElement(name = "surname", required = true)
     @NotNull
     @Description("")
     String surname;
 
-    @XmlElement(name = "foedselsnummer")
+    @XmlElement(name = "social-security-number")
     @Pattern(regexp = "[0-9]{11}")
     @Description("")
     String socialSecurityNumber;
 
-    @XmlElement(name = "adresse")
+    @XmlElement(name = "address")
     @Description("")
     Address address;
 

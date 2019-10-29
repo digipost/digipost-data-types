@@ -19,20 +19,20 @@ import javax.xml.bind.annotation.XmlType;
 @Wither
 @EqualsAndHashCode(callSuper = false)
 public class YearlyRepeatingPeriod implements TimePeriod {
-    @XmlElement(name = "start-aar")
+    @XmlElement(name = "start-year")
     @Description("")
     Integer startYear;
 
-    @XmlElement(name = "slutt-aar")
+    @XmlElement(name = "end-year")
     @Description("")
     Integer endYear;
 
-    @XmlElement(name = "fra", required = true)
+    @XmlElement(name = "from", required = true)
     @NotNull
     @Description("")
     MonthlyTimePoint from;
 
-    @XmlElement(name = "til", required = true)
+    @XmlElement(name = "to", required = true)
     @NotNull
     @Description("")
     MonthlyTimePoint to;

@@ -28,48 +28,48 @@ import static java.util.Collections.singletonList;
 @Description("Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a single person, valid for one or more time periods.")
 public class Proof implements DataType {
 
-    @XmlElement(name = "utsteder-visningsnavn", required = true)
+    @XmlElement(name = "authorizer-name", required = true)
     @NotNull
     @Size(max = 30)
     @Description("")
     String authorizerName;
 
-    @XmlElement(name = "bakgrunnsfarge")
+    @XmlElement(name = "backgroundColor")
     @Pattern(regexp = "#[A-SFa-f0-9]{6}")
     @Description("#RRGGBB color code")
     String backgroundColor;
 
-    @XmlElement(name = "utstedt-tidspunkt")
+    @XmlElement(name = "issued-time")
     @Description("")
     ZonedDateTime issuedTime;
 
-    @XmlElement(name = "gyldighetsperioder", required = true)
+    @XmlElement(name = "valid-period", required = true)
     @NotNull
     @Description("")
     ValidPeriod validPeriod;
 
-    @XmlElement(name = "bevis-bruker", required = true)
+    @XmlElement(name = "proof-holder", required = true)
     @NotNull
     @Description("")
     ProofHolder proofHolder;
 
-    @XmlElement(name = "tittel", required = true)
+    @XmlElement(name = "title", required = true)
     @NotNull
     @Size(max = 30)
     @Description("")
     String title;
 
-    @XmlElement(name = "bevis-id-navn")
+    @XmlElement(name = "proof-id-name")
     @Size(max = 100)
     @Description("")
     String proofIdName;
 
-    @XmlElement(name = "bevis-id-verdi")
+    @XmlElement(name = "proof-id-value")
     @Size(max = 250)
     @Description("")
     String proofIdValue;
 
-    @XmlElement(name = "attributt")
+    @XmlElement(name = "attribute")
     @Size(max = 5)
     @Description("")
     List<Info> attribute;

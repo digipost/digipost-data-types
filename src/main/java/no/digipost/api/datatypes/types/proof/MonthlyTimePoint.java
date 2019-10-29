@@ -19,19 +19,19 @@ import javax.xml.bind.annotation.XmlType;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 public class MonthlyTimePoint {
-    @XmlElement(name = "maaned", required = true)
+    @XmlElement(name = "month", required = true)
     @Size(min = 1, max = 12)
     @NotNull
     @Description("")
     Integer month;
 
-    @XmlElement(name = "dag", required = true)
+    @XmlElement(name = "day", required = true)
     @Size(min = 1, max = 31)
     @NotNull
     @Description("")
     Integer day;
 
-    @XmlElement(name = "time")
+    @XmlElement(name = "hour")
     @Size(min = 1, max = 23)
     @Description("")
     Integer hour;
@@ -41,7 +41,7 @@ public class MonthlyTimePoint {
     @Description("")
     Integer min;
 
-    @XmlElement(name = "tidssone", defaultValue = "+02:00")
+    @XmlElement(name = "timeZone", defaultValue = "+02:00")
     @Pattern(regexp = "Z|[+-][01]\\d:{0,1}[0-5]\\d|[+-][01]\\d")
     @Description("Tidssone iht ISO8601")
     String timeZone;

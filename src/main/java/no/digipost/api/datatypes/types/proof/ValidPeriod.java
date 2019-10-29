@@ -23,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
 public class ValidPeriod {
     @XmlElements(
             {
-                    @XmlElement(name = "periode", type = Period.class, required = true),
-                    @XmlElement(name = "aarlig-repeterende-periode", type = YearlyRepeatingPeriod.class, required = true)
+                    @XmlElement(name = "period", type = Period.class, required = true),
+                    @XmlElement(name = "yearly-repeating-period", type = YearlyRepeatingPeriod.class, required = true)
             })
     @Size(min = 1, max = 1)
     @Description("")

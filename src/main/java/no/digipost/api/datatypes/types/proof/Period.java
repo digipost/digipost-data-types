@@ -22,11 +22,11 @@ import java.time.ZonedDateTime;
 @EqualsAndHashCode(callSuper = false)
 @ValidPeriode
 public class Period implements TimePeriod {
-    @XmlElement(name = "fra")
+    @XmlElement(name = "from")
     @Description("ISO8601 full DateTime")
     ZonedDateTime from;
 
-    @XmlElement(name = "til")
+    @XmlElement(name = "to")
     @Description("ISO8601 full DateTime")
     ZonedDateTime to;
 
