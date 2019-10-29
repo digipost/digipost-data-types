@@ -8,7 +8,11 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlType
 @Value
