@@ -27,7 +27,7 @@ public class ProofHolder {
     @XmlElement(name = "etternavn", required = true)
     @NotNull
     @Description("")
-    String surName;
+    String surname;
 
     @XmlElement(name = "foedselsnummer")
     @Pattern(regexp = "[0-9]{11}")
