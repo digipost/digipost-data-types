@@ -571,7 +571,7 @@ Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a sin
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <proof xmlns="http://api.digipost.no/schema/datatypes">
     <authorizer-name>Stedsnavn</authorizer-name>
-    <backgroundcolor>#ff0000</backgroundcolor>
+    <background-color>#ff0000</background-color>
     <issued-time>2019-05-23T10:00:00+02:00</issued-time>
     <valid-period>
         <yearly-repeating-period>

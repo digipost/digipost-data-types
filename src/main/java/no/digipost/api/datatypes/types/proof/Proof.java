@@ -25,7 +25,7 @@ import static java.util.Collections.singletonList;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-@Description("Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a single person, valid for one or more time periods.")
+@Description("Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.")
 public class Proof implements DataType {
 
     @XmlElement(name = "authorizer-name", required = true)
@@ -34,7 +34,7 @@ public class Proof implements DataType {
     @Description("")
     String authorizerName;
 
-    @XmlElement(name = "backgroundcolor")
+    @XmlElement(name = "background-color")
     @Pattern(regexp = "#[A-SFa-f0-9]{6}")
     @Description("#RRGGBB color code")
     String backgroundColor;
