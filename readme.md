@@ -10,7 +10,7 @@
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
-|[Proof](#proof)|Proof description here|
+|[Proof](#proof)|Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a single person, valid for one or more time periods.|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -517,43 +517,43 @@ Valid values:
 
 ## Proof
 
-Proof description here
+Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a single person, valid for one or more time periods.
 
 ### Fields
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|utstederVisningsnavn|String|yes||
-|bakgrunnsfarge|String|no|#RRGGBB fargekode|
-|utstedtTidspunkt|ZonedDateTime|no||
-|gyldighetsPerioder|[GyldighetsPeriode](#proofgyldighetsperiode)|yes||
-|bevisBruker|[Bruker](#proofbruker)|yes||
-|tittel|String|yes||
-|bevisIdNavn|String|no||
-|bevisIdVerdi|String|no||
-|attributt|List|no||
+|authorizerName|String|yes||
+|backgroundColor|String|no|#RRGGBB color code|
+|issuedTime|ZonedDateTime|no||
+|validPeriod|[ValidPeriod](#proofvalidperiod)|yes||
+|proofHolder|[ProofHolder](#proofproofholder)|yes||
+|title|String|yes||
+|proofIdName|String|no||
+|proofIdValue|String|no||
+|attribute|List|no||
 |info|List|no||
 
-### Proof.GyldighetsPeriode
+### Proof.ValidPeriod
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|periodeListe|[TidsPeriode](#prooftidsperiode)|no||
+|period|[TimePeriod](#prooftimeperiod)|no||
 
-### Proof.TidsPeriode
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-
-
-### Proof.Bruker
+### Proof.TimePeriod
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|navn|String|yes||
-|etternavn|String|yes||
-|foedselsnummer|String|no||
-|adresse|[Address](#proofaddress)|no||
+
+
+### Proof.ProofHolder
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|firstName|String|yes||
+|surname|String|yes||
+|socialSecurityNumber|String|no||
+|address|[Address](#proofaddress)|no||
 
 ### Proof.Address
 
@@ -570,42 +570,42 @@ Proof description here
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <proof xmlns="http://api.digipost.no/schema/datatypes">
-    <utsteder-visningsnavn>Stedsnavn</utsteder-visningsnavn>
-    <bakgrunnsfarge>#ff0000</bakgrunnsfarge>
-    <utstedt-tidspunkt>2019-05-23T10:00:00+02:00</utstedt-tidspunkt>
-    <gyldighetsperioder>
-        <aarlig-repeterende-periode>
-            <start-aar>2020</start-aar>
-            <slutt-aar>2022</slutt-aar>
-            <fra>
-                <maaned>1</maaned>
-                <dag>1</dag>
-                <tidssone>Europe/Oslo</tidssone>
-            </fra>
-            <til>
-                <maaned>12</maaned>
-                <dag>31</dag>
-                <tidssone>+2:00</tidssone>
-            </til>
-        </aarlig-repeterende-periode>
-    </gyldighetsperioder>
-    <bevis-bruker>
-        <fornavn>Ola</fornavn>
-        <etternavn>Nordmann</etternavn>
-        <adresse>
+    <authorizer-name>Stedsnavn</authorizer-name>
+    <backgroundColor>#ff0000</backgroundColor>
+    <issued-time>2019-05-23T10:00:00+02:00</issued-time>
+    <valid-period>
+        <yearly-repeating-period>
+            <start-year>2020</start-year>
+            <end-year>2022</end-year>
+            <from>
+                <month>1</month>
+                <day>1</day>
+                <timeZone>Europe/Oslo</timeZone>
+            </from>
+            <to>
+                <month>12</month>
+                <day>31</day>
+                <timeZone>+2:00</timeZone>
+            </to>
+        </yearly-repeating-period>
+    </valid-period>
+    <proof-holder>
+        <firstname>Ola</firstname>
+        <surname>Nordmann</surname>
+        <address>
             <street-address>Storgata 23</street-address>
             <postal-code>0011</postal-code>
             <city>Oslo</city>
             <country>Norge</country>
-        </adresse>
-    </bevis-bruker>
-    <tittel>Tittel</tittel>
-    <bevis-id-navn>ID Navn</bevis-id-navn>
-    <bevis-id-verdi>ID Verdi</bevis-id-verdi>
-    <attributt>
+        </address>
+    </proof-holder>
+    <title>Tittel</title>
+    <proof-id-name>ID Navn</proof-id-name>
+    <proof-id-value>ID Verdi</proof-id-value>
+    <attribute>
         <title>Key</title>
         <text>Value</text>
-    </attributt>
+    </attribute>
     <info>
         <title>Title</title>
         <text>Text</text>
