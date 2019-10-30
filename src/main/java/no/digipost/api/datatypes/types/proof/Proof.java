@@ -34,7 +34,7 @@ public class Proof implements DataType {
     @Description("")
     String authorizerName;
 
-    @XmlElement(name = "backgroundColor")
+    @XmlElement(name = "backgroundcolor")
     @Pattern(regexp = "#[A-SFa-f0-9]{6}")
     @Description("#RRGGBB color code")
     String backgroundColor;

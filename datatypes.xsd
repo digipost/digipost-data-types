@@ -290,7 +290,7 @@
   <xs:complexType final="extension restriction" name="proof">
     <xs:sequence>
       <xs:element name="authorizer-name" type="xs:string"/>
-      <xs:element minOccurs="0" name="backgroundColor" type="xs:string"/>
+      <xs:element minOccurs="0" name="backgroundcolor" type="xs:string"/>
       <xs:element minOccurs="0" name="issued-time" type="xs:string"/>
       <xs:element name="valid-period" type="tns:validPeriod"/>
       <xs:element name="proof-holder" type="tns:proofHolder"/>
@@ -435,10 +435,10 @@
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="DEVIATION"/>
-      <xs:enumeration value="PICKED_UP"/>
-      <xs:enumeration value="RETURNED"/>
       <xs:enumeration value="READY_FOR_PICKUP"/>
+      <xs:enumeration value="PICKED_UP"/>
+      <xs:enumeration value="DEVIATION"/>
+      <xs:enumeration value="RETURNED"/>
       <xs:enumeration value="UNKNOWN"/>
     </xs:restriction>
   </xs:simpleType>
@@ -446,8 +446,8 @@
   <xs:simpleType name="tag">
     <xs:restriction base="xs:string">
       <xs:enumeration value="VARSEL1"/>
-      <xs:enumeration value="POSTEN"/>
       <xs:enumeration value="VARSEL2"/>
+      <xs:enumeration value="POSTEN"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
