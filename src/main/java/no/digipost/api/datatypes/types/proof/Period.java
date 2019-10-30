@@ -31,7 +31,19 @@ public class Period implements TimePeriod {
     ZonedDateTime to;
 
     public static Period EXAMPLE = new Period(
-            ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault())
-            , ZonedDateTime.of(2019, 5, 23, 16, 0, 0, 0, ZoneId.systemDefault())
+            ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.of("+0100"))
+            , ZonedDateTime.of(2019, 5, 23, 16, 0, 0, 0, ZoneId.of("+0100"))
     );
+
+    @Override
+    public String getISO8601() {
+        if (from != null && to != null) {
+            return from.toString() + "/" + to.toString();
+        } else if (from != null) {
+            return from.toString() + "/..";
+        } else if (to != null) {
+            return "../" + to.toString();
+        }
+        return "../..";
+    }
 }

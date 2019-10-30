@@ -10,7 +10,7 @@
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
-|[Proof](#proof)|Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a single person, valid for one or more time periods.|
+|[Proof](#proof)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -517,7 +517,7 @@ Valid values:
 
 ## Proof
 
-Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a single person, valid for one or more time periods.
+Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.
 
 ### Fields
 
@@ -580,12 +580,16 @@ Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a sin
             <from>
                 <month>1</month>
                 <day>1</day>
-                <time-zone>Europe/Oslo</time-zone>
+                <hour>0</hour>
+                <min>0</min>
+                <time-zone>+01:00</time-zone>
             </from>
             <to>
                 <month>12</month>
                 <day>31</day>
-                <time-zone>+2:00</time-zone>
+                <hour>0</hour>
+                <min>0</min>
+                <time-zone>+01:00</time-zone>
             </to>
         </yearly-repeating-period>
     </valid-period>

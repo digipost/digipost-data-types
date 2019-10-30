@@ -270,13 +270,13 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType final="extension restriction" name="monthlyTimePoint">
+  <xs:complexType final="extension restriction" name="calendarDate">
     <xs:sequence>
       <xs:element name="month" type="xs:int"/>
       <xs:element name="day" type="xs:int"/>
-      <xs:element minOccurs="0" name="hour" type="xs:int"/>
-      <xs:element minOccurs="0" name="min" type="xs:int"/>
-      <xs:element default="+02:00" minOccurs="0" name="time-zone" type="xs:string"/>
+      <xs:element default="0" minOccurs="0" name="hour" type="xs:int"/>
+      <xs:element default="0" minOccurs="0" name="min" type="xs:int"/>
+      <xs:element default="+01:00" minOccurs="0" name="time-zone" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -313,8 +313,8 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="start-year" type="xs:int"/>
       <xs:element minOccurs="0" name="end-year" type="xs:int"/>
-      <xs:element name="from" type="tns:monthlyTimePoint"/>
-      <xs:element name="to" type="tns:monthlyTimePoint"/>
+      <xs:element name="from" type="tns:calendarDate"/>
+      <xs:element name="to" type="tns:calendarDate"/>
     </xs:sequence>
   </xs:complexType>
 

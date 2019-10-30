@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
-public class MonthlyTimePoint {
+public class CalendarDate {
     @XmlElement(name = "month", required = true)
     @Size(min = 1, max = 12)
     @NotNull
@@ -31,20 +31,20 @@ public class MonthlyTimePoint {
     @Description("")
     Integer day;
 
-    @XmlElement(name = "hour")
-    @Size(min = 1, max = 23)
+    @XmlElement(name = "hour", defaultValue = "0")
+    @Size(min = 0, max = 23)
     @Description("")
     Integer hour;
 
-    @XmlElement(name = "min")
-    @Size(min = 1, max = 59)
+    @XmlElement(name = "min", defaultValue = "0")
+    @Size(min = 0, max = 59)
     @Description("")
     Integer min;
 
-    @XmlElement(name = "time-zone", defaultValue = "+02:00")
+    @XmlElement(name = "time-zone", defaultValue = "+01:00")
     @Pattern(regexp = "Z|[+-][01]\\d:{0,1}[0-5]\\d|[+-][01]\\d")
-    @Description("Tidssone iht ISO8601")
+    @Description("Timezone ISO-8601")
     String timeZone;
 
-    public static MonthlyTimePoint EXAMPLE = new MonthlyTimePoint(5, 9, null, null, "+02:00");
+    public static CalendarDate EXAMPLE = new CalendarDate(5, 9, 0, 0, "+01:00");
 }
