@@ -41,7 +41,7 @@ public class MonthlyTimePoint {
     @Description("")
     Integer min;
 
-    @XmlElement(name = "timeZone", defaultValue = "+02:00")
+    @XmlElement(name = "time-zone", defaultValue = "+02:00")
     @Pattern(regexp = "Z|[+-][01]\\d:{0,1}[0-5]\\d|[+-][01]\\d")
     @Description("Tidssone iht ISO8601")
     String timeZone;

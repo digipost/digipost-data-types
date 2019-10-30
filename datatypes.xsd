@@ -276,7 +276,7 @@
       <xs:element name="day" type="xs:int"/>
       <xs:element minOccurs="0" name="hour" type="xs:int"/>
       <xs:element minOccurs="0" name="min" type="xs:int"/>
-      <xs:element default="+02:00" minOccurs="0" name="timeZone" type="xs:string"/>
+      <xs:element default="+02:00" minOccurs="0" name="time-zone" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -435,19 +435,19 @@
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="READY_FOR_PICKUP"/>
       <xs:enumeration value="PICKED_UP"/>
-      <xs:enumeration value="DEVIATION"/>
       <xs:enumeration value="RETURNED"/>
+      <xs:enumeration value="READY_FOR_PICKUP"/>
       <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="DEVIATION"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="tag">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="VARSEL1"/>
       <xs:enumeration value="VARSEL2"/>
       <xs:enumeration value="POSTEN"/>
+      <xs:enumeration value="VARSEL1"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

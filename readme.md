@@ -580,12 +580,12 @@ Represents a legal document (Certificate, Lisence, Permit, etc.) issued to a sin
             <from>
                 <month>1</month>
                 <day>1</day>
-                <timeZone>Europe/Oslo</timeZone>
+                <time-zone>Europe/Oslo</time-zone>
             </from>
             <to>
                 <month>12</month>
                 <day>31</day>
-                <timeZone>+2:00</timeZone>
+                <time-zone>+2:00</time-zone>
             </to>
         </yearly-repeating-period>
     </valid-period>
