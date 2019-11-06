@@ -21,7 +21,7 @@ import java.time.ZonedDateTime;
 @Wither
 @EqualsAndHashCode(callSuper = false)
 @ValidPeriode
-public class Period implements TimePeriod {
+public class Period {
     @XmlElement(name = "from")
     @Description("ISO8601 full DateTime")
     ZonedDateTime from;
@@ -35,7 +35,6 @@ public class Period implements TimePeriod {
             , ZonedDateTime.of(2019, 5, 23, 16, 0, 0, 0, ZoneId.of("+0100"))
     );
 
-    @Override
     public String getISO8601() {
         if (from != null && to != null) {
             return from.toString() + "/" + to.toString();

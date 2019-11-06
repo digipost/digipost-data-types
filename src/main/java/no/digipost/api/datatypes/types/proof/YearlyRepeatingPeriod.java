@@ -20,7 +20,7 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @Wither
 @EqualsAndHashCode(callSuper = false)
-public class YearlyRepeatingPeriod implements TimePeriod {
+public class YearlyRepeatingPeriod {
     @XmlElement(name = "start-year")
     @Description("")
     Integer startYear;
@@ -46,7 +46,6 @@ public class YearlyRepeatingPeriod implements TimePeriod {
             new CalendarDate(12, 31, 0, 0, "+01:00")
     );
     
-    @Override
     public String getISO8601() {
         if (startYear != null && endYear != null) {
 
