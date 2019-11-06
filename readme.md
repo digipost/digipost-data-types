@@ -538,13 +538,34 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|period|[TimePeriod](#prooftimeperiod)|no||
+|period|[Period](#proofperiod)|no||
+|yearlyRepeatingPeriod|[YearlyRepeatingPeriod](#proofyearlyrepeatingperiod)|no||
 
-### Proof.TimePeriod
+### Proof.Period
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
+|from|ZonedDateTime|no|ISO8601 full DateTime|
+|to|ZonedDateTime|no|ISO8601 full DateTime|
 
+### Proof.YearlyRepeatingPeriod
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|startYear|Integer|no||
+|endYear|Integer|no||
+|from|[CalendarDate](#proofcalendardate)|yes||
+|to|[CalendarDate](#proofcalendardate)|yes||
+
+### Proof.CalendarDate
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|month|Integer|yes||
+|day|Integer|yes||
+|hour|Integer|no||
+|min|Integer|no||
+|timeZone|String|no|Timezone ISO-8601|
 
 ### Proof.ProofHolder
 

@@ -303,10 +303,10 @@
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="validPeriod">
-    <xs:choice>
-      <xs:element name="period" type="tns:period"/>
-      <xs:element name="yearly-repeating-period" type="tns:yearlyRepeatingPeriod"/>
-    </xs:choice>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="period" type="tns:period"/>
+      <xs:element minOccurs="0" name="yearly-repeating-period" type="tns:yearlyRepeatingPeriod"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType final="extension restriction" name="yearlyRepeatingPeriod">
@@ -435,11 +435,11 @@
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="RETURNED"/>
       <xs:enumeration value="READY_FOR_PICKUP"/>
+      <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="RETURNED"/>
       <xs:enumeration value="DEVIATION"/>
       <xs:enumeration value="PICKED_UP"/>
-      <xs:enumeration value="UNKNOWN"/>
     </xs:restriction>
   </xs:simpleType>
 
