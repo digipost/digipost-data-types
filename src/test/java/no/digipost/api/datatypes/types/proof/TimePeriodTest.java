@@ -96,4 +96,27 @@ public class TimePeriodTest {
 
         assertThat(period.getISO8601(), equalTo("R/05-01T00:00+01:00/10-01T00:00+01:00"));
     }
+
+    @Test
+    void repeating_only_required() {
+        YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
+                null, null
+                , new CalendarDate(5, 1, null, null, null)
+                , new CalendarDate(10, 1, null, null, null)
+        );
+
+        assertThat(period.getISO8601(), equalTo("R/05-01T00:00+01:00/10-01T00:00+01:00"));
+    }
+
+    @Test
+    void repeating_esoteric_timezones() {
+        YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
+                null, null
+                , new CalendarDate(5, 1, 0, 0, "+03:00")
+                , new CalendarDate(10, 1, 0, 0, "+04:00")
+        );
+
+        assertThat(period.getISO8601(), equalTo("R/05-01T00:00+03:00/10-01T00:00+04:00"));
+    }
+
 }
