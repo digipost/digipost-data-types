@@ -31,7 +31,7 @@ public class Proof implements DataType {
     @XmlElement(name = "authorizer-name", required = true)
     @NotNull
     @Size(max = 30)
-    @Description("")
+    @Description("Name of e.g. the organization issuing this proof")
     String authorizerName;
 
     @XmlElement(name = "background-color")
@@ -40,12 +40,12 @@ public class Proof implements DataType {
     String backgroundColor;
 
     @XmlElement(name = "issued-time")
-    @Description("")
+    @Description("The point of time the proof is issued")
     ZonedDateTime issuedTime;
 
     @XmlElement(name = "valid-period", required = true)
     @NotNull
-    @Description("")
+    @Description("A description of when the proof is valid")
     ValidPeriod validPeriod;
 
     @XmlElement(name = "proof-holder", required = true)
@@ -61,36 +61,36 @@ public class Proof implements DataType {
 
     @XmlElement(name = "proof-id-name")
     @Size(max = 100)
-    @Description("")
+    @Description("A name describing the content of the proofIdValue field")
     String proofIdName;
 
     @XmlElement(name = "proof-id-value")
     @Size(max = 250)
-    @Description("")
+    @Description("A field for extra information identifying this proof, such as a membership number")
     String proofIdValue;
 
     @XmlElement(name = "attribute")
     @Size(max = 5)
-    @Description("")
+    @Description("Extra information for the proof, a set of key-value pairs")
     List<Info> attribute;
 
     @XmlElement(name = "info")
     @Size(max = 3)
-    @Description("")
+    @Description("Extra instructions for the holder of the proof, such as special terms")
     List<Info> info;
 
 
     public static Proof EXAMPLE =
             new Proof(
-                    "Stedsnavn",
-                    "#ff0000",
+                    "Bekkestua Bibliotek",
+                    "#e1e1e1",
                     ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault()),
                     ValidPeriod.EXAMPLE,
                     ProofHolder.EXAMPLE,
-                    "Tittel",
-                    "ID Navn",
-                    "ID Verdi",
-                    singletonList(new Info("Key", "Value")),
-                    singletonList(new Info("Title", "Text"))
+                    "Lånekort",
+                    "Lånekortnummer",
+                    "a-132415124-xyzzy-21341",
+                    singletonList(new Info("Kaffeklubb", "Premium deluxe medlem")),
+                    singletonList(new Info("Regler", "Det er ikke lov å rive ut sider i bøkene, eller søle med ketchup. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet urna condimentum, pulvinar neque ac, tempor tellus. Vestibulum ante ipsum primis in faucibus orci luctus et "))
             );
 }

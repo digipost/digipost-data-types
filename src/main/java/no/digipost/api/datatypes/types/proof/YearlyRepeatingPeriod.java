@@ -32,18 +32,18 @@ public class YearlyRepeatingPeriod {
 
     @XmlElement(name = "from", required = true)
     @NotNull
-    @Description("")
+    @Description("The date each year the proof becomes valid")
     CalendarDate from;
     
     @XmlElement(name = "to", required = true)
     @NotNull
-    @Description("")
+    @Description("The date each year the proof stops being valid")
     CalendarDate to;
 
     public static YearlyRepeatingPeriod EXAMPLE = new YearlyRepeatingPeriod(
             2020,
             2022,
-            new CalendarDate(1, 1, 0, 0, "+01:00"),
+            new CalendarDate(1, 1, null, null, null),
             new CalendarDate(12, 31, 0, 0, "+01:00")
     );
     

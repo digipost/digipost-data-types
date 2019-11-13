@@ -523,16 +523,16 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|authorizerName|String|yes||
+|authorizerName|String|yes|Name of e.g. the organization issuing this proof|
 |backgroundColor|String|no|#RRGGBB color code|
-|issuedTime|ZonedDateTime|no||
-|validPeriod|[ValidPeriod](#proofvalidperiod)|yes||
+|issuedTime|ZonedDateTime|no|The point of time the proof is issued|
+|validPeriod|[ValidPeriod](#proofvalidperiod)|yes|A description of when the proof is valid|
 |proofHolder|[ProofHolder](#proofproofholder)|yes||
 |title|String|yes||
-|proofIdName|String|no||
-|proofIdValue|String|no||
-|attribute|List|no||
-|info|List|no||
+|proofIdName|String|no|A name describing the content of the proofIdValue field|
+|proofIdValue|String|no|A field for extra information identifying this proof, such as a membership number|
+|attribute|List|no|Extra information for the proof, a set of key-value pairs|
+|info|List|no|Extra instructions for the holder of the proof, such as special terms|
 
 ### Proof.ValidPeriod
 
@@ -554,8 +554,8 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 |----|----|--------|-----------|
 |startYear|Integer|no||
 |endYear|Integer|no||
-|from|[CalendarDate](#proofcalendardate)|yes||
-|to|[CalendarDate](#proofcalendardate)|yes||
+|from|[CalendarDate](#proofcalendardate)|yes|The date each year the proof becomes valid|
+|to|[CalendarDate](#proofcalendardate)|yes|The date each year the proof stops being valid|
 
 ### Proof.CalendarDate
 
@@ -591,8 +591,8 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <proof xmlns="http://api.digipost.no/schema/datatypes">
-    <authorizer-name>Stedsnavn</authorizer-name>
-    <background-color>#ff0000</background-color>
+    <authorizer-name>Bekkestua Bibliotek</authorizer-name>
+    <background-color>#e1e1e1</background-color>
     <issued-time>2019-05-23T10:00:00+02:00</issued-time>
     <valid-period>
         <yearly-repeating-period>
@@ -601,9 +601,6 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
             <from>
                 <month>1</month>
                 <day>1</day>
-                <hour>0</hour>
-                <min>0</min>
-                <time-zone>+01:00</time-zone>
             </from>
             <to>
                 <month>12</month>
@@ -624,16 +621,16 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
             <country>Norge</country>
         </address>
     </proof-holder>
-    <title>Tittel</title>
-    <proof-id-name>ID Navn</proof-id-name>
-    <proof-id-value>ID Verdi</proof-id-value>
+    <title>Lånekort</title>
+    <proof-id-name>Lånekortnummer</proof-id-name>
+    <proof-id-value>a-132415124-xyzzy-21341</proof-id-value>
     <attribute>
-        <title>Key</title>
-        <text>Value</text>
+        <title>Kaffeklubb</title>
+        <text>Premium deluxe medlem</text>
     </attribute>
     <info>
-        <title>Title</title>
-        <text>Text</text>
+        <title>Regler</title>
+        <text>Det er ikke lov å rive ut sider i bøkene, eller søle med ketchup. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet urna condimentum, pulvinar neque ac, tempor tellus. Vestibulum ante ipsum primis in faucibus orci luctus et </text>
     </info>
 </proof>
 ```
