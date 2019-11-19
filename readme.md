@@ -523,7 +523,7 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|authorizerName|String|yes|Name of e.g. the organization issuing this proof|
+|authorizerName|String|no|Name of e.g. the organization issuing this proof|
 |backgroundColor|String|no|#RRGGBB color code|
 |issuedTime|ZonedDateTime|no|The point of time the proof is issued|
 |validPeriod|[ValidPeriod](#proofvalidperiod)|yes|A description of when the proof is valid|

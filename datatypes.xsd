@@ -289,7 +289,7 @@
 
   <xs:complexType final="extension restriction" name="proof">
     <xs:sequence>
-      <xs:element name="authorizer-name" type="xs:string"/>
+      <xs:element minOccurs="0" name="authorizer-name" type="xs:string"/>
       <xs:element minOccurs="0" name="background-color" type="xs:string"/>
       <xs:element minOccurs="0" name="issued-time" type="xs:string"/>
       <xs:element name="valid-period" type="tns:validPeriod"/>

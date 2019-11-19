@@ -28,8 +28,7 @@ import static java.util.Collections.singletonList;
 @Description("Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.")
 public class Proof implements DataType {
 
-    @XmlElement(name = "authorizer-name", required = true)
-    @NotNull
+    @XmlElement(name = "authorizer-name")
     @Size(max = 30)
     @Description("Name of e.g. the organization issuing this proof")
     String authorizerName;
@@ -55,7 +54,7 @@ public class Proof implements DataType {
 
     @XmlElement(name = "title", required = true)
     @NotNull
-    @Size(max = 30)
+    @Size(max = 255)
     @Description("")
     String title;
 
