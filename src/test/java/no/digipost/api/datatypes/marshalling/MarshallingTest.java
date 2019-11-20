@@ -36,6 +36,7 @@ class MarshallingTest {
     static void testJacksonJsonMarshalling(DataTypeIdentifier example) {
         try {
             ObjectMapper mapper = DataTypesJsonMapper.getMapper();
+            mapper.enableDefaultTyping();
             final String json = mapper.writer().writeValueAsString(example.getExample());
             final DataType unmarshalled = mapper.reader().forType(example.getDataType()).readValue(json);
             assertThat(unmarshalled, equalTo(example.getExample()));

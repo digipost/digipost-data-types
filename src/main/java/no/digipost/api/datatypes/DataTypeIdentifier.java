@@ -10,6 +10,7 @@ import no.digipost.api.datatypes.types.Residence;
 import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
+import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 
 import java.util.Collections;
@@ -44,6 +45,7 @@ public enum DataTypeIdentifier {
     , PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE)
     , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
     , EVENT(Event.class, "EVNT", Event.EXAMPLE)
+    , PROOF(Proof.class, "PRF", Proof.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;
