@@ -10,6 +10,7 @@
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
+|[Proof](#proof)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -512,6 +513,126 @@ Valid values:
     <status>READY_FOR_PICKUP</status>
     <occurrence-datetime>2019-01-10T10:10:00+01:00</occurrence-datetime>
 </pickup-notice-status>
+```
+
+## Proof
+
+Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|authorizerName|String|no|Name of e.g. the organization issuing this proof|
+|backgroundColor|String|no|#RRGGBB color code|
+|issuedTime|ZonedDateTime|no|The point of time the proof is issued|
+|validPeriod|[ValidPeriod](#proofvalidperiod)|yes|A description of when the proof is valid|
+|proofHolder|[ProofHolder](#proofproofholder)|yes||
+|title|String|yes||
+|proofIdName|String|no|A name describing the content of the proofIdValue field|
+|proofIdValue|String|no|A field for extra information identifying this proof, such as a membership number|
+|attribute|List|no|Extra information for the proof, a set of key-value pairs|
+|info|List|no|Extra instructions for the holder of the proof, such as special terms|
+
+### Proof.ValidPeriod
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|period|[Period](#proofperiod)|no||
+|yearlyRepeatingPeriod|[YearlyRepeatingPeriod](#proofyearlyrepeatingperiod)|no||
+
+### Proof.Period
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|from|ZonedDateTime|no|ISO8601 full DateTime|
+|to|ZonedDateTime|no|ISO8601 full DateTime|
+
+### Proof.YearlyRepeatingPeriod
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|startYear|Integer|no||
+|endYear|Integer|no||
+|from|[CalendarDate](#proofcalendardate)|yes|The date each year the proof becomes valid|
+|to|[CalendarDate](#proofcalendardate)|yes|The date each year the proof stops being valid|
+
+### Proof.CalendarDate
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|month|Integer|yes||
+|day|Integer|yes||
+|hour|Integer|no||
+|min|Integer|no||
+|timeZone|String|no|Timezone ISO-8601|
+
+### Proof.ProofHolder
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|firstName|String|yes||
+|surname|String|yes||
+|socialSecurityNumber|String|no||
+|address|[Address](#proofaddress)|no||
+
+### Proof.Address
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|streetAddress|String|no|E.g. Storgata 11|
+|streetAddress2|String|no|E.g. Romerike Næringspark|
+|postalCode|String|no||
+|city|String|no||
+|country|String|no||
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<proof xmlns="http://api.digipost.no/schema/datatypes">
+    <authorizer-name>Bekkestua Bibliotek</authorizer-name>
+    <background-color>#e1e1e1</background-color>
+    <issued-time>2019-05-23T10:00:00+02:00</issued-time>
+    <valid-period>
+        <yearly-repeating-period>
+            <start-year>2020</start-year>
+            <end-year>2022</end-year>
+            <from>
+                <month>1</month>
+                <day>1</day>
+            </from>
+            <to>
+                <month>12</month>
+                <day>31</day>
+                <hour>0</hour>
+                <min>0</min>
+                <time-zone>+01:00</time-zone>
+            </to>
+        </yearly-repeating-period>
+    </valid-period>
+    <proof-holder>
+        <firstname>Ola</firstname>
+        <surname>Nordmann</surname>
+        <address>
+            <street-address>Storgata 23</street-address>
+            <postal-code>0011</postal-code>
+            <city>Oslo</city>
+            <country>Norge</country>
+        </address>
+    </proof-holder>
+    <title>Lånekort</title>
+    <proof-id-name>Lånekortnummer</proof-id-name>
+    <proof-id-value>a-132415124-xyzzy-21341</proof-id-value>
+    <attribute>
+        <title>Kaffeklubb</title>
+        <text>Premium deluxe medlem</text>
+    </attribute>
+    <info>
+        <title>Regler</title>
+        <text>Det er ikke lov å rive ut sider i bøkene, eller søle med ketchup. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet urna condimentum, pulvinar neque ac, tempor tellus. Vestibulum ante ipsum primis in faucibus orci luctus et </text>
+    </info>
+</proof>
 ```
 
 ## Receipt
