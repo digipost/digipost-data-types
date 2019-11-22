@@ -4,7 +4,6 @@
 |----|-----------|
 |[Appointment](#appointment)|Appointment represents a meeting set for a specific place and time|
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
-|[Category](#category)|Category is a way to specify which category the data of a document is related to.|
 |[Event](#event)|Event represents an event that occurs over a time period or several days. Eg. a conference or an election|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Payslip](#payslip)|For treating documents as Payslips.|
@@ -175,23 +174,6 @@ Details about a Residence, and may be joined with Residence to retrieve the core
         <button-text>Ta meg til handling!</button-text>
     </callToAction>
 </boligdetaljer>
-```
-
-## Category
-
-Category is a way to specify which category the data of a document is related to.
-
-### Fields
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|category|String|no||
-
-### XML
-
-```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<category xmlns="http://api.digipost.no/schema/datatypes">RESIDENCE</category>
 ```
 
 ## Event

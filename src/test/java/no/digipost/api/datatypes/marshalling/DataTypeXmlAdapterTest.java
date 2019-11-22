@@ -2,7 +2,6 @@ package no.digipost.api.datatypes.marshalling;
 
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.types.Appointment;
-import no.digipost.api.datatypes.types.Category;
 import no.digipost.api.datatypes.types.Residence;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Element;
@@ -46,19 +45,6 @@ class DataTypeXmlAdapterTest {
     }
 
     @Test
-    void check_expected_marshalled_xmlstructureForEnum() throws Exception {
-        DataType dt = Category.EXAMPLE;
-        String expectedXml = "<category xmlns=\"http://api.digipost.no/schema/datatypes\">RESIDENCE</category>";
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer = tf.newTransformer();
-        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-        StringWriter writer = new StringWriter();
-        transformer.transform(new DOMSource(adapter.marshal(dt)), new StreamResult(writer));
-        String newXml = writer.toString();
-        assertEquals(expectedXml, newXml);
-    }
-
-    @Test
     void check_expected_unmarshalled_javaobject() throws Exception {
         DataType originalDt = Residence.EXAMPLE;
         Element newElement = adapter.marshal(originalDt);
@@ -72,7 +58,7 @@ class DataTypeXmlAdapterTest {
 
         assertEquals(originalDt2, resultDt2);
 
-        DataType originalDt3 = Category.RESIDENCE;
+        DataType originalDt3 = Residence.EXAMPLE;
         Element newElement3 = adapter.marshal(originalDt3);
         DataType resultDt3 = adapter.unmarshal(newElement3);
 
