@@ -2,7 +2,6 @@ package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.Boligdetaljer;
-import no.digipost.api.datatypes.types.Category;
 import no.digipost.api.datatypes.types.Event;
 import no.digipost.api.datatypes.types.ExternalLink;
 import no.digipost.api.datatypes.types.Payslip;
@@ -36,7 +35,6 @@ import static java.util.stream.Collectors.toSet;
 public enum DataTypeIdentifier {
     APPOINTMENT(Appointment.class, "APPT", Appointment.EXAMPLE)
     , RESIDENCE(Residence.class, "RESD", Residence.EXAMPLE)
-    , CATEGORY(Category.class, "CAT", Category.EXAMPLE)
     , EXTERNAL_LINK(ExternalLink.class, "EXTL", ExternalLink.EXAMPLE)
     , BOLIGDETALJER(Boligdetaljer.class, "RDTL", Boligdetaljer.EXAMPLE)
     , RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE)
