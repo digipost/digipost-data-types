@@ -40,8 +40,8 @@ public class DocumentationGenerator {
         Files.write(outputPath, ("<datatypes>" + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
 
         for (ComplexType complexType : types.collect(toList())) {
-            final String markdown = new MarkdownPrinter(DataTypesJAXBContext.getSingleton(), false).getXmlExample(complexType.getExample());
-            Files.write(outputPath, markdown.getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
+            final String xml = new MarkdownPrinter(DataTypesJAXBContext.getSingleton(), false).getXmlExample(complexType.getExample());
+            Files.write(outputPath, xml.getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
         }
 
         Files.write(outputPath, ("</datatypes>" + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
