@@ -81,6 +81,18 @@ public class MarkdownPrinter {
         }
     }
 
+    public String getXmlExample(Object example) {
+        try {
+            final StringWriter writer = new StringWriter();
+            final Marshaller marshaller = jaxb.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.marshal(example, writer);
+            return writer.toString() + LF;
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private String code(String type, String s) {
         return "```" + type + LF + s + LF + "```";
     }
