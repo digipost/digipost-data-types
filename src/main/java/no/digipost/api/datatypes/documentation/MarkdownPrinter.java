@@ -69,13 +69,17 @@ public class MarkdownPrinter {
     }
 
     private String printXmlExample(Object example) {
+        return heading(3, "XML") + LLF + code("xml", getXmlExample(example).trim());
+    }
+
+    public String getXmlExample(Object example) {
         try {
             final StringWriter writer = new StringWriter();
             final Marshaller marshaller = jaxb.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
             marshaller.marshal(example, writer);
-            return heading(3, "XML") + LLF +
-                    code("xml", writer.toString().trim());
+            return writer.toString() + LLF;
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }

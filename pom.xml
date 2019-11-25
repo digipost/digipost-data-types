@@ -298,7 +298,7 @@
                         <phase>package</phase>
                         <configuration>
                             <mainClass>no.digipost.api.datatypes.documentation.DocumentationGenerator</mainClass>
-                            <commandlineArgs>${basedir}/readme.md</commandlineArgs>
+                            <commandlineArgs>${basedir}/readme.md ${basedir}/datatypes-examples.xml</commandlineArgs>
                         </configuration>
                         <goals><goal>java</goal></goals>
                     </execution>
