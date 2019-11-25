@@ -39,7 +39,6 @@
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <shortTextMessage xmlns="http://api.digipost.no/schema/datatypes">
     <message>Dette er en kort melding til deg</message>
     <metaData>
