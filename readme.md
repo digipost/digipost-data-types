@@ -43,7 +43,6 @@ Appointment represents a meeting set for a specific place and time
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <appointment xmlns="http://api.digipost.no/schema/datatypes">
     <start-time>2017-06-27T10:00:00+02:00</start-time>
     <end-time>2017-06-27T11:00:00+02:00</end-time>
@@ -127,7 +126,6 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <boligdetaljer xmlns="http://api.digipost.no/schema/datatypes">
     <residence>
         <address>
@@ -218,7 +216,6 @@ Event represents an event that occurs over a time period or several days. Eg. a 
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <event xmlns="http://api.digipost.no/schema/datatypes">
     <sub-title>Kommunestyre- og fylkestingvalg</sub-title>
     <start-time>
@@ -269,7 +266,6 @@ An external URL, along with an optional description and deadline for resources s
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <externalLink xmlns="http://api.digipost.no/schema/datatypes">
     <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
     <deadline>2017-09-30T13:37:00+02:00</deadline>
@@ -291,7 +287,6 @@ For treating documents as Payslips.
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <payslip xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
 
@@ -400,7 +395,6 @@ Valid values:
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <pickup-notice xmlns="http://api.digipost.no/schema/datatypes">
     <parcel-id>KB432788293NO</parcel-id>
     <parcel-uuid>70300492517312675</parcel-uuid>
@@ -490,7 +484,6 @@ Valid values:
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <pickup-notice-status xmlns="http://api.digipost.no/schema/datatypes">
     <status>READY_FOR_PICKUP</status>
     <occurrence-datetime>2019-01-10T10:10:00+01:00</occurrence-datetime>
@@ -571,7 +564,6 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <proof xmlns="http://api.digipost.no/schema/datatypes">
     <authorizer-name>Bekkestua Bibliotek</authorizer-name>
     <background-color>#e1e1e1</background-color>
@@ -712,7 +704,6 @@ Receipt represents a document containing details about a purchase
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <receipt xmlns="http://api.digipost.no/schema/datatypes">
     <receiptId>F96B6805-2453-478A-B58B-CCDFA07E21ED</receiptId>
     <receiptNumber>364567</receiptNumber>
@@ -850,7 +841,6 @@ Residence is a way of linking separate data for the same residence
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <residence xmlns="http://api.digipost.no/schema/datatypes">
     <address>
         <house-number>23</house-number>
@@ -885,7 +875,6 @@ Details about a signed document
 ### XML
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <signedDocument xmlns="http://api.digipost.no/schema/datatypes">
     <document-issuer>Bedrift AS</document-issuer>
     <document-subject>Ansettelseskontrakt</document-subject>

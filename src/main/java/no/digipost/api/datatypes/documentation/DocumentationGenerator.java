@@ -37,13 +37,13 @@ public class DocumentationGenerator {
         final Stream<ComplexType> types = DocumentationStructureBuilder.buildTypeStructure(typesToDocument, getExample);
 
         Files.write(outputPath, "".getBytes());
-        Files.write(outputPath, ("<datatypes>" + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
+        Files.write(outputPath, ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" + System.lineSeparator() + "<datatypes>" + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
 
         for (ComplexType complexType : types.collect(toList())) {
             final String xml = new MarkdownPrinter(DataTypesJAXBContext.getSingleton(), false).getXmlExample(complexType.getExample());
             Files.write(outputPath, xml.getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
         }
 
-        Files.write(outputPath, ("</datatypes>" + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
+        Files.write(outputPath, "</datatypes>".getBytes(), StandardOpenOption.APPEND);
     }
 }
