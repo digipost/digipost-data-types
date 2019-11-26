@@ -9,6 +9,8 @@
 
   <xs:element name="externalLink" type="tns:externalLink"/>
 
+  <xs:element name="inkasso" type="tns:inkasso"/>
+
   <xs:element name="payslip" type="tns:payslip"/>
 
   <xs:element name="pickup-notice" type="tns:pickupNotice"/>
@@ -176,6 +178,16 @@
       <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
       <xs:element minOccurs="0" name="exchange-rate" type="xs:decimal"/>
       <xs:element minOccurs="0" name="label" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="inkasso">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="link" type="tns:externalLink"/>
+      <xs:element name="due-date" type="xs:string"/>
+      <xs:element minOccurs="0" name="sum" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="account" type="xs:string"/>
+      <xs:element minOccurs="0" name="kid" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 

@@ -105,6 +105,18 @@
     <button-text>Svar på barnehageplass</button-text>
 </externalLink>
 
+<inkasso xmlns="http://api.digipost.no/schema/datatypes">
+    <link>
+        <url>https://www.example.com</url>
+        <description>Gå til avsenders side for å gjøre en handling</description>
+        <button-text>Ta meg til handling!</button-text>
+    </link>
+    <due-date>2019-12-10T00:00:00+01:00</due-date>
+    <sum>42</sum>
+    <account>012354243209523583</account>
+    <kid>1435025439583420243982723</kid>
+</inkasso>
+
 <payslip xmlns="http://api.digipost.no/schema/datatypes"/>
 
 <pickup-notice xmlns="http://api.digipost.no/schema/datatypes">

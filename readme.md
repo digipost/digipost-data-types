@@ -6,6 +6,7 @@
 |[Boligdetaljer](#boligdetaljer)|Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.|
 |[Event](#event)|Event represents an event that occurs over a time period or several days. Eg. a conference or an election|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
+|[Inkasso](#inkasso)|A debt collection payment|
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
@@ -272,6 +273,45 @@ An external URL, along with an optional description and deadline for resources s
     <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
     <button-text>Svar på barnehageplass</button-text>
 </externalLink>
+```
+
+## Inkasso
+
+A debt collection payment
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|link|[ExternalLink](#inkassoexternallink)|no|A link to more information, or further actions that can be taken|
+|dueDate|ZonedDateTime|yes|When the payment falls due|
+|sum|BigDecimal|no|The sum to be payed|
+|account|String|no|The creditor account for the payment|
+|kid|String|no|The customer identification number|
+
+### Inkasso.ExternalLink
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|url|URI|yes|Target URL of this link. Must be http or https.|
+|deadline|ZonedDateTime|no|Optional deadline for the user to respond. ISO8601 full DateTime.|
+|description|String|no|A short, optional text-field, describing the external link.|
+|buttonText|String|no|Optional text which will be displayed on the button.|
+
+### XML
+
+```xml
+<inkasso xmlns="http://api.digipost.no/schema/datatypes">
+    <link>
+        <url>https://www.example.com</url>
+        <description>Gå til avsenders side for å gjøre en handling</description>
+        <button-text>Ta meg til handling!</button-text>
+    </link>
+    <due-date>2019-12-10T00:00:00+01:00</due-date>
+    <sum>42</sum>
+    <account>012354243209523583</account>
+    <kid>1435025439583420243982723</kid>
+</inkasso>
 ```
 
 ## Payslip
