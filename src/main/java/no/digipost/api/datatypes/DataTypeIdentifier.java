@@ -4,6 +4,7 @@ import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.Boligdetaljer;
 import no.digipost.api.datatypes.types.Event;
 import no.digipost.api.datatypes.types.ExternalLink;
+import no.digipost.api.datatypes.types.Inkasso;
 import no.digipost.api.datatypes.types.Payslip;
 import no.digipost.api.datatypes.types.Residence;
 import no.digipost.api.datatypes.types.SignedDocument;
@@ -44,6 +45,7 @@ public enum DataTypeIdentifier {
     , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
     , EVENT(Event.class, "EVNT", Event.EXAMPLE)
     , PROOF(Proof.class, "PRF", Proof.EXAMPLE)
+    , INKASSO(Inkasso.class, "INKA", Inkasso.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;
