@@ -286,8 +286,8 @@ A debt collection payment
 |link|[ExternalLink](#inkassoexternallink)|no|A link to more information, or further actions that can be taken|
 |dueDate|ZonedDateTime|yes|When the payment falls due|
 |sum|BigDecimal|no|The sum to be payed|
-|account|String|no|The creditor account for the payment|
-|kid|String|no|The customer identification number|
+|account|String|no|The creditor account for the payment. Exactly 11 digits|
+|kid|String|no|The customer identification number. Max length 25 chars|
 
 ### Inkasso.ExternalLink
 
@@ -309,7 +309,7 @@ A debt collection payment
     </link>
     <due-date>2019-12-10T00:00:00+01:00</due-date>
     <sum>42</sum>
-    <account>012354243209523583</account>
+    <account>01235424320</account>
     <kid>1435025439583420243982723</kid>
 </inkasso>
 ```
