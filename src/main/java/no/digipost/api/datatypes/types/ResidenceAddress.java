@@ -31,7 +31,7 @@ public class ResidenceAddress {
     String unitNumber;
 
     @XmlElement(name = "house-number")
-    @Size(max = 5)
+    @Size(max = 20)
     @Description("A house number with or without a house letter. E.g. 11 or 11A")
     String houseNumber;
 
