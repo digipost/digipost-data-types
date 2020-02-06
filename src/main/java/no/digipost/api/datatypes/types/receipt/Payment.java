@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.ForeignCurrencyPayment;
@@ -17,7 +18,7 @@ import java.math.BigDecimal;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @Description("Contains details about a payment carried out as part of this purchase")
 public class Payment {
 

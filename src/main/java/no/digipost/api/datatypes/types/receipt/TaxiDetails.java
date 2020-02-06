@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
@@ -18,7 +19,7 @@ import java.time.ZonedDateTime;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @Description("Details for taxi receipts")
 public class TaxiDetails {
     @XmlElement

@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
@@ -24,7 +25,7 @@ import java.util.Set;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @Description("Details about a pickup notice")
 @ComplementedBy({PickupNotice.class, PickupNoticeStatus.class})
 public class PickupNotice implements DataType {

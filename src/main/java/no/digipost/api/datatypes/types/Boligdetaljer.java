@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
@@ -25,7 +26,7 @@ import java.util.List;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @Description("Details about a Residence, and may be joined with Residence to retrieve the core fields of a Residence.")
 @ComplementedBy({Boligdetaljer.class})
 public class Boligdetaljer implements DataType {
