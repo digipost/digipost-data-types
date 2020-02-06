@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
-import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
@@ -41,8 +40,10 @@ public class Inkasso implements DataType {
     @Size(max = 25)
     String kid;
 
-    public static Inkasso EXAMPLE = new Inkasso(ExternalLink.EXAMPLE_NO_DEADLINE,
-            ZonedDateTime.of(2019, 12, 10, 0, 0, 0, 0, ZoneId.systemDefault()),
-            BigDecimal.valueOf(42), "01235424320", "1435025439583420243982723");
+    public static Inkasso EXAMPLE = new Inkasso(
+            ExternalLink.EXAMPLE_NO_DEADLINE
+            , ZonedDateTime.of(2019, 12, 10, 0, 0, 0, 0, ZoneId.systemDefault())
+            , BigDecimal.valueOf(42), "01235424320", "1435025439583420243982723"
+    );
 
 }

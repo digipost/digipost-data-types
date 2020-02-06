@@ -9,6 +9,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Info;
+import no.digipost.api.datatypes.types.Language;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -79,6 +80,9 @@ public class Proof implements DataType {
     @Description("Extra instructions for the holder of the proof, such as special terms")
     List<Info> info;
 
+    @XmlElement(defaultValue = "NB")
+    @Description("Languange for the document")
+    Language language;
 
     public static Proof EXAMPLE =
             new Proof(
@@ -91,6 +95,7 @@ public class Proof implements DataType {
                     "Lånekortnummer",
                     "a-132415124-xyzzy-21341",
                     singletonList(new Info("Kaffeklubb", "Premium deluxe medlem")),
-                    singletonList(new Info("Regler", "Det er ikke lov å rive ut sider i bøkene, eller søle med ketchup. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet urna condimentum, pulvinar neque ac, tempor tellus. Vestibulum ante ipsum primis in faucibus orci luctus et "))
+                    singletonList(new Info("Regler", "Det er ikke lov å rive ut sider i bøkene, eller søle med ketchup. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet urna condimentum, pulvinar neque ac, tempor tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ")),
+                    Language.NB
             );
 }

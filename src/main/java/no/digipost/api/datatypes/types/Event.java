@@ -78,6 +78,10 @@ public class Event implements DataType {
     @Description("Links for releated information to the appointment")
     List<Link> links;
 
+    @XmlElement
+    @Description("Languange for the document")
+    Language language;
+
     public static Event EXAMPLE = new Event(
             "Kommunestyre- og fylkestingvalg"
             , singletonList(TimeInterval.EXAMPLE)
@@ -90,5 +94,6 @@ public class Event implements DataType {
             , "Barcode for use on election day:"
             , Barcode.EXAMPLE
             , singletonList(Link.EXAMPLE)
+            , Language.NB
     );
 }

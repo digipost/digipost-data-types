@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
-import lombok.experimental.Wither;
 import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
@@ -16,7 +15,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -61,18 +59,15 @@ public class Boligdetaljer implements DataType {
     @Valid
     List<Omsetningshistorikk> omsetningshistorikk;
 
-    // Validering?
     @XmlElement
     @Size(max = 20)
     String organisasjonsnummer;
 
     @XmlElement
     @Size(max = 10)
-    // Validering: "H0101"
     String bruksenhet;
 
     @XmlElement
-    // validering?
     String andelsnummer;
 
     @XmlElement
@@ -84,19 +79,31 @@ public class Boligdetaljer implements DataType {
     @Description("An optional ExternalLink prompting the user to perform an action on an external site")
     ExternalLink callToAction;
 
+    @XmlElement(defaultValue = "NB")
+    @Description("Languange for the document")
+    Language language;
+
     public Boligdetaljer(Residence residence, List<Hjemmelshaver> hjemmelshavere, Integer bruksareal, Integer antallOppholdsrom,
-            Integer antallBaderom, List<Omsetningshistorikk> omsetningshistorikk, String organisasjonsnummer, String bruksenhet,
-            String andelsnummer, List<Heftelse> heftelser) {
+                         Integer antallBaderom, List<Omsetningshistorikk> omsetningshistorikk, String organisasjonsnummer, String bruksenhet,
+                         String andelsnummer, List<Heftelse> heftelser) {
         this(residence, hjemmelshavere, bruksareal, antallOppholdsrom, antallBaderom, omsetningshistorikk, organisasjonsnummer,
-                bruksenhet, andelsnummer, heftelser, null);
+                bruksenhet, andelsnummer, heftelser, null, Language.NB);
     }
 
-    public static Boligdetaljer EXAMPLE = new Boligdetaljer(Residence.EXAMPLE,
-            Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar")),
-            59, 3, 4,
-            Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-                            "Privat salg av sekundærbolig", "Bill Isalg", "Cooper Coopersen", 12345678L)),
-            "123456789", "H1337", "42",
-            Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", "3000000000")),
-            ExternalLink.EXAMPLE_NO_DEADLINE);
+    public static Boligdetaljer EXAMPLE = new Boligdetaljer(
+            Residence.EXAMPLE
+            , Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar"))
+            , 59, 3, 4
+            , Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault())
+            , "Privat salg av sekundærbolig"
+            , "Bill Isalg"
+            , "Cooper Coopersen"
+            , 12345678L))
+            , "123456789"
+            , "H1337"
+            , "42"
+            , Collections.singletonList(new Heftelse("TNT ASA", "Pantedokument", "3000000000"))
+            , ExternalLink.EXAMPLE_NO_DEADLINE
+            , Language.NB
+    );
 }

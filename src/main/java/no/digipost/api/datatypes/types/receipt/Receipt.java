@@ -10,6 +10,7 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Address;
 import no.digipost.api.datatypes.types.Barcode;
+import no.digipost.api.datatypes.types.Language;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -127,13 +128,33 @@ public class Receipt implements DataType {
     @XmlElement
     String comment;
 
-    public static Receipt EXAMPLE = new Receipt("F96B6805-2453-478A-B58B-CCDFA07E21ED", "364567",
-            ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault()),
-            ReceiptLine.EXAMPLE.getTotalPrice(), ReceiptLine.EXAMPLE.getTotalVat(),
-            "NOK", "Benny", "15",
-            "7F5A1EFF-ECAE-48A7-A07F-38D87576F815",
-            "Grünerløkka Hip Coffee", "12345678", Address.EXAMPLE, "123456789", Barcode.EXAMPLE,
-            singletonList(Payment.EXAMPLE), singletonList(ReceiptLine.EXAMPLE), TaxiDetails.EXAMPLE,
-            Customer.EXAMPLE, Delivery.EXAMPLE, "123456", "HG1234HH8778", "Hip Coffee to the good citizens of Løkka");
+    @XmlElement(defaultValue = "NB")
+    @Description("Languange for the document")
+    Language language;
+
+    public static Receipt EXAMPLE = new Receipt(
+            "F96B6805-2453-478A-B58B-CCDFA07E21ED"
+            , "364567"
+            , ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault())
+            , ReceiptLine.EXAMPLE.getTotalPrice()
+            , ReceiptLine.EXAMPLE.getTotalVat()
+            , "NOK"
+            , "Benny"
+            , "15"
+            , "7F5A1EFF-ECAE-48A7-A07F-38D87576F815"
+            , "Grünerløkka Hip Coffee", "12345678"
+            , Address.EXAMPLE
+            , "123456789"
+            , Barcode.EXAMPLE
+            , singletonList(Payment.EXAMPLE)
+            , singletonList(ReceiptLine.EXAMPLE)
+            , TaxiDetails.EXAMPLE
+            , Customer.EXAMPLE
+            , Delivery.EXAMPLE
+            , "123456"
+            , "HG1234HH8778"
+            , "Hip Coffee to the good citizens of Løkka"
+            , Language.NB
+    );
 
 }

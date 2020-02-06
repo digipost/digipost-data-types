@@ -9,6 +9,7 @@ import lombok.experimental.Wither;
 import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.types.Language;
 import no.digipost.api.datatypes.types.Tag;
 import no.digipost.api.datatypes.types.Barcode;
 
@@ -91,6 +92,10 @@ public class PickupNotice implements DataType {
     @Description("Tags to describe the document")
     Set<Tag> tags;
 
+    @XmlElement(defaultValue = "NB")
+    @Description("Languange for the document")
+    Language language;
+
     @Override
     public PickupNotice withDefaultsForMissingOptionalValues() {
         if (status == null) {
@@ -113,8 +118,9 @@ public class PickupNotice implements DataType {
             , PickupPlace.EXAMPLE
             , Package.EXAMPLE
             , Cost.EXAMPLE
-            , Status.READY_FOR_PICKUP,
-            Collections.singleton(Tag.POSTEN)
+            , Status.READY_FOR_PICKUP
+            , Collections.singleton(Tag.POSTEN)
+            , Language.NB
     );
 }
 

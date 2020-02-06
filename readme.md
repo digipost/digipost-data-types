@@ -30,6 +30,7 @@ Appointment represents a meeting set for a specific place and time
 |address|[Address](#appointmentaddress)|no||
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
+|language|[Language](#appointmentlanguage)|no|Languange for the document|
 
 ### Appointment.Address
 
@@ -40,6 +41,14 @@ Appointment represents a meeting set for a specific place and time
 |postalCode|String|no||
 |city|String|no||
 |country|String|no||
+
+### Appointment.Language
+
+Valid values:
+
+* NB
+* NN
+* EN
 
 ### XML
 
@@ -60,6 +69,7 @@ Appointment represents a meeting set for a specific place and time
         <title>Informasjon om Oslo City Røntgen</title>
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
     </info>
+    <language>NB</language>
 </appointment>
 ```
 
@@ -85,6 +95,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |andelsnummer|String|no||
 |heftelser|List|no||
 |callToAction|[ExternalLink](#boligdetaljerexternallink)|no|An optional ExternalLink prompting the user to perform an action on an external site|
+|language|[Language](#boligdetaljerlanguage)|no|Languange for the document|
 
 ### Boligdetaljer.Residence
 
@@ -123,6 +134,14 @@ Details about a Residence, and may be joined with Residence to retrieve the core
 |deadline|ZonedDateTime|no|Optional deadline for the user to respond. ISO8601 full DateTime.|
 |description|String|no|A short, optional text-field, describing the external link.|
 |buttonText|String|no|Optional text which will be displayed on the button.|
+
+### Boligdetaljer.Language
+
+Valid values:
+
+* NB
+* NN
+* EN
 
 ### XML
 
@@ -172,6 +191,7 @@ Details about a Residence, and may be joined with Residence to retrieve the core
         <description>Gå til avsenders side for å gjøre en handling</description>
         <button-text>Ta meg til handling!</button-text>
     </callToAction>
+    <language>NB</language>
 </boligdetaljer>
 ```
 
@@ -194,6 +214,7 @@ Event represents an event that occurs over a time period or several days. Eg. a 
 |barcodeLabel|String|no|Optional label for barcode. null yield default in gui, eg. ''|
 |barcode|[Barcode](#eventbarcode)|no|Barcode|
 |links|List|no|Links for releated information to the appointment|
+|language|[Language](#eventlanguage)|no|Languange for the document|
 
 ### Event.Address
 
@@ -213,6 +234,14 @@ Event represents an event that occurs over a time period or several days. Eg. a 
 |barcodeType|String|no||
 |barcodeText|String|no|Barcode text can be used to describe the barcode|
 |showValueInBarcode|Boolean|no|If true, the barcode will render its value as part of the image|
+
+### Event.Language
+
+Valid values:
+
+* NB
+* NN
+* EN
 
 ### XML
 
@@ -248,6 +277,7 @@ Event represents an event that occurs over a time period or several days. Eg. a 
         <url>https://valg.no</url>
         <description>Les mer om valget på valg.no</description>
     </links>
+    <language>NB</language>
 </event>
 ```
 
@@ -354,6 +384,7 @@ Details about a pickup notice
 |cost|[Cost](#pickupnoticecost)|no|Information about value, mva, customs processing and more|
 |status|[Status](#pickupnoticestatus)|no|The state the package is at present time|
 |tags|Set|no|Tags to describe the document|
+|language|[Language](#pickupnoticelanguage)|no|Languange for the document|
 
 ### PickupNotice.Barcode
 
@@ -432,6 +463,14 @@ Valid values:
 * UNKNOWN
 * DEVIATION
 
+### PickupNotice.Language
+
+Valid values:
+
+* NB
+* NN
+* EN
+
 ### XML
 
 ```xml
@@ -497,6 +536,7 @@ Valid values:
     </cost>
     <status>READY_FOR_PICKUP</status>
     <tags>POSTEN</tags>
+    <language>NB</language>
 </pickup-notice>
 ```
 
@@ -548,6 +588,7 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 |proofIdValue|String|no|A field for extra information identifying this proof, such as a membership number|
 |attribute|List|no|Extra information for the proof, a set of key-value pairs|
 |info|List|no|Extra instructions for the holder of the proof, such as special terms|
+|language|[Language](#prooflanguage)|no|Languange for the document|
 
 ### Proof.ValidPeriod
 
@@ -601,6 +642,14 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 |city|String|no||
 |country|String|no||
 
+### Proof.Language
+
+Valid values:
+
+* NB
+* NN
+* EN
+
 ### XML
 
 ```xml
@@ -646,6 +695,7 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
         <title>Regler</title>
         <text>Det er ikke lov å rive ut sider i bøkene, eller søle med ketchup. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet urna condimentum, pulvinar neque ac, tempor tellus. Vestibulum ante ipsum primis in faucibus orci luctus et </text>
     </info>
+    <language>NB</language>
 </proof>
 ```
 
@@ -679,6 +729,7 @@ Receipt represents a document containing details about a purchase
 |orderNumber|String|no||
 |membershipNumber|String|no||
 |comment|String|no||
+|language|[Language](#receiptlanguage)|no|Languange for the document|
 
 ### Receipt.Address
 
@@ -740,6 +791,14 @@ Receipt represents a document containing details about a purchase
 |name|String|no||
 |address|[Address](#receiptaddress)|no||
 |terms|String|no||
+
+### Receipt.Language
+
+Valid values:
+
+* NB
+* NN
+* EN
 
 ### XML
 
@@ -842,6 +901,7 @@ Receipt represents a document containing details about a purchase
     <order-number>123456</order-number>
     <membership-number>HG1234HH8778</membership-number>
     <comment>Hip Coffee to the good citizens of Løkka</comment>
+    <language>NB</language>
 </receipt>
 ```
 
