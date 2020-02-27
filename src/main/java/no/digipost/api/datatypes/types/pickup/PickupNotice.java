@@ -4,10 +4,12 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.types.Language;
 import no.digipost.api.datatypes.types.Tag;
 import no.digipost.api.datatypes.types.Barcode;
 
@@ -24,7 +26,7 @@ import java.util.Set;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @Description("Details about a pickup notice")
 @ComplementedBy({PickupNotice.class, PickupNoticeStatus.class})
 public class PickupNotice implements DataType {
@@ -90,6 +92,10 @@ public class PickupNotice implements DataType {
     @Description("Tags to describe the document")
     Set<Tag> tags;
 
+    @XmlElement(defaultValue = "NB")
+    @Description("Languange for the document")
+    Language language;
+
     @Override
     public PickupNotice withDefaultsForMissingOptionalValues() {
         if (status == null) {
@@ -112,8 +118,9 @@ public class PickupNotice implements DataType {
             , PickupPlace.EXAMPLE
             , Package.EXAMPLE
             , Cost.EXAMPLE
-            , Status.READY_FOR_PICKUP,
-            Collections.singleton(Tag.POSTEN)
+            , Status.READY_FOR_PICKUP
+            , Collections.singleton(Tag.POSTEN)
+            , Language.NB
     );
 }
 

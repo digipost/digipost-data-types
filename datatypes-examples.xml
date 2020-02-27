@@ -16,6 +16,7 @@
         <title>Informasjon om Oslo City Røntgen</title>
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
     </info>
+    <language>NB</language>
 </appointment>
 
 <boligdetaljer xmlns="http://api.digipost.no/schema/datatypes">
@@ -63,6 +64,7 @@
         <description>Gå til avsenders side for å gjøre en handling</description>
         <button-text>Ta meg til handling!</button-text>
     </callToAction>
+    <language>NB</language>
 </boligdetaljer>
 
 <event xmlns="http://api.digipost.no/schema/datatypes">
@@ -96,6 +98,7 @@
         <url>https://valg.no</url>
         <description>Les mer om valget på valg.no</description>
     </links>
+    <language>NB</language>
 </event>
 
 <externalLink xmlns="http://api.digipost.no/schema/datatypes">
@@ -181,6 +184,7 @@
     </cost>
     <status>READY_FOR_PICKUP</status>
     <tags>POSTEN</tags>
+    <language>NB</language>
 </pickup-notice>
 
 <pickup-notice-status xmlns="http://api.digipost.no/schema/datatypes">
@@ -230,6 +234,7 @@
         <title>Regler</title>
         <text>Det er ikke lov å rive ut sider i bøkene, eller søle med ketchup. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet urna condimentum, pulvinar neque ac, tempor tellus. Vestibulum ante ipsum primis in faucibus orci luctus et </text>
     </info>
+    <language>NB</language>
 </proof>
 
 <receipt xmlns="http://api.digipost.no/schema/datatypes">
@@ -330,6 +335,7 @@
     <order-number>123456</order-number>
     <membership-number>HG1234HH8778</membership-number>
     <comment>Hip Coffee to the good citizens of Løkka</comment>
+    <language>NB</language>
 </receipt>
 
 <residence xmlns="http://api.digipost.no/schema/datatypes">

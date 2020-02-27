@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
-import lombok.experimental.Wither;
+import lombok.With;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
@@ -23,7 +23,7 @@ import static java.util.Collections.singletonList;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @Description("Appointment represents a meeting set for a specific place and time")
 public class Appointment implements DataType {
 
@@ -62,6 +62,10 @@ public class Appointment implements DataType {
     @Description("Additional sections of information (max 2) with a title and text")
     List<Info> info;
 
+    @XmlElement(defaultValue = "NB")
+    @Description("Languange for the document")
+    Language language;
+
     @Override
     public Appointment withDefaultsForMissingOptionalValues() {
         return endTime == null ? this.withEndTime(startTime.plusMinutes(30)) : this;
@@ -75,5 +79,6 @@ public class Appointment implements DataType {
             , Address.EXAMPLE
             , "Undersøke smerter i ryggen"
             , singletonList(new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."))
+            , Language.NB
     );
 }

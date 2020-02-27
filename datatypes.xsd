@@ -44,6 +44,7 @@
       <xs:element minOccurs="0" name="address" type="tns:address"/>
       <xs:element minOccurs="0" name="sub-title" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:info"/>
+      <xs:element default="NB" minOccurs="0" name="language" type="tns:language"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -76,6 +77,7 @@
       <xs:element minOccurs="0" name="andelsnummer" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="heftelser" type="tns:heftelse"/>
       <xs:element minOccurs="0" name="callToAction" type="tns:externalLink"/>
+      <xs:element default="NB" minOccurs="0" name="language" type="tns:language"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -155,6 +157,7 @@
       <xs:element minOccurs="0" name="barcodeLabel" type="xs:string"/>
       <xs:element minOccurs="0" name="barcode" type="tns:barcode"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="links" type="tns:link"/>
+      <xs:element minOccurs="0" name="language" type="tns:language"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -240,6 +243,7 @@
       <xs:element minOccurs="0" name="cost" type="tns:cost"/>
       <xs:element minOccurs="0" name="status" type="tns:status"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" type="tns:tag"/>
+      <xs:element default="NB" minOccurs="0" name="language" type="tns:language"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -305,6 +309,7 @@
       <xs:element minOccurs="0" name="proof-id-value" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="attribute" type="tns:info"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="info" type="tns:info"/>
+      <xs:element default="NB" minOccurs="0" name="language" type="tns:language"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -384,6 +389,7 @@
       <xs:element minOccurs="0" name="order-number" type="xs:string"/>
       <xs:element minOccurs="0" name="membership-number" type="xs:string"/>
       <xs:element minOccurs="0" name="comment" type="xs:string"/>
+      <xs:element default="NB" minOccurs="0" name="language" type="tns:language"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -438,6 +444,14 @@
       <xs:element minOccurs="0" name="vatPercent" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
+
+  <xs:simpleType name="language">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NN"/>
+      <xs:enumeration value="NB"/>
+      <xs:enumeration value="EN"/>
+    </xs:restriction>
+  </xs:simpleType>
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">

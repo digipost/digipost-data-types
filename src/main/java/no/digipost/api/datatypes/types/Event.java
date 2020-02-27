@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
@@ -21,7 +22,7 @@ import static java.util.Collections.singletonList;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @Description("Event represents an event that occurs over a time period or several days. Eg. a conference or an election")
 public class Event implements DataType {
     
@@ -77,6 +78,10 @@ public class Event implements DataType {
     @Description("Links for releated information to the appointment")
     List<Link> links;
 
+    @XmlElement
+    @Description("Languange for the document")
+    Language language;
+
     public static Event EXAMPLE = new Event(
             "Kommunestyre- og fylkestingvalg"
             , singletonList(TimeInterval.EXAMPLE)
@@ -89,5 +94,6 @@ public class Event implements DataType {
             , "Barcode for use on election day:"
             , Barcode.EXAMPLE
             , singletonList(Link.EXAMPLE)
+            , Language.NB
     );
 }

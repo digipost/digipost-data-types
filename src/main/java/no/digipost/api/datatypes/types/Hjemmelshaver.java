@@ -23,6 +23,5 @@ public class Hjemmelshaver {
 
     @XmlElement
     @Size(max = 50)
-    // TODO: Add email-validator
     String email;
 }

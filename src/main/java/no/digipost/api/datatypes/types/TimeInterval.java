@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
-import lombok.experimental.Wither;
+import lombok.With;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
@@ -17,7 +17,7 @@ import java.time.ZonedDateTime;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 public class TimeInterval {
 
     @XmlElement(name = "start-time", required = true)

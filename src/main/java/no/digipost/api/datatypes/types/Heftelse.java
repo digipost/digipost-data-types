@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 
 import javax.validation.constraints.NotNull;
@@ -15,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 public class Heftelse {
 
     @XmlElement

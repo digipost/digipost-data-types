@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Value;
+import lombok.With;
 import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.validation.ValidPeriode;
@@ -18,7 +19,7 @@ import java.time.ZonedDateTime;
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@Wither
+@With
 @EqualsAndHashCode(callSuper = false)
 @ValidPeriode
 public class Period {
