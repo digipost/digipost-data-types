@@ -1,11 +1,9 @@
 package no.digipost.api.datatypes.types.proof;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
-import lombok.experimental.Wither;
 import no.digipost.api.datatypes.documentation.Description;
 
 import javax.validation.constraints.NotNull;
@@ -16,7 +14,6 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType
 @Value
-@AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
 public class CalendarDate {
@@ -44,8 +41,22 @@ public class CalendarDate {
 
     @XmlElement(name = "time-zone", defaultValue = "+01:00")
     @Pattern(regexp = "Z|[+-][01]\\d:{0,1}[0-5]\\d|[+-][01]\\d")
-    @Description("Timezone ISO-8601")
+    @Description("Deprecated, do not use. Will be ignored.")
     String timeZone;
 
-    public static CalendarDate EXAMPLE = new CalendarDate(5, 9, 0, 0, "+01:00");
+    @Deprecated
+    public CalendarDate(Integer month, Integer day, Integer hour, Integer min, String timeZone) {
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        this.min = min;
+        this.timeZone = timeZone;
+    }
+
+    public CalendarDate(Integer month, Integer day, Integer hour, Integer min) {
+        this(month, day, hour, min, null);
+    }
+
+
+    public static CalendarDate EXAMPLE = new CalendarDate(5, 9, 0, 0);
 }

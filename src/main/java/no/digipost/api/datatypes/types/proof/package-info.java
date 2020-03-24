@@ -2,11 +2,13 @@
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlJavaTypeAdapters({
         @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class),
+        @XmlJavaTypeAdapter(LocalDateTimeXmlAdapter.class)
 })
 @DataTypePackage
 package no.digipost.api.datatypes.types.proof;
 
 import no.digipost.api.datatypes.documentation.DataTypePackage;
+import no.digipost.api.datatypes.marshalling.LocalDateTimeXmlAdapter;
 import no.digipost.api.datatypes.marshalling.ZonedDateTimeXmlAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
