@@ -37,6 +37,6 @@ public class PickupNoticeStatus implements DataType {
 
     public static PickupNoticeStatus EXAMPLE = new PickupNoticeStatus(
             Status.READY_FOR_PICKUP
-            , ZonedDateTime.of(2019, 1, 10, 10, 10, 0, 0, ZoneId.systemDefault())
+            , ZonedDateTime.of(2019, 1, 10, 10, 10, 0, 0, ZoneId.of("+01:00"))
     );
 }

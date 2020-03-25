@@ -111,8 +111,8 @@ public class PickupNotice implements DataType {
             , "70300492517312675"
             , Barcode.EXAMPLE.withBarcodeType("CODE_128")
             , "Klimanøytral Servicepakke"
-            , ZonedDateTime.of(2018, 9, 10, 10, 0, 0, 0, ZoneId.systemDefault())
-            , ZonedDateTime.of(2018, 9, 24, 10, 0, 0, 0, ZoneId.systemDefault())
+            , ZonedDateTime.of(2018, 9, 10, 10, 0, 0, 0, ZoneId.of("+02:00"))
+            , ZonedDateTime.of(2018, 9, 24, 10, 0, 0, 0, ZoneId.of("+02:00"))
             , Recipient.EXAMPLE
             , Sender.EXAMPLE
             , PickupPlace.EXAMPLE

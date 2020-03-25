@@ -135,7 +135,7 @@ public class Receipt implements DataType {
     public static Receipt EXAMPLE = new Receipt(
             "F96B6805-2453-478A-B58B-CCDFA07E21ED"
             , "364567"
-            , ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.systemDefault())
+            , ZonedDateTime.of(2018, 5, 27, 10, 0, 0, 0, ZoneId.of("+02:00"))
             , ReceiptLine.EXAMPLE.getTotalPrice()
             , ReceiptLine.EXAMPLE.getTotalVat()
             , "NOK"

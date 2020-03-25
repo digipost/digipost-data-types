@@ -42,7 +42,7 @@ public class Inkasso implements DataType {
 
     public static Inkasso EXAMPLE = new Inkasso(
             ExternalLink.EXAMPLE_NO_DEADLINE
-            , ZonedDateTime.of(2019, 12, 10, 0, 0, 0, 0, ZoneId.systemDefault())
+            , ZonedDateTime.of(2019, 12, 10, 0, 0, 0, 0, ZoneId.of("+01:00"))
             , BigDecimal.valueOf(42), "01235424320", "1435025439583420243982723"
     );
 
