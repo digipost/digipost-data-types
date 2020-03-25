@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -57,8 +58,8 @@ public class TimePeriodTest {
     @Test
     void deprecated_constructor_period_should_give_correct_norwegian_time() {
         Period period = new Period(
-                ZonedDateTime.of(2019, 8, 1, 0, 0, 0, 0, ZoneId.of("+02:00")),
-                ZonedDateTime.of(2022, 8, 1, 0, 0, 0, 0, ZoneId.of("+02:00"))
+                DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.of(2019, 8, 1, 0, 0, 0, 0, ZoneId.of("+02:00"))),
+                DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.of(2022, 8, 1, 0, 0, 0, 0, ZoneId.of("+02:00")))
         );
 
         assertThat(period.getISO8601(), equalTo("2019-08-01T00:00/2022-08-01T00:00"));
