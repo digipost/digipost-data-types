@@ -56,16 +56,6 @@ public class TimePeriodTest {
     }
 
     @Test
-    void deprecated_constructor_period_should_give_correct_norwegian_time() {
-        Period period = new Period(
-                DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.of(2019, 8, 1, 0, 0, 0, 0, ZoneId.of("+02:00"))),
-                DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.of(2022, 8, 1, 0, 0, 0, 0, ZoneId.of("+02:00")))
-        );
-
-        assertThat(period.getISO8601(), equalTo("2019-08-01T00:00/2022-08-01T00:00"));
-    }
-
-    @Test
     void repeating_fra_til() {
         YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
                 2019, 2022
