@@ -30,7 +30,7 @@ public class TimeInterval {
     ZonedDateTime endTime;
 
     public static TimeInterval EXAMPLE = new TimeInterval(
-            ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault())
-            , ZonedDateTime.of(2019, 5, 23, 16, 0, 0, 0, ZoneId.systemDefault())
+            ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.of("+02:00"))
+            , ZonedDateTime.of(2019, 5, 23, 16, 0, 0, 0, ZoneId.of("+02:00"))
     );
 }

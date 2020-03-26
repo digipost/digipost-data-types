@@ -94,7 +94,7 @@ public class Boligdetaljer implements DataType {
             Residence.EXAMPLE
             , Collections.singletonList(new Hjemmelshaver("Gunnar Gunnersen", "gunnargunnar@gunn.ar"))
             , 59, 3, 4
-            , Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.systemDefault())
+            , Collections.singletonList(new Omsetningshistorikk(ZonedDateTime.of(2017, 7, 27, 10, 0, 0, 0, ZoneId.of("+02:00"))
             , "Privat salg av sekundærbolig"
             , "Bill Isalg"
             , "Cooper Coopersen"

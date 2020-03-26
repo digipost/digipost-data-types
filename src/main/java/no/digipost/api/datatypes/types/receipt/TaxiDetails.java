@@ -53,8 +53,8 @@ public class TaxiDetails {
 
     public static final TaxiDetails EXAMPLE = new TaxiDetails(
             "EK99999", "12341ASDF", "123456789",
-            ZonedDateTime.of(2018, 6, 5, 10, 0, 0, 0, ZoneId.systemDefault()),
-            ZonedDateTime.of(2018, 6, 5, 10, 30, 0, 0, ZoneId.systemDefault()),
+            ZonedDateTime.of(2018, 6, 5, 10, 0, 0, 0, ZoneId.of("+02:00")),
+            ZonedDateTime.of(2018, 6, 5, 10, 30, 0, 0, ZoneId.of("+02:00")),
             new BigDecimal("8.00"), new BigDecimal("438.50"), 2000, 8500,
             6500, 320, 1220, 900,
             VatDetails.EXAMPLE);

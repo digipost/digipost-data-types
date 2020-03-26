@@ -2,9 +2,12 @@ package no.digipost.api.datatypes.marshalling;
 
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-import java.time.ZoneId;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAccessor;
 import java.util.GregorianCalendar;
 
 public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
@@ -21,7 +24,12 @@ public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
         if (s == null) {
             return null;
         }
-        return ZonedDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(s)).withZoneSameInstant(ZoneId.systemDefault());
+        final TemporalAccessor parsed = DateTimeFormatter.ISO_DATE_TIME.parse(s);
+        if (parsed.isSupported(ChronoField.OFFSET_SECONDS)) {
+            return ZonedDateTime.from(parsed);
+        } else {
+            return LocalDateTime.from(parsed).atZone(ZoneOffset.UTC);
+        }
     }
 
 }

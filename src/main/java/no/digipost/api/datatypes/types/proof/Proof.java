@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
-import lombok.experimental.Wither;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Info;
@@ -88,7 +87,7 @@ public class Proof implements DataType {
             new Proof(
                     "Bekkestua Bibliotek",
                     "#e1e1e1",
-                    ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.systemDefault()),
+                    ZonedDateTime.of(2019, 5, 23, 10, 0, 0, 0, ZoneId.of("+02:00")),
                     ValidPeriod.EXAMPLE,
                     ProofHolder.EXAMPLE,
                     "Lånekort",

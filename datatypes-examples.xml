@@ -209,7 +209,6 @@
                 <day>31</day>
                 <hour>0</hour>
                 <min>0</min>
-                <time-zone>+01:00</time-zone>
             </to>
         </yearly-repeating-period>
     </valid-period>

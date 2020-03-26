@@ -39,7 +39,7 @@ public class SignedDocument implements DataType {
     public static SignedDocument EXAMPLE = new SignedDocument(
             "Bedrift AS",
             "Ansettelseskontrakt",
-            ZonedDateTime.of(2018, 7, 11, 10, 0, 0, 0, ZoneId.systemDefault())
+            ZonedDateTime.of(2018, 7, 11, 10, 0, 0, 0, ZoneId.of("+02:00"))
     );
 }
 

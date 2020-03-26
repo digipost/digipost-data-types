@@ -601,8 +601,8 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|from|ZonedDateTime|no|ISO8601 full DateTime|
-|to|ZonedDateTime|no|ISO8601 full DateTime|
+|from|LocalDateTime|no|ISO8601 full DateTime|
+|to|LocalDateTime|no|ISO8601 full DateTime|
 
 ### Proof.YearlyRepeatingPeriod
 
@@ -621,7 +621,7 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 |day|Integer|yes||
 |hour|Integer|no||
 |min|Integer|no||
-|timeZone|String|no|Timezone ISO-8601|
+|timeZone|String|no|Deprecated, do not use. Will be ignored.|
 
 ### Proof.ProofHolder
 
@@ -670,7 +670,6 @@ Valid values:
                 <day>31</day>
                 <hour>0</hour>
                 <min>0</min>
-                <time-zone>+01:00</time-zone>
             </to>
         </yearly-repeating-period>
     </valid-period>
