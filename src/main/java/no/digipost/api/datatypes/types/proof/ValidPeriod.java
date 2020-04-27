@@ -47,7 +47,7 @@ public class ValidPeriod {
         } else if (period != null) {
             return period.getISO8601();
         } else {
-            return null;
+            return "../..";
         }
     }
 
