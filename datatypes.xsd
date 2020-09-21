@@ -11,6 +11,10 @@
 
   <xs:element name="inkasso" type="tns:inkasso"/>
 
+  <xs:element name="invoice" type="tns:invoice"/>
+
+  <xs:element name="invoice-payment" type="tns:invoicePayment"/>
+
   <xs:element name="payslip" type="tns:payslip"/>
 
   <xs:element name="pickup-notice" type="tns:pickupNotice"/>
@@ -203,6 +207,35 @@
       <xs:element name="document-issuer" type="xs:string"/>
       <xs:element name="document-subject" type="xs:string"/>
       <xs:element name="signing-time" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="bank">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="invoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="link" type="tns:externalLink"/>
+      <xs:element name="due-date" type="xs:string"/>
+      <xs:element name="sum" type="xs:decimal"/>
+      <xs:element name="creditor-account" type="xs:string"/>
+      <xs:element minOccurs="0" name="kid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="invoicePayment">
+    <xs:sequence>
+      <xs:element name="payment-id" type="xs:string"/>
+      <xs:element name="payment-status" type="xs:string"/>
+      <xs:element name="payment-time" type="xs:string"/>
+      <xs:element name="debtor-account" type="xs:string"/>
+      <xs:element minOccurs="0" name="debtor-account-name" type="xs:string"/>
+      <xs:element name="payment-channel" type="xs:string"/>
+      <xs:element name="payment-bank" type="tns:bank"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -447,27 +480,27 @@
 
   <xs:simpleType name="language">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="NN"/>
-      <xs:enumeration value="NB"/>
       <xs:enumeration value="EN"/>
+      <xs:enumeration value="NB"/>
+      <xs:enumeration value="NN"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
       <xs:enumeration value="PICKED_UP"/>
-      <xs:enumeration value="RETURNED"/>
       <xs:enumeration value="READY_FOR_PICKUP"/>
-      <xs:enumeration value="UNKNOWN"/>
       <xs:enumeration value="DEVIATION"/>
+      <xs:enumeration value="RETURNED"/>
+      <xs:enumeration value="UNKNOWN"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="tag">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="POSTEN"/>
-      <xs:enumeration value="VARSEL1"/>
       <xs:enumeration value="VARSEL2"/>
+      <xs:enumeration value="VARSEL1"/>
+      <xs:enumeration value="POSTEN"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

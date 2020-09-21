@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Stream;
 
-import static com.google.common.io.Resources.toByteArray;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Collections.singleton;
 import static java.util.Collections.singletonList;
@@ -45,12 +46,12 @@ class DocumentationTest {
     }
 
     @Test
-    void should_print_docs_for_test_data_type() throws IOException, JAXBException {
+    void should_print_docs_for_test_data_type() throws IOException, JAXBException, URISyntaxException {
         String docs = new MarkdownPrinter(JAXBContext.newInstance(ShortTextMessage.class), true)
                 .print(DocumentationStructureBuilder
                         .buildTypeStructure(singleton(ShortTextMessage.class), t -> ShortTextMessage.EXAMPLE)
                         .collect(toList()));
 
-        assertThat(docs, is(new String(toByteArray(getClass().getResource("testdoc.md")), UTF_8)));
+        assertThat(docs, is(new String(Files.readAllBytes(Paths.get(getClass().getResource("testdoc.md").toURI())), UTF_8)));
     }
 }
