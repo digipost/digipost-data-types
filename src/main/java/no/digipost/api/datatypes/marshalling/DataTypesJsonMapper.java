@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import java.util.TimeZone;
-
 public class DataTypesJsonMapper {
 
     private static final ObjectMapper mapper = initMapper();

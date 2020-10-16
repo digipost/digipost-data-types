@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types.pickup;
+package no.digipost.api.datatypes.types.invoice;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
 import no.digipost.api.datatypes.documentation.Description;
-import no.digipost.api.datatypes.types.Address;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -16,19 +15,15 @@ import javax.xml.bind.annotation.XmlType;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
-public class Sender {
+public class Bank {
+
+    @XmlElement(name = "id")
+    @Description("Unique id of the bank to reference the payment with third party")
+    String id;
 
     @XmlElement(name = "name")
-    @Description("The senders name")
+    @Description("Display name of the bank")
     String name;
     
-    @XmlElement(name = "reference")
-    @Description("The senders reference")
-    String reference;
-    
-    @XmlElement
-    Address address;
-    
-    public static final Sender EXAMPLE = new Sender("Avsenderservice as", "13372500", Address.EXAMPLE);
-    
+    public static final Bank EXAMPLE = new Bank("ce7ad8ba63d0ea5cd212580192a00156", "Acme Bank inc");
 }

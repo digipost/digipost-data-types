@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
-import lombok.experimental.Wither;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

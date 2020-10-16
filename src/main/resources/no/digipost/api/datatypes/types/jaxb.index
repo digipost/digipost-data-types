@@ -9,4 +9,6 @@ Payslip
 SignedDocument
 pickup.PickupNotice
 pickup.PickupNoticeStatus
+invoice.Invoice
+invoice.InvoicePayment
 Inkasso

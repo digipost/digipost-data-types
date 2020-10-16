@@ -8,6 +8,8 @@ import no.digipost.api.datatypes.types.Inkasso;
 import no.digipost.api.datatypes.types.Payslip;
 import no.digipost.api.datatypes.types.Residence;
 import no.digipost.api.datatypes.types.SignedDocument;
+import no.digipost.api.datatypes.types.invoice.Invoice;
+import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
@@ -46,6 +48,8 @@ public enum DataTypeIdentifier {
     , EVENT(Event.class, "EVNT", Event.EXAMPLE)
     , PROOF(Proof.class, "PRF", Proof.EXAMPLE)
     , INKASSO(Inkasso.class, "INKA", Inkasso.EXAMPLE)
+    , INVOICE(Invoice.class, "INVO", Invoice.EXAMPLE)
+    , INVOICE_PAYMENT(InvoicePayment.class, "INVP", InvoicePayment.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;

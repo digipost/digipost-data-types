@@ -1,7 +1,5 @@
 package no.digipost.api.datatypes;
 
-import no.digipost.api.datatypes.DataType;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

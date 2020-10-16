@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
-import lombok.experimental.Wither;
 import no.digipost.api.datatypes.types.Address;
 
 import javax.xml.bind.annotation.XmlElement;

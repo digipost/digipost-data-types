@@ -7,6 +7,8 @@
 |[Event](#event)|Event represents an event that occurs over a time period or several days. Eg. a conference or an election|
 |[ExternalLink](#externallink)|An external URL, along with an optional description and deadline for resources such as a survey.|
 |[Inkasso](#inkasso)|A debt collection payment|
+|[Invoice](#invoice)|An invoice|
+|[InvoicePayment](#invoicepayment)|Payment information for an invoice|
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
@@ -342,6 +344,90 @@ A debt collection payment
     <account>01235424320</account>
     <kid>1435025439583420243982723</kid>
 </inkasso>
+```
+
+## Invoice
+
+An invoice
+
+### Complemented by: 
+[InvoicePayment](#invoicepayment)
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|link|[ExternalLink](#invoiceexternallink)|no|A link to more information, or further actions that can be taken|
+|dueDate|ZonedDateTime|yes|When the payment falls due|
+|sum|BigDecimal|yes|The sum to be paid|
+|creditorAccount|String|yes|The creditor account for the payment. Exactly 11 digits|
+|kid|String|no|The customer identification number. Max length 25 chars|
+
+### Invoice.ExternalLink
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|url|URI|yes|Target URL of this link. Must be http or https.|
+|deadline|ZonedDateTime|no|Optional deadline for the user to respond. ISO8601 full DateTime.|
+|description|String|no|A short, optional text-field, describing the external link.|
+|buttonText|String|no|Optional text which will be displayed on the button.|
+
+### XML
+
+```xml
+<invoice xmlns="http://api.digipost.no/schema/datatypes">
+    <link>
+        <url>https://www.example.com</url>
+        <description>Gå til avsenders side for å gjøre en handling</description>
+        <button-text>Ta meg til handling!</button-text>
+    </link>
+    <due-date>2020-09-10T00:00:00+01:00</due-date>
+    <sum>42</sum>
+    <creditor-account>01235424320</creditor-account>
+    <kid>1435025439583420243982723</kid>
+</invoice>
+```
+
+## InvoicePayment
+
+Payment information for an invoice
+
+### Complemented by: 
+[InvoicePayment](#invoicepayment)
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|paymentId|String|yes|Unique id to reference the payment with third party|
+|paymentStatus|String|yes|A status a given payment is in. ISO20022 payment statuses can be used|
+|paymentTime|ZonedDateTime|yes|When the payment is done|
+|debtorAccount|String|yes|The debtor account for the payment. Exactly 11 digits|
+|debtorAccountName|String|no|Optional name of the account|
+|paymentChannel|String|yes|Name the third party performing the payment|
+|paymentBank|[Bank](#invoicepaymentbank)|yes|The bank payment is registered with|
+
+### InvoicePayment.Bank
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|id|String|no|Unique id of the bank to reference the payment with third party|
+|name|String|no|Display name of the bank|
+
+### XML
+
+```xml
+<invoice-payment xmlns="http://api.digipost.no/schema/datatypes">
+    <payment-id>33aa4572ac1c61d807345c5968ab1fbd</payment-id>
+    <payment-status>PDNG</payment-status>
+    <payment-time>2020-09-21T00:00:00+01:00</payment-time>
+    <debtor-account>01235424320</debtor-account>
+    <payment-channel>My pay app</payment-channel>
+    <payment-bank>
+        <id>ce7ad8ba63d0ea5cd212580192a00156</id>
+        <name>Acme Bank inc</name>
+    </payment-bank>
+</invoice-payment>
 ```
 
 ## Payslip
