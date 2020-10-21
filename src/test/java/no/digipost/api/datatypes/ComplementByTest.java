@@ -1,6 +1,9 @@
 package no.digipost.api.datatypes;
 
 import no.digipost.api.datatypes.types.Appointment;
+import no.digipost.api.datatypes.types.Inkasso;
+import no.digipost.api.datatypes.types.invoice.Invoice;
+import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import org.junit.jupiter.api.Test;
@@ -31,5 +34,11 @@ class ComplementByTest {
     void kan_IKKE_complementere_seg_selv_med_mindre_eksplisitt_definert() {
         assertThat(Appointment.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(Appointment.EXAMPLE)));
         assertThat(PickupNotice.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(PickupNotice.EXAMPLE)));
+    }
+    
+    @Test
+    void kan_komplementere_fakturadomene() {
+        assertThat(Invoice.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(InvoicePayment.EXAMPLE)));
+        assertThat(Inkasso.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(InvoicePayment.EXAMPLE)));
     }
 }
