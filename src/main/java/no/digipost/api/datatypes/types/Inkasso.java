@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
+import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
+import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
@@ -21,6 +23,7 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
 @Description("A debt collection payment")
+@ComplementedBy({InvoicePayment.class})
 public class Inkasso implements DataType {
     @XmlElement
     @Description("A link to more information, or further actions that can be taken")
