@@ -33,6 +33,7 @@ Appointment represents a meeting set for a specific place and time
 |subTitle|String|no|Example: MR-undersøkelse av høyre kne|
 |info|List|no|Additional sections of information (max 2) with a title and text|
 |language|[Language](#appointmentlanguage)|no|Languange for the document|
+|link|[ExternalLink](#appointmentexternallink)|no|A link to more information, or further actions that can be taken|
 
 ### Appointment.Address
 
@@ -51,6 +52,15 @@ Valid values:
 * NB
 * NN
 * EN
+
+### Appointment.ExternalLink
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|url|URI|yes|Target URL of this link. Must be http or https.|
+|deadline|ZonedDateTime|no|Optional deadline for the user to respond. ISO8601 full DateTime.|
+|description|String|no|A short, optional text-field, describing the external link.|
+|buttonText|String|no|Optional text which will be displayed on the button.|
 
 ### XML
 
@@ -72,6 +82,12 @@ Valid values:
         <text>Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk.</text>
     </info>
     <language>NB</language>
+    <link>
+        <url>https://www.oslo.kommune.no/barnehage/svar-pa-tilbud-om-plass/</url>
+        <deadline>2017-09-30T13:37:00+02:00</deadline>
+        <description>Oslo Kommune ber deg akseptere eller avslå tilbudet om barnehageplass.</description>
+        <button-text>Svar på barnehageplass</button-text>
+    </link>
 </appointment>
 ```
 
@@ -310,6 +326,9 @@ An external URL, along with an optional description and deadline for resources s
 ## Inkasso
 
 A debt collection payment
+
+### Complemented by: 
+[InvoicePayment](#invoicepayment)
 
 ### Fields
 

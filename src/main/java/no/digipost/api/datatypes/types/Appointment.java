@@ -66,12 +66,16 @@ public class Appointment implements DataType {
     @Description("Languange for the document")
     Language language;
 
+    @XmlElement
+    @Description("A link to more information, or further actions that can be taken")
+    ExternalLink link;
+
     @Override
     public Appointment withDefaultsForMissingOptionalValues() {
         return endTime == null ? this.withEndTime(startTime.plusMinutes(30)) : this;
     }
-
-    public static Appointment EXAMPLE = new Appointment(
+    
+    public static final Appointment EXAMPLE = new Appointment(
             ZonedDateTime.of(2017, 6, 27, 10, 0, 0, 0, ZoneId.of("+02:00"))
             , ZonedDateTime.of(2017, 6, 27, 11, 0, 0, 0, ZoneId.of("+02:00"))
             , "Oppmøte senest 15 minutter før timen"
@@ -80,5 +84,6 @@ public class Appointment implements DataType {
             , "Undersøke smerter i ryggen"
             , singletonList(new Info("Informasjon om Oslo City Røntgen", "Oslo City Røntgen er et spesialistsenter for avansert bildediagnostikk."))
             , Language.NB
+            , ExternalLink.EXAMPLE
     );
 }
