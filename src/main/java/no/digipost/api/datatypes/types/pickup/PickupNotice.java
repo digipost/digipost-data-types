@@ -9,6 +9,7 @@ import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Barcode;
+import no.digipost.api.datatypes.types.ExternalLink;
 import no.digipost.api.datatypes.types.Language;
 import no.digipost.api.datatypes.types.Tag;
 
@@ -95,6 +96,10 @@ public class PickupNotice implements DataType {
     @Description("Languange for the document")
     Language language;
 
+    @XmlElement(name = "link")
+    @Description("An optional link to an external site, where the recipient can perform additional actions for their package")
+    ExternalLink link;
+
     @Override
     public PickupNotice withDefaultsForMissingOptionalValues() {
         if (status == null) {
@@ -120,6 +125,7 @@ public class PickupNotice implements DataType {
             , Status.READY_FOR_PICKUP
             , Collections.singleton(Tag.POSTEN)
             , Language.NB
+            , ExternalLink.EXAMPLE
     );
 }
 
