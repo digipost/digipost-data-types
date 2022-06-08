@@ -284,7 +284,7 @@
 
   <xs:complexType final="extension restriction" name="recipient">
     <xs:sequence>
-      <xs:element name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
       <xs:element name="digipost-address" type="xs:string"/>
       <xs:element minOccurs="0" name="address" type="tns:address"/>
     </xs:sequence>
