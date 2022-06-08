@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
 @With
 public class Recipient {
 
-    @XmlElement(name = "name", required = true)
+    @XmlElement(name = "name")
     @Description("The name of the recipient")
     String name;
 

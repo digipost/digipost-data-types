@@ -505,7 +505,7 @@ Details about a pickup notice
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|name|String|yes|The name of the recipient|
+|name|String|no|The name of the recipient|
 |digipostAddress|String|yes|The digipost address for the recipient|
 |address|[Address](#pickupnoticeaddress)|no||
 
