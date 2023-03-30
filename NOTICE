@@ -14,20 +14,18 @@ under the License.
 This project includes:
   ClassMate under The Apache Software License, Version 2.0
   Digipost Data Types under The Apache Software License, Version 2.0
-  Extended StAX API under Eclipse Distribution License - v 1.0
-  fastinfoset under Apache License, Version 2.0 or Eclipse Distribution License - v 1.0
+  Digipost JAXB Resolver - com.sun.xml.bind under The Apache Software License, Version 2.0
   Hibernate Validator Engine under Apache License 2.0
-  istack common utility code runtime under Eclipse Distribution License - v 1.0
   Jackson datatype: JSR310 under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0
   Jackson-core under The Apache Software License, Version 2.0
   jackson-databind under The Apache Software License, Version 2.0
   Jakarta Bean Validation API under Apache License 2.0
   Jakarta Expression Language 3.0 under EPL 2.0 or GPL2 w/ CPE
-  jakarta.xml.bind-api under Eclipse Distribution License - v 1.0
-  JavaBeans Activation Framework API jar under EDL 1.0
-  JAXB Runtime under Eclipse Distribution License - v 1.0
+  JavaBeans Activation Framework API jar under CDDL/GPLv2+CE
+  jaxb-api under CDDL 1.1 or GPL2 w/ CPE
   JBoss Logging 3 under Apache License, version 2.0
+  Old JAXB Core under CDDL+GPL License
+  Old JAXB Runtime under Eclipse Distribution License - v 1.0
   Project Lombok under The MIT License
-  TXW2 Runtime under Eclipse Distribution License - v 1.0
 
