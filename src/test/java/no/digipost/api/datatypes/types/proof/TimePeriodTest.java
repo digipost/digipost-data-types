@@ -4,9 +4,6 @@ package no.digipost.api.datatypes.types.proof;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -59,8 +56,8 @@ public class TimePeriodTest {
     void repeating_fra_til() {
         YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
                 2019, 2022
-                , new CalendarDate(3, 1, 0, 0, "+01:00")
-                , new CalendarDate(10, 1, 0, 0, "+01:00")
+                , new CalendarDate(3, 1, 0, 0)
+                , new CalendarDate(10, 1, 0, 0)
         );
 
         assertThat(period.getISO8601(), equalTo("R/2019-03-01T00:00/2022-10-01T00:00"));
@@ -70,8 +67,8 @@ public class TimePeriodTest {
     void repeating_fra() {
         YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
                 null, 2022
-                , new CalendarDate(5, 1, 0, 0, "+01:00")
-                , new CalendarDate(10, 1, 0, 0, "+01:00")
+                , new CalendarDate(5, 1, 0, 0)
+                , new CalendarDate(10, 1, 0, 0)
         );
 
         assertThat(period.getISO8601(), equalTo("R/05-01T00:00/2022-10-01T00:00"));
@@ -81,8 +78,8 @@ public class TimePeriodTest {
     void repeating_to() {
         YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
                 2019, null
-                , new CalendarDate(5, 1, 0, 0, "+01:00")
-                , new CalendarDate(10, 1, 0, 0, "+01:00")
+                , new CalendarDate(5, 1, 0, 0)
+                , new CalendarDate(10, 1, 0, 0)
         );
 
         assertThat(period.getISO8601(), equalTo("R/2019-05-01T00:00/10-01T00:00"));
@@ -92,8 +89,8 @@ public class TimePeriodTest {
     void repeating() {
         YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
                 null, null
-                , new CalendarDate(5, 1, 0, 0, "+01:00")
-                , new CalendarDate(10, 1, 0, 0, "+01:00")
+                , new CalendarDate(5, 1, 0, 0)
+                , new CalendarDate(10, 1, 0, 0)
         );
 
         assertThat(period.getISO8601(), equalTo("R/05-01T00:00/10-01T00:00"));
@@ -103,8 +100,8 @@ public class TimePeriodTest {
     void repeating_only_required() {
         YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
                 null, null
-                , new CalendarDate(5, 1, null, null, null)
-                , new CalendarDate(10, 1, null, null, null)
+                , new CalendarDate(5, 1, null, null)
+                , new CalendarDate(10, 1, null, null)
         );
 
         assertThat(period.getISO8601(), equalTo("R/05-01T00:00/10-01T00:00"));
@@ -112,6 +109,7 @@ public class TimePeriodTest {
 
     @Test
     void repeating_discard_esoteric_timezones() {
+        @SuppressWarnings("deprecation")
         YearlyRepeatingPeriod period = new YearlyRepeatingPeriod(
                 null, null
                 , new CalendarDate(5, 1, 0, 0, "+03:00")
