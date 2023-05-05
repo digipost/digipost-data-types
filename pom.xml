@@ -5,7 +5,7 @@
     <parent>
         <groupId>no.digipost</groupId>
         <artifactId>digipost-open-super-pom</artifactId>
-        <version>6</version>
+        <version>13</version>
     </parent>
 
     <artifactId>digipost-data-types</artifactId>
@@ -236,14 +236,8 @@
                 <plugin>
                     <groupId>com.github.siom79.japicmp</groupId>
                     <artifactId>japicmp-maven-plugin</artifactId>
-                    <version>0.14.1</version>
                     <configuration>
-                        <newVersion>
-                            <file><path>${project.build.directory}/${project.build.finalName}.${project.packaging}</path></file>
-                        </newVersion>
                         <parameter>
-                            <onlyModified>true</onlyModified>
-                            <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
                             <includes>
                                 <include>no.digipost</include>
                             </includes>
@@ -353,20 +347,6 @@
                             <commandlineArgs>${basedir}/readme.md ${basedir}/datatypes-examples.xml</commandlineArgs>
                         </configuration>
                         <goals><goal>java</goal></goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>analyze-only</goal>
-                        </goals>
-                        <configuration>
-                            <failOnWarning>true</failOnWarning>
-                            <ignoreNonCompile>true</ignoreNonCompile>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
