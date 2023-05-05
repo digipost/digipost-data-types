@@ -68,21 +68,42 @@
             <artifactId>jackson-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <version>2.0.2</version>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.1.5.Final</version>
             <scope>runtime</scope>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.validation</groupId>
+                    <artifactId>jakarta.validation-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>jakarta.el</artifactId>
+            <groupId>com.sun.el</groupId>
+            <artifactId>el-ri</artifactId>
             <version>3.0.4</version>
             <scope>runtime</scope>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.el</groupId>
+                    <artifactId>jakarta.el-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>

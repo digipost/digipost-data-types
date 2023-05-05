@@ -12,16 +12,17 @@ specific language governing permissions and limitations
 under the License.
 
 This project includes:
+  Bean Validation API under Apache License 2.0
   ClassMate under The Apache Software License, Version 2.0
   Digipost Data Types under The Apache Software License, Version 2.0
   Digipost JAXB Resolver - com.sun.xml.bind under The Apache Software License, Version 2.0
+  Expression Language 3.0 API under CDDL + GPLv2 with classpath exception
   Hibernate Validator Engine under Apache License 2.0
   Jackson datatype: JSR310 under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0
   Jackson-core under The Apache Software License, Version 2.0
   jackson-databind under The Apache Software License, Version 2.0
-  Jakarta Bean Validation API under Apache License 2.0
-  Jakarta Expression Language 3.0 under EPL 2.0 or GPL2 w/ CPE
+  Jakarta Expression Language 3.0 Implementation under EPL 2.0 or GPL2 w/ CPE
   JavaBeans Activation Framework API jar under CDDL/GPLv2+CE
   jaxb-api under CDDL 1.1 or GPL2 w/ CPE
   JBoss Logging 3 under Apache License, version 2.0
