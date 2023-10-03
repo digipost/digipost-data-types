@@ -14,6 +14,7 @@ import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
 
 import java.util.Collections;
 import java.util.Map;
@@ -50,6 +51,7 @@ public enum DataTypeIdentifier {
     , INKASSO(Inkasso.class, "INKA", Inkasso.EXAMPLE)
     , INVOICE(Invoice.class, "INVO", Invoice.EXAMPLE)
     , INVOICE_PAYMENT(InvoicePayment.class, "INVP", InvoicePayment.EXAMPLE)
+    , SHARE_DOCUMENT_REQUEST(ShareDocumentsRequest.class, "SHAR", ShareDocumentsRequest.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;

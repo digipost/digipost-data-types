@@ -391,6 +391,10 @@
     <external-id>externalId</external-id>
 </residence>
 
+<shareDocumentsRequest xmlns="http://api.digipost.no/schema/datatypes">
+    <max-share-duration>PT2160H</max-share-duration>
+</shareDocumentsRequest>
+
 <signedDocument xmlns="http://api.digipost.no/schema/datatypes">
     <document-issuer>Bedrift AS</document-issuer>
     <document-subject>Ansettelseskontrakt</document-subject>

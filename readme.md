@@ -15,6 +15,7 @@
 |[Proof](#proof)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
+|[ShareDocumentsRequest](#sharedocumentsrequest)|A request for a user to share one or more documents|
 |[SignedDocument](#signeddocument)|Details about a signed document|
 
 ## Appointment
@@ -1078,6 +1079,24 @@ Residence is a way of linking separate data for the same residence
     <source>boligmappa</source>
     <external-id>externalId</external-id>
 </residence>
+```
+
+## ShareDocumentsRequest
+
+A request for a user to share one or more documents
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|maxShareDuration|Duration|yes|This is the maximum duration in which you are allowed to access the user's documents from they are shared with you|
+
+### XML
+
+```xml
+<shareDocumentsRequest xmlns="http://api.digipost.no/schema/datatypes">
+    <max-share-duration>PT2160H</max-share-duration>
+</shareDocumentsRequest>
 ```
 
 ## SignedDocument

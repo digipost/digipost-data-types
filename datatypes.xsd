@@ -27,6 +27,8 @@
 
   <xs:element name="residence" type="tns:residence"/>
 
+  <xs:element name="shareDocumentsRequest" type="tns:shareDocumentsRequest"/>
+
   <xs:element name="signedDocument" type="tns:signedDocument"/>
 
   <xs:complexType final="extension restriction" name="address">
@@ -477,6 +479,12 @@
       <xs:element minOccurs="0" name="netAmount" type="xs:string"/>
       <xs:element minOccurs="0" name="vat" type="xs:string"/>
       <xs:element minOccurs="0" name="vatPercent" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="shareDocumentsRequest">
+    <xs:sequence>
+      <xs:element name="max-share-duration" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
