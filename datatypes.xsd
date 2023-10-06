@@ -27,7 +27,9 @@
 
   <xs:element name="residence" type="tns:residence"/>
 
-  <xs:element name="shareDocumentsRequest" type="tns:shareDocumentsRequest"/>
+  <xs:element name="share-documents-request" type="tns:shareDocumentsRequest"/>
+
+  <xs:element name="share-documents-request-event" type="tns:shareDocumentsRequestEvent"/>
 
   <xs:element name="signedDocument" type="tns:signedDocument"/>
 
@@ -488,29 +490,43 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType final="extension restriction" name="shareDocumentsRequestEvent">
+    <xs:sequence>
+      <xs:element name="event-type" type="tns:shareDocumentsRequestEventType"/>
+      <xs:element name="timestamp" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="document-ids" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:simpleType name="language">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="NB"/>
       <xs:enumeration value="EN"/>
       <xs:enumeration value="NN"/>
+      <xs:enumeration value="NB"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="READY_FOR_PICKUP"/>
       <xs:enumeration value="UNKNOWN"/>
       <xs:enumeration value="DEVIATION"/>
-      <xs:enumeration value="RETURNED"/>
       <xs:enumeration value="PICKED_UP"/>
+      <xs:enumeration value="RETURNED"/>
+      <xs:enumeration value="READY_FOR_PICKUP"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="tag">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="VARSEL2"/>
       <xs:enumeration value="VARSEL1"/>
+      <xs:enumeration value="VARSEL2"/>
       <xs:enumeration value="POSTEN"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="shareDocumentsRequestEventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FILES_SHARED"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

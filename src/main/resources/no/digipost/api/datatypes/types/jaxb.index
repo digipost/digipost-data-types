@@ -13,3 +13,4 @@ invoice.Invoice
 invoice.InvoicePayment
 Inkasso
 share.ShareDocumentsRequest
+share.ShareDocumentsRequestEvent

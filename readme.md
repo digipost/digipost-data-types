@@ -16,6 +16,7 @@
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[ShareDocumentsRequest](#sharedocumentsrequest)|A request for a user to share one or more documents|
+|[ShareDocumentsRequestEvent](#sharedocumentsrequestevent)|An update or event related to a ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
 
 ## Appointment
@@ -1094,9 +1095,37 @@ A request for a user to share one or more documents
 ### XML
 
 ```xml
-<shareDocumentsRequest xmlns="http://api.digipost.no/schema/datatypes">
+<share-documents-request xmlns="http://api.digipost.no/schema/datatypes">
     <max-share-duration>PT2160H</max-share-duration>
-</shareDocumentsRequest>
+</share-documents-request>
+```
+
+## ShareDocumentsRequestEvent
+
+An update or event related to a ShareDocumentsRequest
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|eventType|[ShareDocumentsRequestEventType](#sharedocumentsrequesteventsharedocumentsrequesteventtype)|yes|The type of event that has occurred|
+|time|ZonedDateTime|yes|When the event occurred|
+|documentIds|List|yes|The IDs of the documents related to this specific event|
+
+### ShareDocumentsRequestEvent.ShareDocumentsRequestEventType
+
+Valid values:
+
+* FILES_SHARED
+
+### XML
+
+```xml
+<share-documents-request-event xmlns="http://api.digipost.no/schema/datatypes">
+    <event-type>FILES_SHARED</event-type>
+    <timestamp>2017-09-30T13:37:00+02:00</timestamp>
+    <document-ids>123</document-ids>
+</share-documents-request-event>
 ```
 
 ## SignedDocument

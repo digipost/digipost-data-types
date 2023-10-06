@@ -27,6 +27,7 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequestEvent;
 
 /**
  * HOWTO: Add new data type
@@ -52,6 +53,7 @@ public enum DataTypeIdentifier {
     , INVOICE(Invoice.class, "INVO", Invoice.EXAMPLE)
     , INVOICE_PAYMENT(InvoicePayment.class, "INVP", InvoicePayment.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST(ShareDocumentsRequest.class, "SHAR", ShareDocumentsRequest.EXAMPLE)
+    , SHARE_DOCUMENT_REQUEST_EVENT(ShareDocumentsRequestEvent.class, "SHRE", ShareDocumentsRequestEvent.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;
