@@ -1109,7 +1109,7 @@ An update or event related to a ShareDocumentsRequest
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |eventType|[ShareDocumentsRequestEventType](#sharedocumentsrequesteventsharedocumentsrequesteventtype)|yes|The type of event that has occurred|
-|time|ZonedDateTime|yes|When the event occurred|
+|timestamp|ZonedDateTime|yes|When the event occurred|
 |documentIds|List|yes|The IDs of the documents related to this specific event|
 
 ### ShareDocumentsRequestEvent.ShareDocumentsRequestEventType
