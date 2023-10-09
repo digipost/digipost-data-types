@@ -32,7 +32,7 @@ public class ShareDocumentsRequestEvent implements DataType {
     @Description("When the event occurred")
     ZonedDateTime timestamp;
 
-    @XmlElement(name = "document-ids", required = true)
+    @XmlElement(name = "document-ids")
     @Description("The IDs of the documents related to this specific event")
     List<Long> documentIds;
 

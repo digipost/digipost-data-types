@@ -494,7 +494,7 @@
     <xs:sequence>
       <xs:element name="event-type" type="tns:shareDocumentsRequestEventType"/>
       <xs:element name="timestamp" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" name="document-ids" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="document-ids" type="xs:long"/>
     </xs:sequence>
   </xs:complexType>
 
