@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class ShareDocumentsRequestEvent implements DataType {
     ShareDocumentsRequestEventType eventType;
 
     @XmlElement(name = "timestamp", required = true)
+    @XmlSchemaType(name="dateTime")
     @Description("When the event occurred")
     ZonedDateTime timestamp;
 
