@@ -26,6 +26,14 @@ public class ShareDocumentsRequest implements DataType {
     @Description("This is the maximum duration in which you are allowed to access the user's documents from they are shared with you")
     Duration maxShareDuration;
 
-    public static final ShareDocumentsRequest EXAMPLE = new ShareDocumentsRequest(Duration.ofDays(90));
+    @XmlElement(name="purpose", required = true)
+    @NotNull
+    @Description("This text should explain why you need to process the recipient's documents in a short and understandable way.")
+    String purpose;
+
+    public static final ShareDocumentsRequest EXAMPLE = new ShareDocumentsRequest(
+            Duration.ofDays(90),
+            "We require to see your latest pay slip in order to grant you a loan."
+    );
 
 }
