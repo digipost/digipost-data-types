@@ -11,7 +11,6 @@ import no.digipost.api.datatypes.documentation.Description;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.time.Duration;
 
 @XmlRootElement(name = "share-documents-request")
 @Value
@@ -21,10 +20,10 @@ import java.time.Duration;
 @Description("A request for a user to share one or more documents")
 public class ShareDocumentsRequest implements DataType {
 
-    @XmlElement(name="max-share-duration", required = true)
+    @XmlElement(name="max-share-duration-seconds", required = true)
     @NotNull
     @Description("This is the maximum duration in which you are allowed to access the user's documents from they are shared with you")
-    Duration maxShareDuration;
+    Long maxShareDurationSeconds;
 
     @XmlElement(name="purpose", required = true)
     @NotNull
@@ -32,7 +31,7 @@ public class ShareDocumentsRequest implements DataType {
     String purpose;
 
     public static final ShareDocumentsRequest EXAMPLE = new ShareDocumentsRequest(
-            Duration.ofDays(90),
+            14 * 24 * 60 * 60L,
             "We require to see your latest pay slip in order to grant you a loan."
     );
 
