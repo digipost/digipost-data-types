@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "share-documents-request-sharing-stopped")
 @Value
-@NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@NoArgsConstructor(force = true, access = AccessLevel.PUBLIC)
 @With
 @Description("Stop sharing of documents for ShareDocumentsRequest")
 public class ShareDocumentsRequestSharingStopped implements DataType {
