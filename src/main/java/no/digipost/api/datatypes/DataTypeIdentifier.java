@@ -14,6 +14,7 @@ import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
 
 import java.util.Collections;
 import java.util.Map;
@@ -26,6 +27,9 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
+
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
 
 /**
  * HOWTO: Add new data type
@@ -50,6 +54,9 @@ public enum DataTypeIdentifier {
     , INKASSO(Inkasso.class, "INKA", Inkasso.EXAMPLE)
     , INVOICE(Invoice.class, "INVO", Invoice.EXAMPLE)
     , INVOICE_PAYMENT(InvoicePayment.class, "INVP", InvoicePayment.EXAMPLE)
+    , SHARE_DOCUMENT_REQUEST(ShareDocumentsRequest.class, "SHAR", ShareDocumentsRequest.EXAMPLE)
+    , SHARE_DOCUMENT_REQUEST_SHARING_STOPPED(ShareDocumentsRequestSharingStopped.class, "SHSS", ShareDocumentsRequestSharingStopped.EXAMPLE)
+    , SHARE_DOCUMENT_REQUEST_DOCUMENTS_SHARED(ShareDocumentsRequestDocumentsShared.class, "SHDS", ShareDocumentsRequestDocumentsShared.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;

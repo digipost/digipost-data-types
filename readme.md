@@ -15,6 +15,9 @@
 |[Proof](#proof)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person, valid for one or more time periods.|
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
+|[ShareDocumentsRequest](#sharedocumentsrequest)|A request for a user to share one or more documents|
+|[ShareDocumentsRequestDocumentsShared](#sharedocumentsrequestdocumentsshared)|Documents have been shared for ShareDocumentsRequest|
+|[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
 
 ## Appointment
@@ -1078,6 +1081,63 @@ Residence is a way of linking separate data for the same residence
     <source>boligmappa</source>
     <external-id>externalId</external-id>
 </residence>
+```
+
+## ShareDocumentsRequest
+
+A request for a user to share one or more documents
+
+### Complemented by: 
+[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|maxShareDurationSeconds|Long|yes|This is the maximum duration in which you are allowed to access the user's documents from they are shared with you|
+|purpose|String|yes|This text should explain why you need to process the recipient's documents in a short and understandable way.|
+
+### XML
+
+```xml
+<share-documents-request xmlns="http://api.digipost.no/schema/datatypes">
+    <max-share-duration-seconds>1209600</max-share-duration-seconds>
+    <purpose>We require to see your latest pay slip in order to grant you a loan.</purpose>
+</share-documents-request>
+```
+
+## ShareDocumentsRequestDocumentsShared
+
+Documents have been shared for ShareDocumentsRequest
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|documentIds|List|no|The IDs of the documents related to this specific event|
+
+### XML
+
+```xml
+<share-documents-request-documents-shared xmlns="http://api.digipost.no/schema/datatypes">
+    <document-ids>123</document-ids>
+</share-documents-request-documents-shared>
+```
+
+## ShareDocumentsRequestSharingStopped
+
+Stop sharing of documents for ShareDocumentsRequest
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+
+
+### XML
+
+```xml
+<share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
 
 ## SignedDocument

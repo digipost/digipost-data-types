@@ -391,6 +391,17 @@
     <external-id>externalId</external-id>
 </residence>
 
+<share-documents-request xmlns="http://api.digipost.no/schema/datatypes">
+    <max-share-duration-seconds>1209600</max-share-duration-seconds>
+    <purpose>We require to see your latest pay slip in order to grant you a loan.</purpose>
+</share-documents-request>
+
+<share-documents-request-documents-shared xmlns="http://api.digipost.no/schema/datatypes">
+    <document-ids>123</document-ids>
+</share-documents-request-documents-shared>
+
+<share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
+
 <signedDocument xmlns="http://api.digipost.no/schema/datatypes">
     <document-issuer>Bedrift AS</document-issuer>
     <document-subject>Ansettelseskontrakt</document-subject>

@@ -27,6 +27,12 @@
 
   <xs:element name="residence" type="tns:residence"/>
 
+  <xs:element name="share-documents-request" type="tns:shareDocumentsRequest"/>
+
+  <xs:element name="share-documents-request-documents-shared" type="tns:shareDocumentsRequestDocumentsShared"/>
+
+  <xs:element name="share-documents-request-sharing-stopped" type="tns:shareDocumentsRequestSharingStopped"/>
+
   <xs:element name="signedDocument" type="tns:signedDocument"/>
 
   <xs:complexType final="extension restriction" name="address">
@@ -480,28 +486,45 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType final="extension restriction" name="shareDocumentsRequest">
+    <xs:sequence>
+      <xs:element name="max-share-duration-seconds" type="xs:long"/>
+      <xs:element name="purpose" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="shareDocumentsRequestDocumentsShared">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="document-ids" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="shareDocumentsRequestSharingStopped">
+    <xs:sequence/>
+  </xs:complexType>
+
   <xs:simpleType name="language">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="NB"/>
       <xs:enumeration value="EN"/>
+      <xs:enumeration value="NB"/>
       <xs:enumeration value="NN"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="READY_FOR_PICKUP"/>
-      <xs:enumeration value="UNKNOWN"/>
       <xs:enumeration value="DEVIATION"/>
+      <xs:enumeration value="READY_FOR_PICKUP"/>
       <xs:enumeration value="RETURNED"/>
       <xs:enumeration value="PICKED_UP"/>
+      <xs:enumeration value="UNKNOWN"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="tag">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="VARSEL2"/>
       <xs:enumeration value="VARSEL1"/>
+      <xs:enumeration value="VARSEL2"/>
       <xs:enumeration value="POSTEN"/>
     </xs:restriction>
   </xs:simpleType>

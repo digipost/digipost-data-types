@@ -12,3 +12,6 @@ pickup.PickupNoticeStatus
 invoice.Invoice
 invoice.InvoicePayment
 Inkasso
+share.ShareDocumentsRequest
+share.ShareDocumentsRequestSharingStopped
+share.ShareDocumentsRequestDocumentsShared
