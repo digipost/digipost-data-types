@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
 @Description("A request for a user to share one or more documents")
-@ComplementedBy({ShareDocumentsRequestEvent.class})
+@ComplementedBy({ShareDocumentsRequestSharingStopped.class})
 public class ShareDocumentsRequest implements DataType {
 
     @XmlElement(name="max-share-duration-seconds", required = true)

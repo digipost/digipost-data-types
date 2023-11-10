@@ -396,11 +396,11 @@
     <purpose>We require to see your latest pay slip in order to grant you a loan.</purpose>
 </share-documents-request>
 
-<share-documents-request-event xmlns="http://api.digipost.no/schema/datatypes">
-    <event-type>FILES_SHARED</event-type>
-    <timestamp>2017-09-30T13:37:00+02:00</timestamp>
+<share-documents-request-documents-shared xmlns="http://api.digipost.no/schema/datatypes">
     <document-ids>123</document-ids>
-</share-documents-request-event>
+</share-documents-request-documents-shared>
+
+<share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
 
 <signedDocument xmlns="http://api.digipost.no/schema/datatypes">
     <document-issuer>Bedrift AS</document-issuer>
