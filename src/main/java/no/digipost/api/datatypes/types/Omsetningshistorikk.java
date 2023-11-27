@@ -1,5 +1,7 @@
 package no.digipost.api.datatypes.types;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -7,8 +9,6 @@ import lombok.Value;
 import lombok.With;
 import no.digipost.api.datatypes.documentation.Description;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import java.time.ZonedDateTime;

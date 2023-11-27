@@ -14,8 +14,9 @@
     <description>Data types for Digipost messages</description>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <lombok.version>1.18.30</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -30,7 +31,7 @@
             <dependency>
                 <groupId>com.fasterxml.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
-                <version>2.14.2</version>
+                <version>2.16.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -48,7 +49,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -68,40 +69,28 @@
             <artifactId>jackson-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.1.5.Final</version>
+            <version>8.0.0.Final</version>
             <scope>runtime</scope>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>jakarta.validation</groupId>
-                    <artifactId>jakarta.validation-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.sun.el</groupId>
-            <artifactId>el-ri</artifactId>
-            <version>3.0.4</version>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>5.0.0</version>
             <scope>runtime</scope>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>jakarta.el</groupId>
-                    <artifactId>jakarta.el-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>3.0.0</version>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
+            <version>5.0.1</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
@@ -133,7 +122,7 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
-            <version>2.2-rc1</version>
+            <version>2.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -259,6 +248,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>${lombok.version}</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
                     <outputDirectory>${project.build.directory}/schemagen-work/lombok</outputDirectory>

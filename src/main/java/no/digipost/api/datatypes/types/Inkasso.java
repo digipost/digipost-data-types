@@ -1,5 +1,6 @@
 package no.digipost.api.datatypes.types;
 
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,6 @@ import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;

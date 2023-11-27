@@ -1,5 +1,6 @@
 package no.digipost.api.datatypes.types.pickup;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,6 @@ import lombok.With;
 import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Address;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 

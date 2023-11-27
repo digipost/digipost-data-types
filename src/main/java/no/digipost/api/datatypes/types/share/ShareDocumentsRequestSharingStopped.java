@@ -1,7 +1,6 @@
 package no.digipost.api.datatypes.types.share;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;

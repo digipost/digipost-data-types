@@ -1,8 +1,8 @@
 package no.digipost.api.datatypes.documentation;
 
+import jakarta.validation.constraints.NotNull;
 import no.digipost.api.datatypes.ComplementedBy;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;

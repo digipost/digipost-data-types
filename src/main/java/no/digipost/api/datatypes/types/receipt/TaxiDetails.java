@@ -1,5 +1,6 @@
 package no.digipost.api.datatypes.types.receipt;
 
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,6 @@ import lombok.Value;
 import lombok.With;
 import no.digipost.api.datatypes.documentation.Description;
 
-import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
