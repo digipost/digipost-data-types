@@ -1,13 +1,12 @@
 package no.digipost.api.datatypes.types.share;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.With;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
-
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "share-documents-request-sharing-stopped")
 @Value

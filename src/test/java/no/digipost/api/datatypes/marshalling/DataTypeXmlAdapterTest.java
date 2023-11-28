@@ -1,13 +1,13 @@
 package no.digipost.api.datatypes.marshalling;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.types.Appointment;
 import no.digipost.api.datatypes.types.Residence;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Element;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;

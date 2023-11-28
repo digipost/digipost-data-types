@@ -2,6 +2,8 @@ package no.digipost.api.datatypes.types.pickup;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,8 +17,6 @@ import no.digipost.api.datatypes.types.ExternalLink;
 import no.digipost.api.datatypes.types.Language;
 import no.digipost.api.datatypes.types.Tag;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collections;

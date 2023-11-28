@@ -3,6 +3,8 @@ package no.digipost.api.datatypes.types.proof;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -13,8 +15,6 @@ import no.digipost.api.datatypes.documentation.Description;
 import no.digipost.api.datatypes.types.Info;
 import no.digipost.api.datatypes.types.Language;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;

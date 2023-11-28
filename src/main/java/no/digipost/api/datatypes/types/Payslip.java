@@ -1,11 +1,10 @@
 package no.digipost.api.datatypes.types;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
-
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Value

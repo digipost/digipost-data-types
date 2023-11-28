@@ -1,10 +1,10 @@
 package no.digipost.api.datatypes.documentation;
 
+import jakarta.xml.bind.JAXBException;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.DataTypeIdentifier;
 import no.digipost.api.datatypes.marshalling.DataTypesJAXBContext;
 
-import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
