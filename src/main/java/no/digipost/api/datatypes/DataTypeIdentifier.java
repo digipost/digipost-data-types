@@ -15,6 +15,8 @@ import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
 
 import java.util.Collections;
 import java.util.Map;
@@ -27,9 +29,6 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
-
-import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
-import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
 
 /**
  * HOWTO: Add new data type

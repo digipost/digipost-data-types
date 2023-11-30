@@ -1,7 +1,8 @@
 package no.digipost.api.datatypes.validation;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;

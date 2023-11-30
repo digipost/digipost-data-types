@@ -1,8 +1,7 @@
 package no.digipost.api.datatypes.validation;
 
+import jakarta.validation.ConstraintViolation;
 import lombok.Value;
-
-import javax.validation.ConstraintViolation;
 
 @Value
 public class DataTypesValidationError<T> {

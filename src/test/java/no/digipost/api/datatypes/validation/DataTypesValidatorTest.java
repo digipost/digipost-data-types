@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DataTypesValidatorTest {
 
-    private static DataTypesValidator validator = new DataTypesValidator();
+    private static final DataTypesValidator validator = new DataTypesValidator();
 
     private final Appointment appointment = Appointment.EXAMPLE.withAddress(new Address("Storgata 2", null,"00000000001", "Oslo", null));
     private final String error = "The value for field 'Appointment.address.postalCode' size must be between 0 and 10. The invalid value was '00000000001'";

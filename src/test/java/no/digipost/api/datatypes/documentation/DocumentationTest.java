@@ -5,8 +5,8 @@ import no.digipost.api.datatypes.types.MetaData;
 import no.digipost.api.datatypes.types.ShortTextMessage;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;

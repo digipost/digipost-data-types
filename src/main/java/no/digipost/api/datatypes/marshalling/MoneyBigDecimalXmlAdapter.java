@@ -1,6 +1,7 @@
 package no.digipost.api.datatypes.marshalling;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+
 import java.math.BigDecimal;
 
 import static java.math.BigDecimal.ROUND_HALF_UP;
