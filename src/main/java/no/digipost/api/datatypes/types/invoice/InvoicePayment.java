@@ -55,6 +55,16 @@ public class InvoicePayment implements DataType {
     @NotNull
     Bank paymentBank;
 
+    @XmlElement(required = true, name = "payment-scheduled-date")
+    @Description("The date the payment is scheduled for")
+    @NotNull
+    ZonedDateTime paymentScheduledDate;
+
+    @XmlElement(name = "reference-number")
+    @Description("The referenceNumber user has entered when paying the invoice for missing KID")
+    @NotNull
+    String referenceNumber;
+
     public static final InvoicePayment EXAMPLE = new InvoicePayment(
             "33aa4572ac1c61d807345c5968ab1fbd"
             , "PDNG"
@@ -63,5 +73,7 @@ public class InvoicePayment implements DataType {
             , null
             , "My pay app"
             , Bank.EXAMPLE
+            , ZonedDateTime.of(2020, 10, 1, 0, 0, 0, 0, ZoneId.of("+01:00"))
+            , "123123123"
     );
 }
