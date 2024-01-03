@@ -419,17 +419,17 @@ Payment information for an invoice
 
 ### Fields
 
-| Name                  |Type| Required | Description                                                                 |
-|-----------------------|----|----------|-----------------------------------------------------------------------------|
-| paymentId             |String| yes      | Unique id to reference the payment with third party                         |
-| paymentStatus         |String| yes      | A status a given payment is in. ISO20022 payment statuses can be used       |
-| paymentTime           |ZonedDateTime| yes      | When the payment is done                                                    |
-| debtorAccount         |String| yes      | The debtor account for the payment. Exactly 11 digits                       |
-| debtorAccountName     |String| no       | Optional name of the account                                                |
-| paymentChannel        |String| yes      | Name the third party performing the payment                                 |
-| paymentBank           |[Bank](#invoicepaymentbank)| yes      | The bank payment is registered with                                         |
-| paymentScheduledDate  |ZonedDateTime| no       | When the payment is scheduled to be paid                                    |
-| remittanceInformation |String| no       | Optional reference number user inputted when invoice was missing KID number |
+| Name                  | Type                        | Required | Description                                                                 |
+|-----------------------|-----------------------------|----------|-----------------------------------------------------------------------------|
+| paymentId             | String                      | yes      | Unique id to reference the payment with third party                         |
+| paymentStatus         | String                      | yes      | A status a given payment is in. ISO20022 payment statuses can be used       |
+| paymentTime           | ZonedDateTime               | yes      | When the payment is done                                                    |
+| debtorAccount         | String                      | yes      | The debtor account for the payment. Exactly 11 digits                       |
+| debtorAccountName     | String                      | no       | Optional name of the account                                                |
+| paymentChannel        | String                      | yes      | Name the third party performing the payment                                 |
+| paymentBank           | [Bank](#invoicepaymentbank) | yes      | The bank payment is registered with                                         |
+| paymentScheduledDate  | LocalDate                   | no       | When the payment is scheduled to be paid                                    |
+| remittanceInformation | String                      | no       | Optional reference number user inputted when invoice was missing KID number |
 
 ### InvoicePayment.Bank
 

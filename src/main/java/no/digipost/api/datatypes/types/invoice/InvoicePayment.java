@@ -13,6 +13,7 @@ import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -55,9 +56,9 @@ public class InvoicePayment implements DataType {
     @NotNull
     Bank paymentBank;
 
-    @XmlElement(required = true, name = "payment-scheduled-date")
+    @XmlElement(name = "payment-scheduled-date")
     @Description("The date the payment is scheduled for")
-    ZonedDateTime paymentScheduledDate;
+    LocalDate paymentScheduledDate;
 
     @XmlElement(name = "remittance-information")
     @Description("The reference-number user has entered when paying the invoice for missing KID")
@@ -71,7 +72,7 @@ public class InvoicePayment implements DataType {
             , null
             , "My pay app"
             , Bank.EXAMPLE
-            , ZonedDateTime.of(2020, 10, 1, 0, 0, 0, 0, ZoneId.of("+01:00"))
+            , LocalDate.of(2020, 10, 1)
             , "123123123"
     );
 }
