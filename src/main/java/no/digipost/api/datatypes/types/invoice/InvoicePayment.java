@@ -57,12 +57,10 @@ public class InvoicePayment implements DataType {
 
     @XmlElement(required = true, name = "payment-scheduled-date")
     @Description("The date the payment is scheduled for")
-    @NotNull
     ZonedDateTime paymentScheduledDate;
 
-    @XmlElement(name = "reference-number")
-    @Description("The referenceNumber user has entered when paying the invoice for missing KID")
-    @NotNull
+    @XmlElement(name = "remittance-information")
+    @Description("The reference-number user has entered when paying the invoice for missing KID")
     String referenceNumber;
 
     public static final InvoicePayment EXAMPLE = new InvoicePayment(
