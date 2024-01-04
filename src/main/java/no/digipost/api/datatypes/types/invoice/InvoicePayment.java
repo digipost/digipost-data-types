@@ -1,6 +1,5 @@
 package no.digipost.api.datatypes.types.invoice;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -38,7 +37,7 @@ public class InvoicePayment implements DataType {
     @Description("When the payment is done")
     ZonedDateTime paymentTime;
 
-    @XmlElement(required = true, name = "debtor-account")
+    @XmlElement(name = "debtor-account")
     @Description("The debtor account for the payment. Exactly 11 digits")
     @Size(min = 11, max = 11)
     String debtorAccount;
@@ -51,9 +50,8 @@ public class InvoicePayment implements DataType {
     @Description("Name the third party performing the payment")
     String paymentChannel;
 
-    @XmlElement(required = true, name = "payment-bank")
+    @XmlElement(name = "payment-bank")
     @Description("The bank payment is registered with")
-    @NotNull
     Bank paymentBank;
 
     @XmlElement(name = "payment-scheduled-date")
