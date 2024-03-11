@@ -12,6 +12,8 @@ import no.digipost.api.datatypes.ComplementedBy;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
+import java.util.Set;
+
 @XmlRootElement(name = "share-documents-request")
 @Value
 @AllArgsConstructor
@@ -31,9 +33,14 @@ public class ShareDocumentsRequest implements DataType {
     @Description("This text should explain why you need to process the recipient's documents in a short and understandable way.")
     String purpose;
 
+    @XmlElement(name="allowed-origin-organisation-numbers", required = false)
+    @Description("Only documents received from any of the specified organisations will be possible for the user to share.")
+    Set<String> allowedOriginOrganisationNumbers;
+
     public static final ShareDocumentsRequest EXAMPLE = new ShareDocumentsRequest(
             14 * 24 * 60 * 60L,
-            "We require to see your latest pay slip in order to grant you a loan."
+            "We require to see your latest pay slip in order to grant you a loan.",
+            Set.of("984661185")
     );
 
 }
