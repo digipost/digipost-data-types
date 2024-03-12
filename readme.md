@@ -1096,6 +1096,7 @@ A request for a user to share one or more documents
 |----|----|--------|-----------|
 |maxShareDurationSeconds|Long|yes|This is the maximum duration in which you are allowed to access the user's documents from they are shared with you|
 |purpose|String|yes|This text should explain why you need to process the recipient's documents in a short and understandable way.|
+|allowedOriginOrganisationNumbers|Set|no|Only documents received from any of the specified organisations will be possible for the user to share.|
 
 ### XML
 
@@ -1103,6 +1104,7 @@ A request for a user to share one or more documents
 <share-documents-request xmlns="http://api.digipost.no/schema/datatypes">
     <max-share-duration-seconds>1209600</max-share-duration-seconds>
     <purpose>We require to see your latest pay slip in order to grant you a loan.</purpose>
+    <allowed-origin-organisation-numbers>984661185</allowed-origin-organisation-numbers>
 </share-documents-request>
 ```
 
