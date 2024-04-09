@@ -490,9 +490,10 @@ Details about a pickup notice
 |pickupPlace|[PickupPlace](#pickupnoticepickupplace)|yes|where the parcel can be fetched|
 |thePackage|[Package](#pickupnoticepackage)|no|package information|
 |cost|[Cost](#pickupnoticecost)|no|Information about value, mva, customs processing and more|
+|extraInformation|String|no|Additional information about the pickup. May for example be used to inform the recipient that identification will be required upon pickup.|
 |status|[Status](#pickupnoticestatus)|no|The state the package is at present time|
 |tags|Set|no|Tags to describe the document|
-|language|[Language](#pickupnoticelanguage)|no|Languange for the document|
+|language|[Language](#pickupnoticelanguage)|no|Language for the document|
 |link|[ExternalLink](#pickupnoticeexternallink)|no|An optional link to an external site, where the recipient can perform additional actions for their package|
 
 ### PickupNotice.Barcode
@@ -652,6 +653,7 @@ Valid values:
         <cod-amount>0</cod-amount>
         <cod-fee>0</cod-fee>
     </cost>
+    <extra-information>Krever fremvisning av Pass eller Norsk nasjonalt ID-kort (Show Passport or Norwegian national ID-card). Fullmakt ikke tillatt.</extra-information>
     <status>READY_FOR_PICKUP</status>
     <tags>POSTEN</tags>
     <language>NB</language>

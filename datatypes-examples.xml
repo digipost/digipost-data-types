@@ -212,6 +212,7 @@
         <cod-amount>0</cod-amount>
         <cod-fee>0</cod-fee>
     </cost>
+    <extra-information>Krever fremvisning av Pass eller Norsk nasjonalt ID-kort (Show Passport or Norwegian national ID-card). Fullmakt ikke tillatt.</extra-information>
     <status>READY_FOR_PICKUP</status>
     <tags>POSTEN</tags>
     <language>NB</language>

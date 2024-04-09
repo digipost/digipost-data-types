@@ -240,6 +240,7 @@
             <xs:element name="pickup-place" type="tns:pickupPlace"/>
             <xs:element minOccurs="0" name="package" type="tns:package"/>
             <xs:element minOccurs="0" name="cost" type="tns:cost"/>
+            <xs:element minOccurs="0" name="extra-information" type="xs:string"/>
             <xs:element minOccurs="0" name="status" type="tns:status"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" type="tns:tag"/>
             <xs:element default="NB" minOccurs="0" name="language" type="tns:language"/>
