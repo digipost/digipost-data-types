@@ -83,6 +83,10 @@ public class PickupNotice implements DataType {
     @XmlElement(name = "cost")
     @Description("Information about value, mva, customs processing and more")
     Cost cost;
+
+    @XmlElement(name = "extra-information")
+    @Description("Additional information about the pickup. May for example be used to inform the recipient that identification will be required upon pickup.")
+    String extraInformation;
     
     @XmlElement(name = "status")
     @Description("The state the package is at present time")
@@ -93,7 +97,7 @@ public class PickupNotice implements DataType {
     Set<Tag> tags;
 
     @XmlElement(defaultValue = "NB")
-    @Description("Languange for the document")
+    @Description("Language for the document")
     Language language;
 
     @XmlElement(name = "link")
@@ -122,6 +126,7 @@ public class PickupNotice implements DataType {
             , PickupPlace.EXAMPLE
             , Package.EXAMPLE
             , Cost.EXAMPLE
+            , "Krever fremvisning av Pass eller Norsk nasjonalt ID-kort (Show Passport or Norwegian national ID-card). Fullmakt ikke tillatt."
             , Status.READY_FOR_PICKUP
             , Collections.singleton(Tag.POSTEN)
             , Language.NB
