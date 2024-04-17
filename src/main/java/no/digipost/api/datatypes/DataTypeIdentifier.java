@@ -77,17 +77,9 @@ public enum DataTypeIdentifier {
         this.example = example;
         complementables = Optional.ofNullable(getDataType().getAnnotation(ComplementedBy.class))
                 .map(ComplementedBy::value)
-                .map(Stream::of)
-                .orElseGet(Stream::empty)
+                .stream()
+                .flatMap(Stream::of)
                 .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
-    }
-
-    public Class<? extends DataType> getDataType() {
-        return dataType;
-    }
-
-    public String getShortName() {
-        return shortName;
     }
 
     public static DataTypeIdentifier fromRepresentationType(final Class<? extends DataType> representation) {
@@ -103,15 +95,23 @@ public enum DataTypeIdentifier {
             .orElseThrow(() -> new IllegalArgumentException("No value for " + DataTypeIdentifier.class.getSimpleName() + " found for shortName " + shortName));
     }
 
-    public DataType getExample() {
-        return example;
-    }
-
     public static Set<Class<? extends DataType>> getAllClasses() {
         return byType.keySet();
     }
 
     public boolean canBeComplementedBy(DataType successor) {
         return complementables.contains(successor.getClass());
+    }
+    
+    public Class<? extends DataType> getDataType() {
+        return dataType;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public DataType getExample() {
+        return example;
     }
 }

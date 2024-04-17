@@ -13,6 +13,7 @@ under the License.
 
 This project includes:
   Angus Activation Registries under EDL 1.0
+  Byte Buddy (without dependencies) under Apache License, Version 2.0
   ClassMate under Apache License, Version 2.0
   Digipost Data Types under The Apache Software License, Version 2.0
   Eclipse Expressly under Eclipse Public License v. 2.0 or GNU General Public License, version 2 with the GNU Classpath Exception

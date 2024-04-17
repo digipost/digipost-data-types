@@ -36,7 +36,7 @@ class MarshallingTest {
         try {
             ObjectMapper mapper = DataTypesJsonMapper.getMapper();
             final String json = mapper.writer().writeValueAsString(example.getExample());
-            final DataType unmarshalled = mapper.reader().forType(example.getDataType()).readValue(json);
+            final DataType unmarshalled = mapper.reader().forType(DataType.class).readValue(json);
             assertThat(unmarshalled, equalTo(example.getExample()));
         } catch (IOException e) {
             throw new RuntimeException(e);
