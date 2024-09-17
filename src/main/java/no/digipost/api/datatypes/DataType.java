@@ -19,6 +19,7 @@ import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentAccessed;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
 
@@ -41,6 +42,7 @@ import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped
         , @JsonSubTypes.Type(ShareDocumentsRequest.class)
         , @JsonSubTypes.Type(ShareDocumentsRequestSharingStopped.class)
         , @JsonSubTypes.Type(ShareDocumentsRequestDocumentsShared.class)
+        , @JsonSubTypes.Type(ShareDocumentsRequestDocumentAccessed.class)
 })
 public interface DataType {
 

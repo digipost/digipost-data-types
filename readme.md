@@ -16,6 +16,7 @@
 |[Receipt](#receipt)|Receipt represents a document containing details about a purchase|
 |[Residence](#residence)|Residence is a way of linking separate data for the same residence|
 |[ShareDocumentsRequest](#sharedocumentsrequest)|A request for a user to share one or more documents|
+|[ShareDocumentsRequestDocumentAccessed](#sharedocumentsrequestdocumentaccessed)|Documents have been accessed for ShareDocumentsRequest by the receiver.|
 |[ShareDocumentsRequestDocumentsShared](#sharedocumentsrequestdocumentsshared)|Documents have been shared for ShareDocumentsRequest|
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
@@ -1110,6 +1111,66 @@ A request for a user to share one or more documents
 </share-documents-request>
 ```
 
+## ShareDocumentsRequestDocumentAccessed
+
+Documents have been accessed for ShareDocumentsRequest by the receiver.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|accessedTime|ZonedDateTime|yes|The point of time the document was accessed,|
+|accessedBy|String|yes|Name of the person or organisation who accessed the shared document.|
+|sharedDocumentData|[SharedDocumentData](#sharedocumentsrequestdocumentaccessedshareddocumentdata)|yes||
+
+### ShareDocumentsRequestDocumentAccessed.SharedDocumentData
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|deliveryTime|ZonedDateTime|yes||
+|subject|String|yes||
+|fileType|String|yes||
+|fileSizeBytes|BigInteger|yes||
+|origin|[SharedDocumentOrigin](#sharedocumentsrequestdocumentaccessedshareddocumentorigin)|yes||
+
+### ShareDocumentsRequestDocumentAccessed.SharedDocumentOrigin
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|privatePerson|[SharedDocumentOriginPrivatePerson](#sharedocumentsrequestdocumentaccessedshareddocumentoriginprivateperson)|no||
+|organisation|[SharedDocumentOriginOrganisation](#sharedocumentsrequestdocumentaccessedshareddocumentoriginorganisation)|no||
+
+### ShareDocumentsRequestDocumentAccessed.SharedDocumentOriginPrivatePerson
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|name|String|no||
+
+### ShareDocumentsRequestDocumentAccessed.SharedDocumentOriginOrganisation
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|organisationNumber|String|no||
+|name|String|no||
+
+### XML
+
+```xml
+<share-documents-request-document-accessed xmlns="http://api.digipost.no/schema/datatypes">
+    <accessed-time>2024-09-16T10:00:00+02:00</accessed-time>
+    <accessed-by>Whoever Accessed</accessed-by>
+    <sharedDocumentData>
+        <delivery-time>2024-09-16T10:00:00+02:00</delivery-time>
+        <subject>Subject</subject>
+        <file-type>PDF</file-type>
+        <file-size-bytes>1</file-size-bytes>
+        <origin>
+            <organisation organisation-number="984661185" name="Posten Bring AS"/>
+        </origin>
+    </sharedDocumentData>
+</share-documents-request-document-accessed>
+```
+
 ## ShareDocumentsRequestDocumentsShared
 
 Documents have been shared for ShareDocumentsRequest
@@ -1136,7 +1197,15 @@ Stop sharing of documents for ShareDocumentsRequest
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
+|messagingParty|[MessagingParty](#sharedocumentsrequestsharingstoppedmessagingparty)|no|Whether the sharing was stopped by the sender or receiver.|
+|name|String|no|Name of the person or administrator who stopped the sharing.|
 
+### ShareDocumentsRequestSharingStopped.MessagingParty
+
+Valid values:
+
+* SENDER
+* RECEIVER
 
 ### XML
 

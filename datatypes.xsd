@@ -15,6 +15,7 @@
     <xs:element name="receipt" type="tns:receipt"/>
     <xs:element name="residence" type="tns:residence"/>
     <xs:element name="share-documents-request" type="tns:shareDocumentsRequest"/>
+    <xs:element name="share-documents-request-document-accessed" type="tns:shareDocumentsRequestDocumentAccessed"/>
     <xs:element name="share-documents-request-documents-shared" type="tns:shareDocumentsRequestDocumentsShared"/>
     <xs:element name="share-documents-request-sharing-stopped" type="tns:shareDocumentsRequestSharingStopped"/>
     <xs:element name="signedDocument" type="tns:signedDocument"/>
@@ -434,13 +435,47 @@
             <xs:element maxOccurs="10" minOccurs="0" name="allowed-origin-organisation-numbers" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:complexType final="extension restriction" name="shareDocumentsRequestDocumentAccessed">
+        <xs:sequence>
+            <xs:element name="accessed-time" type="xs:string"/>
+            <xs:element name="accessed-by" type="xs:string"/>
+            <xs:element name="sharedDocumentData" type="tns:sharedDocumentData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="sharedDocumentData">
+        <xs:sequence>
+            <xs:element name="delivery-time" type="xs:string"/>
+            <xs:element name="subject" type="xs:string"/>
+            <xs:element name="file-type" type="xs:string"/>
+            <xs:element name="file-size-bytes" type="xs:integer"/>
+            <xs:element name="origin" type="tns:sharedDocumentOrigin"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="sharedDocumentOrigin">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="private-person" type="tns:sharedDocumentOriginPrivatePerson"/>
+            <xs:element minOccurs="0" name="organisation" type="tns:sharedDocumentOriginOrganisation"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="sharedDocumentOriginPrivatePerson">
+        <xs:sequence/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="sharedDocumentOriginOrganisation">
+        <xs:sequence/>
+        <xs:attribute name="organisation-number" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
     <xs:complexType final="extension restriction" name="shareDocumentsRequestDocumentsShared">
         <xs:sequence>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="document-ids" type="xs:long"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType final="extension restriction" name="shareDocumentsRequestSharingStopped">
-        <xs:sequence/>
+        <xs:sequence>
+            <xs:element minOccurs="0" name="messaging-party" type="tns:messagingParty"/>
+            <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="language">
         <xs:restriction base="xs:string">
@@ -463,6 +498,12 @@
             <xs:enumeration value="RETURNED"/>
             <xs:enumeration value="UNKNOWN"/>
             <xs:enumeration value="DEVIATION"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="messagingParty">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SENDER"/>
+            <xs:enumeration value="RECEIVER"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

@@ -15,6 +15,7 @@ import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
+import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentAccessed;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
 
@@ -56,6 +57,7 @@ public enum DataTypeIdentifier {
     , SHARE_DOCUMENT_REQUEST(ShareDocumentsRequest.class, "SHAR", ShareDocumentsRequest.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_SHARING_STOPPED(ShareDocumentsRequestSharingStopped.class, "SHSS", ShareDocumentsRequestSharingStopped.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_DOCUMENTS_SHARED(ShareDocumentsRequestDocumentsShared.class, "SHDS", ShareDocumentsRequestDocumentsShared.EXAMPLE)
+    , SHARE_DOCUMENT_REQUEST_DOCUMENT_ACCESSED(ShareDocumentsRequestDocumentAccessed.class, "SHDA", ShareDocumentsRequestDocumentAccessed.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;

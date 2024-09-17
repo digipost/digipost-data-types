@@ -15,3 +15,4 @@ Inkasso
 share.ShareDocumentsRequest
 share.ShareDocumentsRequestSharingStopped
 share.ShareDocumentsRequestDocumentsShared
+share.ShareDocumentsRequestDocumentAccessed

@@ -398,6 +398,20 @@
     <allowed-origin-organisation-numbers>984661185</allowed-origin-organisation-numbers>
 </share-documents-request>
 
+<share-documents-request-document-accessed xmlns="http://api.digipost.no/schema/datatypes">
+    <accessed-time>2024-09-16T10:00:00+02:00</accessed-time>
+    <accessed-by>Whoever Accessed</accessed-by>
+    <sharedDocumentData>
+        <delivery-time>2024-09-16T10:00:00+02:00</delivery-time>
+        <subject>Subject</subject>
+        <file-type>PDF</file-type>
+        <file-size-bytes>1</file-size-bytes>
+        <origin>
+            <organisation organisation-number="984661185" name="Posten Bring AS"/>
+        </origin>
+    </sharedDocumentData>
+</share-documents-request-document-accessed>
+
 <share-documents-request-documents-shared xmlns="http://api.digipost.no/schema/datatypes">
     <document-ids>123</document-ids>
 </share-documents-request-documents-shared>
