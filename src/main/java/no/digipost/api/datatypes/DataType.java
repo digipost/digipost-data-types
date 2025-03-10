@@ -14,6 +14,8 @@ import no.digipost.api.datatypes.types.Residence;
 import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.invoice.Invoice;
 import no.digipost.api.datatypes.types.invoice.InvoicePayment;
+import no.digipost.api.datatypes.types.openingreceipt.OpeningReceipt;
+import no.digipost.api.datatypes.types.openingreceipt.OpeningReceiptAccepted;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
@@ -41,6 +43,8 @@ import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped
         , @JsonSubTypes.Type(ShareDocumentsRequest.class)
         , @JsonSubTypes.Type(ShareDocumentsRequestSharingStopped.class)
         , @JsonSubTypes.Type(ShareDocumentsRequestDocumentsShared.class)
+        , @JsonSubTypes.Type(OpeningReceipt.class)
+        , @JsonSubTypes.Type(OpeningReceiptAccepted.class)
 })
 public interface DataType {
 

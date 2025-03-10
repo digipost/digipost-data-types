@@ -15,3 +15,5 @@ Inkasso
 share.ShareDocumentsRequest
 share.ShareDocumentsRequestSharingStopped
 share.ShareDocumentsRequestDocumentsShared
+openingreceipt.OpeningReceipt
+openingreceipt.OpeningReceiptAccepted

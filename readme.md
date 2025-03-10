@@ -9,6 +9,8 @@
 |[Inkasso](#inkasso)|A debt collection payment|
 |[Invoice](#invoice)|An invoice|
 |[InvoicePayment](#invoicepayment)|Payment information for an invoice|
+|[OpeningReceipt](#openingreceipt)|To open the document the user must accept to send an opening receipt|
+|[OpeningReceiptAccepted](#openingreceiptaccepted)|The document has been opened, and the opening receipt has been accepted and sent.|
 |[Payslip](#payslip)|For treating documents as Payslips.|
 |[PickupNotice](#pickupnotice)|Details about a pickup notice|
 |[PickupNoticeStatus](#pickupnoticestatus)|Updates to status for PickupNotice|
@@ -1142,6 +1144,44 @@ Stop sharing of documents for ShareDocumentsRequest
 
 ```xml
 <share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
+```
+```
+
+## OpeningReceipt
+
+To open the document the user must accept to send an opening receipt
+
+### Complemented by: 
+[OpeningReceiptAccepted](#openingreceiptaccepted)
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|group|String|yes|This is the group identifier for the opening receipt|
+
+### XML
+
+```xml
+<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
+    <group>aarsoppgave-bedriftAS-2025</group>
+</opening-receipt>
+```
+
+## OpeningReceiptAccepted
+
+The document has been opened, and the opening receipt has been accepted and sent.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+
+
+### XML
+
+```xml
+<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
 
 ## SignedDocument

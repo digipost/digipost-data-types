@@ -18,6 +18,8 @@
     <xs:element name="share-documents-request-documents-shared" type="tns:shareDocumentsRequestDocumentsShared"/>
     <xs:element name="share-documents-request-sharing-stopped" type="tns:shareDocumentsRequestSharingStopped"/>
     <xs:element name="signedDocument" type="tns:signedDocument"/>
+    <xs:element name="opening-receipt" type="openingReceipt"/>
+    <xs:element name="opening-receipt-accepted" type="openingReceiptAccepted"/>
     <xs:complexType final="extension restriction" name="address">
         <xs:sequence>
             <xs:element minOccurs="0" name="street-address" type="xs:string"/>
@@ -440,6 +442,14 @@
         </xs:sequence>
     </xs:complexType>
     <xs:complexType final="extension restriction" name="shareDocumentsRequestSharingStopped">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="openingReceipt">
+        <xs:sequence>
+            <xs:element name="group" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="openingReceiptAccepted">
         <xs:sequence/>
     </xs:complexType>
     <xs:simpleType name="language">
