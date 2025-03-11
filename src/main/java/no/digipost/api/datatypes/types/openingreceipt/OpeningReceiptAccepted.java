@@ -10,7 +10,7 @@ import no.digipost.api.datatypes.documentation.Description;
 
 @XmlRootElement(name = "opening-receipt-accepted")
 @Value
-@NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@NoArgsConstructor(force = true, access = AccessLevel.PUBLIC)
 @With
 @Description("The document has been opened, and the opening receipt has been accepted and sent.")
 public class OpeningReceiptAccepted implements DataType {
