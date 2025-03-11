@@ -404,6 +404,12 @@
 
 <share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
 
+<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
+    <group>aarsoppgave-bedriftAS-2025</group>
+</opening-receipt>
+
+<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
+
 <signedDocument xmlns="http://api.digipost.no/schema/datatypes">
     <document-issuer>Bedrift AS</document-issuer>
     <document-subject>Ansettelseskontrakt</document-subject>

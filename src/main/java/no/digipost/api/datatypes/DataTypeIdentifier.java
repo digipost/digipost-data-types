@@ -10,6 +10,8 @@ import no.digipost.api.datatypes.types.Residence;
 import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.invoice.Invoice;
 import no.digipost.api.datatypes.types.invoice.InvoicePayment;
+import no.digipost.api.datatypes.types.openingreceipt.OpeningReceipt;
+import no.digipost.api.datatypes.types.openingreceipt.OpeningReceiptAccepted;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
@@ -56,6 +58,8 @@ public enum DataTypeIdentifier {
     , SHARE_DOCUMENT_REQUEST(ShareDocumentsRequest.class, "SHAR", ShareDocumentsRequest.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_SHARING_STOPPED(ShareDocumentsRequestSharingStopped.class, "SHSS", ShareDocumentsRequestSharingStopped.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_DOCUMENTS_SHARED(ShareDocumentsRequestDocumentsShared.class, "SHDS", ShareDocumentsRequestDocumentsShared.EXAMPLE)
+    , OPENING_RECEIPT(OpeningReceipt.class, "OPRC", OpeningReceipt.EXAMPLE)
+    , OPENING_RECEIPT_ACCEPTED(OpeningReceiptAccepted.class, "OPAC", OpeningReceiptAccepted.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;
