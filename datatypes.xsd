@@ -18,6 +18,7 @@
     <xs:element name="share-documents-request-documents-shared" type="tns:shareDocumentsRequestDocumentsShared"/>
     <xs:element name="share-documents-request-sharing-stopped" type="tns:shareDocumentsRequestSharingStopped"/>
     <xs:element name="signedDocument" type="tns:signedDocument"/>
+    <xs:element name="signatureRequest" type="tns:signatureRequest"/>
     <xs:element name="opening-receipt" type="openingReceipt"/>
     <xs:element name="opening-receipt-accepted" type="openingReceiptAccepted"/>
     <xs:complexType final="extension restriction" name="address">
@@ -181,6 +182,14 @@
             <xs:element name="document-issuer" type="xs:string"/>
             <xs:element name="document-subject" type="xs:string"/>
             <xs:element name="signing-time" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="signatureRequest">
+        <xs:sequence>
+            <xs:element name="url" type="xs:anyURI"/>
+            <xs:element name="deadline" type="xs:dateTime"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="button-text" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType final="extension restriction" name="bank">

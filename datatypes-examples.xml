@@ -415,5 +415,11 @@
     <document-subject>Ansettelseskontrakt</document-subject>
     <signing-time>2018-07-11T10:00:00+02:00</signing-time>
 </signedDocument>
+<signatureRequest xmlns="http://api.digipost.no/schema/datatypes">
+    <url>https://signering.posten.no/</url>
+    <deadline>2025-09-30T13:37:00+02:00</deadline>
+    <description>Du har mottatt en signeringsforespørsel fra Bedrift AS.</description>
+    <button-text>Les og signer</button-text>
+</signatureRequest>
 
 </datatypes>

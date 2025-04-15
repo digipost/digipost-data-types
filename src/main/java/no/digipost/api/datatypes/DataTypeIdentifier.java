@@ -1,13 +1,6 @@
 package no.digipost.api.datatypes;
 
-import no.digipost.api.datatypes.types.Appointment;
-import no.digipost.api.datatypes.types.Boligdetaljer;
-import no.digipost.api.datatypes.types.Event;
-import no.digipost.api.datatypes.types.ExternalLink;
-import no.digipost.api.datatypes.types.Inkasso;
-import no.digipost.api.datatypes.types.Payslip;
-import no.digipost.api.datatypes.types.Residence;
-import no.digipost.api.datatypes.types.SignedDocument;
+import no.digipost.api.datatypes.types.*;
 import no.digipost.api.datatypes.types.invoice.Invoice;
 import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 import no.digipost.api.datatypes.types.openingreceipt.OpeningReceipt;
@@ -48,6 +41,7 @@ public enum DataTypeIdentifier {
     , RECEIPT(Receipt.class, "RCPT", Receipt.EXAMPLE)
     , PAYSLIP(Payslip.class, "PAY", Payslip.EXAMPLE)
     , SIGNED_DOCUMENT(SignedDocument.class, "SIGN", SignedDocument.EXAMPLE)
+    , SIGNATURE_REQUEST(SignatureRequest.class, "SREQ", SignatureRequest.EXAMPLE)
     , PICKUP_NOTICE(PickupNotice.class, "PKUP", PickupNotice.EXAMPLE)
     , PICKUP_NOTICE_STATUS(PickupNoticeStatus.class, "PKUS", PickupNoticeStatus.EXAMPLE)
     , EVENT(Event.class, "EVNT", Event.EXAMPLE)
