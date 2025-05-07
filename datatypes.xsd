@@ -18,6 +18,7 @@
     <xs:element name="share-documents-request-documents-shared" type="tns:shareDocumentsRequestDocumentsShared"/>
     <xs:element name="share-documents-request-sharing-stopped" type="tns:shareDocumentsRequestSharingStopped"/>
     <xs:element name="signedDocument" type="tns:signedDocument"/>
+    <xs:element name="verifiable-credential-notice" type="tns:verifiableCredentialNotice"/>
     <xs:element name="opening-receipt" type="openingReceipt"/>
     <xs:element name="opening-receipt-accepted" type="openingReceiptAccepted"/>
     <xs:complexType final="extension restriction" name="address">
@@ -181,6 +182,15 @@
             <xs:element name="document-issuer" type="xs:string"/>
             <xs:element name="document-subject" type="xs:string"/>
             <xs:element name="signing-time" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="verifiableCredentialNotice">
+        <xs:sequence>
+            <xs:element name="credential-id" type="xs:string"/>
+            <xs:element minOccurs="0" name="valid-from" type="xs:string"/>
+            <xs:element minOccurs="0" name="valid-until" type="xs:string"/>
+            <xs:element minOccurs="0" name="title" type="xs:string"/>
+            <xs:element minOccurs="0" name="description" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType final="extension restriction" name="bank">

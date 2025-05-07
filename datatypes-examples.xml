@@ -416,4 +416,14 @@
     <signing-time>2018-07-11T10:00:00+02:00</signing-time>
 </signedDocument>
 
+<verifiable-credential-notice xmlns="http://api.digipost.no/schema/datatypes">
+    <credential-id>DL-1234567890</credential-id>
+    <valid-from>2025-01-01T10:00:00+02:00</valid-from>
+    <valid-until>2030-01-01T10:00:00+02:00</valid-until>
+    <title>Drivers Licence</title>
+    <description>This document confirms that the holder has a license to drive vehicles under the specified
+        categories.
+    </description>
+</verifiable-credential-notice>
+
 </datatypes>
