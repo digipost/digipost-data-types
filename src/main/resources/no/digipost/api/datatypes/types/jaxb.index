@@ -16,5 +16,6 @@ share.ShareDocumentsRequest
 share.ShareDocumentsRequestSharingStopped
 share.ShareDocumentsRequestDocumentsShared
 verifiableCredential.VerifiableCredentialNotice
+verifiableCredential.VerifiablePresentationNotice
 openingreceipt.OpeningReceipt
 openingreceipt.OpeningReceiptAccepted
