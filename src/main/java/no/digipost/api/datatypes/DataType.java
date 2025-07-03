@@ -23,7 +23,7 @@ import no.digipost.api.datatypes.types.receipt.Receipt;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
-import no.digipost.api.datatypes.types.VerifiableCredentialNotice;
+import no.digipost.api.datatypes.types.verifiableCredential.VerifiableCredentialNotice;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.SIMPLE_NAME, property = "type", include = JsonTypeInfo.As.EXISTING_PROPERTY)
 @JsonSubTypes({

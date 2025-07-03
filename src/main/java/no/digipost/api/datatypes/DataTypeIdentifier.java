@@ -19,7 +19,7 @@ import no.digipost.api.datatypes.types.receipt.Receipt;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
-import no.digipost.api.datatypes.types.VerifiableCredentialNotice;
+import no.digipost.api.datatypes.types.verifiableCredential.VerifiableCredentialNotice;
 
 import java.util.Collections;
 import java.util.Map;
