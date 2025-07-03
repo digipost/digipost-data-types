@@ -420,8 +420,10 @@
     <credential-id>DL-1234567890</credential-id>
     <valid-from>2025-01-01T10:00:00+02:00</valid-from>
     <valid-until>2030-01-01T10:00:00+02:00</valid-until>
-    <title>Førerkort</title>
-    <description>Dette dokumentet bekrefter at innehaveren har førerkort for å kjøre kjøretøy under de spesifiserte kategoriene.</description>
+    <title>Drivers Licence</title>
+    <description>This document confirms that the holder has a license to drive vehicles under the specified
+        categories.
+    </description>
 </verifiable-credential-notice>
 
 </datatypes>
