@@ -50,7 +50,7 @@ public class VerifiableCredentialNotice implements DataType {
             "DL-1234567890",
             ZonedDateTime.parse("2025-01-01T10:00:00+02:00"),
             ZonedDateTime.parse("2030-01-01T10:00:00+02:00"),
-            "Førerkort",
-            "Dette dokumentet bekrefter at innehaveren har førerkort for å kjøre kjøretøy under de spesifiserte kategoriene."
+            "Drivers Licence",
+            "This document confirms that the holder has a license to drive vehicles under the specified categories."
     );
 }
