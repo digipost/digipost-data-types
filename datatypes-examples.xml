@@ -426,4 +426,51 @@
     </description>
 </verifiable-credential-notice>
 
+<verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
+    <credentials>
+        <credential>
+            <id>pid</id>
+            <format>dc+sd-jwt</format>
+            <meta>
+                <vct_values>
+                    <vct_value>https://credentials.example.com/identity_credential</vct_value>
+                </vct_values>
+            </meta>
+            <claims>
+                <claim>
+                    <path>
+                        <path_element>given_name</path_element>
+                    </path>
+                </claim>
+                <claim>
+                    <path>
+                        <path_element>family_name</path_element>
+                    </path>
+                </claim>
+                <claim>
+                    <path>
+                        <path_element>address</path_element>
+                        <path_element>street_address</path_element>
+                    </path>
+                </claim>
+            </claims>
+        </credential>
+        <credential>
+            <id>DriversLicenceCredential</id>
+            <format>dc+sd-jwt</format>
+            <meta>
+                <vct_values>
+                    <vct_value>https://company.example/DriversLicenceCredential</vct_value>
+                </vct_values>
+            </meta>
+            <claims>
+                <claim>
+                    <path>
+                        <path_element>class</path_element>
+                    </path>
+                </claim>
+            </claims>
+        </credential>
+    </credentials>
+</verifiable-presentation-notice>
 </datatypes>

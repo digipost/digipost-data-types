@@ -21,6 +21,7 @@
     <xs:element name="verifiable-credential-notice" type="tns:verifiableCredentialNotice"/>
     <xs:element name="opening-receipt" type="openingReceipt"/>
     <xs:element name="opening-receipt-accepted" type="openingReceiptAccepted"/>
+    <xs:element name="verifiable-presentation-notice" type="tns:verifiablePresentationNotice"/>
     <xs:complexType final="extension restriction" name="address">
         <xs:sequence>
             <xs:element minOccurs="0" name="street-address" type="xs:string"/>
@@ -280,6 +281,116 @@
             <xs:element name="instruction" type="xs:string"/>
             <xs:element minOccurs="0" name="shelf-location" type="xs:string"/>
             <xs:element minOccurs="0" name="address" type="tns:address"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="extension restriction" name="verifiablePresentationNotice">
+        <xs:sequence>
+            <xs:element name="credentials">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="credential" minOccurs="1" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="id" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="format" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="meta" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="doctype_value" type="xs:string" minOccurs="0"/>
+                                                <xs:element name="vct_values" minOccurs="0">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element name="vct_value" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="claims" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="claim" minOccurs="1" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element name="path" minOccurs="1">
+                                                                <xs:complexType>
+                                                                    <xs:sequence>
+                                                                        <xs:element name="path_element" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                                                                    </xs:sequence>
+                                                                </xs:complexType>
+                                                            </xs:element>
+                                                            <xs:element name="id" type="xs:string" minOccurs="0"/>
+                                                            <xs:element name="values" minOccurs="0">
+                                                                <xs:complexType>
+                                                                    <xs:sequence>
+                                                                        <xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                                                                    </xs:sequence>
+                                                                </xs:complexType>
+                                                            </xs:element>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="claim_sets" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="claim_set" minOccurs="1" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element name="claims" minOccurs="1">
+                                                                <xs:complexType>
+                                                                    <xs:sequence>
+                                                                        <xs:element name="claim_id" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                                                                    </xs:sequence>
+                                                                </xs:complexType>
+                                                            </xs:element>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="credential_sets" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="credential_set" minOccurs="1" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="options" minOccurs="1">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="option" minOccurs="1" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element name="credential_ids" minOccurs="1">
+                                                                <xs:complexType>
+                                                                    <xs:sequence>
+                                                                        <xs:element name="credential_id" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                                                                    </xs:sequence>
+                                                                </xs:complexType>
+                                                            </xs:element>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="required" type="xs:boolean" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType final="extension restriction" name="pickupNoticeStatus">
