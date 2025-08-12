@@ -21,6 +21,7 @@
 |[ShareDocumentsRequestDocumentsShared](#sharedocumentsrequestdocumentsshared)|Documents have been shared for ShareDocumentsRequest|
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
+|[VerifiableCredentialNotice](#verifiablecredentialnotice)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person.|
 
 ## Appointment
 
@@ -1204,4 +1205,30 @@ Details about a signed document
     <document-subject>Ansettelseskontrakt</document-subject>
     <signing-time>2018-07-11T10:00:00+02:00</signing-time>
 </signedDocument>
+```
+
+## VerifiableCredentialNotice
+
+Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|credentialId|String|yes|A unique identifier for the credential.|
+|validFrom|ZonedDateTime|no|The starting point of validity for the credential.|
+|validUntil|ZonedDateTime|no|The ending point of validity for the credential.|
+|title|String|no|The title of the credential.|
+|description|String|no|A detailed explanation of the credential.|
+
+### XML
+
+```xml
+<verifiable-credential-notice xmlns="http://api.digipost.no/schema/datatypes">
+    <credential-id>DL-1234567890</credential-id>
+    <valid-from>2025-01-01T10:00:00+02:00</valid-from>
+    <valid-until>2030-01-01T10:00:00+02:00</valid-until>
+		<title>Drivers Licence</title>
+		<description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
+</verifiable-credential-notice>
 ```
