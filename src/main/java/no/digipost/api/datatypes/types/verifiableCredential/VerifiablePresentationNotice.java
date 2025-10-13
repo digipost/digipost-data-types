@@ -1,4 +1,4 @@
-package no.digipost.api.datatypes.types;
+package no.digipost.api.datatypes.types.verifiableCredential;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlElement;
