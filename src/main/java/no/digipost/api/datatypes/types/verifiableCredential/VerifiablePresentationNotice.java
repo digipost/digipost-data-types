@@ -4,16 +4,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Value;
-import lombok.With;
+import lombok.*;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
 import java.util.List;
-import java.util.Map;
 
 @XmlRootElement(name = "verifiable-presentation-notice")
 @Value
@@ -119,4 +114,26 @@ public class VerifiablePresentationNotice implements DataType {
         @XmlElement(name = "credential_id")
         List<String> credentialIds;
     }
+
+    public static VerifiablePresentationNotice EXAMPLE = new VerifiablePresentationNotice(
+            List.of(new Credential(
+                    "driversLicence",
+                    "jwt_vc",
+                    new Meta(),
+                    List.of(
+                            new Claim(
+                                    List.of("first_name"),
+                                    "first_name",
+                                    List.of()
+                            ),
+                            new Claim(
+                                    List.of("last_name"),
+                                    "last_name",
+                                    List.of()
+                            )
+                    ),
+                    List.of()
+            ))
+            , List.of()
+    );
 }
