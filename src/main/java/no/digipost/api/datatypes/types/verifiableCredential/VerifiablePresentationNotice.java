@@ -8,6 +8,7 @@ import lombok.*;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
+import java.util.Collections;
 import java.util.List;
 
 @XmlRootElement(name = "verifiable-presentation-notice")
@@ -119,7 +120,10 @@ public class VerifiablePresentationNotice implements DataType {
             List.of(new Credential(
                     "driversLicence",
                     "jwt_vc",
-                    new Meta(),
+                    new Meta(
+                            "driversLicence",
+                            Collections.emptyList()
+                    ),
                     List.of(
                             new Claim(
                                     List.of("first_name"),
