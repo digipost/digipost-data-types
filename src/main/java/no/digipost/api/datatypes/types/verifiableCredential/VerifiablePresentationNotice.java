@@ -19,6 +19,14 @@ import java.util.List;
 @Description("DCQL-aligned request for one or more credentials.")
 public class VerifiablePresentationNotice implements DataType {
 
+    @XmlElement
+    @Description("The title of the presentation request")
+    String title;
+
+    @XmlElement
+    @Description("A detailed explanation of the presentation request.")
+    String description;
+
     @XmlElementWrapper(name = "credentials")
     @XmlElement(name = "credential")
     @Description("List of credential queries as per DCQL.")
@@ -117,6 +125,8 @@ public class VerifiablePresentationNotice implements DataType {
     }
 
     public static VerifiablePresentationNotice EXAMPLE = new VerifiablePresentationNotice(
+            "Førerkort",
+            "Vi ønsker å få se ditt førkort.",
             List.of(new Credential(
                     "driversLicence",
                     "jwt_vc",

@@ -22,6 +22,7 @@
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
 |[VerifiableCredentialNotice](#verifiablecredentialnotice)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person.|
+|[VerifiablePresentationNotice](#verifiablepresentationnotice)|DCQL-aligned request for one or more credentials.|
 
 ## Appointment
 
@@ -453,6 +454,40 @@ Payment information for an invoice
         <name>Acme Bank inc</name>
     </payment-bank>
 </invoice-payment>
+```
+
+## OpeningReceipt
+
+To open the document the user must accept to send an opening receipt
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|group|String|yes|This is the group identifier for the opening receipt|
+
+### XML
+
+```xml
+<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
+    <group>aarsoppgave-bedriftAS-2025</group>
+</opening-receipt>
+```
+
+## OpeningReceiptAccepted
+
+The document has been opened, and the opening receipt has been accepted and sent.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+
+
+### XML
+
+```xml
+<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
 
 ## Payslip
@@ -1146,44 +1181,6 @@ Stop sharing of documents for ShareDocumentsRequest
 ```xml
 <share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
-```
-
-## OpeningReceipt
-
-To open the document the user must accept to send an opening receipt
-
-### Complemented by: 
-[OpeningReceiptAccepted](#openingreceiptaccepted)
-
-### Fields
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|group|String|yes|This is the group identifier for the opening receipt|
-
-### XML
-
-```xml
-<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
-    <group>aarsoppgave-bedriftAS-2025</group>
-</opening-receipt>
-```
-
-## OpeningReceiptAccepted
-
-The document has been opened, and the opening receipt has been accepted and sent.
-
-### Fields
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-
-
-### XML
-
-```xml
-<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
-```
 
 ## SignedDocument
 
@@ -1228,7 +1225,57 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
     <credential-id>DL-1234567890</credential-id>
     <valid-from>2025-01-01T10:00:00+02:00</valid-from>
     <valid-until>2030-01-01T10:00:00+02:00</valid-until>
-		<title>Drivers Licence</title>
-		<description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
+    <title>Drivers Licence</title>
+    <description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
 </verifiable-credential-notice>
+```
+
+## VerifiablePresentationNotice
+
+DCQL-aligned request for one or more credentials.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|title|String|no|The title of the presentation request|
+|description|String|no|A detailed explanation of the presentation request.|
+|credentials|List|yes|List of credential queries as per DCQL.|
+|credentialSets|List|no|Optional credential sets for advanced DCQL queries.|
+
+### XML
+
+```xml
+<verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
+    <title>Førerkort</title>
+    <description>Vi ønsker å få se ditt førkort.</description>
+    <credentials>
+        <credential>
+            <id>driversLicence</id>
+            <format>jwt_vc</format>
+            <meta>
+                <doctype_value>driversLicence</doctype_value>
+                <vct_values/>
+            </meta>
+            <claims>
+                <claim>
+                    <path>
+                        <path_element>first_name</path_element>
+                    </path>
+                    <id>first_name</id>
+                    <values/>
+                </claim>
+                <claim>
+                    <path>
+                        <path_element>last_name</path_element>
+                    </path>
+                    <id>last_name</id>
+                    <values/>
+                </claim>
+            </claims>
+            <claim_sets/>
+        </credential>
+    </credentials>
+    <credential_sets/>
+</verifiable-presentation-notice>
 ```

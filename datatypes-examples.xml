@@ -150,6 +150,12 @@
     </payment-bank>
 </invoice-payment>
 
+<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
+    <group>aarsoppgave-bedriftAS-2025</group>
+</opening-receipt>
+
+<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
+
 <payslip xmlns="http://api.digipost.no/schema/datatypes"/>
 
 <pickup-notice xmlns="http://api.digipost.no/schema/datatypes">
@@ -404,12 +410,6 @@
 
 <share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
 
-<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
-    <group>aarsoppgave-bedriftAS-2025</group>
-</opening-receipt>
-
-<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
-
 <signedDocument xmlns="http://api.digipost.no/schema/datatypes">
     <document-issuer>Bedrift AS</document-issuer>
     <document-subject>Ansettelseskontrakt</document-subject>
@@ -421,56 +421,40 @@
     <valid-from>2025-01-01T10:00:00+02:00</valid-from>
     <valid-until>2030-01-01T10:00:00+02:00</valid-until>
     <title>Drivers Licence</title>
-    <description>This document confirms that the holder has a license to drive vehicles under the specified
-        categories.
-    </description>
+    <description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
 </verifiable-credential-notice>
 
 <verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
+    <title>Førerkort</title>
+    <description>Vi ønsker å få se ditt førkort.</description>
     <credentials>
         <credential>
-            <id>pid</id>
-            <format>dc+sd-jwt</format>
+            <id>driversLicence</id>
+            <format>jwt_vc</format>
             <meta>
-                <vct_values>
-                    <vct_value>https://credentials.example.com/identity_credential</vct_value>
-                </vct_values>
+                <doctype_value>driversLicence</doctype_value>
+                <vct_values/>
             </meta>
             <claims>
                 <claim>
                     <path>
-                        <path_element>given_name</path_element>
+                        <path_element>first_name</path_element>
                     </path>
+                    <id>first_name</id>
+                    <values/>
                 </claim>
                 <claim>
                     <path>
-                        <path_element>family_name</path_element>
+                        <path_element>last_name</path_element>
                     </path>
-                </claim>
-                <claim>
-                    <path>
-                        <path_element>address</path_element>
-                        <path_element>street_address</path_element>
-                    </path>
+                    <id>last_name</id>
+                    <values/>
                 </claim>
             </claims>
-        </credential>
-        <credential>
-            <id>DriversLicenceCredential</id>
-            <format>dc+sd-jwt</format>
-            <meta>
-                <vct_values>
-                    <vct_value>https://company.example/DriversLicenceCredential</vct_value>
-                </vct_values>
-            </meta>
-            <claims>
-                <claim>
-                    <path>
-                        <path_element>class</path_element>
-                    </path>
-                </claim>
-            </claims>
+            <claim_sets/>
         </credential>
     </credentials>
+    <credential_sets/>
 </verifiable-presentation-notice>
+
 </datatypes>
