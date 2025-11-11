@@ -1,6 +1,5 @@
 package no.digipost.api.datatypes.types.verifiableCredential;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -8,15 +7,16 @@ import lombok.*;
 import no.digipost.api.datatypes.DataType;
 import no.digipost.api.datatypes.documentation.Description;
 
-import java.util.Collections;
 import java.util.List;
+
+import static no.digipost.api.datatypes.types.verifiableCredential.Format.JWT_VC_JSON;
 
 @XmlRootElement(name = "verifiable-presentation-notice")
 @Value
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
-@Description("DCQL-aligned request for one or more credentials.")
+@Description("A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.")
 public class VerifiablePresentationNotice implements DataType {
 
     @XmlElement
@@ -27,92 +27,14 @@ public class VerifiablePresentationNotice implements DataType {
     @Description("A detailed explanation of the presentation request.")
     String description;
 
-    @XmlElementWrapper(name = "credentials")
-    @XmlElement(name = "credential")
-    @Description("List of credential queries as per DCQL.")
-    @NotNull
-    List<Credential> credentials;
+    @XmlElement
+    @Description("A simplified credential query format")
+    SimpleQuery simpleQuery;
 
-    @XmlElementWrapper(name = "credential_sets")
-    @XmlElement(name = "credential_set")
-    @Description("Optional credential sets for advanced DCQL queries.")
-    List<CredentialSet> credentialSets;
+    @XmlElement
+    @Description("A credentials query following the Digital Credentials Query Language (DCQL) specification.")
+    DcqlQuery dcqlQuery;
 
-    @Value
-    @AllArgsConstructor
-    @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-    @With
-    public static class Credential {
-        @XmlElement(name = "id")
-        String id;
-
-        @XmlElement(name = "format")
-        String format;
-
-        @XmlElement(name = "meta")
-        Meta meta;
-
-        @XmlElementWrapper(name = "claims")
-        @XmlElement(name = "claim")
-        List<Claim> claims;
-
-        @XmlElementWrapper(name = "claim_sets")
-        @XmlElement(name = "claim_set")
-        List<ClaimSet> claimSets;
-    }
-
-    @Value
-    @AllArgsConstructor
-    @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-    @With
-    public static class Meta {
-        @XmlElement(name = "doctype_value")
-        String doctypeValue;
-
-        @XmlElementWrapper(name = "vct_values")
-        @XmlElement(name = "vct_value")
-        List<String> vctValues;
-    }
-
-    @Value
-    @AllArgsConstructor
-    @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-    @With
-    public static class Claim {
-        @XmlElementWrapper(name = "path")
-        @XmlElement(name = "path_element")
-        List<String> path;
-
-        @XmlElement(name = "id")
-        String id;
-
-        @XmlElementWrapper(name = "values")
-        @XmlElement(name = "value")
-        List<String> values;
-    }
-
-    @Value
-    @AllArgsConstructor
-    @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-    @With
-    public static class ClaimSet {
-        @XmlElementWrapper(name = "claims")
-        @XmlElement(name = "claim_id")
-        List<String> claims;
-    }
-
-    @Value
-    @AllArgsConstructor
-    @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-    @With
-    public static class CredentialSet {
-        @XmlElementWrapper(name = "options")
-        @XmlElement(name = "option")
-        List<Option> options;
-
-        @XmlElement(name = "required")
-        Boolean required;
-    }
 
     @Value
     @AllArgsConstructor
@@ -127,27 +49,7 @@ public class VerifiablePresentationNotice implements DataType {
     public static VerifiablePresentationNotice EXAMPLE = new VerifiablePresentationNotice(
             "Førerkort",
             "Vi ønsker å få se ditt førkort.",
-            List.of(new Credential(
-                    "driversLicence",
-                    "jwt_vc",
-                    new Meta(
-                            "driversLicence",
-                            Collections.emptyList()
-                    ),
-                    List.of(
-                            new Claim(
-                                    List.of("first_name"),
-                                    "first_name",
-                                    List.of()
-                            ),
-                            new Claim(
-                                    List.of("last_name"),
-                                    "last_name",
-                                    List.of()
-                            )
-                    ),
-                    List.of()
-            ))
-            , List.of()
+            new SimpleQuery("driversLicence", JWT_VC_JSON),
+            null
     );
 }

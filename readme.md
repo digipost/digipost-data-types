@@ -22,7 +22,7 @@
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
 |[VerifiableCredentialNotice](#verifiablecredentialnotice)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person.|
-|[VerifiablePresentationNotice](#verifiablepresentationnotice)|DCQL-aligned request for one or more credentials.|
+|[VerifiablePresentationNotice](#verifiablepresentationnotice)|A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.|
 
 ## Appointment
 
@@ -1232,7 +1232,7 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 ## VerifiablePresentationNotice
 
-DCQL-aligned request for one or more credentials.
+A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.
 
 ### Fields
 
@@ -1240,6 +1240,28 @@ DCQL-aligned request for one or more credentials.
 |----|----|--------|-----------|
 |title|String|no|The title of the presentation request|
 |description|String|no|A detailed explanation of the presentation request.|
+|simpleQuery|[SimpleQuery](#verifiablepresentationnoticesimplequery)|no|A simplified credential query format|
+|dcqlQuery|[DcqlQuery](#verifiablepresentationnoticedcqlquery)|no|A credentials query following the Digital Credentials Query Language (DCQL) specification.|
+
+### VerifiablePresentationNotice.SimpleQuery
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|type|String|no||
+|format|[Format](#verifiablepresentationnoticeformat)|no||
+
+### VerifiablePresentationNotice.Format
+
+Valid values:
+
+* JWT_VC_JSON
+* MSO_MDOC
+* SD_JWT
+
+### VerifiablePresentationNotice.DcqlQuery
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
 |credentials|List|yes|List of credential queries as per DCQL.|
 |credentialSets|List|no|Optional credential sets for advanced DCQL queries.|
 
@@ -1249,33 +1271,9 @@ DCQL-aligned request for one or more credentials.
 <verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
     <title>Førerkort</title>
     <description>Vi ønsker å få se ditt førkort.</description>
-    <credentials>
-        <credential>
-            <id>driversLicence</id>
-            <format>jwt_vc</format>
-            <meta>
-                <doctype_value>driversLicence</doctype_value>
-                <vct_values/>
-            </meta>
-            <claims>
-                <claim>
-                    <path>
-                        <path_element>first_name</path_element>
-                    </path>
-                    <id>first_name</id>
-                    <values/>
-                </claim>
-                <claim>
-                    <path>
-                        <path_element>last_name</path_element>
-                    </path>
-                    <id>last_name</id>
-                    <values/>
-                </claim>
-            </claims>
-            <claim_sets/>
-        </credential>
-    </credentials>
-    <credential_sets/>
+    <simpleQuery>
+        <type>driversLicence</type>
+        <format>JWT_VC_JSON</format>
+    </simpleQuery>
 </verifiable-presentation-notice>
 ```

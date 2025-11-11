@@ -427,34 +427,10 @@
 <verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
     <title>Førerkort</title>
     <description>Vi ønsker å få se ditt førkort.</description>
-    <credentials>
-        <credential>
-            <id>driversLicence</id>
-            <format>jwt_vc</format>
-            <meta>
-                <doctype_value>driversLicence</doctype_value>
-                <vct_values/>
-            </meta>
-            <claims>
-                <claim>
-                    <path>
-                        <path_element>first_name</path_element>
-                    </path>
-                    <id>first_name</id>
-                    <values/>
-                </claim>
-                <claim>
-                    <path>
-                        <path_element>last_name</path_element>
-                    </path>
-                    <id>last_name</id>
-                    <values/>
-                </claim>
-            </claims>
-            <claim_sets/>
-        </credential>
-    </credentials>
-    <credential_sets/>
+    <simpleQuery>
+        <type>driversLicence</type>
+        <format>JWT_VC_JSON</format>
+    </simpleQuery>
 </verifiable-presentation-notice>
 
 </datatypes>

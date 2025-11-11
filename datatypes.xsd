@@ -1361,43 +1361,10 @@
   </xs:complexType>
       
   
-  <xs:complexType final="extension restriction" name="verifiableCredentialNotice">
+  <xs:complexType final="extension restriction" name="dcqlQuery">
             
     
     <xs:sequence>
-                  
-      
-      <xs:element name="credential-id" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="valid-from" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="valid-until" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="title" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="description" type="xs:string"/>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="verifiablePresentationNotice">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element minOccurs="0" name="title" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="description" type="xs:string"/>
                   
       
       <xs:element minOccurs="0" name="credentials">
@@ -1457,7 +1424,7 @@
       <xs:element minOccurs="0" name="id" type="xs:string"/>
                   
       
-      <xs:element minOccurs="0" name="format" type="xs:string"/>
+      <xs:element minOccurs="0" name="format" type="tns:format"/>
                   
       
       <xs:element minOccurs="0" name="meta" type="tns:meta"/>
@@ -1515,6 +1482,9 @@
             
     
     <xs:sequence>
+                  
+      
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="type_values" type="xs:string"/>
                   
       
       <xs:element minOccurs="0" name="doctype_value" type="xs:string"/>
@@ -1706,6 +1676,75 @@
   </xs:complexType>
       
   
+  <xs:complexType final="extension restriction" name="simpleQuery">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="format" type="tns:format"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType final="extension restriction" name="verifiableCredentialNotice">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element name="credential-id" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="valid-from" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="valid-until" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType final="extension restriction" name="verifiablePresentationNotice">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="simpleQuery" type="tns:simpleQuery"/>
+                  
+      
+      <xs:element minOccurs="0" name="dcqlQuery" type="tns:dcqlQuery"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
   <xs:simpleType name="language">
             
     
@@ -1767,6 +1806,27 @@
                   
       
       <xs:enumeration value="DEVIATION"/>
+                
+    
+    </xs:restriction>
+          
+  
+  </xs:simpleType>
+      
+  
+  <xs:simpleType name="format">
+            
+    
+    <xs:restriction base="xs:string">
+                  
+      
+      <xs:enumeration value="JWT_VC_JSON"/>
+                  
+      
+      <xs:enumeration value="MSO_MDOC"/>
+                  
+      
+      <xs:enumeration value="SD_JWT"/>
                 
     
     </xs:restriction>
