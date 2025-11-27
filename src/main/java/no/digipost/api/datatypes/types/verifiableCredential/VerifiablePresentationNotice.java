@@ -19,11 +19,11 @@ import static no.digipost.api.datatypes.types.verifiableCredential.Format.JWT_VC
 @Description("A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.")
 public class VerifiablePresentationNotice implements DataType {
 
-    @XmlElement
+    @XmlElement(required = true)
     @Description("The title of the presentation request")
     String title;
 
-    @XmlElement
+    @XmlElement(required = true)
     @Description("A detailed explanation of the presentation request.")
     String description;
 
@@ -51,5 +51,21 @@ public class VerifiablePresentationNotice implements DataType {
             "Vi ønsker å få se ditt førkort.",
             new SimpleQuery("driversLicence", JWT_VC_JSON),
             null
+    );
+
+    // example førerkort with DCQL
+    public static VerifiablePresentationNotice DCQL_EXAMPLE = new VerifiablePresentationNotice(
+            "Førerkort",
+            "Vi ønsker å få se ditt førkort.",
+            null,
+            new DcqlQuery(
+                  List.of(
+                          DcqlQuery.Credential.jwtVc(
+                                  "credential1",
+                                  List.of("driversLicence")
+                          )
+                  ),
+                  null
+            )
     );
 }
