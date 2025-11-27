@@ -20,6 +20,7 @@ import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
 import no.digipost.api.datatypes.types.verifiableCredential.VerifiableCredentialNotice;
+import no.digipost.api.datatypes.types.verifiableCredential.VerifiablePresentationNotice;
 
 import java.util.Collections;
 import java.util.Map;
@@ -62,6 +63,7 @@ public enum DataTypeIdentifier {
     , OPENING_RECEIPT(OpeningReceipt.class, "OPRC", OpeningReceipt.EXAMPLE)
     , OPENING_RECEIPT_ACCEPTED(OpeningReceiptAccepted.class, "OPAC", OpeningReceiptAccepted.EXAMPLE)
     , VERIFIABLE_CREDENTIAL_NOTICE(VerifiableCredentialNotice.class, "VCNO", VerifiableCredentialNotice.EXAMPLE)
+    , VERIFIABLE_PRESENTATION_NOTICE(VerifiablePresentationNotice.class, "VPNO", VerifiablePresentationNotice.EXAMPLE)
     ;
 
     private final Class<? extends DataType> dataType;
