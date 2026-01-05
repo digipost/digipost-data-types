@@ -175,7 +175,10 @@
         </xs:sequence>
     </xs:complexType>
     <xs:complexType final="extension restriction" name="payslip">
-        <xs:sequence/>
+        <xs:sequence>
+            <xs:element minOccurs="0" name="payment-date" type="xs:date"/>
+            <xs:element minOccurs="0" name="net-amount" type="xs:decimal" />
+        </xs:sequence>
     </xs:complexType>
     <xs:complexType final="extension restriction" name="signedDocument">
         <xs:sequence>
