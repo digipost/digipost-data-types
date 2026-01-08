@@ -150,7 +150,10 @@
     </payment-bank>
 </invoice-payment>
 
-<payslip xmlns="http://api.digipost.no/schema/datatypes"/>
+<payslip xmlns="http://api.digipost.no/schema/datatypes">
+        <payment-date>2020-09-21</payment-date>
+        <net-amount>5000</net-amount>
+</payslip>
 
 <pickup-notice xmlns="http://api.digipost.no/schema/datatypes">
     <parcel-id>KB432788293NO</parcel-id>
