@@ -458,14 +458,19 @@ For treating documents as Payslips.
 
 ### Fields
 
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
+| Name        | Type       | Required | Description                            |
+|-------------|------------|----------|----------------------------------------|
+| paymentDate | LocalDate  | no       | The date when the salary is paid out   |
+| netAmount   | BigDecimal | no       | Net salary, the actual amount paid out |
 
 
 ### XML
 
 ```xml
-<payslip xmlns="http://api.digipost.no/schema/datatypes"/>
+<payslip xmlns="http://api.digipost.no/schema/datatypes">
+	<payment-date>2020-09-21</payment-date>
+	<net-amount>5000</net-amount>
+</payslip>
 ```
 
 ## PickupNotice
