@@ -24,6 +24,7 @@ import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
 import no.digipost.api.datatypes.types.verifiableCredential.VerifiableCredentialNotice;
+import no.digipost.api.datatypes.types.verifiableCredential.VerifiablePresentationNotice;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.SIMPLE_NAME, property = "type", include = JsonTypeInfo.As.EXISTING_PROPERTY)
 @JsonSubTypes({
@@ -47,6 +48,7 @@ import no.digipost.api.datatypes.types.verifiableCredential.VerifiableCredential
         , @JsonSubTypes.Type(OpeningReceipt.class)
         , @JsonSubTypes.Type(OpeningReceiptAccepted.class)
         , @JsonSubTypes.Type(VerifiableCredentialNotice.class)
+        , @JsonSubTypes.Type(VerifiablePresentationNotice.class)
 })
 public interface DataType {
 
