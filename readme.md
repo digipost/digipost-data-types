@@ -22,6 +22,7 @@
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
 |[VerifiableCredentialNotice](#verifiablecredentialnotice)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person.|
+|[VerifiablePresentationNotice](#verifiablepresentationnotice)|A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.|
 
 ## Appointment
 
@@ -455,24 +456,57 @@ Payment information for an invoice
 </invoice-payment>
 ```
 
+## OpeningReceipt
+
+To open the document the user must accept to send an opening receipt
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|group|String|yes|This is the group identifier for the opening receipt|
+
+### XML
+
+```xml
+<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
+    <group>aarsoppgave-bedriftAS-2025</group>
+</opening-receipt>
+```
+
+## OpeningReceiptAccepted
+
+The document has been opened, and the opening receipt has been accepted and sent.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+
+
+### XML
+
+```xml
+<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
+```
+
 ## Payslip
 
 For treating documents as Payslips.
 
 ### Fields
 
-| Name        | Type       | Required | Description                            |
-|-------------|------------|----------|----------------------------------------|
-| paymentDate | LocalDate  | no       | The date when the salary is paid out   |
-| netAmount   | BigDecimal | no       | Net salary, the actual amount paid out |
-
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|paymentDate|LocalDate|no|The date when the salary is paid out|
+|netAmount|BigDecimal|no|Net salary, the actual amount received|
 
 ### XML
 
 ```xml
 <payslip xmlns="http://api.digipost.no/schema/datatypes">
-	<payment-date>2020-09-21</payment-date>
-	<net-amount>5000</net-amount>
+    <payment-date>2025-01-01</payment-date>
+    <net-amount>42000.00</net-amount>
 </payslip>
 ```
 
@@ -1151,44 +1185,6 @@ Stop sharing of documents for ShareDocumentsRequest
 ```xml
 <share-documents-request-sharing-stopped xmlns="http://api.digipost.no/schema/datatypes"/>
 ```
-```
-
-## OpeningReceipt
-
-To open the document the user must accept to send an opening receipt
-
-### Complemented by: 
-[OpeningReceiptAccepted](#openingreceiptaccepted)
-
-### Fields
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|group|String|yes|This is the group identifier for the opening receipt|
-
-### XML
-
-```xml
-<opening-receipt xmlns="http://api.digipost.no/schema/datatypes">
-    <group>aarsoppgave-bedriftAS-2025</group>
-</opening-receipt>
-```
-
-## OpeningReceiptAccepted
-
-The document has been opened, and the opening receipt has been accepted and sent.
-
-### Fields
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-
-
-### XML
-
-```xml
-<opening-receipt-accepted xmlns="http://api.digipost.no/schema/datatypes"/>
-```
 
 ## SignedDocument
 
@@ -1233,7 +1229,55 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
     <credential-id>DL-1234567890</credential-id>
     <valid-from>2025-01-01T10:00:00+02:00</valid-from>
     <valid-until>2030-01-01T10:00:00+02:00</valid-until>
-		<title>Drivers Licence</title>
-		<description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
+    <title>Drivers Licence</title>
+    <description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
 </verifiable-credential-notice>
+```
+
+## VerifiablePresentationNotice
+
+A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|title|String|yes|The title of the presentation request|
+|description|String|yes|A detailed explanation of the presentation request.|
+|simpleQuery|[SimpleQuery](#verifiablepresentationnoticesimplequery)|no|A simplified credential query format|
+|dcqlQuery|[DcqlQuery](#verifiablepresentationnoticedcqlquery)|no|A credentials query following the Digital Credentials Query Language (DCQL) specification.|
+
+### VerifiablePresentationNotice.SimpleQuery
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|type|String|no||
+|format|[Format](#verifiablepresentationnoticeformat)|no||
+
+### VerifiablePresentationNotice.Format
+
+Valid values:
+
+* JWT_VC_JSON
+* MSO_MDOC
+* SD_JWT
+
+### VerifiablePresentationNotice.DcqlQuery
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|credentials|List|yes|List of credential queries as per DCQL.|
+|credentialSets|List|no|Optional credential sets for advanced DCQL queries.|
+
+### XML
+
+```xml
+<verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
+    <title>Driver’s License</title>
+    <description>We would like to verify your driver’s license.</description>
+    <simpleQuery>
+        <type>driversLicence</type>
+        <format>JWT_VC_JSON</format>
+    </simpleQuery>
+</verifiable-presentation-notice>
 ```
