@@ -16,7 +16,7 @@ public class PresentationNoticeTest {
         ObjectMapper jsonMapper = new ObjectMapper();
 
         String dcqlJson = jsonMapper.writeValueAsString(dcqlQuery);
-        String expected = "{\"credentials\":[{\"id\":\"credential1\",\"format\":\"jwt_vc_json\",\"meta\":{\"type_values\":[\"driversLicence\"]},\"claims\":null,\"claim_sets\":null}],\"credential_sets\":null}";
+        String expected = "{\"credentials\":[{\"id\":\"credential1\",\"format\":\"dc+sd-jwt\",\"meta\":{\"vct_values\":[\"driversLicence\"]},\"claims\":null,\"claim_sets\":null}],\"credential_sets\":null}";
 
         assert dcqlJson.equals(expected);
     }

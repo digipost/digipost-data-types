@@ -1835,7 +1835,7 @@
       <xs:enumeration value="MSO_MDOC"/>
                   
       
-      <xs:enumeration value="SD_JWT"/>
+      <xs:enumeration value="DC_SD_JWT"/>
                 
     
     </xs:restriction>

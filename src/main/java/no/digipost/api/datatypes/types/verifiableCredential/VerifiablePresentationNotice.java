@@ -60,7 +60,7 @@ public class VerifiablePresentationNotice implements DataType {
             null,
             new DcqlQuery(
                   List.of(
-                          DcqlQuery.Credential.jwtVc(
+                          DcqlQuery.Credential.dcSdJwt(
                                   "credential1",
                                   List.of("driversLicence")
                           )

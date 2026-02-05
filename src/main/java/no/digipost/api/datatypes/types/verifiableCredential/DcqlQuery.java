@@ -55,7 +55,7 @@ public class DcqlQuery {
         @JsonProperty("claim_sets")
         List<ClaimSet> claimSets;
 
-        public static Credential jwtVc(String id, List<String> typeValues) {
+        public static Credential jwtVcJson(String id, List<String> typeValues) {
             return new Credential(id, JWT_VC_JSON, new Meta(typeValues, null, null), null, null);
         }
 
@@ -63,8 +63,8 @@ public class DcqlQuery {
             return new Credential(id, MSO_MDOC, new Meta(null, doctypeValue, null), null, null);
         }
 
-        public static Credential sdJwt(String id, List<String> vctValues) {
-            return new Credential(id, SD_JWT, new Meta(null, null, vctValues), null, null);
+        public static Credential dcSdJwt(String id, List<String> vctValues) {
+            return new Credential(id, DC_SD_JWT, new Meta(null, null, vctValues), null, null);
         }
     }
 

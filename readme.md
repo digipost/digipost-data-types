@@ -1260,7 +1260,7 @@ Valid values:
 
 * JWT_VC_JSON
 * MSO_MDOC
-* SD_JWT
+* DC_SD_JWT
 
 ### VerifiablePresentationNotice.DcqlQuery
 
