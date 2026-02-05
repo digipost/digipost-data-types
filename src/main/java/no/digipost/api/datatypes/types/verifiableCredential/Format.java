@@ -6,7 +6,7 @@ public enum Format {
 
     JWT_VC_JSON("jwt_vc_json"),
     MSO_MDOC("mso_mdoc"),
-    SD_JWT("sd_jwt");
+    DC_SD_JWT("dc+sd-jwt");
 
     private final String value;
 
