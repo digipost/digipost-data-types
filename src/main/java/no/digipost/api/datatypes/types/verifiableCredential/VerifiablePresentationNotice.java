@@ -9,7 +9,6 @@ import no.digipost.api.datatypes.documentation.Description;
 
 import java.util.List;
 
-import static no.digipost.api.datatypes.types.verifiableCredential.Format.JWT_VC_JSON;
 
 @XmlRootElement(name = "verifiable-presentation-notice")
 @Value
@@ -24,17 +23,8 @@ public class VerifiablePresentationNotice implements DataType {
     String title;
 
     @XmlElement(required = true)
-    @Description("A detailed explanation of the presentation request.")
+    @Description("A detailed explanation of the presentation request containing the purpose for this particular presentation request.")
     String description;
-
-    @XmlElement
-    @Description("A simplified credential query format")
-    SimpleQuery simpleQuery;
-
-    @XmlElement
-    @Description("A credentials query following the Digital Credentials Query Language (DCQL) specification.")
-    DcqlQuery dcqlQuery;
-
 
     @Value
     @AllArgsConstructor
@@ -47,25 +37,7 @@ public class VerifiablePresentationNotice implements DataType {
     }
 
     public static VerifiablePresentationNotice EXAMPLE = new VerifiablePresentationNotice(
-            "Driver’s License",
-            "We would like to verify your driver’s license.",
-            new SimpleQuery("driversLicence", JWT_VC_JSON),
-            null
-    );
-
-    // example førerkort with DCQL
-    public static VerifiablePresentationNotice DCQL_EXAMPLE = new VerifiablePresentationNotice(
-            "Driver’s License",
-            "We would like to verify your driver’s license.",
-            null,
-            new DcqlQuery(
-                  List.of(
-                          DcqlQuery.Credential.dcSdJwt(
-                                  "credential1",
-                                  List.of("driversLicence")
-                          )
-                  ),
-                  null
-            )
+            "Request for Driver's licence",
+            "We would like to verify your driver’s license before we can rent you a Toyota."
     );
 }
