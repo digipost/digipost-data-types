@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
-@Description("A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.")
+@Description("A request for a verifiable presentation")
 public class VerifiablePresentationNotice implements DataType {
 
     @XmlElement(required = true)
