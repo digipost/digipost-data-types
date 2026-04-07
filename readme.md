@@ -22,7 +22,7 @@
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
 |[VerifiableCredentialNotice](#verifiablecredentialnotice)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person.|
-|[VerifiablePresentationNotice](#verifiablepresentationnotice)|A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.|
+|[VerifiablePresentationNotice](#verifiablepresentationnotice)|A request for a verifiable presentation|
 
 ## Appointment
 
@@ -1216,9 +1216,6 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
-|credentialId|String|yes|A unique identifier for the credential.|
-|validFrom|ZonedDateTime|no|The starting point of validity for the credential.|
-|validUntil|ZonedDateTime|no|The ending point of validity for the credential.|
 |title|String|no|The title of the credential.|
 |description|String|no|A detailed explanation of the credential.|
 
@@ -1226,9 +1223,6 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 ```xml
 <verifiable-credential-notice xmlns="http://api.digipost.no/schema/datatypes">
-    <credential-id>DL-1234567890</credential-id>
-    <valid-from>2025-01-01T10:00:00+02:00</valid-from>
-    <valid-until>2030-01-01T10:00:00+02:00</valid-until>
     <title>Drivers Licence</title>
     <description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
 </verifiable-credential-notice>
@@ -1236,48 +1230,20 @@ Represents a legal document (Certificate, Licence, Permit, etc.) issued to a sin
 
 ## VerifiablePresentationNotice
 
-A request for a verifiable presentation. The request must include a credentials query of either dcql_query og simple_query.
+A request for a verifiable presentation
 
 ### Fields
 
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |title|String|yes|The title of the presentation request|
-|description|String|yes|A detailed explanation of the presentation request.|
-|simpleQuery|[SimpleQuery](#verifiablepresentationnoticesimplequery)|no|A simplified credential query format|
-|dcqlQuery|[DcqlQuery](#verifiablepresentationnoticedcqlquery)|no|A credentials query following the Digital Credentials Query Language (DCQL) specification.|
-
-### VerifiablePresentationNotice.SimpleQuery
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|type|String|no||
-|format|[Format](#verifiablepresentationnoticeformat)|no||
-
-### VerifiablePresentationNotice.Format
-
-Valid values:
-
-* JWT_VC_JSON
-* MSO_MDOC
-* DC_SD_JWT
-
-### VerifiablePresentationNotice.DcqlQuery
-
-|Name|Type|Required|Description|
-|----|----|--------|-----------|
-|credentials|List|yes|List of credential queries as per DCQL.|
-|credentialSets|List|no|Optional credential sets for advanced DCQL queries.|
+|description|String|yes|A detailed explanation of the presentation request containing the purpose for this particular presentation request.|
 
 ### XML
 
 ```xml
 <verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
-    <title>Driver’s License</title>
-    <description>We would like to verify your driver’s license.</description>
-    <simpleQuery>
-        <type>driversLicence</type>
-        <format>JWT_VC_JSON</format>
-    </simpleQuery>
+    <title>Request for Driver's licence</title>
+    <description>We would like to verify your driver’s license before we can rent you a Toyota.</description>
 </verifiable-presentation-notice>
 ```

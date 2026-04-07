@@ -1370,52 +1370,16 @@
   </xs:complexType>
       
   
-  <xs:complexType final="extension restriction" name="dcqlQuery">
+  <xs:complexType final="extension restriction" name="verifiableCredentialNotice">
             
     
     <xs:sequence>
                   
       
-      <xs:element minOccurs="0" name="credentials">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="credential" type="tns:credential"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
                   
       
-      <xs:element minOccurs="0" name="credential_sets">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="credential_set" type="tns:credentialSet"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
                 
     
     </xs:sequence>
@@ -1424,226 +1388,16 @@
   </xs:complexType>
       
   
-  <xs:complexType final="extension restriction" name="credential">
+  <xs:complexType final="extension restriction" name="verifiablePresentationNotice">
             
     
     <xs:sequence>
                   
       
-      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element name="title" type="xs:string"/>
                   
       
-      <xs:element minOccurs="0" name="format" type="tns:format"/>
-                  
-      
-      <xs:element minOccurs="0" name="meta" type="tns:meta"/>
-                  
-      
-      <xs:element minOccurs="0" name="claims">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="claim" type="tns:claim"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
-                  
-      
-      <xs:element minOccurs="0" name="claim_sets">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="claim_set" type="tns:claimSet"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="meta">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="type_values" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="doctype_value" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="vct_values">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="vct_value" type="xs:string"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="claim">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element minOccurs="0" name="path">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="path_element" type="xs:string"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
-                  
-      
-      <xs:element minOccurs="0" name="id" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="values">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="value" type="xs:string"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="claimSet">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element minOccurs="0" name="claims">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="claim_id" type="xs:string"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="credentialSet">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element minOccurs="0" name="options">
-                        
-        
-        <xs:complexType>
-                              
-          
-          <xs:sequence>
-                                    
-            
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="option" type="tns:option"/>
-                                  
-          
-          </xs:sequence>
-                            
-        
-        </xs:complexType>
-                      
-      
-      </xs:element>
-                  
-      
-      <xs:element minOccurs="0" name="required" type="xs:boolean"/>
+      <xs:element name="description" type="xs:string"/>
                 
     
     </xs:sequence>
@@ -1677,75 +1431,6 @@
                       
       
       </xs:element>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="simpleQuery">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element minOccurs="0" name="type" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="format" type="tns:format"/>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="verifiableCredentialNotice">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element name="credential-id" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="valid-from" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="valid-until" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="title" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="description" type="xs:string"/>
-                
-    
-    </xs:sequence>
-          
-  
-  </xs:complexType>
-      
-  
-  <xs:complexType final="extension restriction" name="verifiablePresentationNotice">
-            
-    
-    <xs:sequence>
-                  
-      
-      <xs:element name="title" type="xs:string"/>
-                  
-      
-      <xs:element name="description" type="xs:string"/>
-                  
-      
-      <xs:element minOccurs="0" name="simpleQuery" type="tns:simpleQuery"/>
-                  
-      
-      <xs:element minOccurs="0" name="dcqlQuery" type="tns:dcqlQuery"/>
                 
     
     </xs:sequence>
@@ -1815,27 +1500,6 @@
                   
       
       <xs:enumeration value="DEVIATION"/>
-                
-    
-    </xs:restriction>
-          
-  
-  </xs:simpleType>
-      
-  
-  <xs:simpleType name="format">
-            
-    
-    <xs:restriction base="xs:string">
-                  
-      
-      <xs:enumeration value="JWT_VC_JSON"/>
-                  
-      
-      <xs:enumeration value="MSO_MDOC"/>
-                  
-      
-      <xs:enumeration value="DC_SD_JWT"/>
                 
     
     </xs:restriction>

@@ -420,20 +420,13 @@
 </signedDocument>
 
 <verifiable-credential-notice xmlns="http://api.digipost.no/schema/datatypes">
-    <credential-id>DL-1234567890</credential-id>
-    <valid-from>2025-01-01T10:00:00+02:00</valid-from>
-    <valid-until>2030-01-01T10:00:00+02:00</valid-until>
     <title>Drivers Licence</title>
     <description>This document confirms that the holder has a license to drive vehicles under the specified categories.</description>
 </verifiable-credential-notice>
 
 <verifiable-presentation-notice xmlns="http://api.digipost.no/schema/datatypes">
-    <title>Driver’s License</title>
-    <description>We would like to verify your driver’s license.</description>
-    <simpleQuery>
-        <type>driversLicence</type>
-        <format>JWT_VC_JSON</format>
-    </simpleQuery>
+    <title>Request for Driver's licence</title>
+    <description>We would like to verify your driver’s license before we can rent you a Toyota.</description>
 </verifiable-presentation-notice>
 
 </datatypes>
