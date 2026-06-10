@@ -15,6 +15,9 @@ Inkasso
 share.ShareDocumentsRequest
 share.ShareDocumentsRequestSharingStopped
 share.ShareDocumentsRequestDocumentsShared
+signing.SigningRequest
+signing.SigningCompletedBy
+signing.SigningRejectedBy
 verifiableCredential.VerifiableCredentialNotice
 verifiableCredential.VerifiablePresentationNotice
 openingreceipt.OpeningReceipt

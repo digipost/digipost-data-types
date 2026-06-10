@@ -16,6 +16,9 @@ import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
+import no.digipost.api.datatypes.types.signing.SigningCompletedBy;
+import no.digipost.api.datatypes.types.signing.SigningRejectedBy;
+import no.digipost.api.datatypes.types.signing.SigningRequest;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequest;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestDocumentsShared;
 import no.digipost.api.datatypes.types.share.ShareDocumentsRequestSharingStopped;
@@ -60,6 +63,9 @@ public enum DataTypeIdentifier {
     , SHARE_DOCUMENT_REQUEST(ShareDocumentsRequest.class, "SHAR", ShareDocumentsRequest.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_SHARING_STOPPED(ShareDocumentsRequestSharingStopped.class, "SHSS", ShareDocumentsRequestSharingStopped.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_DOCUMENTS_SHARED(ShareDocumentsRequestDocumentsShared.class, "SHDS", ShareDocumentsRequestDocumentsShared.EXAMPLE)
+    , SIGNING_REQUEST(SigningRequest.class, "SIGR", SigningRequest.EXAMPLE)
+    , SIGNING_COMPLETED_BY(SigningCompletedBy.class, "SIGC", SigningCompletedBy.EXAMPLE)
+    , SIGNING_REJECTED_BY(SigningRejectedBy.class, "SIGX", SigningRejectedBy.EXAMPLE)
     , OPENING_RECEIPT(OpeningReceipt.class, "OPRC", OpeningReceipt.EXAMPLE)
     , OPENING_RECEIPT_ACCEPTED(OpeningReceiptAccepted.class, "OPAC", OpeningReceiptAccepted.EXAMPLE)
     , VERIFIABLE_CREDENTIAL_NOTICE(VerifiableCredentialNotice.class, "VCNO", VerifiableCredentialNotice.EXAMPLE)
