@@ -13,6 +13,7 @@ import no.digipost.api.datatypes.types.Payslip;
 import no.digipost.api.datatypes.types.Residence;
 import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.invoice.Invoice;
+import no.digipost.api.datatypes.types.invoice.InvoiceMarkedAsPaid;
 import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 import no.digipost.api.datatypes.types.openingreceipt.OpeningReceipt;
 import no.digipost.api.datatypes.types.openingreceipt.OpeningReceiptAccepted;
@@ -45,6 +46,7 @@ import no.digipost.api.datatypes.types.verifiableCredential.VerifiablePresentati
         , @JsonSubTypes.Type(Inkasso.class)
         , @JsonSubTypes.Type(Invoice.class)
         , @JsonSubTypes.Type(InvoicePayment.class)
+        , @JsonSubTypes.Type(InvoiceMarkedAsPaid.class)
         , @JsonSubTypes.Type(ShareDocumentsRequest.class)
         , @JsonSubTypes.Type(ShareDocumentsRequestSharingStopped.class)
         , @JsonSubTypes.Type(ShareDocumentsRequestDocumentsShared.class)

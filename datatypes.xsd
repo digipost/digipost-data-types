@@ -20,6 +20,9 @@
   <xs:element name="invoice" type="tns:invoice"/>
       
   
+  <xs:element name="invoice-marked-as-paid" type="tns:invoiceMarkedAsPaid"/>
+      
+  
   <xs:element name="invoice-payment" type="tns:invoicePayment"/>
       
   
@@ -56,16 +59,16 @@
   <xs:element name="share-documents-request-sharing-stopped" type="tns:shareDocumentsRequestSharingStopped"/>
       
   
-  <xs:element name="signing-request" type="tns:signingRequest"/>
-
-
-  <xs:element name="signing-completed-by" type="tns:signingCompletedBy"/>
-
-
-  <xs:element name="signing-rejected-by" type="tns:signingRejectedBy"/>
-
-
   <xs:element name="signedDocument" type="tns:signedDocument"/>
+      
+  
+  <xs:element name="signing-completed-by" type="tns:signingCompletedBy"/>
+      
+  
+  <xs:element name="signing-rejected-by" type="tns:signingRejectedBy"/>
+      
+  
+  <xs:element name="signing-request" type="tns:signingRequest"/>
       
   
   <xs:element name="verifiable-credential-notice" type="tns:verifiableCredentialNotice"/>
@@ -609,6 +612,21 @@
                   
       
       <xs:element minOccurs="0" name="kid" type="xs:string"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType final="extension restriction" name="invoiceMarkedAsPaid">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element name="marked-at" type="xs:string"/>
                 
     
     </xs:sequence>
@@ -1374,80 +1392,80 @@
             
     
     <xs:sequence/>
-
-
+          
+  
   </xs:complexType>
-
-
+      
+  
   <xs:complexType final="extension restriction" name="signatar">
-
-
+            
+    
     <xs:sequence>
-
-
+                  
+      
       <xs:element name="digipostadresse" type="xs:string"/>
-
-
-      <xs:element name="navn" type="xs:string"/>
-
-
+                  
+      
+      <xs:element minOccurs="0" name="navn" type="xs:string"/>
+                
+    
     </xs:sequence>
-
-
+          
+  
   </xs:complexType>
-
-
-  <xs:complexType final="extension restriction" name="signingRequest">
-
-
-    <xs:sequence>
-
-
-      <xs:element name="oppdrag-ref" type="xs:string"/>
-
-
-      <xs:element name="gyldig-til" type="xs:dateTime"/>
-
-
-      <xs:element maxOccurs="unbounded" name="signatarer" type="tns:signatar"/>
-
-
-    </xs:sequence>
-
-
-  </xs:complexType>
-
-
+      
+  
   <xs:complexType final="extension restriction" name="signingCompletedBy">
-
-
+            
+    
     <xs:sequence>
-
-
+                  
+      
       <xs:element name="digipostadresse" type="xs:string"/>
-
-
+                
+    
     </xs:sequence>
-
-
+          
+  
   </xs:complexType>
-
-
+      
+  
   <xs:complexType final="extension restriction" name="signingRejectedBy">
-
-
+            
+    
     <xs:sequence>
-
-
+                  
+      
       <xs:element name="digipostadresse" type="xs:string"/>
-
-
+                
+    
     </xs:sequence>
-
-
+          
+  
   </xs:complexType>
-
-
+      
+  
+  <xs:complexType final="extension restriction" name="signingRequest">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element name="oppdrag-ref" type="xs:string"/>
+                  
+      
+      <xs:element name="gyldig-til" type="xs:string"/>
+                  
+      
+      <xs:element maxOccurs="unbounded" name="signatarer" type="tns:signatar"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
   <xs:complexType final="extension restriction" name="verifiableCredentialNotice">
             
     

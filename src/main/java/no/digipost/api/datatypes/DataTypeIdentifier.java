@@ -9,6 +9,7 @@ import no.digipost.api.datatypes.types.Payslip;
 import no.digipost.api.datatypes.types.Residence;
 import no.digipost.api.datatypes.types.SignedDocument;
 import no.digipost.api.datatypes.types.invoice.Invoice;
+import no.digipost.api.datatypes.types.invoice.InvoiceMarkedAsPaid;
 import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 import no.digipost.api.datatypes.types.openingreceipt.OpeningReceipt;
 import no.digipost.api.datatypes.types.openingreceipt.OpeningReceiptAccepted;
@@ -60,6 +61,7 @@ public enum DataTypeIdentifier {
     , INKASSO(Inkasso.class, "INKA", Inkasso.EXAMPLE)
     , INVOICE(Invoice.class, "INVO", Invoice.EXAMPLE)
     , INVOICE_PAYMENT(InvoicePayment.class, "INVP", InvoicePayment.EXAMPLE)
+    , INVOICE_MARKED_AS_PAID_MANUALLY(InvoiceMarkedAsPaid.class, "IMAPD", InvoiceMarkedAsPaid.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST(ShareDocumentsRequest.class, "SHAR", ShareDocumentsRequest.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_SHARING_STOPPED(ShareDocumentsRequestSharingStopped.class, "SHSS", ShareDocumentsRequestSharingStopped.EXAMPLE)
     , SHARE_DOCUMENT_REQUEST_DOCUMENTS_SHARED(ShareDocumentsRequestDocumentsShared.class, "SHDS", ShareDocumentsRequestDocumentsShared.EXAMPLE)
