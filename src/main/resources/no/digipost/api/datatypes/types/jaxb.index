@@ -18,6 +18,7 @@ share.ShareDocumentsRequestDocumentsShared
 signing.SigningRequest
 signing.SigningCompletedBy
 signing.SigningRejectedBy
+signing.SignedDocumentReference
 verifiableCredential.VerifiableCredentialNotice
 verifiableCredential.VerifiablePresentationNotice
 openingreceipt.OpeningReceipt

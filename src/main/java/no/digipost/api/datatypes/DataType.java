@@ -20,6 +20,7 @@ import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
 import no.digipost.api.datatypes.types.proof.Proof;
 import no.digipost.api.datatypes.types.receipt.Receipt;
+import no.digipost.api.datatypes.types.signing.SignedDocumentReference;
 import no.digipost.api.datatypes.types.signing.SigningCompletedBy;
 import no.digipost.api.datatypes.types.signing.SigningRejectedBy;
 import no.digipost.api.datatypes.types.signing.SigningRequest;
@@ -51,6 +52,7 @@ import no.digipost.api.datatypes.types.verifiableCredential.VerifiablePresentati
         , @JsonSubTypes.Type(SigningRequest.class)
         , @JsonSubTypes.Type(SigningCompletedBy.class)
         , @JsonSubTypes.Type(SigningRejectedBy.class)
+        , @JsonSubTypes.Type(SignedDocumentReference.class)
         , @JsonSubTypes.Type(OpeningReceipt.class)
         , @JsonSubTypes.Type(OpeningReceiptAccepted.class)
         , @JsonSubTypes.Type(VerifiableCredentialNotice.class)

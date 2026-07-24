@@ -25,7 +25,7 @@ import java.util.UUID;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
 @Description("A signing request in Digipost's internal signing flow.")
-@ComplementedBy({SigningCompletedBy.class, SigningRejectedBy.class})
+@ComplementedBy({SigningCompletedBy.class, SigningRejectedBy.class, SignedDocumentReference.class})
 public class SigningRequest implements DataType {
 
     @XmlElement(name = "oppdrag-ref", required = true)
