@@ -21,6 +21,9 @@
 |[ShareDocumentsRequestDocumentsShared](#sharedocumentsrequestdocumentsshared)|Documents have been shared for ShareDocumentsRequest|
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
+|[SigningCompletedBy](#signingcompletedby)|Signals that one signer has completed signing.|
+|[SigningRejectedBy](#signingrejectedby)|Signals that one signer has rejected the signing request.|
+|[SigningRequest](#signingrequest)|A signing request in Digipost's internal signing flow.|
 |[VerifiableCredentialNotice](#verifiablecredentialnotice)|Represents a legal document (Certificate, Licence, Permit, etc.) issued to a single person.|
 |[VerifiablePresentationNotice](#verifiablepresentationnotice)|A request for a verifiable presentation|
 
@@ -1207,6 +1210,77 @@ Details about a signed document
     <document-subject>Ansettelseskontrakt</document-subject>
     <signing-time>2018-07-11T10:00:00+02:00</signing-time>
 </signedDocument>
+```
+
+## SigningCompletedBy
+
+Signals that one signer has completed signing.
+
+### Complemented by: 
+[SigningCompletedBy](#signingcompletedby)
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|digipostadresse|String|yes|Digipost address for the signer who completed signing.|
+
+### XML
+
+```xml
+<signing-completed-by xmlns="http://api.digipost.no/schema/datatypes">
+    <digipostadresse>ola.nordmann#1234</digipostadresse>
+</signing-completed-by>
+```
+
+## SigningRejectedBy
+
+Signals that one signer has rejected the signing request.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|digipostadresse|String|yes|Digipost address for the signer who rejected signing.|
+
+### XML
+
+```xml
+<signing-rejected-by xmlns="http://api.digipost.no/schema/datatypes">
+    <digipostadresse>kari.nordmann#1234</digipostadresse>
+</signing-rejected-by>
+```
+
+## SigningRequest
+
+A signing request in Digipost's internal signing flow.
+
+### Complemented by: 
+[SigningCompletedBy](#signingcompletedby), [SigningRejectedBy](#signingrejectedby)
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|oppdragRef|UUID|yes|UUID reference to the signing assignment.|
+|gyldigTil|ZonedDateTime|yes|When the signing request expires. ISO8601 full DateTime with timezone.|
+|signatarer|List|yes|Non-empty list of signers.|
+
+### XML
+
+```xml
+<signing-request xmlns="http://api.digipost.no/schema/datatypes">
+    <oppdrag-ref>264f2cf0-6cd9-4a26-9f9f-560d0df7e69a</oppdrag-ref>
+    <gyldig-til>2026-05-31T23:59:00+02:00</gyldig-til>
+    <signatarer>
+        <digipostadresse>ola.nordmann#1234</digipostadresse>
+        <navn>Ola Nordmann</navn>
+    </signatarer>
+    <signatarer>
+        <digipostadresse>kari.nordmann#1234</digipostadresse>
+        <navn>Kari Nordmann</navn>
+    </signatarer>
+</signing-request>
 ```
 
 ## VerifiableCredentialNotice
