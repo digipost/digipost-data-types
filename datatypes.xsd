@@ -1100,6 +1100,9 @@
       <xs:element minOccurs="0" name="currency-code" type="xs:string"/>
                   
       
+      <xs:element minOccurs="0" name="transaction-id" type="xs:string"/>
+                  
+      
       <xs:element minOccurs="0" name="foreign-currency-payment" type="tns:foreignCurrencyPayment"/>
                 
     

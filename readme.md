@@ -1001,6 +1001,7 @@ Valid values:
         <cardName>Visa</cardName>
         <amount>100.00</amount>
         <currency-code>NOK</currency-code>
+        <transaction-id>215054d4-497e-40a8-97b6-f13e5f1c94f2</transaction-id>
         <foreign-currency-payment>
             <currency-code>USD</currency-code>
             <amount>15</amount>
