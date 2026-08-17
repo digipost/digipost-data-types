@@ -42,8 +42,20 @@ public class Payment {
     @Description("Currency of the payment, ISO4217. Example: NOK")
     String currencyCode;
 
+    @XmlElement(name = "transaction-id")
+    @Description("Transaction ID from the payment provider, if available")
+    String transactionId;
+
     @XmlElement(name = "foreign-currency-payment")
     ForeignCurrencyPayment foreignCurrencyPayment;
 
-    public static final Payment EXAMPLE = new Payment("Bank Axept", "************1234", "Visa", new BigDecimal("100.00"), "NOK", ForeignCurrencyPayment.EXAMPLE);
+    public static final Payment EXAMPLE = new Payment(
+            "Bank Axept",
+            "************1234",
+            "Visa",
+            new BigDecimal("100.00"),
+            "NOK",
+            "215054d4-497e-40a8-97b6-f13e5f1c94f2",
+            ForeignCurrencyPayment.EXAMPLE
+    );
 }
