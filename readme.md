@@ -1263,7 +1263,7 @@ A signing request in Digipost's internal signing flow.
 |Name|Type|Required|Description|
 |----|----|--------|-----------|
 |oppdragRef|UUID|yes|UUID reference to the signing assignment.|
-|gyldigTil|ZonedDateTime|yes|When the signing request expires. ISO8601 full DateTime with timezone.|
+|tilgjengeligSekunder|Long|yes|Number of seconds the signing request stays available for signing after delivery.|
 |signatarer|List|yes|Non-empty list of signers.|
 
 ### XML
@@ -1271,7 +1271,7 @@ A signing request in Digipost's internal signing flow.
 ```xml
 <signing-request xmlns="http://api.digipost.no/schema/datatypes">
     <oppdrag-ref>264f2cf0-6cd9-4a26-9f9f-560d0df7e69a</oppdrag-ref>
-    <gyldig-til>2026-05-31T23:59:00+02:00</gyldig-til>
+    <available-seconds>864000</available-seconds>
     <signatarer>
         <digipostadresse>ola.nordmann#1234</digipostadresse>
         <navn>Ola Nordmann</navn>

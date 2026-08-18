@@ -1439,7 +1439,7 @@
       <xs:element name="oppdrag-ref" type="xs:string"/>
                   
       
-      <xs:element name="gyldig-til" type="xs:string"/>
+      <xs:element name="available-seconds" type="xs:long"/>
                   
       
       <xs:element maxOccurs="unbounded" name="signatarer" type="tns:signatar"/>

@@ -430,7 +430,7 @@
 
 <signing-request xmlns="http://api.digipost.no/schema/datatypes">
     <oppdrag-ref>264f2cf0-6cd9-4a26-9f9f-560d0df7e69a</oppdrag-ref>
-    <gyldig-til>2026-05-31T23:59:00+02:00</gyldig-til>
+    <available-seconds>864000</available-seconds>
     <signatarer>
         <digipostadresse>ola.nordmann#1234</digipostadresse>
         <navn>Ola Nordmann</navn>
