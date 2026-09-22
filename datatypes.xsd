@@ -564,6 +564,9 @@
                   
       
       <xs:element name="signing-time" type="xs:string"/>
+                  
+      
+      <xs:element minOccurs="0" name="signing-reference" type="xs:string"/>
                 
     
     </xs:sequence>
