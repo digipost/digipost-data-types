@@ -1201,6 +1201,7 @@ Details about a signed document
 |documentIssuer|String|yes|The original issuer of the document to be signed.|
 |documentSubject|String|yes|The original subject of the document to be signed.|
 |signingTime|ZonedDateTime|yes|When the recipient signed the document. ISO8601 full DateTime.|
+|signingReference|String|no|A reference for the signing.|
 
 ### XML
 
@@ -1209,6 +1210,7 @@ Details about a signed document
     <document-issuer>Bedrift AS</document-issuer>
     <document-subject>Ansettelseskontrakt</document-subject>
     <signing-time>2018-07-11T10:00:00+02:00</signing-time>
+    <signing-reference>264f2cf0-6cd9-4a26-9f9f-560d0df7e69a</signing-reference>
 </signedDocument>
 ```
 

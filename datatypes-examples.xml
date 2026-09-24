@@ -418,6 +418,7 @@
     <document-issuer>Bedrift AS</document-issuer>
     <document-subject>Ansettelseskontrakt</document-subject>
     <signing-time>2018-07-11T10:00:00+02:00</signing-time>
+    <signing-reference>264f2cf0-6cd9-4a26-9f9f-560d0df7e69a</signing-reference>
 </signedDocument>
 
 <signing-completed-by xmlns="http://api.digipost.no/schema/datatypes">

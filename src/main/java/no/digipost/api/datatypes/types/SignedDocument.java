@@ -1,6 +1,7 @@
 package no.digipost.api.datatypes.types;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AccessLevel;
@@ -35,11 +36,19 @@ public class SignedDocument implements DataType {
     @NotNull
     ZonedDateTime signingTime;
 
+    @XmlElement(name = "signing-reference")
+    @Description("A reference for the signing.")
+    @Size(max = 100)
+    String signingReference;
+
+    public SignedDocument(String documentIssuer, String documentSubject, ZonedDateTime signingTime) {
+        this(documentIssuer, documentSubject, signingTime, null);
+    }
+
     public static SignedDocument EXAMPLE = new SignedDocument(
             "Bedrift AS",
             "Ansettelseskontrakt",
-            ZonedDateTime.of(2018, 7, 11, 10, 0, 0, 0, ZoneId.of("+02:00"))
+            ZonedDateTime.of(2018, 7, 11, 10, 0, 0, 0, ZoneId.of("+02:00")),
+            "264f2cf0-6cd9-4a26-9f9f-560d0df7e69a"
     );
 }
-
-
