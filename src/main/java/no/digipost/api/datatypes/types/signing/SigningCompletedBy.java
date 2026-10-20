@@ -18,7 +18,7 @@ import no.digipost.api.datatypes.documentation.Description;
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @With
 @Description("Signals that one signer has completed signing.")
-@ComplementedBy(SigningCompletedBy.class)
+@ComplementedBy({SigningCompletedBy.class, SigningCancelled.class})
 public class SigningCompletedBy implements DataType {
 
     @XmlElement(name = "digipostadresse", required = true)

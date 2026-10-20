@@ -6,6 +6,7 @@ import no.digipost.api.datatypes.types.invoice.Invoice;
 import no.digipost.api.datatypes.types.invoice.InvoicePayment;
 import no.digipost.api.datatypes.types.pickup.PickupNotice;
 import no.digipost.api.datatypes.types.pickup.PickupNoticeStatus;
+import no.digipost.api.datatypes.types.signing.SigningCancelled;
 import no.digipost.api.datatypes.types.signing.SigningCompletedBy;
 import no.digipost.api.datatypes.types.signing.SigningRejectedBy;
 import no.digipost.api.datatypes.types.signing.SigningRequest;
@@ -60,5 +61,18 @@ class ComplementByTest {
     void signering_avvist_av_signatar_kan_ikke_komplementeres_videre() {
         assertThat(SigningRejectedBy.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(SigningRejectedBy.EXAMPLE)));
         assertThat(SigningRejectedBy.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(SigningCompletedBy.EXAMPLE)));
+    }
+
+    @Test
+    void signering_kan_kanselleres_foer_og_etter_at_noen_har_signert() {
+        assertThat(SigningRequest.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(SigningCancelled.EXAMPLE)));
+        assertThat(SigningCompletedBy.EXAMPLE, where(s -> s.getTypeIdentifier().canBeComplementedBy(SigningCancelled.EXAMPLE)));
+    }
+
+    @Test
+    void kansellert_signering_kan_ikke_komplementeres_videre() {
+        assertThat(SigningCancelled.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(SigningCompletedBy.EXAMPLE)));
+        assertThat(SigningCancelled.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(SigningRejectedBy.EXAMPLE)));
+        assertThat(SigningCancelled.EXAMPLE, whereNot(s -> s.getTypeIdentifier().canBeComplementedBy(SigningCancelled.EXAMPLE)));
     }
 }

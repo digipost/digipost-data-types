@@ -21,6 +21,7 @@
 |[ShareDocumentsRequestDocumentsShared](#sharedocumentsrequestdocumentsshared)|Documents have been shared for ShareDocumentsRequest|
 |[ShareDocumentsRequestSharingStopped](#sharedocumentsrequestsharingstopped)|Stop sharing of documents for ShareDocumentsRequest|
 |[SignedDocument](#signeddocument)|Details about a signed document|
+|[SigningCancelled](#signingcancelled)|Signals that the sender has cancelled the signing request. No further signing is possible.|
 |[SigningCompletedBy](#signingcompletedby)|Signals that one signer has completed signing.|
 |[SigningRejectedBy](#signingrejectedby)|Signals that one signer has rejected the signing request.|
 |[SigningRequest](#signingrequest)|A signing request in Digipost's internal signing flow.|
@@ -1214,12 +1215,30 @@ Details about a signed document
 </signedDocument>
 ```
 
+## SigningCancelled
+
+Signals that the sender has cancelled the signing request. No further signing is possible.
+
+### Fields
+
+|Name|Type|Required|Description|
+|----|----|--------|-----------|
+|digipostadresse|String|yes|Digipost address for the sender who cancelled the signing request.|
+
+### XML
+
+```xml
+<signing-cancelled xmlns="http://api.digipost.no/schema/datatypes">
+    <digipostadresse>ola.nordmann#1234</digipostadresse>
+</signing-cancelled>
+```
+
 ## SigningCompletedBy
 
 Signals that one signer has completed signing.
 
 ### Complemented by: 
-[SigningCompletedBy](#signingcompletedby)
+[SigningCompletedBy](#signingcompletedby), [SigningCancelled](#signingcancelled)
 
 ### Fields
 
@@ -1258,7 +1277,7 @@ Signals that one signer has rejected the signing request.
 A signing request in Digipost's internal signing flow.
 
 ### Complemented by: 
-[SigningCompletedBy](#signingcompletedby), [SigningRejectedBy](#signingrejectedby)
+[SigningCompletedBy](#signingcompletedby), [SigningRejectedBy](#signingrejectedby), [SigningCancelled](#signingcancelled)
 
 ### Fields
 
