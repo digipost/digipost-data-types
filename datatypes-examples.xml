@@ -421,6 +421,10 @@
     <signing-reference>264f2cf0-6cd9-4a26-9f9f-560d0df7e69a</signing-reference>
 </signedDocument>
 
+<signing-cancelled xmlns="http://api.digipost.no/schema/datatypes">
+    <digipostadresse>ola.nordmann#1234</digipostadresse>
+</signing-cancelled>
+
 <signing-completed-by xmlns="http://api.digipost.no/schema/datatypes">
     <digipostadresse>ola.nordmann#1234</digipostadresse>
 </signing-completed-by>

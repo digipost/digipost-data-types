@@ -59,6 +59,9 @@
   <xs:element name="signedDocument" type="tns:signedDocument"/>
       
   
+  <xs:element name="signing-cancelled" type="tns:signingCancelled"/>
+      
+  
   <xs:element name="signing-completed-by" type="tns:signingCompletedBy"/>
       
   
@@ -1395,6 +1398,21 @@
                   
       
       <xs:element minOccurs="0" name="navn" type="xs:string"/>
+                
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+      
+  
+  <xs:complexType final="extension restriction" name="signingCancelled">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element name="digipostadresse" type="xs:string"/>
                 
     
     </xs:sequence>
